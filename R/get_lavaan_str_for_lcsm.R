@@ -90,10 +90,10 @@ specify_os_resid <- function(timepoints, variable){
   lavaan_str <- ""
   
   # Write first line out of loop to label sigma2_lvariable1
-  lavaan_str <- base::paste(lavaan_str, variable, "1", " ~~ ", "sigma2_u", " * ", variable, "1", " \n ", sep = "")
+  lavaan_str <- base::paste(lavaan_str, variable, "1", " ~~ ", "sigma2_u", variable, " * ", variable, "1", " \n ", sep = "")
   
   for (i in 2:timepoints) {
-    lavaan_str <- base::paste(lavaan_str, variable, i, " ~~ ", "sigma2_u", " * ", variable, i, " \n ", sep = "")
+    lavaan_str <- base::paste(lavaan_str, variable, i, " ~~ ", "sigma2_u", variable, " * ", variable, i, " \n ", sep = "")
   }
   
   # Assign str from loop to lts_var
@@ -276,4 +276,117 @@ specify_proportional_effect <- function(timepoints, variable){
   
   # Return latent true score specifications
   base::eval(rlang::sym(base::paste("proportional_effect", variable, sep = "_")))
+}
+
+
+# Specify constant change factor mean
+specify_growth_covar  <- function(timepoints, variable_x, change_letter_x, variable_y, change_letter_y){
+  # Create empty str object lts_variable
+  base::assign(base::paste("growth_covar", variable_x, variable_y, sep = "_"), "")
+  
+  # lavaan_str <- paste(..., " ~~ ", "sigma_", ... ," * ", ... , sep = "")
+  
+  lavaan_str_1 <- paste("l", variable_x, "1", " ~~ ", "sigma_", "l", variable_y, "1", "l", variable_x, "1"," * ", "l", variable_y, "1", " \n " , sep = "")
+  
+  lavaan_str_2 <- paste(change_letter_x, "2", " ~~ ", "sigma_", change_letter_y, "2", change_letter_x, "2"," * ", change_letter_y, "2", " \n " , sep = "")
+  
+  lavaan_str_3 <- paste("l", variable_x, "1", " ~~ ", "sigma_", change_letter_y, "2", "l", variable_x, "1"," * ", change_letter_y, "2", " \n " , sep = "")
+  
+  lavaan_str_4 <- paste("l", variable_y, "1", " ~~ ", "sigma_", change_letter_x, "2", "l", variable_y, "1"," * ", change_letter_x, "2", " \n " , sep = "")
+  
+  lavaan_str_5 <- paste(lavaan_str_1, lavaan_str_2, lavaan_str_3, lavaan_str_4)
+  
+  # Assign str from loop to lcs_var
+  base::assign(base::paste("growth_covar", variable_x, variable_y, sep = "_"), lavaan_str_5)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("growth_covar", variable_x, variable_y, sep = "_")))
+}
+
+
+# Bivariate information
+
+# Specify covariances between the latent growth factors
+ly1 ~~ sigma_lx1ly1 * lx1
+g2 ~~  sigma_j2g2 * j2
+ly1 ~~ sigma_j2ly1 * j2
+lx1 ~~ sigma_g2lx1 * g2
+
+
+# Specify residual covariances
+specify_resid_covar <- function(timepoints, variable_x, variable_y){
+  # Create empty str object lts_variable
+  base::assign(base::paste("resid_covar", variable_x, variable_y, sep = "_"), "")
+  
+  # Create empty str object for lavaan syntax
+  lavaan_str <- ""
+  
+  for (i in 1:timepoints) {
+    lavaan_str <- base::paste(lavaan_str, variable_x, i, " ~~ ", "sigma_su", " * ", variable_y, i, " \n ", sep = "")
+  }
+  
+  # Assign str from loop to lts_var
+  base::assign(base::paste("resid_covar", variable_x, variable_y, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("resid_covar", variable_x, variable_y, sep = "_")))
+}
+
+# Specify within-construct coupling parameters
+specify_lcs_autoreg <- function(timepoints, variable){
+  # Create empty str object lts_variable
+  base::assign(base::paste("lcs_autoreg", variable, sep = "_"), "")
+  
+  # Create empty str object for lavaan syntax
+  lavaan_str <- ""
+  
+  for (i in 1:(timepoints - 2)) {
+    lavaan_str <- base::paste(lavaan_str, "d", variable, i + 2, " ~ ", "phi_", variable, " * ", "d", variable, i + 1, " \n ", sep = "")
+  }
+  
+  # Assign str from loop to lts_var
+  base::assign(base::paste("lcs_autoreg", variable, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("lcs_autoreg", variable, sep = "_")))
+}
+
+
+# Specify between-construct coupling parameters true score (t) to change (c)
+specify_lcs_tc <- function(timepoints, variable_x, variable_y){
+  # Create empty str object lts_variable
+  base::assign(base::paste("lcs_tc", variable_x, variable_y, sep = "_"), "")
+  
+  # Create empty str object for lavaan syntax
+  lavaan_str <- ""
+  
+  for (i in 1:(timepoints - 1)) {
+    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "delta_", variable_y, variable_x, " * ", "l", variable_y, i, " \n ", sep = "")
+  }
+  
+  # Assign str from loop to lts_var
+  base::assign(base::paste("lcs_tc", variable_x, variable_y, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("lcs_tc", variable_x, variable_y, sep = "_")))
+}
+
+
+# Specify between-construct coupling parameters change score (c) to change (c)
+specify_lcs_cc <- function(timepoints, variable_x, variable_y){
+  # Create empty str object lts_variable
+  base::assign(base::paste("lcs_cc", variable_x, variable_y, sep = "_"), "")
+  
+  # Create empty str object for lavaan syntax
+  lavaan_str <- ""
+  
+  for (i in 1:(timepoints - 1)) {
+    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "xi_", variable_y, variable_x, " * ", "d", variable_y, i, " \n ", sep = "")
+  }
+  
+  # Assign str from loop to lts_var
+  base::assign(base::paste("lcs_cc", variable_x, variable_y, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("lcs_cc", variable_x, variable_y, sep = "_")))
 }
