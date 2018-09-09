@@ -153,7 +153,7 @@ specify_lcs_mean <- function(timepoints, variable){
   lavaan_str <- ""
   
   for (i in 2:(timepoints)) {
-    lavaan_str <- base::paste(lavaan_str, "d", variable, i, " ~ 1 * ", "0", " \n ", sep = "")
+    lavaan_str <- base::paste(lavaan_str, "d", variable, i, " ~ 0 * ", "1", " \n ", sep = "")
   }
   
   # Assign str from loop to lts_
@@ -195,7 +195,7 @@ specify_constant_change <- function(timepoints, variable, change_letter){
   lavaan_str_1 <- ""
   
   for (i in 2:(timepoints)) {
-    lavaan_str_1 <- base::paste(lavaan_str_1, i - 1, " * ", "d", variable, i, " + ", sep = "")
+    lavaan_str_1 <- base::paste(lavaan_str_1, "1", " * ", "d", variable, i, " + ", sep = "")
   }
   
   # Combine first string object with loop
@@ -220,7 +220,7 @@ specify_constant_change_mean <- function(timepoints, variable, change_letter){
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_mean", variable, sep = "_"), "")
   
-  lavaan_str <- paste(change_letter, "2 ~ ", "gamma_", change_letter, "2", " * 1", sep = "")
+  lavaan_str <- paste(change_letter, "2 ~ ", "gamma_", change_letter, "2", " * 1", " \n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_mean", variable, sep = "_"), lavaan_str)
@@ -234,7 +234,7 @@ specify_constant_change_var <- function(timepoints, variable, change_letter){
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_var", variable, sep = "_"), "")
   
-  lavaan_str <- paste(change_letter, "2 ~~ ", "sigma2_", change_letter, "2", " * 1", sep = "")
+  lavaan_str <- paste(change_letter, "2 ~~ ", "sigma2_", change_letter, "2", " * ", change_letter, "2", " \n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_var", variable, sep = "_"), lavaan_str)
@@ -249,7 +249,7 @@ specify_constant_change_covar_initial_ts <- function(timepoints, variable, chang
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_covar_initial_ts", variable, sep = "_"), "")
   
-  lavaan_str <- paste(change_letter, "2 ~~ ", "sigma_", change_letter, "2", "l", variable, "1", " * ", "l", variable, "1", sep = "")
+  lavaan_str <- paste(change_letter, "2 ~~ ", "sigma_", change_letter, "2", "l", variable, "1", " * ", "l", variable, "1", "\n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_covar_initial_ts", variable, sep = "_"), lavaan_str)
@@ -279,38 +279,56 @@ specify_proportional_effect <- function(timepoints, variable){
 }
 
 
-# Specify constant change factor mean
-specify_growth_covar  <- function(timepoints, variable_x, change_letter_x, variable_y, change_letter_y){
+# Specify covariance of intercepts
+specify_int_covar  <- function(variable_x, variable_y){
   # Create empty str object lts_variable
-  base::assign(base::paste("growth_covar", variable_x, variable_y, sep = "_"), "")
+  base::assign(base::paste("int_covar", variable_x, variable_y, sep = "_"), "")
   
   # lavaan_str <- paste(..., " ~~ ", "sigma_", ... ," * ", ... , sep = "")
   
-  lavaan_str_1 <- paste("l", variable_x, "1", " ~~ ", "sigma_", "l", variable_y, "1", "l", variable_x, "1"," * ", "l", variable_y, "1", " \n " , sep = "")
-  
-  lavaan_str_2 <- paste(change_letter_x, "2", " ~~ ", "sigma_", change_letter_y, "2", change_letter_x, "2"," * ", change_letter_y, "2", " \n " , sep = "")
-  
-  lavaan_str_3 <- paste("l", variable_x, "1", " ~~ ", "sigma_", change_letter_y, "2", "l", variable_x, "1"," * ", change_letter_y, "2", " \n " , sep = "")
-  
-  lavaan_str_4 <- paste("l", variable_y, "1", " ~~ ", "sigma_", change_letter_x, "2", "l", variable_y, "1"," * ", change_letter_x, "2", " \n " , sep = "")
-  
-  lavaan_str_5 <- paste(lavaan_str_1, lavaan_str_2, lavaan_str_3, lavaan_str_4)
+  lavaan_str <- paste("l", variable_x, "1", " ~~ ", "sigma_", "l", variable_y, "1", "l", variable_x, "1"," * ", "l", variable_y, "1", " \n " , sep = "")
   
   # Assign str from loop to lcs_var
-  base::assign(base::paste("growth_covar", variable_x, variable_y, sep = "_"), lavaan_str_5)
+  base::assign(base::paste("int_covar", variable_x, variable_y, sep = "_"), lavaan_str)
   
   # Return latent true score specifications
-  base::eval(rlang::sym(base::paste("growth_covar", variable_x, variable_y, sep = "_")))
+  base::eval(rlang::sym(base::paste("int_covar", variable_x, variable_y, sep = "_")))
 }
 
 
-# Bivariate information
+# Specify covariance of constant change factors
+specify_growth_covar  <- function(change_letter_x, change_letter_y){
+  # Create empty str object lts_variable
+  base::assign(base::paste("growth_covar", change_letter_x, change_letter_y, sep = "_"), "")
+  
+  # lavaan_str <- paste(..., " ~~ ", "sigma_", ... ," * ", ... , sep = "")
+  
+  lavaan_str <- paste(change_letter_x, "2", " ~~ ", "sigma_", change_letter_y, "2", change_letter_x, "2"," * ", change_letter_y, "2", " \n " , sep = "")
+  
+  # Assign str from loop to lcs_var
+  base::assign(base::paste("growth_covar", change_letter_x, change_letter_y, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("growth_covar", change_letter_x, change_letter_y, sep = "_")))
+}
 
-# Specify covariances between the latent growth factors
-ly1 ~~ sigma_lx1ly1 * lx1
-g2 ~~  sigma_j2g2 * j2
-ly1 ~~ sigma_j2ly1 * j2
-lx1 ~~ sigma_g2lx1 * g2
+
+
+# Specify covariance of constant change and intercept within the same construct
+specify_int_growth_covar  <- function(variable, change_letter){
+  # Create empty str object lts_variable
+  base::assign(base::paste("int_growth_covar", variable, change_letter, sep = "_"), "")
+  
+  # lavaan_str <- paste(..., " ~~ ", "sigma_", ... ," * ", ... , sep = "")
+  
+  lavaan_str <- paste("l", variable, "1", " ~~ ", "sigma_", change_letter, "2", "l", variable, "1"," * ", change_letter, "2", " \n " , sep = "")
+  
+  # Assign str from loop to lcs_var
+  base::assign(base::paste("int_growth_covar", variable, change_letter, sep = "_"), lavaan_str)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("int_growth_covar", variable, change_letter, sep = "_")))
+}
 
 
 # Specify residual covariances
