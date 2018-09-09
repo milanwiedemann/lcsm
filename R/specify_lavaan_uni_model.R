@@ -10,10 +10,11 @@
 #' @param variable String with letter of variable (Usually x or y).
 #' @param change_letter String with letter (Usually g or j).
 #'
-#' @return
-#' @export
+#' @return Lavaan model syntax.
+#' @export 
 #'
-#' @examples
+#' @examples TODO. 
+#' 
 specify_lavaan_uni_model <- function(timepoints, model_list, variable, change_letter) {
   
 # Define empty str object 

@@ -21,10 +21,10 @@
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
 #'
-#' @return
+#' @return Lavaan model syntax.
 #' @export
 #'
-#' @examples
+#' @examples TODO.
 #' 
 #' 
 

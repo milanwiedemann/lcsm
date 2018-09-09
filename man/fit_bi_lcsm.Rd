@@ -2,33 +2,43 @@
 % Please edit documentation in R/fit_bi_lcsm.R
 \name{fit_bi_lcsm}
 \alias{fit_bi_lcsm}
-\title{Fit bivariate latend change score models}
+\title{Fit bivariate latent change score models}
 \usage{
-fit_bi_lcsm(data, y, x, model, mimic = "Mplus", estimator = "MLR",
-  missing = "FIML")
+fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
+  mimic = "Mplus", estimator = "MLR", missing = "FIML")
 }
 \arguments{
 \item{data}{Wide dataset.}
 
-\item{y}{List of 6 to 10 variables measuring the other construct of the model.}
+\item{var_x}{List of variables measuring one construct of the model.}
 
-\item{x}{List of 6 to 10 variables measuring one construct of the model.}
+\item{var_y}{List of variables measuring another construct of the model.}
 
-\item{model}{Model specifications as described in Grimm2012 and Grimm2017. The model names M1a to M4b referr to the abbreviations used in Grimm2012 to describe these models. The options are:
+\item{model_x}{List of model specifications for variables specified in \code{var_x}.
 \itemize{
-\item{\code{bi_lcsm_no_coupling}}{ (M1a)},
-\item{\code{bi_lcsm_x_on_deltay}}{ (M2a)},
-\item{\code{bi_lcsm_y_on_deltax}}{ (M3a)},
-\item{\code{bi_lcsm_dual_change}}{ (M4a)},
-\item{\code{bi_lcsm_dual_change_delta_within}}{ (M1b)},
-\item{\code{bi_lcsm_dual_change_delta_xy}}{ (M2b)},
-\item{\code{bi_lcsm_dual_change_delta_yx}}{ (M3b)},
-\item{\code{bi_lcsm_dual_change_delta_full}}{ (M4b)}.
+\item{\code{gamma}}{ (Constant change)},
+\item{\code{pi}}{ (Proportional change)},
+\item{\code{phi}}{ (Autoregression of change scores)}.
+}}
+
+\item{model_y}{List of model specifications for variables specified in \code{var_y}.
+\itemize{
+\item{\code{gamma}}{ (Constant change)},
+\item{\code{pi}}{ (Proportional change)},
+\item{\code{phi}}{ (Autoregression of change scores)}.
+}}
+
+\item{coupling}{List of model specifications for coupling parameters.
+\itemize{
+\item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
+\item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
+\item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
+\item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
 }
 \value{
 This function returns a lavaan class object.
 }
 \description{
-Fit bivariate latend change score models
+Fit bivariate latent change score models.
 }

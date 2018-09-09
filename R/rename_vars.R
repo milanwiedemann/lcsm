@@ -7,7 +7,8 @@
 #' @return Dataframe in wide format with renamed variables
 #' @export
 #'
-#' @examples
+#' @examples TODO.
+
 rename_lcsm_vars <- function(data, var_x, var_y){
 
   # Rename variables in var_x and var_y list

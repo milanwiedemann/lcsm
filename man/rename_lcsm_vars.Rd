@@ -19,3 +19,6 @@ Dataframe in wide format with renamed variables
 \description{
 Rename variables for univariate and bivariate models
 }
+\examples{
+TODO.
+}
