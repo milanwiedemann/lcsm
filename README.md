@@ -4,7 +4,7 @@ This package contains helper functions to specify and analyse univariate and biv
 
 Similar work, that this package builds on, can be found [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-16-introduction-latent-change-score-modeling) (univariate LCSM) and [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-17-multivariate-latent-change-score-models) (bivariate LCSM).
 
-These slides illustrate the different [univariate](https://docs.google.com/presentation/d/1a6mt4EhgMOfuIysNh8jOWhTPhvsrskXHuil7ZBoUdFg/edit?usp=sharing) and [bivariate](https://docs.google.com/presentation/d/1vdaWQkZ2wsDy9By0TmgCdjG8pf8yEhGngwNEJY5Y7sI/edit?usp=sharing) models that can be specified using this package.
+[These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate the different univariate and bivariate LCSM that can be specified using this package.
 
 ## Installation
 
