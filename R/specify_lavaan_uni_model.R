@@ -1,10 +1,10 @@
 #' Specify lavaan model for univariate latent change score models
 #'
 #' @param timepoints Number if timepoints.
-#' @param model_list List of parameters to be estimated in the univariate lcsm.
+#' @param model List of parameters to be estimated in the univariate lcsm.
 #' \itemize{
-#' \item{\code{gamma}}{ (Constant change)},
-#' \item{\code{pi}}{ (Proportional change)},
+#' \item{\code{alpha}}{ (Constant change)},
+#' \item{\code{beta}}{ (Proportional change)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
 #' @param variable String with letter of variable (Usually x or y).
@@ -15,7 +15,7 @@
 #'
 #' @examples TODO. 
 #' 
-specify_lavaan_uni_model <- function(timepoints, model_list, variable, change_letter) {
+specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter) {
   
 # Define empty str object 
 lavaan_model <- ''
@@ -50,7 +50,7 @@ lavaan_model <- paste(lavaan_model, lcsm:::specify_lcs_mean(timepoints, variable
 lavaan_model <- paste(lavaan_model, lcsm:::specify_lcs_var(timepoints, variable))
 
 # Specify constant change ----
-if (model_list$gamma == TRUE){
+if (model$alpha == TRUE){
   
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change(timepoints, variable, change_letter))
   
@@ -62,13 +62,13 @@ if (model_list$gamma == TRUE){
 }
 
 # Specify proportional change ----
-if (model_list$pi == TRUE){
+if (model$beta == TRUE){
   
 lavaan_model <- paste(lavaan_model, lcsm:::specify_proportional_effect(timepoints, variable))
 }
 
 # Specify autoregressive change scores ----
-if (model_list$phi == TRUE){
+if (model$phi == TRUE){
   
   lavaan_model <- paste(lavaan_model, lcsm:::specify_lcs_autoreg(timepoints, variable))
 }
