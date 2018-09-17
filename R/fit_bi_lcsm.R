@@ -36,19 +36,40 @@ fit_bi_lcsm <- function(data,
                         estimator = "MLR",
                         missing = "FIML"){
 
-  if (length(y) != length(x)){
+  # Count timepoints ----
+  if (length(var_x) != length(var_y)){
     stop("Unequal number of variables specified for x and y. Both lists need to have the same number of variables.")
   }
 
-  timepoints <- length(y)
+  timepoints <- length(var_x)
+  
+  # Rename variables ----
+  data_lcsm <- lcsm::rename_lcsm_vars(data = data, 
+                         var_x = var_x, 
+                         var_y = var_y)
+    
+  # Specify model ----
+  model_bi <- specify_lavaan_bi_model(timepoints = timepoints,
+                                      var_x = "x",
+                                      model_x = model_x,
+                                      var_y = "y",
+                                      model_y = model_y,  
+                                      coupling = coupling)
   
   
+  # Fit lcsm using lavaan ----
+  fit_lcsm_bi <- lavaan(
+    data = data_lcsm,
+    model = model_bi,
+    meanstructure = TRUE,
+    fixed.x = FALSE,
+    control = list(iter.max = 10000),
+    verbose = FALSE,
+    mimic = mimic,
+    estimator = estimator,
+    missing = missing)
   
-  
-  
-  
-  
-  
+  fit_lcsm_bi
 }
   
   
