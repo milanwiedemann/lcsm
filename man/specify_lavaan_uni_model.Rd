@@ -4,15 +4,15 @@
 \alias{specify_lavaan_uni_model}
 \title{Specify lavaan model for univariate latent change score models}
 \usage{
-specify_lavaan_uni_model(timepoints, model_list, variable, change_letter)
+specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 }
 \arguments{
 \item{timepoints}{Number if timepoints.}
 
-\item{model_list}{List of parameters to be estimated in the univariate lcsm.
+\item{model}{List of parameters to be estimated in the univariate lcsm.
 \itemize{
-\item{\code{gamma}}{ (Constant change)},
-\item{\code{pi}}{ (Proportional change)},
+\item{\code{alpha}}{ (Constant change)},
+\item{\code{beta}}{ (Proportional change)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 

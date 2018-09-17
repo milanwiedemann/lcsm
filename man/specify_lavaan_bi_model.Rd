@@ -4,28 +4,27 @@
 \alias{specify_lavaan_bi_model}
 \title{Specify lavaan model for bivariate latent change score models}
 \usage{
-specify_lavaan_bi_model(timepoints, var_x, model_list_x, var_y,
-  model_list_y, coupling_list, change_letter_x = "g",
-  change_letter_y = "j")
+specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
+  coupling, change_letter_x = "g", change_letter_y = "j")
 }
 \arguments{
 \item{timepoints}{Number if timepoints.}
 
-\item{model_list_x}{List of model specifications for variables specified in \code{var_x}.
+\item{model_x}{List of model specifications for variables specified in \code{var_x}.
 \itemize{
-\item{\code{gamma}}{ (Constant change)},
-\item{\code{pi}}{ (Proportional change)},
+\item{\code{alpha}}{ (Constant change)},
+\item{\code{beta}}{ (Proportional change)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{model_list_y}{List of model specifications for variables specified in \code{var_y}.
+\item{model_y}{List of model specifications for variables specified in \code{var_y}.
 \itemize{
-\item{\code{gamma}}{ (Constant change)},
-\item{\code{pi}}{ (Proportional change)},
+\item{\code{alpha}}{ (Constant change)},
+\item{\code{beta}}{ (Proportional change)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{coupling_list}{List of model specifications for coupling parameters.
+\item{coupling}{List of model specifications for coupling parameters.
 \itemize{
 \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
