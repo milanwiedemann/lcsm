@@ -21,5 +21,5 @@ extract_param <- function(lavaan_fit){
   table3 <- table2[!duplicated(table2$label), ]
 
   # Output
-  table3
-}
+  print(table3, n = 30)
+  }
