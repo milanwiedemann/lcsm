@@ -6,14 +6,14 @@
 #' @param var_y List of variables measuring another construct of the model.
 #' @param model_x List of model specifications for variables specified in \code{var_x}.
 #' \itemize{
-#' \item{\code{gamma}}{ (Constant change)},
-#' \item{\code{pi}}{ (Proportional change)},
+#' \item{\code{alpha}}{ (Constant change)},
+#' \item{\code{beta}}{ (Proportional change)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
 #' @param model_y List of model specifications for variables specified in \code{var_y}.
 #' \itemize{
-#' \item{\code{gamma}}{ (Constant change)},
-#' \item{\code{pi}}{ (Proportional change)},
+#' \item{\code{alpha}}{ (Constant change)},
+#' \item{\code{beta}}{ (Proportional change)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
 #' @param coupling List of model specifications for coupling parameters.
@@ -68,7 +68,8 @@ fit_bi_lcsm <- function(data,
     mimic = mimic,
     estimator = estimator,
     missing = missing)
-  
+
+  # Return lavaan object ----
   fit_lcsm_bi
 }
   

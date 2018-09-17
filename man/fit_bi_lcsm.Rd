@@ -16,15 +16,15 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 
 \item{model_x}{List of model specifications for variables specified in \code{var_x}.
 \itemize{
-\item{\code{gamma}}{ (Constant change)},
-\item{\code{pi}}{ (Proportional change)},
+\item{\code{alpha}}{ (Constant change)},
+\item{\code{beta}}{ (Proportional change)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
 \item{model_y}{List of model specifications for variables specified in \code{var_y}.
 \itemize{
-\item{\code{gamma}}{ (Constant change)},
-\item{\code{pi}}{ (Proportional change)},
+\item{\code{alpha}}{ (Constant change)},
+\item{\code{beta}}{ (Proportional change)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
