@@ -36,6 +36,10 @@ The `LCSM` package four main functions which can be categorised into:
 3. Functions to extract numbers from the models:
   - `extract_fit()` to extract fit statistics
   - `extract_param()` to extract estimated parameters
+  
+4. Helper functions:
+  - `select_uni_cases()` to select cases for analysis based on available scores on one construct
+  - `select_bi_cases()` to select cases for analysis based on available scores on two construct
 
 ## How to use LCSM
 
