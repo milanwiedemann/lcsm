@@ -387,7 +387,7 @@ specify_lcs_tc <- function(timepoints, variable_x, variable_y){
   lavaan_str <- "# Specify between-construct coupling parameters true score to change score \n "
   
   for (i in 1:(timepoints - 1)) {
-    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "delta_", variable_y, variable_x, " * ", "l", variable_y, i, " \n ", sep = "")
+    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "delta_", variable_x, variable_y, " * ", "l", variable_y, i, " \n ", sep = "")
   }
   
   # Assign str from loop to lts_var
@@ -407,7 +407,7 @@ specify_lcs_cc <- function(timepoints, variable_x, variable_y){
   lavaan_str <- "# Specify between-construct coupling parameters change score to change score \n "
   
   for (i in 2:(timepoints - 1)) {
-    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "xi_", variable_y, variable_x, " * ", "d", variable_y, i, " \n ", sep = "")
+    lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "xi_", variable_x, variable_y, " * ", "d", variable_y, i, " \n ", sep = "")
   }
   
   # Assign str from loop to lts_var
