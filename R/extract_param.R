@@ -1,11 +1,12 @@
 #' Extract labeled parameters of lavaan objects
 #'
-#' @param lavaan_object Lavaan object.
+#' @param lavaan_fit Lavaan object.
+#' @param printp If TRUE convert into easily readable p-values.
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
 
-extract_param <- function(lavaan_fit){
+extract_param <- function(lavaan_fit, printp = FALSE){
   # Get tidy output tibble from lavaan fit object
   table <- broom::tidy(lavaan_fit)
 
@@ -20,6 +21,20 @@ extract_param <- function(lavaan_fit){
   # Delete rows with duplicate labels
   table3 <- table2[!duplicated(table2$label), ]
 
-  # Output
-  print(table3, n = 30)
+  
+  
+  if (printp == FALSE){
+    # Output
+    print(table3, n = 30)
+  }
+  
+  if (printp == TRUE){
+    # Output
+   
+    table4 <- mutate(table3, p.value = papaja::printp(p.value))
+    
+    print(table4, n = 30)
+  }
+  
+
   }

@@ -4,10 +4,12 @@
 \alias{extract_param}
 \title{Extract labeled parameters of lavaan objects}
 \usage{
-extract_param(lavaan_fit)
+extract_param(lavaan_fit, printp = FALSE)
 }
 \arguments{
-\item{lavaan_object}{Lavaan object.}
+\item{lavaan_fit}{Lavaan object.}
+
+\item{printp}{If TRUE convert into easily readable p-values.}
 }
 \value{
 This function returns a tibble with labeled parameters.
