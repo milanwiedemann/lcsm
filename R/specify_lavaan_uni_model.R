@@ -5,7 +5,9 @@
 #' \itemize{
 #' \item{\code{alpha}}{ (Constant change)},
 #' \item{\code{beta}}{ (Proportional change)},
-#' \item{\code{phi}}{ (Autoregression of change scores)}.
+#' \item{\code{phi}}{ (Autoregression of change scores)},
+#' \item{\code{alpha_piecewise}}{ (Piecewise constant change)},
+#' \item{\code{alpha_piecewise_num}}{ (Change point of piecewise constant change)}.
 #' }
 #' @param variable String with letter of variable (Usually x or y).
 #' @param change_letter String with letter (Usually g or j).
@@ -16,6 +18,11 @@
 #' @examples TODO. 
 #' 
 specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter) {
+  
+  
+  if (model$alpha == TRUE & model$alpha_piecewise == TRUE){
+    stop("Choose only one constant change method.")
+  }
   
 # Define empty str object 
 lavaan_model <- ''
@@ -54,11 +61,27 @@ if (model$alpha == TRUE){
   
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change(timepoints, variable, change_letter))
   
-  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 2))
   
-  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 2))
   
-  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+}
+
+# Specify piecewise constant change ----
+if (model$alpha_piecewise == TRUE){
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_piecewise(timepoints, variable, change_letter, model$alpha_piecewise_num))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 2))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 3))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 2))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 3))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
+  
 }
 
 # Specify proportional change ----

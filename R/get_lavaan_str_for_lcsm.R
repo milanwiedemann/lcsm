@@ -217,14 +217,63 @@ specify_constant_change <- function(timepoints, variable, change_letter){
 }
 
 
+# Specify piecewise constant change factor
+specify_constant_change_piecewise <- function(timepoints, variable, change_letter, changepoint){
+  # Create empty str object lts_variable
+  base::assign(base::paste("constant_change_piece", variable, sep = "_"), "")
+  
+  lavaan_str <- "# Specify piecewise constant change factor \n "
+  
+  lavaan_str_1_1 <- paste(lavaan_str, change_letter, "2 =~ ", sep = "")
+  
+  lavaan_str_2_1 <- paste(lavaan_str, change_letter, "3 =~ ", sep = "")
+  
+  
+  # Create empty str object for lavaan syntax
+  lavaan_str_1_2 <- ""
+  lavaan_str_2_2 <- ""
+  
+  for (i in 2:changepoint) {
+    lavaan_str_1_2 <- base::paste(lavaan_str_1_2, "1", " * ", "d", variable, i, " + ", sep = "")
+  }
+  
+  for (j in (changepoint + 1):timepoints) {
+    lavaan_str_2_2 <- base::paste(lavaan_str_2_2, "1", " * ", "d", variable, j, " + ", sep = "")
+  }
+  
+  # Combine first string object with loop
+  lavaan_str_1_3 <- paste(lavaan_str_1_1, lavaan_str_1_2, sep = "")
+  
+  lavaan_str_2_3 <- paste(lavaan_str_2_1, lavaan_str_2_2, sep = "")
+  
+  # Delete + at the end of loop as not needed
+  lavaan_str_1_4 <- base::substr(lavaan_str_1_3, 1, nchar(lavaan_str_1_3) - 3)
+  
+  lavaan_str_2_4 <- base::substr(lavaan_str_2_3, 1, nchar(lavaan_str_2_3) - 3)
+  
+  # Add new line at the end
+  lavaan_str_1_5 <- paste(lavaan_str_1_4, " \n ", sep = "")
+  
+  lavaan_str_2_5 <- paste(lavaan_str_2_4, " \n ", sep = "")
+                        
+  # Combine both
+  lavaan_str_3 <- paste(lavaan_str_1_5, lavaan_str_2_5, sep = "")
+  
+  # Assign str from loop to lcs_var
+  base::assign(base::paste("constant_change_piece", variable, sep = "_"), lavaan_str_3)
+  
+  # Return latent true score specifications
+  base::eval(rlang::sym(base::paste("constant_change_piece", variable, sep = "_")))
+}
+
 # Specify constant change factor mean
-specify_constant_change_mean <- function(timepoints, variable, change_letter){
+specify_constant_change_mean <- function(timepoints, variable, change_letter, change_number){
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_mean", variable, sep = "_"), "")
   
   lavaan_str <- "# Specify constant change factor mean \n "
   
-  lavaan_str <- paste(lavaan_str, change_letter, "2 ~ ", "alpha_", change_letter, "2", " * 1", " \n", sep = "")
+  lavaan_str <- paste(lavaan_str, change_letter, change_number, " ~ ", "alpha_", change_letter, change_number, " * 1", " \n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_mean", variable, sep = "_"), lavaan_str)
@@ -234,13 +283,13 @@ specify_constant_change_mean <- function(timepoints, variable, change_letter){
 }
 
 # Specify constant change factor variance
-specify_constant_change_var <- function(timepoints, variable, change_letter){
+specify_constant_change_var <- function(timepoints, variable, change_letter, change_number){
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_var", variable, sep = "_"), "")
   
   lavaan_str <- "# Specify constant change factor variance \n "
   
-  lavaan_str <- paste(lavaan_str, change_letter, "2 ~~ ", "sigma2_", change_letter, "2", " * ", change_letter, "2", " \n", sep = "")
+  lavaan_str <- paste(lavaan_str, change_letter, change_number, " ~~ ", "sigma2_", change_letter, change_number, " * ", change_letter, change_number, " \n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_var", variable, sep = "_"), lavaan_str)
@@ -251,13 +300,13 @@ specify_constant_change_var <- function(timepoints, variable, change_letter){
 
 
 # Specify constant change factor covariance with the initial true score
-specify_constant_change_covar_initial_ts <- function(timepoints, variable, change_letter){
+specify_constant_change_covar_initial_ts <- function(timepoints, variable, change_letter, change_number){
   # Create empty str object lts_variable
   base::assign(base::paste("constant_change_covar_initial_ts", variable, sep = "_"), "")
   
   lavaan_str <- "# Specify constant change factor covariance with the initial true score \n "
   
-  lavaan_str <- paste(lavaan_str, change_letter, "2 ~~ ", "sigma_", change_letter, "2", "l", variable, "1", " * ", "l", variable, "1", "\n", sep = "")
+  lavaan_str <- paste(lavaan_str, change_letter, change_number, " ~~ ", "sigma_", change_letter, change_number, "l", variable, "1", " * ", "l", variable, "1", "\n", sep = "")
   
   # Assign str from loop to lcs_var
   base::assign(base::paste("constant_change_covar_initial_ts", variable, sep = "_"), lavaan_str)

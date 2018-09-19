@@ -13,7 +13,9 @@ specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 \itemize{
 \item{\code{alpha}}{ (Constant change)},
 \item{\code{beta}}{ (Proportional change)},
-\item{\code{phi}}{ (Autoregression of change scores)}.
+\item{\code{phi}}{ (Autoregression of change scores)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change)},
+\item{\code{alpha_piecewise_num}}{ (Change point of piecewise constant change)}.
 }}
 
 \item{variable}{String with letter of variable (Usually x or y).}
