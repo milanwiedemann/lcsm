@@ -21,19 +21,13 @@ extract_param <- function(lavaan_fit, printp = FALSE){
   # Delete rows with duplicate labels
   table3 <- table2[!duplicated(table2$label), ]
 
-  
-  
   if (printp == FALSE){
-    # Output
-    table3
+    return(table3)
   }
   
   if (printp == TRUE){
-    # Output
-   
     table4 <- mutate(table3, p.value = papaja::printp(p.value))
-    
-    table4
+    return(table4)
   }
   
 
