@@ -25,7 +25,7 @@ extract_param <- function(lavaan_fit, printp = FALSE){
   
   if (printp == FALSE){
     # Output
-    print(table3, n = 30)
+    table3
   }
   
   if (printp == TRUE){
@@ -33,7 +33,7 @@ extract_param <- function(lavaan_fit, printp = FALSE){
    
     table4 <- mutate(table3, p.value = papaja::printp(p.value))
     
-    print(table4, n = 30)
+    table4
   }
   
 
