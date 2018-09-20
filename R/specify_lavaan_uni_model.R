@@ -20,6 +20,23 @@
 specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter) {
   
   
+  # Code parameters in model that are not defined as FALSE
+  if (is.null(model$alpha) == TRUE) {
+    model$alpha <- FALSE
+  }
+  
+  if (is.null(model$beta) == TRUE) {
+    model$beta <- FALSE
+  }
+  
+  if (is.null(model$alpha_piecewise) == TRUE) {
+    model$alpha_piecewise <- FALSE
+  }
+  
+  if (is.null(model$alpha_piecewise_num) == TRUE) {
+    model$alpha_piecewise_num <- FALSE
+  }
+  
   if (model$alpha == TRUE & model$alpha_piecewise == TRUE){
     stop("Choose only one constant change method.")
   }
