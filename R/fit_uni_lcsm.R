@@ -17,7 +17,8 @@ fit_uni_lcsm <- function(data,
                          model, 
                          mimic = "Mplus",
                          estimator = "MLR",
-                         missing = "FIML"){
+                         missing = "FIML",
+                         export_model_syntax = FALSE){
    
   # Count timepoints ----
   timepoints <- length(var)
@@ -35,9 +36,13 @@ fit_uni_lcsm <- function(data,
                                       change_letter = "g"
                                       )
   
+  # Export model ----
+  if (export_model_syntax == TRUE)
+    lavaan_model_syntax <<- model_uni
+  
   
   # Fit lcsm using lavaan ----
-  fit_lcsm_uni <- lavaan(
+  fit_lcsm_uni <- lavaan::lavaan(
     data = data_lcsm,
     model = model_uni,
     meanstructure = TRUE,

@@ -34,7 +34,8 @@ fit_bi_lcsm <- function(data,
                         coupling,
                         mimic = "Mplus",
                         estimator = "MLR",
-                        missing = "FIML"){
+                        missing = "FIML",
+                        export_model_syntax = FALSE){
 
   # Count timepoints ----
   if (length(var_x) != length(var_y)){
@@ -57,8 +58,12 @@ fit_bi_lcsm <- function(data,
                                       coupling = coupling)
   
   
+  # Export model ----
+  if (export_model_syntax == TRUE)
+  lavaan_model_syntax <<- model_bi
+  
   # Fit lcsm using lavaan ----
-  fit_lcsm_bi <- lavaan(
+  fit_lcsm_bi <- lavaan::lavaan(
     data = data_lcsm,
     model = model_bi,
     meanstructure = TRUE,
