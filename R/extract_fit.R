@@ -1,10 +1,40 @@
 #' Extract fit statistics of lavaan objects
 #'
-#' @param lavaan_object Lavaan object.
+#' @param lavaan_object Lavaan object(s). To extract fit from multiple lavaan objects use c().
+#' @param details Show detailed fit information.
 
 #' @return This function returns a tibble.
 #' @export
 
-extract_fit <- function(lavaan_object) {
-  broom::glance(lavaan_object)
+extract_fit <- function(lavaan_object, details = FALSE) {
+  
+  lavaan_object_list <- list()
+  lavaan_object_list <- c(lavaan_object)
+  
+  fit <- list()
+  name_fit <- list()
+  
+  for (i in 1:length(lavaan_object_list)) {
+    
+    fit[[i]] <- broom::glance(lavaan_object_list[[i]])
+    name_fit[[i]] <- i
+    
+    fit[[i]] <- mutate(fit[[i]], model_name = paste("model", name_fit[[i]], sep = "_"))
+  }
+  
+  fit_data <- dplyr::bind_rows(fit, .id = "id")
+  
+  if (details == FALSE) {
+    fit_return <- select(fit_data,
+           model_name, chisq, npar, aic, bic, cfi, rmsea, srmr)
+  }
+
+  if (details == TRUE) {
+    fit_return <- select(fit_data,
+           id, model_name, chisq, npar, everything())
+  }
+
+  fit_return
+  
+
 }
