@@ -3,11 +3,12 @@
 #' @param timepoints Number if timepoints.
 #' @param model List of parameters to be estimated in the univariate lcsm.
 #' \itemize{
-#' \item{\code{alpha}}{ (Constant change)},
+#' \item{\code{alpha_constant}}{ (Constant change factor)},
+#' \item{\code{alpha_linear}}{ (Linear change factor)},
+#' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+#' \item{\code{alpha_piecewise_num}}{ (Number of change point of piecewise constant change. If number of change point is set to 6, the change score from 5 to 6 (dx6) will be modeled in the first constant change piece and change from 6 to 7 (dx7) will be modeled in the second constant change piece.)},
 #' \item{\code{beta}}{ (Proportional change)},
-#' \item{\code{phi}}{ (Autoregression of change scores)},
-#' \item{\code{alpha_piecewise}}{ (Piecewise constant change)},
-#' \item{\code{alpha_piecewise_num}}{ (Change point of piecewise constant change)}.
+#' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
 #' @param variable String with letter of variable (Usually x or y).
 #' @param change_letter String with letter (Usually g or j).
@@ -21,8 +22,8 @@ specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter)
   
   
   # Code parameters in model that are not defined as FALSE
-  if (is.null(model$alpha) == TRUE) {
-    model$alpha <- FALSE
+  if (is.null(model$alpha_constant) == TRUE) {
+    model$alpha_constant <- FALSE
   }
   
   if (is.null(model$beta) == TRUE) {
@@ -37,7 +38,12 @@ specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter)
     model$alpha_piecewise_num <- FALSE
   }
   
-  if (model$alpha == TRUE & model$alpha_piecewise == TRUE){
+  if (is.null(model$alpha_linear) == TRUE) {
+    model$alpha_linear <- FALSE
+  }
+  
+  # Return error message when both constant change and piecewise constant change are defined
+  if (model$alpha_constant == TRUE & model$alpha_piecewise == TRUE){
     stop("Choose only one constant change method.")
   }
   
@@ -74,7 +80,7 @@ lavaan_model <- paste(lavaan_model, lcsm:::specify_lcs_mean(timepoints, variable
 lavaan_model <- paste(lavaan_model, lcsm:::specify_lcs_var(timepoints, variable))
 
 # Specify constant change ----
-if (model$alpha == TRUE){
+if (model$alpha_constant == TRUE){
   
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change(timepoints, variable, change_letter))
   
@@ -99,6 +105,25 @@ if (model$alpha_piecewise == TRUE){
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
   
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_uni_change_covar(change_letter, 2, change_letter, 3))
+}
+
+# Specify linear change ----
+if (model$alpha_linear == TRUE){
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_linear_change(timepoints, variable, change_letter))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 3))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 3))
+  
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
+}
+
+# Specify covar between constant change and linear change ----
+
+if (model$alpha_constant == TRUE & model$alpha_linear == TRUE){
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_uni_change_covar(change_letter, 2, change_letter, 3))
 }
 
 # Specify proportional change ----
