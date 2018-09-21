@@ -11,11 +11,12 @@ specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 
 \item{model}{List of parameters to be estimated in the univariate lcsm.
 \itemize{
-\item{\code{alpha}}{ (Constant change)},
+\item{\code{alpha_constant}}{ (Constant change factor)},
+\item{\code{alpha_linear}}{ (Linear change factor)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Number of change point of piecewise constant change. If number of change point is set to 6, the change score from 5 to 6 (dx6) will be modeled in the first constant change piece and change from 6 to 7 (dx7) will be modeled in the second constant change piece.)},
 \item{\code{beta}}{ (Proportional change)},
-\item{\code{phi}}{ (Autoregression of change scores)},
-\item{\code{alpha_piecewise}}{ (Piecewise constant change)},
-\item{\code{alpha_piecewise_num}}{ (Change point of piecewise constant change)}.
+\item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
 \item{variable}{String with letter of variable (Usually x or y).}

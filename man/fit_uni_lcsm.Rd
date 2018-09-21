@@ -5,7 +5,7 @@
 \title{Fit univariate latent change score models}
 \usage{
 fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
-  missing = "FIML")
+  missing = "FIML", export_model_syntax = FALSE)
 }
 \arguments{
 \item{data}{Wide dataset.}

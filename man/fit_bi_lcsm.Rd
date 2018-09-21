@@ -5,7 +5,8 @@
 \title{Fit bivariate latent change score models}
 \usage{
 fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
-  mimic = "Mplus", estimator = "MLR", missing = "FIML")
+  mimic = "Mplus", estimator = "MLR", missing = "FIML",
+  export_model_syntax = FALSE)
 }
 \arguments{
 \item{data}{Wide dataset.}

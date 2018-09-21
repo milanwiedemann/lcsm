@@ -4,10 +4,12 @@
 \alias{extract_fit}
 \title{Extract fit statistics of lavaan objects}
 \usage{
-extract_fit(lavaan_object)
+extract_fit(lavaan_object, details = FALSE)
 }
 \arguments{
-\item{lavaan_object}{Lavaan object.}
+\item{lavaan_object}{Lavaan object(s). To extract fit from multiple lavaan objects use c().}
+
+\item{details}{Show detailed fit information.}
 }
 \value{
 This function returns a tibble.
