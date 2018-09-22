@@ -7,43 +7,45 @@
 plot_lcsm(object, layout, what = "col", whatLabels = "est",
   edge.width = 1, node.width = 1, border.width = 1, fixedStyle = 1,
   freeStyle = 1, residuals = FALSE, label.scale = FALSE,
-  sizeMan = 5, sizeLat = 5, intercepts = FALSE, fade = FALSE,
-  nCharNodes = 0, nCharEdges = 0)
+  sizeMan = 3, sizeLat = 5, intercepts = FALSE, fade = FALSE,
+  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5, ...)
 }
 \arguments{
-\item{object}{}
+\item{object}{lavaan object.}
 
-\item{layout}{}
+\item{layout}{Matrix specifying location of manifest and latent variables.}
 
-\item{what}{See \code{semPlot}}
+\item{what}{See \code{semPlot}.}
 
-\item{whatLabels}{}
+\item{whatLabels}{see \code{semPlot}.}
 
-\item{edge.width}{}
+\item{edge.width}{see \code{semPlot}.}
 
-\item{node.width}{}
+\item{node.width}{see \code{semPlot}.}
 
-\item{border.width}{}
+\item{border.width}{see \code{semPlot}.}
 
-\item{fixedStyle}{}
+\item{fixedStyle}{see \code{semPlot}.}
 
-\item{freeStyle}{}
+\item{freeStyle}{see \code{semPlot}.}
 
-\item{residuals}{}
+\item{residuals}{see \code{semPlot}.}
 
-\item{label.scale}{}
+\item{label.scale}{see \code{semPlot}.}
 
-\item{sizeMan}{}
+\item{sizeMan}{see \code{semPlot}.}
 
-\item{sizeLat}{}
+\item{sizeLat}{see \code{semPlot}.}
 
-\item{intercepts}{}
+\item{intercepts}{see \code{semPlot}.}
 
-\item{fade}{}
+\item{fade}{see \code{semPlot}.}
 
-\item{nCharNodes}{}
+\item{nCharNodes}{see \code{semPlot}.}
 
-\item{nCharEdges}{}
+\item{nCharEdges}{see \code{semPlot}.}
+
+\item{...}{Other functions passed on to \code{semPlot}.}
 }
 \value{
 Plot
