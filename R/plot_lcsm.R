@@ -25,6 +25,7 @@
 #' @examples TODO
 plot_lcsm <- function(object,
                       layout,
+                      curve_covar = .5,
                       what = "col",
                       whatLabels = "est",
                       edge.width = 1,
@@ -65,7 +66,7 @@ plot_lcsm <- function(object,
            DoNotPlot = DoNotPlot,
            ...)
   
-  graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, 1, 0)
+  graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, curve_covar, 0)
   
   plot(graph)
 }
