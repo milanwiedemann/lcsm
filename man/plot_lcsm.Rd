@@ -8,7 +8,8 @@ plot_lcsm(object, layout, what = "col", whatLabels = "est",
   edge.width = 1, node.width = 1, border.width = 1, fixedStyle = 1,
   freeStyle = 1, residuals = FALSE, label.scale = FALSE,
   sizeMan = 3, sizeLat = 5, intercepts = FALSE, fade = FALSE,
-  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5, ...)
+  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5,
+  DoNotPlot = TRUE, ...)
 }
 \arguments{
 \item{object}{lavaan object.}

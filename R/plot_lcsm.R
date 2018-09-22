@@ -41,6 +41,7 @@ plot_lcsm <- function(object,
                       nCharNodes = 0,
                       nCharEdges = 0,
                       edge.label.cex = 0.5,
+                      DoNotPlot = TRUE,
                       ...) {
   
   graph <- semPlot::semPaths(
@@ -61,6 +62,7 @@ plot_lcsm <- function(object,
            fade = fade,
            nCharNodes = 0,
            nCharEdges = 0,
+           DoNotPlot = DoNotPlot,
            ...)
   
   graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, 1, 0)
