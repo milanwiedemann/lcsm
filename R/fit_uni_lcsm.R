@@ -3,12 +3,16 @@
 #' 
 #' @param data Wide dataset.
 #' @param var List of variables measuring construct of the model.
-#' @param model List of model specifications for variables specified in \code{var}.
+#' @param model List of model specifications (logical) for variables specified in \code{var}.
 #' \itemize{
-#' \item{\code{alpha}}{ (Constant change)},
-#' \item{\code{beta}}{ (Proportional change)},
+#' \item{\code{alpha_constant}}{ (Constant change factor)},
+#' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+#' \item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors},
+#' \item{\code{alpha_linear}}{ (Linear change factor)},
+#' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
+#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'.
 #' @return This function returns a lavaan class object.
 #' @export
 

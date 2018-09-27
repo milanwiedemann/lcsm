@@ -10,17 +10,27 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 \arguments{
 \item{timepoints}{Number if timepoints.}
 
-\item{model_x}{List of model specifications for variables specified in \code{var_x}.
+\item{var_x}{List of variables measuring one construct of the model.}
+
+\item{model_x}{List of model specifications (logical) for variables specified in \code{var_x}.
 \itemize{
-\item{\code{alpha}}{ (Constant change)},
-\item{\code{beta}}{ (Proportional change)},
+\item{\code{alpha_constant}}{ (Constant change factor)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_linear}}{ (Linear change factor)},
+\item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{model_y}{List of model specifications for variables specified in \code{var_y}.
+\item{var_y}{List of variables measuring another construct of the model.}
+
+\item{model_y}{List of model specifications (logical) for variables specified in \code{var_y}.
 \itemize{
-\item{\code{alpha}}{ (Constant change)},
-\item{\code{beta}}{ (Proportional change)},
+\item{\code{alpha_constant}}{ (Constant change factor)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_linear}}{ (Linear change factor)},
+\item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 

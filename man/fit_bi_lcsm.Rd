@@ -15,10 +15,13 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 
 \item{var_y}{List of variables measuring another construct of the model.}
 
-\item{model_x}{List of model specifications for variables specified in \code{var_x}.
+\item{model_x}{List of model specifications (logical) for variables specified in \code{var_x}.
 \itemize{
-\item{\code{alpha}}{ (Constant change)},
-\item{\code{beta}}{ (Proportional change)},
+\item{\code{alpha_constant}}{ (Constant change factor)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_linear}}{ (Linear change factor)},
+\item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
@@ -29,13 +32,15 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{coupling}{List of model specifications for coupling parameters.
+\item{coupling}{List of model specifications (logical) for coupling parameters.
 \itemize{
 \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
 \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
+
+\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'.}
 }
 \value{
 This function returns a lavaan class object.
