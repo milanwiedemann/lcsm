@@ -16,17 +16,17 @@ extract_param <- function(lavaan_fit, printp = FALSE){
   # Remove all rows with NA in label column
   # Parameters that should be extracted need to be labelled in the lavaan model specifications
   # If parameters are not labelled they will get deleted from the summary at this step
-  table2 <- table[(complete.cases(table$label)), 3:ncol(table)]
+  table2 <- table[(stats::complete.cases(table$label)), 3:ncol(table)]
 
   # Delete rows with duplicate labels
-  table3 <- table2[!duplicated(table2$label), ]
+  table3 <- table2[!base::duplicated(table2$label), ]
 
   if (printp == FALSE){
     return(table3)
   }
   
   if (printp == TRUE){
-    table4 <- mutate(table3, p.value = papaja::printp(p.value))
+    table4 <- dplyr::mutate(table3, p.value = papaja::printp(p.value))
     return(table4)
   }
   
