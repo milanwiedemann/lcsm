@@ -22,7 +22,7 @@ fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'.}
+\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. If the object 'lavaan_model_syntax' this will overwrite the existing object.}
 }
 \value{
 This function returns a lavaan class object.
