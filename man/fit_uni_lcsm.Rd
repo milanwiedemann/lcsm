@@ -5,7 +5,8 @@
 \title{Fit univariate latent change score models}
 \usage{
 fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
-  missing = "FIML", export_model_syntax = FALSE)
+  missing = "FIML", export_model_syntax = FALSE,
+  name_model_syntax = "lavaan_model_syntax")
 }
 \arguments{
 \item{data}{Wide dataset.}
@@ -22,7 +23,9 @@ fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. If the object 'lavaan_model_syntax' this will overwrite the existing object.}
+\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}.}
+
+\item{name_model_syntax}{String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.}
 }
 \value{
 This function returns a lavaan class object.

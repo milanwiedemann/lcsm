@@ -12,7 +12,8 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
-#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. If the object 'lavaan_model_syntax' this will overwrite the existing object. 
+#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}. 
+#' @param name_model_syntax String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.
 #' @return This function returns a lavaan class object.
 #' @export
 
@@ -22,7 +23,9 @@ fit_uni_lcsm <- function(data,
                          mimic = "Mplus",
                          estimator = "MLR",
                          missing = "FIML",
-                         export_model_syntax = FALSE){
+                         export_model_syntax = FALSE,
+                         name_model_syntax = "lavaan_model_syntax"
+                         ){
    
   # Count timepoints ----
   timepoints <- length(var)
@@ -42,7 +45,7 @@ fit_uni_lcsm <- function(data,
   
   # Export model ----
   if (export_model_syntax == TRUE)
-  assign("lavaan_model_syntax", model_uni, envir = .GlobalEnv)
+  assign(name_model_syntax, model_uni, envir = .GlobalEnv)
   
   # Fit lcsm using lavaan ----
   fit_lcsm_uni <- lavaan::lavaan(

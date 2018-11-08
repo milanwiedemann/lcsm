@@ -6,7 +6,8 @@
 \usage{
 fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
   mimic = "Mplus", estimator = "MLR", missing = "FIML",
-  export_model_syntax = FALSE)
+  export_model_syntax = FALSE,
+  name_model_syntax = "lavaan_model_syntax")
 }
 \arguments{
 \item{data}{Wide dataset.}
@@ -40,7 +41,9 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
 
-\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. If the object 'lavaan_model_syntax' this will overwrite the existing object.}
+\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}.}
+
+\item{name_model_syntax}{String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.}
 }
 \value{
 This function returns a lavaan class object.

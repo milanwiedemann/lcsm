@@ -26,7 +26,8 @@
 #' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
-#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. If the object 'lavaan_model_syntax' this will overwrite the existing object. 
+#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}. 
+#' @param name_model_syntax String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.
 #' @return This function returns a lavaan class object.
 #' @export
 
@@ -39,7 +40,8 @@ fit_bi_lcsm <- function(data,
                         mimic = "Mplus",
                         estimator = "MLR",
                         missing = "FIML",
-                        export_model_syntax = FALSE){
+                        export_model_syntax = FALSE,
+                        name_model_syntax = "lavaan_model_syntax"){
 
   # Count timepoints ----
   if (length(var_x) != length(var_y)){
@@ -64,7 +66,7 @@ fit_bi_lcsm <- function(data,
   
   # Export model ----
   if (export_model_syntax == TRUE)
-  assign("lavaan_model_syntax", model_bi, envir = .GlobalEnv)
+  assign(name_model_syntax, model_bi, envir = .GlobalEnv)
   
   # Fit lcsm using lavaan ----
   fit_lcsm_bi <- lavaan::lavaan(
