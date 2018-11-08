@@ -4,7 +4,7 @@ This package contains helper functions to specify and analyse univariate and biv
 
 Similar work, that this package builds on, can be found [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-16-introduction-latent-change-score-modeling) (univariate LCSM) and [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-17-multivariate-latent-change-score-models) (bivariate LCSM).
 
-[These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate the different univariate and bivariate LCSM that can be specified using this package.
+[These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate some univariate and bivariate LCSM that can be specified using this package.
 
 ## Installation
 
@@ -23,21 +23,22 @@ devtools::install_github(repo = "milanwiedemann/lcsm")
 
 ## Overview of the functions
 
-The `LCSM` package four main functions which can be categorised into:
+The `LCSM` package contains the following functions that can be categorised into:
 
-1. Functions to specify models:
-  - `specify_uni_lcsm()` to write lavaan syntax for univariate LCSM
-  - `specify_bi_lcsm()` to write lavaan syntax for bivariate LCSM
+1. Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
+  - `specify_uni_lcsm()` to write syntax for univariate LCSM
+  - `specify_bi_lcsm()` to write syntax for bivariate LCSM
   
-2. Functions to fit models:
+2. Functions to fit models using [lavaan](http://lavaan.ugent.be/):
   - `fit_uni_lcsm()` to fit univariate LCSM
   - `fit_bi_lcsm()` to fit bivariate LCSM
   
-3. Functions to extract numbers from the models:
+3. Functions to extract numbers from models using [broom](https://broom.tidyverse.org/):
   - `extract_fit()` to extract fit statistics
   - `extract_param()` to extract estimated parameters
   
 4. Helper functions:
+  - `plot_lcsm()` to visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
   - `select_uni_cases()` to select cases for analysis based on available scores on one construct
   - `select_bi_cases()` to select cases for analysis based on available scores on two construct
 
@@ -85,4 +86,4 @@ print(tbl_df(extract_param(fit_bi_lcsm_results)), n = 30)
 
 # TODOs
 - [ ] Finish example on this page
-- [ ] Add plotting function
+- [ ] Automatically create matrix for plotting function
