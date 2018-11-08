@@ -1,14 +1,14 @@
 #' Extract labeled parameters of lavaan objects
 #'
-#' @param lavaan_fit Lavaan object.
+#' @param lavaan_object Lavaan object.
 #' @param printp If TRUE convert into easily readable p-values.
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
 
-extract_param <- function(lavaan_fit, printp = FALSE){
+extract_param <- function(lavaan_object, printp = FALSE){
   # Get tidy output tibble from lavaan fit object
-  table <- broom::tidy(lavaan_fit)
+  table <- broom::tidy(lavaan_object)
 
   # Replace empty stings with NA
   table[table == ""] <- NA
