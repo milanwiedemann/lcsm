@@ -51,6 +51,11 @@ specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter)
     stop("Choose only one constant change method.")
   }
   
+  # Return error message when both constant change and linear change are defined
+  if (model$alpha_constant == TRUE & model$alpha_linear == TRUE){
+    stop("Constant change is automatically added to model when linear change is selected. Set alpha_linear to TRUE and alpha_constant to FALSE to model both.")
+  }
+  
 # Define empty str object 
 lavaan_model <- ''
   
