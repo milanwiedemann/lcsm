@@ -1,6 +1,6 @@
 #' Plot latent change score model path diagram
 #'
-#' @param object lavaan object.
+#' @param lavaan_object lavaan object.
 #' @param layout Matrix specifying location of manifest and latent variables. 
 #' @param what See \code{semPlot}.
 #' @param whatLabels see \code{semPlot}.
@@ -23,7 +23,7 @@
 #' @export 
 #'
 #' @examples TODO
-plot_lcsm <- function(object,
+plot_lcsm <- function(lavaan_object,
                       layout,
                       curve_covar = .5,
                       what = "col",
@@ -46,7 +46,7 @@ plot_lcsm <- function(object,
                       ...) {
   
   graph <- semPlot::semPaths(
-           object = object,
+           object = lavaan_object,
            layout = layout,
            what = what,
            whatLabels = whatLabels,

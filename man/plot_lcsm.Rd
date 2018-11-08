@@ -4,7 +4,7 @@
 \alias{plot_lcsm}
 \title{Plot latent change score model path diagram}
 \usage{
-plot_lcsm(object, layout, curve_covar = 0.5, what = "col",
+plot_lcsm(lavaan_object, layout, curve_covar = 0.5, what = "col",
   whatLabels = "est", edge.width = 1, node.width = 1,
   border.width = 1, fixedStyle = 1, freeStyle = 1,
   residuals = FALSE, label.scale = FALSE, sizeMan = 3, sizeLat = 5,
@@ -12,7 +12,7 @@ plot_lcsm(object, layout, curve_covar = 0.5, what = "col",
   edge.label.cex = 0.5, DoNotPlot = TRUE, ...)
 }
 \arguments{
-\item{object}{lavaan object.}
+\item{lavaan_object}{lavaan object.}
 
 \item{layout}{Matrix specifying location of manifest and latent variables.}
 
