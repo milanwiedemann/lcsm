@@ -42,6 +42,10 @@ specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter)
     model$alpha_linear <- FALSE
   }
   
+  if (is.null(model$phi) == TRUE) {
+    model$phi <- FALSE
+  }
+  
   # Return error message when both constant change and piecewise constant change are defined
   if (model$alpha_constant == TRUE & model$alpha_piecewise == TRUE){
     stop("Choose only one constant change method.")

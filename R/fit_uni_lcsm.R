@@ -38,10 +38,10 @@ fit_uni_lcsm <- function(data,
   
   # Specify model ----
   model_uni <- specify_lavaan_uni_model(timepoints = timepoints,
-                                      var = "x",
-                                      model = model,
-                                      change_letter = "g"
-                                      )
+                                        var = "x",
+                                        model = model,
+                                        change_letter = "g"
+                                        )
   
   # Export model ----
   if (export_model_syntax == TRUE)
