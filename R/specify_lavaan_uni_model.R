@@ -115,13 +115,21 @@ if (model$alpha_piecewise == TRUE){
 # Specify linear change ----
 if (model$alpha_linear == TRUE){
   
+  # Specify constant change
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change(timepoints, variable, change_letter))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 2))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 2))
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+  
+  # Specify linear change
   lavaan_model <- paste(lavaan_model, lcsm:::specify_linear_change(timepoints, variable, change_letter))
-  
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_mean(timepoints, variable, change_letter, 3))
-  
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_var(timepoints, variable, change_letter, 3))
-  
   lavaan_model <- paste(lavaan_model, lcsm:::specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
+  
+  # Specify schange change
+  lavaan_model <- paste(lavaan_model, lcsm:::specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  
 }
 
 # Specify covar between constant change and linear change ----
