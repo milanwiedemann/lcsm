@@ -39,7 +39,7 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   if (scale_x_num == FALSE) {
   plot_x_scale <- plot + scale_x_discrete(labels = var_list)
   } else {
-  plot_x_scale <- plot + scale_x_discrete(labels = scale_x_num_start:((1 - scale_x_num_start) + length(var_list)))
+  plot_x_scale <- plot + scale_x_discrete(labels = scale_x_num_start:(length(var_list) + scale_x_num_start - 1))
   }
       
   if (smooth == TRUE) {
