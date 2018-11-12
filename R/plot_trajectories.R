@@ -16,12 +16,20 @@
 #' @param ylab String for y-Axis label
 #' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.
 #' @param scale_x_num_start Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis
+#' @param random_sample_frac The fraction of rows to select (from wide dataset), default is to use 100 percent of the sample.
 #'
 #' @return ggplot2 object
 #' @export
 #'
 #' @examples TODO
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE){
+  
+  data <- sample_frac(tbl = data, size = random_sample_frac)
+  
+  if (nrow(data) < 200) {
+    line_alpha <- .4
+    point_alpha <- .4
+  }
   
   data_plot <- data %>% 
     select(id_var, var_list) %>%
@@ -35,6 +43,10 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
     labs(x = xlab, y = ylab) +
     theme_classic() +
     theme(text = element_text(size = 12))
+  
+  if (title_n == TRUE){
+    plot <- plot + ggtitle(paste("N = ", nrow(data), sep = ""))
+  }
   
   if (scale_x_num == FALSE) {
   plot_x_scale <- plot + scale_x_discrete(labels = var_list)

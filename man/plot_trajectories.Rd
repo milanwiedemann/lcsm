@@ -8,7 +8,7 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
   point_colour = "black", line_alpha = 0.2, point_alpha = 0.2,
   smooth = FALSE, smooth_method = "loess", smooth_se = FALSE,
   xlab = "X", ylab = "Y", scale_x_num = FALSE,
-  scale_x_num_start = 1)
+  scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE)
 }
 \arguments{
 \item{data}{Dataset in wide format}
@@ -38,6 +38,8 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 \item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.}
 
 \item{scale_x_num_start}{Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis}
+
+\item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is to use 100 percent of the sample.}
 }
 \value{
 ggplot2 object
