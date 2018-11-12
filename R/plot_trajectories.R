@@ -9,17 +9,18 @@
 #' @param point_colour Colour of points
 #' @param line_alpha Alpha of lines
 #' @param point_alpha Alpha of points
-#' @param smooth Logical, add line of average
+#' @param smooth Logical, add line of average using method = \code{smooth_method}
 #' @param smooth_method Method for calculating average
 #' @param smooth_se Locical, add standard error of average line
 #' @param xlab String for x-Axis label
 #' @param ylab String for y-Axis label
+#' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.
 #'
 #' @return ggplot2 object
 #' @export
 #'
 #' @examples TODO
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y"){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE){
   
   data_plot <- data %>% 
     select(id_var, var_list) %>%
@@ -30,14 +31,20 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
     ggplot(aes(variable, value)) +
     geom_line(aes(group = id), colour = line_colour, alpha = line_alpha) +
     geom_point(colour = point_colour, alpha = point_alpha, size = 1) +
-    scale_x_discrete(labels = 1:length(var_list)) +
     labs(x = xlab, y = ylab) +
     theme_classic() +
     theme(text = element_text(size = 12))
-
-  if (smooth == TRUE) {
-  plot + geom_smooth(aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
+  
+  if (scale_x_num == FALSE) {
+  plot_x_scale <- plot + scale_x_discrete(labels = var_list)
   } else {
-    plot
+  plot_x_scale <- plot + scale_x_discrete(labels = 1:length(var_list))
+  }
+      
+  if (smooth == TRUE) {
+  plot_x_scale + geom_smooth(aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
+  } else {
+  plot_x_scale
   }
 }
+

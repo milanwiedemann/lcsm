@@ -7,7 +7,7 @@
 plot_trajectories(data, id_var, var_list, line_colour = "blue",
   point_colour = "black", line_alpha = 0.2, point_alpha = 0.2,
   smooth = FALSE, smooth_method = "loess", smooth_se = FALSE,
-  xlab = "X", ylab = "Y")
+  xlab = "X", ylab = "Y", scale_x_num = FALSE)
 }
 \arguments{
 \item{data}{Dataset in wide format}
@@ -24,7 +24,7 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 
 \item{point_alpha}{Alpha of points}
 
-\item{smooth}{Logical, add line of average}
+\item{smooth}{Logical, add line of average using method = \code{smooth_method}}
 
 \item{smooth_method}{Method for calculating average}
 
@@ -33,6 +33,8 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 \item{xlab}{String for x-Axis label}
 
 \item{ylab}{String for y-Axis label}
+
+\item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.}
 }
 \value{
 ggplot2 object
