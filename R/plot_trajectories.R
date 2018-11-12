@@ -45,7 +45,7 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
     theme(text = element_text(size = 12))
   
   if (title_n == TRUE){
-    plot <- plot + ggtitle(paste("N = ", nrow(data), sep = ""))
+    plot <- plot + ggtitle(paste("N = ", nrow(data), " (", round(random_sample_frac * 100, 2), "% of the sample)", sep = ""))
   }
   
   if (scale_x_num == FALSE) {
