@@ -8,13 +8,13 @@ Similar work, that this package builds on, can be found [here](https://quantdev.
 
 ## Installation
 
-First, you need to install the devtools package to download the `LCSM` package from this GitHub repository.
+First, you need to install the devtools package to download the `lcsm` package from this GitHub repository.
 
 ```r
 install.packages("devtools")
 ```
 
-To install the current stable version of `LCSM` package:
+To install the current stable version of `lcsm` package:
 
 ```r
 devtools::install_github(repo = "milanwiedemann/lcsm")
@@ -23,7 +23,7 @@ devtools::install_github(repo = "milanwiedemann/lcsm")
 
 ## Overview of the functions
 
-The `LCSM` package contains the following functions that can be categorised into:
+The `lcsm` package contains the following functions that can be categorised into:
 
 1. Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
   - `specify_uni_lcsm()` to write syntax for univariate LCSM
@@ -42,9 +42,9 @@ The `LCSM` package contains the following functions that can be categorised into
   - `select_uni_cases()` to select cases for analysis based on available scores on one construct
   - `select_bi_cases()` to select cases for analysis based on available scores on two construct
 
-## How to use LCSM
+## How to use `lcsm`
 
-Here are a few examples how to use the `LCSM` package.
+Here are a few examples how to use the `lcsm` package.
 First, load all needed packages and datasets:
 
 ```r
