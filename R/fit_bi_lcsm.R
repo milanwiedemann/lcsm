@@ -41,7 +41,8 @@ fit_bi_lcsm <- function(data,
                         estimator = "MLR",
                         missing = "FIML",
                         export_model_syntax = FALSE,
-                        name_model_syntax = "lavaan_model_syntax"){
+                        name_model_syntax = "lavaan_model_syntax",
+                        ...){
 
   # Count timepoints ----
   if (length(var_x) != length(var_y)){
@@ -78,7 +79,8 @@ fit_bi_lcsm <- function(data,
     verbose = FALSE,
     mimic = mimic,
     estimator = estimator,
-    missing = missing)
+    missing = missing,
+    ...)
 
   # Return lavaan object ----
   fit_lcsm_bi

@@ -6,7 +6,7 @@
 \usage{
 fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
   missing = "FIML", export_model_syntax = FALSE,
-  name_model_syntax = "lavaan_model_syntax")
+  name_model_syntax = "lavaan_model_syntax", ...)
 }
 \arguments{
 \item{data}{Wide dataset.}

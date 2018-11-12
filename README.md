@@ -1,6 +1,6 @@
 # lcsm: An R package for specifying and analysing latent change score models using lavaan
 
-This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) as described in [McArdle (2009)](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612), [Ghisletta (2012)](https://doi.org/10.1080/10705511.2012.713275), [Grimm (2012)](https://doi.org/10.1080/10705511.2012.659627), [Grimm (2017)](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062) using [lavaan](http://lavaan.ugent.be/).
+This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/). For details about this method see for example [McArdle (2009)](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612), [Ghisletta (2012)](https://doi.org/10.1080/10705511.2012.713275), [Grimm (2012)](https://doi.org/10.1080/10705511.2012.659627), and [Grimm (2017)](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062).
 
 Similar work, that this package builds on, can be found [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-16-introduction-latent-change-score-modeling) (univariate LCSM) and [here](https://quantdev.ssri.psu.edu/tutorials/growth-modeling-chapter-17-multivariate-latent-change-score-models) (bivariate LCSM).
 
@@ -38,7 +38,7 @@ The `LCSM` package contains the following functions that can be categorised into
   - `extract_param()` to extract estimated parameters
   
 4. Helper functions:
-  - `plot_lcsm()` to visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
+  - `plot_lcsm()` to visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot):
   - `select_uni_cases()` to select cases for analysis based on available scores on one construct
   - `select_bi_cases()` to select cases for analysis based on available scores on two construct
 
@@ -61,29 +61,10 @@ data <- read_csv("ENTER/PATH/TO/DATA/HERE.csv")
 Now that the package and data are loaded, you can use `lcsm` to specify and analyse a number of latent difference score models.
 
 ```r
-# Fit univariate LCSM and save the results to the object called `fit_uni_lcsm_results`
-
-fit_uni_lcsm_results <- 
-
-# Extract fit statistics of the model
-extract_fit(fit_uni_lcsm_results)
-
-# Extract parameters of the model
-extract_param(fit_uni_lcsm_results)
+# TODO FINISH EXAMPLE
 ```
 
-```r
-# Fit univariate LCSM and safe the results to the object called `fit_uni_LCSM_results`
-fit_bi_lcsm_results <- 
-
-# Extract fit statistics of the model
-glance(fit_bi_lcsm_results)
-
-# Extract parameters of the model
-# Increase number of parameters that get printed here to 30 so that all get printed in the output
-print(tbl_df(extract_param(fit_bi_lcsm_results)), n = 30)
-```
 
 # TODOs
-- [ ] Finish example on this page
+- [ ] Finish example
 - [ ] Automatically create matrix for plotting function
