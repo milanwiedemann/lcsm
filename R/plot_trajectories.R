@@ -15,12 +15,13 @@
 #' @param xlab String for x-Axis label
 #' @param ylab String for y-Axis label
 #' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.
+#' @param scale_x_num_start Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis
 #'
 #' @return ggplot2 object
 #' @export
 #'
 #' @examples TODO
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1){
   
   data_plot <- data %>% 
     select(id_var, var_list) %>%
@@ -38,7 +39,7 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   if (scale_x_num == FALSE) {
   plot_x_scale <- plot + scale_x_discrete(labels = var_list)
   } else {
-  plot_x_scale <- plot + scale_x_discrete(labels = 1:length(var_list))
+  plot_x_scale <- plot + scale_x_discrete(labels = scale_x_num_start:((1 - scale_x_num_start) + length(var_list)))
   }
       
   if (smooth == TRUE) {

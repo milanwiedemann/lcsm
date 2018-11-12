@@ -7,7 +7,8 @@
 plot_trajectories(data, id_var, var_list, line_colour = "blue",
   point_colour = "black", line_alpha = 0.2, point_alpha = 0.2,
   smooth = FALSE, smooth_method = "loess", smooth_se = FALSE,
-  xlab = "X", ylab = "Y", scale_x_num = FALSE)
+  xlab = "X", ylab = "Y", scale_x_num = FALSE,
+  scale_x_num_start = 1)
 }
 \arguments{
 \item{data}{Dataset in wide format}
@@ -35,6 +36,8 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 \item{ylab}{String for y-Axis label}
 
 \item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.}
+
+\item{scale_x_num_start}{Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis}
 }
 \value{
 ggplot2 object
