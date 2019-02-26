@@ -53,7 +53,6 @@ This model includes coupling parameters between the constructs:
 ![](https://dl.dropboxusercontent.com/s/e12ut0ri96nzjuf/bi-lcsm-coup.png)
 
 
-
 # Overview of estimated parameters
 
 Depending on the specified model, the following parameters can be estimated for **univariate** latent change score models: 
@@ -76,7 +75,7 @@ For bivariate latent change score models, estimated parameters can be categorise
 
 |Parameter    |Description                                                             |
 |:------------|:-----------------------------------------------------------------------|
-| **1. Construct X**                                                                      |
+|**Construct X**                                                                       |
 |gamma_lx1    |Mean of latent true scores x (Intercept)                                |
 |sigma2_lx1   |Variance of latent true scores x                                        |
 |sigma2_ux    |Variance of observed scores x                                           |
@@ -88,7 +87,7 @@ For bivariate latent change score models, estimated parameters can be categorise
 |sigma_g3lx1  |Covariance of constant change factor (g3) with the initial true score x |
 |sigma_g2g3   |Covariance of change factors within construct x                         |
 |phi_x        |Autoregression of change scores x                                       |
-| **2. Construct Y**                                                                      |
+|**Construct Y**                                                                       |
 |gamma_ly1    |Mean of latent true scores y (Intercept)                                |
 |sigma2_ly1   |Variance of latent true scores y                                        |
 |sigma2_uy    |Variance of observed scores y                                           |
@@ -100,15 +99,13 @@ For bivariate latent change score models, estimated parameters can be categorise
 |sigma_j3ly1  |Covariance of constant change factor (j3) with the initial true score y |
 |sigma_j2j3   |Covariance of change factors within construct y                         |
 |phi_y        |Autoregression of change scores y                                       |
-| **3. Coupeling X & Y**                                                                  |
+|**Coupeling X & Y**                                                                   |
 |sigma_su     |Covariance of residuals x and y                                         |
 |sigma_ly1lx1 |Covariance of intercepts x and y                                        |
 |delta_xy     |Change score x (t) determined by true score y (t-1)                     |
 |delta_yx     |Change score y (t) determined by true score x (t-1)                     |
 |xi_xy        |Change score x (t) determined by change score y (t-1)                   |
 |xi_yx        |Change score y (t) determined by change score x (t-1)                   |
-
-
 
 # How to use `lcsm`
 
