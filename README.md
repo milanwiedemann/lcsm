@@ -23,29 +23,42 @@ devtools::install_github(repo = "milanwiedemann/lcsm")
 The `lcsm` package contains the following functions that can be categorised into:
 
 1. Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
-  - `specify_uni_lcsm()` to write syntax for univariate LCSM
-  - `specify_bi_lcsm()` to write syntax for bivariate LCSM
+  - `specify_uni_lcsm()`: write syntax for univariate LCSM
+  - `specify_bi_lcsm()`: write syntax for bivariate LCSM
   
 2. Functions to fit models using [lavaan](http://lavaan.ugent.be/):
-  - `fit_uni_lcsm()` to fit univariate LCSM
-  - `fit_bi_lcsm()` to fit bivariate LCSM
+  - `fit_uni_lcsm()`: fit univariate LCSM
+  - `fit_bi_lcsm()`: fit bivariate LCSM
   
 3. Functions to extract numbers from models using [broom](https://broom.tidyverse.org/):
-  - `extract_fit()` to extract fit statistics
-  - `extract_param()` to extract estimated parameters
+  - `extract_fit()`: extract fit statistics
+  - `extract_param()`: extract estimated parameters
   
 4. Helper functions:
-  - `plot_lcsm()` to visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
-  - `select_uni_cases()` to select cases for analysis based on available scores on one construct
-  - `select_bi_cases()` to select cases for analysis based on available scores on two construct
+  - `plot_lcsm()`: visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot), doesn't work at the moment
+  - `select_uni_cases()`: select cases for analysis based on available scores on one construct
+  - `select_bi_cases()`: select cases for analysis based on available scores on two construct
 
-# Overview of the models that can be specified
-
-<iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQcqxINjjgYeEyH0dLmmSI80TuVDyJyBQg6IAd6pVFubWxFRiZajU_7bo4wgh28xXpdWin8br_l-0Ci/embed?start=false&loop=false&delayms=3000" frameborder="0" width="960" height="569" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-
-# Overview of parameters
+# Overview of some models that can be specified
 
 ## Univariate latent change score models
+
+Here is a slide illustrating a univariate dual change score model:
+![](https://dl.dropboxusercontent.com/s/g4czivyp8pd5qwt/uni-lcsm-dual.png)
+
+## Bivariate latent change score models
+
+This slide shows a bivariate latent change score model without coupling between the constructs:
+![](https://dl.dropboxusercontent.com/s/ewoksd04f2rs2z8/bi-lcsm-no-coup.png)
+
+This model includes coupling parameters between the constructs:
+![](https://dl.dropboxusercontent.com/s/e12ut0ri96nzjuf/bi-lcsm-coup.png)
+
+
+
+# Overview of estimated parameters
+
+Depending on the specified model, the following parameters can be estimated for **univariate** latent change score models: 
 
 |Parameter   |Description                                                             |
 |:-----------|:-----------------------------------------------------------------------|
@@ -61,11 +74,11 @@ The `lcsm` package contains the following functions that can be categorised into
 |sigma_g2g3  |Covariance of change factors within construct x                         |
 |phi_x       |Autoregression of change scores x                                       |
 
-## Bicariate latent change score models
+For bivariate latent change score models, estimated parameters can be categorised into (1) **Construct X**, (2) **Construct Y**, and (3) **Coupeling between X and Y**.
 
 |Parameter    |Description                                                             |
 |:------------|:-----------------------------------------------------------------------|
-| **Construct X**                                                                      |
+| **1. Construct X**                                                                      |
 |gamma_lx1    |Mean of latent true scores x (Intercept)                                |
 |sigma2_lx1   |Variance of latent true scores x                                        |
 |sigma2_ux    |Variance of observed scores x                                           |
@@ -77,7 +90,7 @@ The `lcsm` package contains the following functions that can be categorised into
 |sigma_g3lx1  |Covariance of constant change factor (g3) with the initial true score x |
 |sigma_g2g3   |Covariance of change factors within construct x                         |
 |phi_x        |Autoregression of change scores x                                       |
-| **Construct Y**                                                                      |
+| **2. Construct Y**                                                                      |
 |gamma_ly1    |Mean of latent true scores y (Intercept)                                |
 |sigma2_ly1   |Variance of latent true scores y                                        |
 |sigma2_uy    |Variance of observed scores y                                           |
@@ -89,13 +102,15 @@ The `lcsm` package contains the following functions that can be categorised into
 |sigma_j3ly1  |Covariance of constant change factor (j3) with the initial true score y |
 |sigma_j2j3   |Covariance of change factors within construct y                         |
 |phi_y        |Autoregression of change scores y                                       |
-| **Coupeling X & Y**                                                                  |
+| **3. Coupeling X & Y**                                                                  |
 |sigma_su     |Covariance of residuals x and y                                         |
 |sigma_ly1lx1 |Covariance of intercepts x and y                                        |
 |delta_xy     |Change score x (t) determined by true score y (t-1)                     |
 |delta_yx     |Change score y (t) determined by true score x (t-1)                     |
 |xi_xy        |Change score x (t) determined by change score y (t-1)                   |
 |xi_yx        |Change score y (t) determined by change score x (t-1)                   |
+
+
 
 # How to use `lcsm`
 
