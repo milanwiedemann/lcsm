@@ -11,33 +11,33 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
   scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE)
 }
 \arguments{
-\item{data}{Dataset in wide format}
+\item{data}{Dataset in wide format.}
 
-\item{id_var}{String of id variable}
+\item{id_var}{String, specifying id variable.}
 
-\item{var_list}{List of variables to be plotted}
+\item{var_list}{Vector, specifying variable names to be plotted in sequential order.}
 
-\item{line_colour}{Colour of lines}
+\item{line_colour}{String, specifying colour of lines.}
 
-\item{point_colour}{Colour of points}
+\item{point_colour}{String, specifying, colour of points.}
 
-\item{line_alpha}{Alpha of lines}
+\item{line_alpha}{Numeric, specifying alpha of lines.}
 
-\item{point_alpha}{Alpha of points}
+\item{point_alpha}{Numeric, specifying alpha of points.}
 
-\item{smooth}{Logical, add line of average using method = \code{smooth_method}}
+\item{smooth}{Logical, add line of average using method = \code{smooth_method}.}
 
-\item{smooth_method}{Method for calculating average}
+\item{smooth_method}{String, specifying method to be used for calculating average line, see  \code{ggplot2}.}
 
-\item{smooth_se}{Locical, add standard error of average line}
+\item{smooth_se}{Locical, specifying whether to add standard error of average line or not.}
 
-\item{xlab}{String for x-Axis label}
+\item{xlab}{String for x axis label.}
 
-\item{ylab}{String for y-Axis label}
+\item{ylab}{String for y axis label.}
 
-\item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from one as x axis labels, if \code{FALSE} use variable names.}
+\item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from 1 as x axis labels, if \code{FALSE} use variable names.}
 
-\item{scale_x_num_start}{Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis}
+\item{scale_x_num_start}{Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis.}
 
 \item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is to use 100 percent of the sample.}
 }

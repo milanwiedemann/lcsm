@@ -8,11 +8,11 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
   coupling, change_letter_x = "g", change_letter_y = "j")
 }
 \arguments{
-\item{timepoints}{Number if timepoints.}
+\item{timepoints}{Number of timepoints.}
 
-\item{var_x}{List of variables measuring one construct of the model.}
+\item{var_x}{Vector, specifying variables measuring one construct of the model.}
 
-\item{model_x}{List of model specifications (logical) for variables specified in \code{var_x}.
+\item{model_x}{List, specifying model specifications (logical) for variables specified in \code{var_x}.
 \itemize{
 \item{\code{alpha_constant}}{ (Constant change factor)},
 \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -22,9 +22,9 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{var_y}{List of variables measuring another construct of the model.}
+\item{var_y}{Vector, specifying variables measuring another construct of the model.}
 
-\item{model_y}{List of model specifications (logical) for variables specified in \code{var_y}.
+\item{model_y}{List, specifying model specifications (logical) for variables specified in \code{var_y}.
 \itemize{
 \item{\code{alpha_constant}}{ (Constant change factor)},
 \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -34,7 +34,7 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{coupling}{List of model specifications for coupling parameters.
+\item{coupling}{List, specifying coupling parameters.
 \itemize{
 \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
@@ -43,7 +43,7 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 }}
 }
 \value{
-Lavaan model syntax.
+Lavaan model syntax including comments.
 }
 \description{
 Specify lavaan model for bivariate latent change score models

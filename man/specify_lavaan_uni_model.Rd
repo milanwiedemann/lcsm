@@ -9,7 +9,7 @@ specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 \arguments{
 \item{timepoints}{Number if timepoints.}
 
-\item{model}{List of model specifications (logical) for variables specified in \code{variable}.
+\item{model}{List of model specifications (logical) for the variables specified in \code{variable}.
 \itemize{
 \item{\code{alpha_constant}}{ (Constant change factor)},
 \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -19,12 +19,12 @@ specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{variable}{String with letter of variable (Usually x or y).}
+\item{variable}{String, specifying letter to be used for of variables (Usually x or y).}
 
-\item{change_letter}{String with letter (Usually g or j).}
+\item{change_letter}{String, specifying letter to be used for change factor (Usually g or j).}
 }
 \value{
-Lavaan model syntax.
+Lavaan model syntax including comments.
 }
 \description{
 Specify lavaan model for univariate latent change score models
