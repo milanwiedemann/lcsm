@@ -1,9 +1,9 @@
 #' Specify lavaan model for bivariate latent change score models
 #'
-#' @param timepoints Number if timepoints.
-#' @param var_x List of variables measuring one construct of the model.
-#' @param var_y List of variables measuring another construct of the model.
-#' @param model_x List of model specifications (logical) for variables specified in \code{var_x}.
+#' @param timepoints Number of timepoints.
+#' @param var_x Vector, specifying variables measuring one construct of the model.
+#' @param var_y Vector, specifying variables measuring another construct of the model.
+#' @param model_x List, specifying model specifications (logical) for variables specified in \code{var_x}.
 #' \itemize{
 #' \item{\code{alpha_constant}}{ (Constant change factor)},
 #' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -12,7 +12,7 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
-#' @param model_y List of model specifications (logical) for variables specified in \code{var_y}.
+#' @param model_y List, specifying model specifications (logical) for variables specified in \code{var_y}.
 #' \itemize{
 #' \item{\code{alpha_constant}}{ (Constant change factor)},
 #' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -21,7 +21,7 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
-#' @param coupling List of model specifications for coupling parameters.
+#' @param coupling List, specifying coupling parameters.
 #' \itemize{
 #' \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 #' \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
@@ -29,7 +29,7 @@
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
 #'
-#' @return Lavaan model syntax.
+#' @return Lavaan model syntax including comments.
 #' @export
 #'
 #' @examples TODO.
@@ -116,12 +116,12 @@ specify_lavaan_bi_model <- function(timepoints,
   
   # Specify true score y predicting change score x ----
   if (coupling$delta_xy == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, lcsm:::specify_lcs_tc(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
+    lavaan_bi_coupling <- paste(lavaan_bi_coupling, lcsm:::specify_lcs_ct(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
   }
   
   # Specify true score x predicting change score y ----
   if (coupling$delta_yx == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, lcsm:::specify_lcs_tc(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
+    lavaan_bi_coupling <- paste(lavaan_bi_coupling, lcsm:::specify_lcs_ct(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
     
   }
 
