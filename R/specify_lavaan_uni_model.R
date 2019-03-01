@@ -1,7 +1,7 @@
 #' Specify lavaan model for univariate latent change score models
 #'
 #' @param timepoints Number if timepoints.
-#' @param model List of model specifications (logical) for variables specified in \code{variable}.
+#' @param model List of model specifications (logical) for the variables specified in \code{variable}.
 #' \itemize{
 #' \item{\code{alpha_constant}}{ (Constant change factor)},
 #' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
@@ -10,10 +10,10 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
-#' @param variable String with letter of variable (Usually x or y).
-#' @param change_letter String with letter (Usually g or j).
+#' @param variable String, specifying letter to be used for of variables (Usually x or y).
+#' @param change_letter String, specifying letter to be used for change factor (Usually g or j).
 #'
-#' @return Lavaan model syntax.
+#' @return Lavaan model syntax including comments.
 #' @export 
 #'
 #' @examples TODO. 

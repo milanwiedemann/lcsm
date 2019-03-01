@@ -62,7 +62,7 @@ fit_uni_lcsm <- function(data,
     ...)
   
   # Return lavaan object ----
-  fit_lcsm_uni
+  return(fit_lcsm_uni)
 }
 
 

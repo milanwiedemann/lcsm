@@ -34,7 +34,6 @@ extract_fit <- function(lavaan_object, details = FALSE) {
            id, model_name, chisq, npar, everything())
   }
 
-  fit_return
+  return(fit_return)
   
-
 }
