@@ -16,19 +16,20 @@
 #' @param ylab String for y axis label.
 #' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from 1 as x axis labels, if \code{FALSE} use variable names.
 #' @param scale_x_num_start Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis.
-#' @param random_sample_frac The fraction of rows to select (from wide dataset), default is to use 100 percent of the sample.
-#'
+#' @param random_sample_frac The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.
+#' @param connect_missing Logical, speciying whether to connect points by \code{id_var} across missing values.
+#' 
 #' @return ggplot2 object
 #' @export
 #'
 #' @examples TODO
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   
   if (nrow(data) < 200) {
-    line_alpha <- .4
-    point_alpha <- .4
+    line_alpha <- 0.4
+    point_alpha <- 0.4
   }
   
   data_plot <- data %>% 
@@ -38,11 +39,16 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   
   plot <- data_plot %>%
     ggplot2::ggplot(ggplot2::aes(variable, value)) +
-    ggplot2::geom_line(ggplot2::aes(group = id), colour = line_colour, alpha = line_alpha) +
     ggplot2::geom_point(colour = point_colour, alpha = point_alpha, size = 1) +
     ggplot2::labs(x = xlab, y = ylab) +
     ggplot2::theme_classic() +
     ggplot2::theme(text = ggplot2::element_text(size = 12))
+  
+  if (connect_missing == TRUE) {
+    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = id), colour = line_colour, alpha = line_alpha)
+    } else if (connect_missing == FALSE) {
+      plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = id), colour = line_colour, alpha = line_alpha)
+      }
   
   if (title_n == TRUE){
     plot <- plot + ggplot2::ggtitle(paste("N = ", nrow(data), " (", round(random_sample_frac * 100, 2), "% of the sample)", sep = ""))
