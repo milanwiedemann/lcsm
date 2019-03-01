@@ -344,10 +344,10 @@ specify_lcs_autoreg <- function(timepoints, variable){
 
 
 # Specify between-construct coupling parameters true score (t) to change score (c)
-specify_lcs_tc <- function(timepoints, variable_x, variable_y){
+specify_lcs_ct <- function(timepoints, variable_x, variable_y){
 
   # Create empty str object for lavaan syntax
-  lavaan_str <- "# Specify between-construct coupling parameters true score to change score \n "
+  lavaan_str <- paste0("# Specify between-construct coupling parameter:\n# Change score ", variable_x, " (t) is determined by true score ", variable_y, " (t-1)  \n ")
   
   for (i in 1:(timepoints - 1)) {
     lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "delta_", variable_x, variable_y, " * ", "l", variable_y, i, " \n ", sep = "")
@@ -361,7 +361,7 @@ specify_lcs_tc <- function(timepoints, variable_x, variable_y){
 specify_lcs_cc <- function(timepoints, variable_x, variable_y){
   
   # Create empty str object for lavaan syntax
-  lavaan_str <- "# Specify between-construct coupling parameters change score to change score \n "
+  lavaan_str <- paste0("# Specify between-construct coupling parameter:\n# Change score ", variable_x, " (t) is determined by change score ", variable_y, " (t-1)  \n ")
   
   for (i in 2:(timepoints - 1)) {
     lavaan_str <- base::paste(lavaan_str, "d", variable_x, i + 1, " ~ ", "xi_", variable_x, variable_y, " * ", "d", variable_y, i, " \n ", sep = "")
