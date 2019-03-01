@@ -1,10 +1,10 @@
 Package: lcsm
 Type: Package
 Title: lcsm: An R package for specifying and analysing latent change score models using lavaan
-Date: 2018-09-28
-Version: 0.0.1.0004
+Date: 2019-02-26
+Version: 0.0.1.0005
 Authors@R: person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"))
-Description: Helper functions to define and analyse univariate and bivariate latent change score models (LCSM) as described in @McArdle2009, @Ghisletta2012, @Grimm2012, @Grimm2017 using lavaan.
+Description: Helper functions to define and analyse univariate and bivariate latent change score models (LCSM) as described in @McArdle2009, @Ghisletta2012, @Grimm2012, @Grimm2017 using the R package lavaan.
 License: GPL-3
 Encoding: UTF-8
 URL: https://github.com/milanwiedemann/lcsm
@@ -16,5 +16,7 @@ Imports:
     tibble (>= 1.4.2),
     magrittr (>= 1.5),
     rlang (>= 0.1.6),
+    tidyr (>= 0.8.0),
+    ggplot2 (>= 2.2.1),
     semPlot (>= 1.1)
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
