@@ -9,7 +9,7 @@ extract_param(lavaan_object, printp = FALSE)
 \arguments{
 \item{lavaan_object}{Lavaan object.}
 
-\item{printp}{If TRUE convert into easily readable p-values.}
+\item{printp}{If TRUE convert into easily readable p-values, not working at the moment.}
 }
 \value{
 This function returns a tibble with labeled parameters.

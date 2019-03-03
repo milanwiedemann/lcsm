@@ -1,7 +1,7 @@
 #' Extract labeled parameters of lavaan objects
 #'
 #' @param lavaan_object Lavaan object.
-#' @param printp If TRUE convert into easily readable p-values.
+#' @param printp If TRUE convert into easily readable p-values, not working at the moment.
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
@@ -26,8 +26,14 @@ extract_param <- function(lavaan_object, printp = FALSE){
   }
   
   if (printp == TRUE){
-    table4 <- dplyr::mutate(table3, p.value = papaja::printp(p.value))
-    return(table4)
+    # This doesnt work at the moment, papaja is not on CRAN 
+    # Find my own way to do this, maybe import printp function from papaja or somewhere else
+    # table4 <- dplyr::mutate(table3, p.value = papaja::printp(p.value))
+    # return(table4)
+    
+    # for now also return table 3
+    message("Sorry, the printp argument is not supported at the moment.\nThis returns the same object as using 'printp = FALSE' in the arguments.")
+    return(table3)
   }
   
 

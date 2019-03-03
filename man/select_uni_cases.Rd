@@ -24,6 +24,3 @@ TODO
 \description{
 Select cases based on minimum number of available session scores for one set of variables
 }
-\examples{
-TODO
-}

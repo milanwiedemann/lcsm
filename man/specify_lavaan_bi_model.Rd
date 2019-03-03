@@ -41,15 +41,14 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
+
+\item{change_letter_x}{String, specifying letter to be used as change factor for construct x in lavaan syntax.}
+
+\item{change_letter_y}{String, specifying letter to be used as change factor for construct y in lavaan syntax.}
 }
 \value{
 Lavaan model syntax including comments.
 }
 \description{
 Specify lavaan model for bivariate latent change score models
-}
-\examples{
-TODO.
-
-
 }

@@ -16,6 +16,8 @@ plot_lcsm(lavaan_object, layout, curve_covar = 0.5, what = "col",
 
 \item{layout}{Matrix specifying location of manifest and latent variables.}
 
+\item{curve_covar}{see \code{semPlot}.}
+
 \item{what}{See \code{semPlot}.}
 
 \item{whatLabels}{see \code{semPlot}.}
@@ -46,6 +48,10 @@ plot_lcsm(lavaan_object, layout, curve_covar = 0.5, what = "col",
 
 \item{nCharEdges}{see \code{semPlot}.}
 
+\item{edge.label.cex}{see \code{semPlot}.}
+
+\item{DoNotPlot}{see \code{semPlot}}
+
 \item{...}{Other functions passed on to \code{semPlot}.}
 }
 \value{
@@ -53,7 +59,4 @@ Plot
 }
 \description{
 Plot latent change score model path diagram
-}
-\examples{
-TODO
 }

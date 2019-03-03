@@ -31,7 +31,7 @@ extract_fit <- function(lavaan_object, details = FALSE) {
 
   if (details == TRUE) {
     fit_return <- dplyr::select(fit_data,
-           id, model_name, chisq, npar, everything())
+           id, model_name, chisq, npar, dplyr::everything())
   }
 
   return(fit_return)

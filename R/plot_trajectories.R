@@ -18,11 +18,11 @@
 #' @param scale_x_num_start Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis.
 #' @param random_sample_frac The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.
 #' @param connect_missing Logical, speciying whether to connect points by \code{id_var} across missing values.
+#' @param title_n Logical, speciying whether to print title with number and percentage of cases used for the plot.
 #' 
 #' @return ggplot2 object
 #' @export
-#'
-#' @examples TODO
+
 plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
@@ -61,7 +61,7 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   }
       
   if (smooth == TRUE) {
-  plot_x_scale + ggplot2::geom_smooth(aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
+  plot_x_scale + ggplot2::geom_smooth(ggplot2::aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
   } else {
   plot_x_scale
   }

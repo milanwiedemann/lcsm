@@ -16,13 +16,16 @@
 #' @param intercepts  see \code{semPlot}.
 #' @param fade  see \code{semPlot}.
 #' @param nCharNodes  see \code{semPlot}.
+#' @param curve_covar  see \code{semPlot}.
+#' @param edge.label.cex  see \code{semPlot}.
 #' @param nCharEdges  see \code{semPlot}.
+#' @param DoNotPlot  see \code{semPlot}
 #' @param ... Other functions passed on to \code{semPlot}.  
 #'
 #' @return Plot
 #' @export 
 #'
-#' @examples TODO
+
 plot_lcsm <- function(lavaan_object,
                       layout,
                       curve_covar = .5,

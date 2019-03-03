@@ -42,6 +42,8 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 
 \item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.}
 
+\item{title_n}{Logical, speciying whether to print title with number and percentage of cases used for the plot.}
+
 \item{connect_missing}{Logical, speciying whether to connect points by \code{id_var} across missing values.}
 }
 \value{
@@ -49,7 +51,4 @@ ggplot2 object
 }
 \description{
 Plot individual trajectories
-}
-\examples{
-TODO
 }

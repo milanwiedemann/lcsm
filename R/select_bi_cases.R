@@ -9,8 +9,7 @@
 #'
 #' @return TODO
 #' @export
-#'
-#' @examples TODO
+
 select_bi_cases <- function(data, id_var, var_list_x, var_list_y, min_count_x, min_count_y) {
   
   # Select cases from x and return id only

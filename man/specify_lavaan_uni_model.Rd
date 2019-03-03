@@ -29,7 +29,3 @@ Lavaan model syntax including comments.
 \description{
 Specify lavaan model for univariate latent change score models
 }
-\examples{
-TODO. 
-
-}

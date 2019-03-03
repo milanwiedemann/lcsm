@@ -8,8 +8,7 @@
 #'
 #' @return TODO
 #' @export
-#'
-#' @examples TODO
+
 select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only = FALSE) {
   
   var_count <- base::length(var_list)
