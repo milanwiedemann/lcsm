@@ -49,16 +49,12 @@ The `lcsm` package contains the following functions that can be categorised into
 ## Univariate latent change score models
 
 Here is a slide illustrating a univariate dual change score model:
-![](https://dl.dropboxusercontent.com/s/g4czivyp8pd5qwt/uni-lcsm-dual.png)
+![](tools/images/r-lcsm-uni-gif.gif)
 
 ## Bivariate latent change score models
 
-This slide shows a bivariate latent change score model without coupling between the constructs:
-![](https://dl.dropboxusercontent.com/s/ewoksd04f2rs2z8/bi-lcsm-no-coup.png)
-
-This model includes coupling parameters between the constructs:
-![](https://dl.dropboxusercontent.com/s/e12ut0ri96nzjuf/bi-lcsm-coup.png)
-
+This slide shows a bivariate latent change score model without and with coupling between the constructs:
+![](tools/images/r-lcsm-bi-gif.gif)
 
 # Overview of estimated parameters
 
