@@ -112,20 +112,127 @@ Here are a few examples how to use the `lcsm` package.
 
 ```r
 # Load packages ----
+library(tidyverse)
+library(lavaan)
+library(broom)
+library(semPlot)
 library(lcsm) 
 
 # Load data ----
 
+data <- read_csv("~/ENTER/PATH/TO/DATA.csv")
+
 ```
 
-Now that the package and data are loaded, you can use `lcsm` to specify and analyse a number of latent difference score models.
+## Visualise data
+
+The package has a function to create longitudinal plots of the measures.
 
 ```r
 # Visualise data ----
+# Create longitudinal plot of the scores for variables x1 to x7
+# Change the variable names to the variables to be plotted
+plot_measure_x <- plot_trajectories(data = data,
+                                    id_var = "id", 
+                                    var_list = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+                                    scale_x_num = TRUE,
+                                    xlab = "Time", ylab = "Score")
 
-# Fit lcsm ----
+```
 
+## Fit univariate and bivariate lcsm
+
+The functions `fit_uni_lcsm()` and `fit_bi_lcsm()` can be used to specify and analyse a number of latent difference score models.
+It is also possible to extract the lavaan syntax that was specified and used to fit the model.
+The lavaan syntax includes comments about each element in the model and can be manually adapted for further specifications.
+
+```r
+# Fit univariate lcsm ----
+# To see all parameters that can be estimated for univariate lcsm see help(fit_uni_lcsm)
+fit_uni_lcsm_01 <- fit_uni_lcsm(# Specify dataset in wide format
+                                data = data, 
+                                # Specify which variables to use
+                                var = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+                                # Specify which parameters to estimate in model
+                                model = list(alpha_constant = FALSE, beta = TRUE),
+                                # Create object in Global Environment with lavaan model syntax
+                                export_model_syntax = TRUE, name_model_syntax = "uni_lcsm_01")
+                             
+# Fit bivariate lcsm ----
+# To see all parameters that can be estimated for bivariate lcsm see help(fit_bi_lcsm)
+fit_bi_lcsm_01 <- fit_bi_lcsm(data = data,
+                              var_x = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+                              var_y = c("y1", "y2", "x3", "y4", "y5", "y6", "y7"),
+                              model_x = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),
+                              model_y = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),  
+                              coupling = list(# delta_xy parameter estimates change score x (t) 
+                                              # determined by true score y (t-1)
+                                              delta_xy = TRUE, delta_yx = TRUE, 
+                                              # xi_xy parameter estimates change score x (t) 
+                                              # determined by change score y (t-1)
+                                              xi_xy = TRUE, xi_yx = TRUE),
+                              export_model_syntax = TRUE, name_model_syntax = "bi_lcsm_01")
+                              
+# Look at lavaan model syntax that was specified and fit for these models
+# Use 'export_model_syntax = TRUE' to export model syntax to the global environment
+
+# To see the model syntax that was speficied for the model 'fit_uni_lcsm_01' use:
+cat(uni_lcsm_01)
+
+# To see the model syntax that was speficied for the model 'fit_bi_lcsm_01' use:
+cat(bi_lcsm_01)
+```
+
+## Extract fit statistics and parmeters
+
+```r
 # Extract fit statistics ----
+extract_fit(# Specify which lavaan objects to extract fit from
+            lavaan_object = fit_uni_lcsm_01, 
+            # Only return selection of fit statistics (details = FALSE)
+            details = FALSE)
 
 # Extract estimated parameters ----
+# Specify which lavaan objects to extract fit from
+extract_param(fit_uni_lcsm_01)
+```
+
+## Plot simplified path diagrams of lcsm
+
+```r
+# First, a layout matrix has to be defined manually
+# This will be used by the semPlot package to arrange the different elements in the plot
+
+# Create layout matrix for univariate LCSM without intercepts
+layout_uni_lcsm <- matrix(
+  c(NA, "g2", NA, NA, NA, NA, NA, 
+    NA, "dx2", "dx3", "dx4", "dx5", "dx6", "dx7",
+    "lx1", "lx2", "lx3", "lx4", "lx5", "lx6", "lx7",
+    "x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+  4, byrow = TRUE)
+
+# Create layout matrix for bivariate LCSM without intercepts
+layout_bi_lcsm <- matrix(
+  c(NA, NA, "y1", "y2", "y3", "y4", "y5", "y6", "y7",
+    NA, NA, "ly1", "ly2", "ly3", "ly4", "ly5", "ly6", "ly7",
+    NA, NA, NA, "dy2", "dy3", "dy4", "dy5", "dy6", "dy7",
+    NA, "j2",NA,NA, NA,  NA, NA, NA, NA, 
+    NA, "g2", NA,NA, NA,  NA, NA, NA, NA, 
+    NA, NA, NA, "dx2", "dx3", "dx4", "dx5", "dx6", "dx7", 
+    NA, NA, "lx1", "lx2", "lx3", "lx4", "lx5", "lx6", "lx7",
+    NA, NA, "x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+  8, byrow = TRUE)
+
+# Plot simplified path diagram using semPlot package
+# The lavaan_object argument takes any lavaan object as input
+# The layout argument is the above specified matrix
+# Depending on the number of measurement points this matrix has to be adapted manually at the moment
+
+# This command plots the univariate lcsm 'fit_uni_lcsm_01' using the predifined matrix 'layout_uni_lcsm'
+plot_lcsm(lavaan_object = fit_uni_lcsm_01, 
+          layout = layout_uni_lcsm)
+          
+# This command plots the bivariate lcsm 'fit_bi_lcsm_01' using the predifined matrix 'layout_bi_lcsm'
+plot_lcsm(lavaan_object = fit_bi_lcsm_01, 
+          layout = layout_bi_lcsm)
 ```
