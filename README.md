@@ -121,7 +121,6 @@ library(lcsm)
 # Load data ----
 
 data <- read_csv("~/ENTER/PATH/TO/DATA.csv")
-
 ```
 
 ## Visualise data
@@ -132,12 +131,11 @@ The package has a function to create longitudinal plots of the measures.
 # Visualise data ----
 # Create longitudinal plot of the scores for variables x1 to x7
 # Change the variable names to the variables to be plotted
-plot_measure_x <- plot_trajectories(data = data,
-                                    id_var = "id", 
-                                    var_list = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
-                                    scale_x_num = TRUE,
-                                    xlab = "Time", ylab = "Score")
-
+# The plot can also be saved to an object to be further customised using ggplot2 functions
+plot_trajectories(data = data,
+                  id_var = "id", 
+                  var_list = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
+                  xlab = "Time", ylab = "Score")
 ```
 
 ## Fit univariate and bivariate lcsm
@@ -194,6 +192,7 @@ extract_fit(# Specify which lavaan objects to extract fit from
 
 # Extract estimated parameters ----
 # Specify which lavaan objects to extract fit from
+# Descriptions about each parameter can be found in the table above
 extract_param(fit_uni_lcsm_01)
 ```
 
