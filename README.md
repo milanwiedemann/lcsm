@@ -6,7 +6,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.1-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
-This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/). For details about this method see for example McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm ([2012](https://doi.org/10.1080/10705511.2012.659627)), and Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
+This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/). For details about this method see for example McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 [These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate some of the models that can be specified and analysed using this package.
 
 # Installation
