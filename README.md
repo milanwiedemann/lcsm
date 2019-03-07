@@ -1,6 +1,6 @@
 # lcsm: An R package to specify and analyse latent change score models using lavaan
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--03--03-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--03--07-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
