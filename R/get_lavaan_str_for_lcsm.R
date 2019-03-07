@@ -369,3 +369,56 @@ specify_lcs_cc <- function(timepoints, variable_x, variable_y){
   
   return(lavaan_str)
 }
+
+# Specify piecewise between-construct coupling parameters true score (t) to change score (c)
+specify_lcs_ct_piecewise <- function(timepoints, variable_x, variable_y, changepoint){
+  
+  # Create title str object for each piece 
+  lavaan_str_1_0 <- "# Specify first piecewise between-construct coupling parameters true score (t) to change score (c) \n"
+  lavaan_str_2_0 <- "# Specify second piecewise between-construct coupling parameters true score (t) to change score (c) \n"
+  
+  for (i in 1:(changepoint -1)) {
+    lavaan_str_1_0 <- base::paste(lavaan_str_1_0, "d", variable_x, i + 1, " ~ ", "delta1_", variable_x, variable_y, " * ", "l", variable_y, i, " \n", sep = "")
+  }
+  
+  for (j in (changepoint):(timepoints - 1)) {
+    lavaan_str_2_0 <- base::paste(lavaan_str_2_0, "d", variable_x, j + 1, " ~ ", "delta2_", variable_x, variable_y, " * ", "l", variable_y, j, " \n", sep = "")
+  }
+  
+  
+  # Combine first string object with title with lavaan syntax from loop
+  # lavaan_str_1_3 <- paste0(lavaan_str_1_0, lavaan_str_1_2)
+  # lavaan_str_2_3 <- paste0(lavaan_str_2_0, lavaan_str_2_2)
+  
+  # Combine first and second piece
+  lavaan_str <- paste0(lavaan_str_1_0, lavaan_str_2_0)
+  
+  return(lavaan_str)
+}
+
+
+# Specify piecewise between-construct coupling parameters change score (c) to change score (c)
+specify_lcs_cc_piecewise <- function(timepoints, variable_x, variable_y, changepoint){
+  
+  # Create title str object for each piece 
+  lavaan_str_1_0 <- "# Specify first piecewise between-construct coupling parameters change score (c) to change score (c) \n"
+  lavaan_str_2_0 <- "# Specify second piecewise between-construct coupling parameters change score (c) to change score (c) \n"
+  
+  for (i in 1:(changepoint -1)) {
+    lavaan_str_1_0 <- base::paste(lavaan_str_1_0, "d", variable_x, i + 1, " ~ ", "xi1_", variable_x, variable_y, " * ", "d", variable_y, i, " \n", sep = "")
+  }
+  
+  for (j in (changepoint):(timepoints - 1)) {
+    lavaan_str_2_0 <- base::paste(lavaan_str_2_0, "d", variable_x, j + 1, " ~ ", "xi2_", variable_x, variable_y, " * ", "d", variable_y, j, " \n", sep = "")
+  }
+  
+  
+  # Combine first string object with title with lavaan syntax from loop
+  # lavaan_str_1_3 <- paste0(lavaan_str_1_0, lavaan_str_1_2)
+  # lavaan_str_2_3 <- paste0(lavaan_str_2_0, lavaan_str_2_2)
+  
+  # Combine first and second piece
+  lavaan_str <- paste0(lavaan_str_1_0, lavaan_str_2_0)
+  
+  return(lavaan_str)
+}
