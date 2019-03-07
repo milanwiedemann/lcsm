@@ -385,11 +385,6 @@ specify_lcs_ct_piecewise <- function(timepoints, variable_x, variable_y, changep
     lavaan_str_2_0 <- base::paste(lavaan_str_2_0, "d", variable_x, j + 1, " ~ ", "delta2_", variable_x, variable_y, " * ", "l", variable_y, j, " \n", sep = "")
   }
   
-  
-  # Combine first string object with title with lavaan syntax from loop
-  # lavaan_str_1_3 <- paste0(lavaan_str_1_0, lavaan_str_1_2)
-  # lavaan_str_2_3 <- paste0(lavaan_str_2_0, lavaan_str_2_2)
-  
   # Combine first and second piece
   lavaan_str <- paste0(lavaan_str_1_0, lavaan_str_2_0)
   
@@ -411,11 +406,6 @@ specify_lcs_cc_piecewise <- function(timepoints, variable_x, variable_y, changep
   for (j in (changepoint):(timepoints - 1)) {
     lavaan_str_2_0 <- base::paste(lavaan_str_2_0, "d", variable_x, j + 1, " ~ ", "xi2_", variable_x, variable_y, " * ", "d", variable_y, j, " \n", sep = "")
   }
-  
-  
-  # Combine first string object with title with lavaan syntax from loop
-  # lavaan_str_1_3 <- paste0(lavaan_str_1_0, lavaan_str_1_2)
-  # lavaan_str_2_3 <- paste0(lavaan_str_2_0, lavaan_str_2_2)
   
   # Combine first and second piece
   lavaan_str <- paste0(lavaan_str_1_0, lavaan_str_2_0)
