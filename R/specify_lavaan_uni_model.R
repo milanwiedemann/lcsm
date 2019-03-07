@@ -55,105 +55,105 @@ specify_lavaan_uni_model <- function(timepoints, model, variable, change_letter)
   }
   
 # Define empty str object 
-lavaan_model <- ''
+lavaan_uni_model <- ''
   
 # Specify no change by default ----
 
 # Specify latent true scores
-lavaan_model <- specify_lts(timepoints, variable)
+lavaan_uni_model <- specify_lts(timepoints, variable)
 
 # Specify means of latent true scores
-lavaan_model <- paste(lavaan_model, specify_lts_mean(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lts_mean(timepoints, variable))
 
 # Specify variances of latent true scores
-lavaan_model <- paste(lavaan_model, specify_lts_var(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lts_var(timepoints, variable))
 
 # Specify observed intercepts
-lavaan_model <- paste(lavaan_model, specify_os_int(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_os_int(timepoints, variable))
 
 # Specify observed residual variances
-lavaan_model <- paste(lavaan_model, specify_os_resid(timepoints, variable)) 
+lavaan_uni_model <- paste(lavaan_uni_model, specify_os_resid(timepoints, variable)) 
 
 # Specify latent true score autoregressions
-lavaan_model <- paste(lavaan_model, specify_lts_autoreg(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lts_autoreg(timepoints, variable))
 
 # Specify latent change scores
-lavaan_model <- paste(lavaan_model, specify_lcs(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lcs(timepoints, variable))
 
 # Specify latent change score means
-lavaan_model <- paste(lavaan_model, specify_lcs_mean(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lcs_mean(timepoints, variable))
 
 # Specify latent change score variances
-lavaan_model <- paste(lavaan_model, specify_lcs_var(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_lcs_var(timepoints, variable))
 
 # Specify constant change ----
 if (model$alpha_constant == TRUE){
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change(timepoints, variable, change_letter))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change(timepoints, variable, change_letter))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
 }
 
 # Specify piecewise constant change ----
 if (model$alpha_piecewise == TRUE){
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_piecewise(timepoints, variable, change_letter, model$alpha_piecewise_num))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_piecewise(timepoints, variable, change_letter, model$alpha_piecewise_num))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_mean(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_mean(timepoints, variable, change_letter, 3))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_var(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 3))
   
-  lavaan_model <- paste(lavaan_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
   
-  lavaan_model <- paste(lavaan_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
 }
 
 # Specify linear change ----
 if (model$alpha_linear == TRUE){
   
   # Specify constant change
-  lavaan_model <- paste(lavaan_model, specify_constant_change(timepoints, variable, change_letter))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change(timepoints, variable, change_letter))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_mean(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 2))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 2))
   
   # Specify linear change
-  lavaan_model <- paste(lavaan_model, specify_linear_change(timepoints, variable, change_letter))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_mean(timepoints, variable, change_letter, 3))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_var(timepoints, variable, change_letter, 3))
-  lavaan_model <- paste(lavaan_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_linear_change(timepoints, variable, change_letter))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_mean(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
   
   # Specify schange change
-  lavaan_model <- paste(lavaan_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
   
 }
 
 # Specify covar between constant change and linear change ----
 
 if (model$alpha_constant == TRUE & model$alpha_linear == TRUE){
-  lavaan_model <- paste(lavaan_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
 }
 
 # Specify proportional change ----
 if (model$beta == TRUE){
   
-lavaan_model <- paste(lavaan_model, specify_proportional_effect(timepoints, variable))
+lavaan_uni_model <- paste(lavaan_uni_model, specify_proportional_effect(timepoints, variable))
 }
 
 # Specify autoregressive change scores ----
 if (model$phi == TRUE){
   
-  lavaan_model <- paste(lavaan_model, specify_lcs_autoreg(timepoints, variable))
+  lavaan_uni_model <- paste(lavaan_uni_model, specify_lcs_autoreg(timepoints, variable))
 }
 
-lavaan_model
+return(lavaan_uni_model)
 
 }
 

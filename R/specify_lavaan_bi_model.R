@@ -136,6 +136,6 @@ specify_lavaan_bi_model <- function(timepoints,
   # Combine univariate and bivariate models
   lavaan_bi_model <- paste(model_x_uni_lavaan, model_y_uni_lavaan, resid_covar, lavaan_bi_change, lavaan_bi_coupling, sep = "")
   
-  lavaan_bi_model
+  return(lavaan_bi_model)
 }
 
