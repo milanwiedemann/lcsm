@@ -3,9 +3,9 @@
 specify_lts <- function(timepoints, variable){
 
   # Create empty str object for lavaan syntax
-  lavaan_str <- "# Specify latent true scores \n "
+  lavaan_str <- "# Specify latent true scores \n"
   for (i in 1:timepoints) {
-    lavaan_str <- base::paste(lavaan_str, "l", variable, i, " =~ 1 * ", variable, i, " \n ", sep = "")
+    lavaan_str <- base::paste(lavaan_str, "l", variable, i, " =~ 1 * ", variable, i, " \n", sep = "")
   }
 
   return(lavaan_str)
