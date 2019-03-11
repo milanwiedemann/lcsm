@@ -143,6 +143,27 @@ plot_trajectories(data = data,
 The functions `fit_uni_lcsm()` and `fit_bi_lcsm()` can be used to specify and analyse a number of latent difference score models.
 It is also possible to extract the lavaan syntax that was specified and used to fit the model.
 The lavaan syntax includes comments about each element in the model and can be manually adapted for further specifications.
+The following table descibes the different model specifications that the `model` argument can take:
+
+
+|Model specification  |Description                                                    |
+|:-----------|:-----------------------------------------------------------------------|
+|alpha_constant      |Constant change factor                                          |
+|alpha_linear        |Linear change factor                               |
+|alpha_piecewise     |Piecewise constant change factors                                |
+|alpha_piecewise_num |Changepoint of piecewise constant change factors                                |
+|beta                |Proportional change factor                                      |
+|phi                 |Autoregression of change scores                                 |
+
+To estimate coupling parameters for bivariate LCSM, the argument `coupling` from the `fit_bi_lcsm()` function can take the following specifications:
+
+|Coupling specification  |Description                                                    |
+|:-----------|:-----------------------------------------------------------------------|
+|delta_xy  |Change score x (t) is determined by true score y  (t-1)       |
+|delta_yx  |Change score y (t) is determined by true score x  (t-1)  |
+|xi_xy     |Change score x (t) is determined by change score y  (t-1)  |
+|xi_yx     |Change score y (t) is determined by change score x  (t-1)   |
+
 
 ```r
 # Fit univariate lcsm ----
