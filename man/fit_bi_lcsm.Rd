@@ -28,8 +28,11 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 
 \item{model_y}{List of model specifications for variables specified in \code{var_y}.
 \itemize{
-\item{\code{alpha}}{ (Constant change)},
-\item{\code{beta}}{ (Proportional change)},
+\item{\code{alpha_constant}}{ (Constant change factor)},
+\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_linear}}{ (Linear change factor)},
+\item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
