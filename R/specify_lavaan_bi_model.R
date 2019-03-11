@@ -23,6 +23,8 @@
 #' }
 #' @param coupling List, specifying coupling parameters.
 #' \itemize{
+#' \item{\code{coupling_piecewise}}{ (Piecewise coupling parameters)},
+#' \item{\code{coupling_piecewise_num}}{ (Changepoint of piecewise coupling parameters)},
 #' \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 #' \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
 #' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
@@ -46,38 +48,30 @@ specify_lavaan_bi_model <- function(timepoints,
                                     ) {
   
   # Code parameters in model_x that are not defined as FALSE
-  if (is.null(model_x$delta_xy) == TRUE) {
-    model_x$delta_xy <- FALSE
+  if (is.null(coupling$delta_xy) == TRUE) {
+    coupling$delta_xy <- FALSE
   }
   
-  if (is.null(model_x$delta_yx) == TRUE) {
-    model_x$delta_yx <- FALSE
+  if (is.null(coupling$delta_yx) == TRUE) {
+    coupling$delta_yx <- FALSE
   }
   
-  if (is.null(model_x$xi_xy) == TRUE) {
-    model_x$xi_xy <- FALSE
+  if (is.null(coupling$xi_xy) == TRUE) {
+    coupling$xi_xy <- FALSE
   }
   
-  if (is.null(model_x$xi_yx) == TRUE) {
-    model_x$xi_yx <- FALSE
+  if (is.null(coupling$xi_yx) == TRUE) {
+    coupling$xi_yx <- FALSE
   }
   
-  # Code parameters in model_y that are not defined as FALSE
-  if (is.null(model_y$delta_xy) == TRUE) {
-    model_y$delta_xy <- FALSE
+  if (is.null(coupling$coupling_piecewise) == TRUE) {
+    coupling$coupling_piecewise <- FALSE
   }
   
-  if (is.null(model_y$delta_yx) == TRUE) {
-    model_y$delta_yx <- FALSE
+  if (is.null(coupling$coupling_piecewise_num) == TRUE) {
+    coupling$coupling_piecewise_num <- FALSE
   }
-  
-  if (is.null(model_y$xi_xy) == TRUE) {
-    model_y$xi_xy <- FALSE
-  }
-  
-  if (is.null(model_y$xi_yx) == TRUE) {
-    model_y$xi_yx <- FALSE
-  }
+
   
   model_x_uni_lavaan <- ""
   model_x_uni_lavaan <- specify_lavaan_uni_model(timepoints = timepoints, model = model_x, variable = var_x, change_letter = change_letter_x)
@@ -97,44 +91,73 @@ specify_lavaan_bi_model <- function(timepoints,
  
   # Specify covariances between constant change factors
   if (model_x$alpha_constant == TRUE){
-    lavaan_bi_change <- paste(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_x, variable = var_y))
+    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_x, variable = var_y))
   }
   
   # Specify covariances between constant change factors
   if (model_y$alpha_constant == TRUE){
-    lavaan_bi_change <- paste(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_y, variable = var_x))
+    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_y, variable = var_x))
   }
   
   # Specify covariances between constant change factors
   if (model_x$alpha_constant == TRUE & model_y$alpha_constant == TRUE){
-    lavaan_bi_change <- paste(lavaan_bi_change, specify_bi_change_covar(change_letter_x = change_letter_x, change_letter_y = change_letter_y))
+    lavaan_bi_change <- paste0(lavaan_bi_change, specify_bi_change_covar(change_letter_x = change_letter_x, change_letter_y = change_letter_y))
   }
   
   # Define empty str object 
   lavaan_bi_coupling <- ""
   
-  # Specify true score y predicting change score x ----
-  if (coupling$delta_xy == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, specify_lcs_ct(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
+  if (coupling$coupling_piecewise == FALSE) {
+    
+    # Specify true score y predicting change score x ----
+    if (coupling$delta_xy == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_ct(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
+    }
+    
+    # Specify true score x predicting change score y ----
+    if (coupling$delta_yx == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_ct(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
+    }
+    
+    # Specify change score y predicting change score x ----
+    if (coupling$xi_xy == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_cc(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
+    }
+    
+    # Specify change score x predicting change score y ----
+    if (coupling$xi_yx == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_cc(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
+    }
+    
+  } else if (coupling$coupling_piecewise == TRUE) {
+    
+    # Specify true score y predicting change score x ----
+    if (coupling$delta_xy == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_ct_piecewise(timepoints = timepoints, variable_x = var_x, variable_y = var_y, changepoint = coupling$coupling_piecewise_num))
+    }
+    
+    # Specify true score x predicting change score y ----
+    if (coupling$delta_yx == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_ct_piecewise(timepoints = timepoints, variable_x = var_y, variable_y = var_x, changepoint = coupling$coupling_piecewise_num))
+    }
+    
+    # Specify change score y predicting change score x ----
+    if (coupling$xi_xy == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_cc_piecewise(timepoints = timepoints, variable_x = var_x, variable_y = var_y, changepoint = coupling$coupling_piecewise_num))
+    }
+    
+    # Specify change score x predicting change score y ----
+    if (coupling$xi_yx == TRUE){
+      lavaan_bi_coupling <- paste0(lavaan_bi_coupling, specify_lcs_cc_piecewise(timepoints = timepoints, variable_x = var_y, variable_y = var_x, changepoint = coupling$coupling_piecewise_num))
+    }
+    
+    
   }
   
-  # Specify true score x predicting change score y ----
-  if (coupling$delta_yx == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, specify_lcs_ct(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
-  }
 
-  # Specify change score y predicting change score x ----
-  if (coupling$xi_xy == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, specify_lcs_cc(timepoints = timepoints, variable_x = var_x, variable_y = var_y))
-  }
-  
-  # Specify change score x predicting change score y ----
-  if (coupling$xi_yx == TRUE){
-    lavaan_bi_coupling <- paste(lavaan_bi_coupling, specify_lcs_cc(timepoints = timepoints, variable_x = var_y, variable_y = var_x))
-  }
   
   # Combine univariate and bivariate models
-  lavaan_bi_model <- paste(model_x_uni_lavaan, model_y_uni_lavaan, resid_covar, lavaan_bi_change, lavaan_bi_coupling, sep = "")
+  lavaan_bi_model <- paste0(model_x_uni_lavaan, model_y_uni_lavaan, resid_covar, lavaan_bi_change, lavaan_bi_coupling)
   
   return(lavaan_bi_model)
 }
