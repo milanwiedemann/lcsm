@@ -1,20 +1,20 @@
-Package: lcsm
+Package: lcstools
 Type: Package
-Title: lcsm: An R package for specifying and analysing latent change score models using lavaan
-Date: 2019-03-04
-Version: 0.0.1.0008
+Title: lcstools: Tools for specifying, analysing, and visualising latent change score models
+Date: 2019-03-25
+Version: 0.0.1.0009
 Authors@R: c(
-  person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X")),
-  person("Anke", "Ehlers", role = c("ctb", "ths"), comment = c(ORCID = "0000-0002-8742-0192"))
+  person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X"))
   )
-Description: Helper functions to define and analyse univariate and bivariate latent change score models (LCSM) using the R package lavaan.
+Description: Helper functions to define and analyse univariate and bivariate latent change score (LCS) models using the R package lavaan.
   The package offers functions to select cases to be used for the analyses based on the number of available data points. 
-  Plotting functions help to visualise longitudunal data as well as simplified path models.
+  Plotting functions help to visualise longitudunal data (ggplot2) as well as simplified path models (semPlot).
   The lavaan syntax that gets created by the package can be extracted for inspection and further manual specifications.
+  Parameters and fit statistics can also be extracted (broom).
 License: GPL-3
 Encoding: UTF-8
-URL: https://github.com/milanwiedemann/lcsm
-BugReports: https://github.com/milanwiedemann/lcsm/issues
+URL: https://github.com/milanwiedemann/lcstools
+BugReports: https://github.com/milanwiedemann/lcstools/issues
 LazyData: true
 Imports:
     lavaan (>= 0.6.2),
