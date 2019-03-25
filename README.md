@@ -1,4 +1,4 @@
-# lcsm: An R package to specify and analyse latent change score models using lavaan
+# lcstools: Tools for specifying, analysing, and visualising latent change score models
 
 [![last-change](https://img.shields.io/badge/Last%20change-2019--03--07-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
