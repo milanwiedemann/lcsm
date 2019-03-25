@@ -27,6 +27,8 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   
+  
+  
   if (nrow(data) < 200) {
     line_alpha <- 0.4
     point_alpha <- 0.4
@@ -45,9 +47,9 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
     ggplot2::theme(text = ggplot2::element_text(size = 12))
   
   if (connect_missing == TRUE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = id_var), colour = line_colour, alpha = line_alpha)
+    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), colour = line_colour, alpha = line_alpha)
     } else if (connect_missing == FALSE) {
-      plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = id_var), colour = line_colour, alpha = line_alpha)
+      plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), colour = line_colour, alpha = line_alpha)
       }
   
   if (title_n == TRUE){
