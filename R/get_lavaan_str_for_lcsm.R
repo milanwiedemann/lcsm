@@ -396,11 +396,11 @@ specify_lcs_ct_piecewise <- function(timepoints, variable_x, variable_y, changep
 specify_lcs_cc_piecewise <- function(timepoints, variable_x, variable_y, changepoint){
   
   # Create title str object for each piece 
-  lavaan_str_1_0 <- paste0("# Specify first piecewise between-construct coupling parameter\n# Changepoint = ", changepoint, ", First piece from change score: t = 1 to t = ", changepoint, "):\n# Change score ", variable_x, " (t) is determined by change score ", variable_y, " (t-1)  \n")
-  lavaan_str_2_0 <- paste0("# Specify first piecewise between-construct coupling parameter\n# Changepoint = ", changepoint, ", Second piece from change score: t = ", changepoint + 1, " to t = ", timepoints, "):\n# Change score ", variable_x, " (t) is determined by change score ", variable_y, " (t-1)  \n")
+  lavaan_str_1_0 <- paste0("# Specify first piecewise between-construct coupling parameter\n# Changepoint = ", changepoint, ", First piece from change score: t = 1to2 to t = ", changepoint - 1, "to", changepoint, "):\n# Change score ", variable_x, " (t) is determined by change score ", variable_y, " (t-1)  \n")
+  lavaan_str_2_0 <- paste0("# Specify first piecewise between-construct coupling parameter\n# Changepoint = ", changepoint, ", Second piece from change score: t = ", changepoint, "to", changepoint + 1, " to t = ", timepoints -1, "to", timepoints, "):\n# Change score ", variable_x, " (t) is determined by change score ", variable_y, " (t-1)  \n")
 
   
-  for (i in 1:(changepoint - 1)) {
+  for (i in 2:(changepoint - 1)) {
     lavaan_str_1_0 <- base::paste(lavaan_str_1_0, "d", variable_x, i + 1, " ~ ", "xi1_", variable_x, variable_y, " * ", "d", variable_y, i, " \n", sep = "")
   }
   
