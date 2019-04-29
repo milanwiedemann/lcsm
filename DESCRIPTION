@@ -1,8 +1,8 @@
 Package: lcstools
 Type: Package
 Title: lcstools: Tools for specifying, analysing, and visualising latent change score models
-Date: 2019-03-25
-Version: 0.0.1.0009
+Date: 2019-04-29
+Version: 0.0.2
 Authors@R: c(
   person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X"))
   )
