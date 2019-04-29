@@ -27,13 +27,6 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   
-  
-  
-  if (nrow(data) < 200) {
-    line_alpha <- 0.4
-    point_alpha <- 0.4
-  }
-  
   data_plot <- data %>% 
     dplyr::select(id_var, var_list) %>%
     tidyr::gather(variable, value, -id_var) %>% 
