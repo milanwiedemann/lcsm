@@ -38,6 +38,8 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 
 \item{coupling}{List of model specifications (logical) for coupling parameters.
 \itemize{
+\item{\code{coupling_piecewise}}{ (Piecewise coupling parameters)},
+\item{\code{coupling_piecewise_num}}{ (Changepoint of piecewise coupling parameters)},
 \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
 \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
 \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},

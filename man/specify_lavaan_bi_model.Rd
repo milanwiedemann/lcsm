@@ -38,10 +38,14 @@ specify_lavaan_bi_model(timepoints, var_x, model_x, var_y, model_y,
 \itemize{
 \item{\code{coupling_piecewise}}{ (Piecewise coupling parameters)},
 \item{\code{coupling_piecewise_num}}{ (Changepoint of piecewise coupling parameters)},
-\item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
-\item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
-\item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
-\item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
+\item{\code{delta_con_xy}}{ (True score y predicting concurrent change score x)},
+\item{\code{delta_lag_xy}}{ (True score y predicting subsequent change score x)},
+\item{\code{delta_con_yx}}{ (True score x predicting concurrent change score y)},
+\item{\code{delta_lag_yx}}{ (True score x predicting subsequent change score y)},
+\item{\code{xi_con_xy}}{ (Change score y predicting concurrent change score x)},
+\item{\code{xi_lag_xy}}{ (Change score y predicting subsequent change score x)},
+\item{\code{xi_con_yx}}{ (Change score x predicting concurrent change score y)},
+\item{\code{xi_lag_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
 
 \item{change_letter_x}{String, specifying letter to be used as change factor for construct x in lavaan syntax.}
