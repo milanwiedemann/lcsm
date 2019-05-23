@@ -1,0 +1,1 @@
+utils::globalVariables(c("model_name", "chisq", "npar", "aic", "bic", "cfi", "rmsea", "srmr", "id", "plot", "variable", "value", "count", "id"))

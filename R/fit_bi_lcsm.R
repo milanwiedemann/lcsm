@@ -33,10 +33,10 @@
 #' }
 #' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}. 
 #' @param name_model_syntax String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.
-#' @param mimic See lavaan, add link here.
-#' @param estimator See lavaan, add link here.
-#' @param missing See lavaan, add link here.
-#' @param ... Additional arguments to be passed to lavaan, add link here.
+#' @param mimic See \link[lavaan]{lavaan}.
+#' @param estimator See \link[lavaan]{lavaan}.
+#' @param missing See \link[lavaan]{lavaan}.
+#' @param ... Additional arguments to be passed to \link[lavaan]{lavaan}.
 #' @return This function returns a lavaan class object.
 #' @export
 
@@ -61,7 +61,7 @@ fit_bi_lcsm <- function(data,
   timepoints <- length(var_x)
   
   # Rename variables ----
-  data_lcsm <- lcsm::rename_lcsm_vars(data = data, 
+  data_lcsm <- rename_lcsm_vars(data = data, 
                          var_x = var_x, 
                          var_y = var_y)
     

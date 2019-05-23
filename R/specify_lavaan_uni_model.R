@@ -130,7 +130,7 @@ if (model$alpha_linear == TRUE){
   lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints, variable, change_letter, 3))
   lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints, variable, change_letter, 3))
   
-  # Specify schange change
+  # Specify change change
   lavaan_uni_model <- paste0(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
   
 }

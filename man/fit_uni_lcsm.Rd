@@ -23,17 +23,17 @@ fit_uni_lcsm(data, var, model, mimic = "Mplus", estimator = "MLR",
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{mimic}{See lavaan, add link here.}
+\item{mimic}{See \link[lavaan]{lavaan}.}
 
-\item{estimator}{See lavaan, add link here.}
+\item{estimator}{See \link[lavaan]{lavaan}.}
 
-\item{missing}{See lavaan, add link here.}
+\item{missing}{See \link[lavaan]{lavaan}.}
 
 \item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}.}
 
 \item{name_model_syntax}{String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.}
 
-\item{...}{Additional arguments to be passed to lavaan, add link here.}
+\item{...}{Additional arguments to be passed to \link[lavaan]{lavaan}.}
 }
 \value{
 This function returns a lavaan class object.
