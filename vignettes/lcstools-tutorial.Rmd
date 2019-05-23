@@ -1,0 +1,31 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+---
+title: "lcstools-tutorial"
+output: rmarkdown::html_vignette
+vignette: >
+ \VignetteIndexEntry{lcstools-tutorial}
+ \VignetteEngine{knitr::rmarkdown}
+ \VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcstools)
+library(lavaan)
+library(dplyr)
+library(stringr)
+library(ggplot2)
+```
+
+
+
