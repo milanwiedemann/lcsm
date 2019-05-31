@@ -1,6 +1,6 @@
-Package: lcstools
+Package: lcsm
 Type: Package
-Title: lcstools: Tools for specifying, analysing, and visualising latent change score models
+Title: Specifying, analysing, and visualising latent change score models
 Date: 2019-05-23
 Version: 0.0.3.9001
 Authors@R: c(
@@ -12,11 +12,11 @@ Description: Helper functions to define and analyse univariate and bivariate lat
   The lavaan syntax that gets created by the package can be extracted for inspection and further manual specifications.
   Parameters and fit statistics can also be extracted (broom).
 Depends: 
-    R (>= 3.5.3)
+    R (>= 3.5.0)
 License: GPL-3
 Encoding: UTF-8
-URL: https://github.com/milanwiedemann/lcstools
-BugReports: https://github.com/milanwiedemann/lcstools/issues
+URL: https://github.com/milanwiedemann/lcsm
+BugReports: https://github.com/milanwiedemann/lcsm/issues
 LazyData: true
 Imports:
     lavaan (>= 0.6.2),
@@ -28,10 +28,11 @@ Imports:
     ggplot2 (>= 2.2.1),
     broom (>= 0.5.1),
     semPlot (>= 1.1),
-    stats (>= 3.5.2)
+    stats (>= 3.5.2),
+    stringr (>= 1.4.0)
 RoxygenNote: 6.1.1
 Suggests: 
     testthat (>= 2.1.0),
-    knitr,
-    rmarkdown
+    knitr (>= 1.22),
+    rmarkdown (>= 1.12)
 VignetteBuilder: knitr
