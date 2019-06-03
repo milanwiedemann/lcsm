@@ -6,8 +6,8 @@
 \usage{
 fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
   mimic = "Mplus", estimator = "MLR", missing = "FIML",
-  export_model_syntax = FALSE,
-  name_model_syntax = "lavaan_model_syntax", ...)
+  return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE,
+  ...)
 }
 \arguments{
 \item{data}{Wide dataset.}
@@ -52,9 +52,9 @@ fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
 
 \item{missing}{See \link[lavaan]{lavaan}.}
 
-\item{export_model_syntax}{Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}.}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
 
-\item{name_model_syntax}{String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.}
+\item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
 
 \item{...}{Additional arguments to be passed to \link[lavaan]{lavaan}.}
 }

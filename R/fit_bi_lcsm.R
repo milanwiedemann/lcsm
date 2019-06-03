@@ -31,8 +31,8 @@
 #' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
-#' @param export_model_syntax Export lavaan model syntax of specified model to global environment as object named 'lavaan_model_syntax'. Name of this object can be specified using \code{name_model_syntax}. 
-#' @param name_model_syntax String, if \code{export_model_syntax} = TRUE, name of object containing lavaan model syntax.
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
+#' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
 #' @param mimic See \link[lavaan]{lavaan}.
 #' @param estimator See \link[lavaan]{lavaan}.
 #' @param missing See \link[lavaan]{lavaan}.
@@ -49,8 +49,8 @@ fit_bi_lcsm <- function(data,
                         mimic = "Mplus",
                         estimator = "MLR",
                         missing = "FIML",
-                        export_model_syntax = FALSE,
-                        name_model_syntax = "lavaan_model_syntax",
+                        return_lavaan_syntax = FALSE,
+                        return_lavaan_syntax_string = FALSE,
                         ...){
 
   # Count timepoints ----
@@ -73,26 +73,37 @@ fit_bi_lcsm <- function(data,
                                       model_y = model_y,  
                                       coupling = coupling)
   
-  
-  # Export model ----
-  if (export_model_syntax == TRUE)
-  assign(name_model_syntax, model_bi, envir = .GlobalEnv)
-  
-  # Fit lcsm using lavaan ----
-  fit_lcsm_bi <- lavaan::lavaan(
-    data = data_lcsm,
-    model = model_bi,
-    meanstructure = TRUE,
-    fixed.x = FALSE,
-    control = list(iter.max = 10000),
-    verbose = FALSE,
-    mimic = mimic,
-    estimator = estimator,
-    missing = missing,
-    ...)
+  # Return ----
+  if (return_lavaan_syntax == FALSE) {
+    
+    # Fit lcsm using lavaan ----
+    fit_lcsm_bi <- lavaan::lavaan(
+      data = data_lcsm,
+      model = model_bi,
+      meanstructure = TRUE,
+      fixed.x = FALSE,
+      control = list(iter.max = 10000),
+      verbose = FALSE,
+      mimic = mimic,
+      estimator = estimator,
+      missing = missing,
+      ...)
+    
+    # Return lavaan object
+    return(fit_lcsm_bi)
+    
+  } else if (return_lavaan_syntax == TRUE)  {
+    
+    if (return_lavaan_syntax_string == TRUE){
+      # Return lavaan syntax string
+      return(model_bi)
+      
+    } else if (return_lavaan_syntax_string == FALSE){
+      # Return lavaan syntax 
+      return(base::cat(model_bi))
+    }
+  }
 
-  # Return lavaan object ----
-  fit_lcsm_bi
 }
   
   
