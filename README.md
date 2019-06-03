@@ -1,31 +1,31 @@
-# lcstools: Tools for specifying, analysing, and visualising latent change score models
+# lcsm: Specifying, analysing, and visualising latent change score models
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--05--02-brightgreen.svg)](https://github.com/milanwiedemann/lcstools)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--06--03-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Travis build status](https://travis-ci.org/milanwiedemann/lcstools.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcstools)
-[![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcstools)
-[![lcstools-version](https://img.shields.io/badge/Version-0.0.3-brightgreen.svg)](https://github.com/milanwiedemann/lcstools) 
+[![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
+[![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+[![lcsm-version](https://img.shields.io/badge/Version-0.0.3-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
 This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/). For details about this method see for example McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 [These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate some of the models that can be specified and analysed using this package.
 
 # Installation
 
-First, you need to install the `devtools` package to download the `lcstools` package from GitHub repository.
+First, you need to install the `devtools` package to download the `lcsm` package from GitHub repository.
 
 ```r
 install.packages("devtools")
 ```
 
-To install the current stable version of the `lcstools` package:
+To install the current stable version of the `lcsm` package:
 
 ```r
-devtools::install_github(repo = "milanwiedemann/lcstools")
+devtools::install_github(repo = "milanwiedemann/lcsm")
 ```
 
 # Overview of the functions
 
-The `lcstools` package contains the following functions that can be categorised into:
+The `lcsm` package contains the following functions that can be categorised into:
 
 1. Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
   - `specify_uni_lcsm()`: write syntax for univariate LCSM
@@ -39,38 +39,39 @@ The `lcstools` package contains the following functions that can be categorised 
   - `extract_fit()`: extract fit statistics
   - `extract_param()`: extract estimated parameters
   
-4. Helper functions:
+4. Simulate data using [lavaan](http://lavaan.ugent.be/):
+  - `sim_uni_lcsm_data()`: Simulate data from a univariate LCS model
+  - `sim_bi_lcsm_data()`: Simulate data from a bivariate LCS model
+  
+5. Helper functions:
   - `plot_lcsm()`: visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
   - `select_uni_cases()`: select cases for analysis based on available scores on one construct
   - `select_bi_cases()`: select cases for analysis based on available scores on two construct
 
-# Overview of some models that can be specified
 
-## Univariate latent change score models
+# Overview of parameters
 
-This slide illustrates a univariate dual change score model. 
-More illustrations can be found [here](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing).
-![](tools/images/r-lcsm-uni.gif)
+## Univariate LCS models
 
-# Overview of estimated parameters
-
-Depending on the specified model, the following parameters can be estimated for **univariate** latent change score models: 
+Depending on the specified model, the following parameters can be estimated for **univariate** LCS models: 
 
 |Parameter   |Description                                                             |
 |:-----------|:-----------------------------------------------------------------------|
-|gamma_lx1   |Mean of latent true scores x                                            |
+|gamma_lx1   |Mean of latent true scores x (Intercept)                                |
 |sigma2_lx1  |Variance of latent true scores x                                        |
 |sigma2_ux   |Variance of observed scores x                                           |
-|alpha_g2    |Mean of constant change factor (g2)                                     |
-|alpha_g3    |Mean of constant change factor (g3)                                     |
-|sigma2_g2   |Variance of constant change factor (g2)                                 |
-|sigma2_g3   |Variance of constant change factor (g3)                                 |
-|sigma_g2lx1 |Covariance of constant change factor (g2) with the initial true score x |
-|sigma_g3lx1 |Covariance of constant change factor (g3) with the initial true score x |
+|alpha_g2    |Mean of change factor (g2)                                              |
+|alpha_g3    |Mean of change factor (g3)                                              |
+|sigma2_g2   |Variance of change factor (g2)                                          |
+|sigma2_g3   |Variance of change factor (g3)                                          |
+|sigma_g2lx1 |Covariance of change factor (g2) with the initial true score x          |
+|sigma_g3lx1 |Covariance of change factor (g3) with the initial true score x          |
 |sigma_g2g3  |Covariance of change factors within construct x                         |
 |phi_x       |Autoregression of change scores x                                       |
 
-For bivariate latent change score models, estimated parameters can be categorised into (1) **Construct X**, (2) **Construct Y**, and (3) **Coupeling between X and Y**.
+## Bivariate LCS models
+
+For bivariate LCS models, estimated parameters can be categorised into (1) **Construct X**, (2) **Construct Y**, and (3) **Coupeling between X and Y**.
 
 |Parameter    |Description                                                             |
 |:------------|:-----------------------------------------------------------------------|
@@ -78,37 +79,48 @@ For bivariate latent change score models, estimated parameters can be categorise
 |gamma_lx1    |Mean of latent true scores x (Intercept)                                |
 |sigma2_lx1   |Variance of latent true scores x                                        |
 |sigma2_ux    |Variance of observed scores x                                           |
-|alpha_g2     |Mean of constant change factor (g2)                                     |
-|alpha_g3     |Mean of constant change factor (g3)                                     |
-|sigma2_g2    |Variance of constant change factor (g2)                                 |
-|sigma2_g3    |Variance of constant change factor (g3)                                 |
-|sigma_g2lx1  |Covariance of constant change factor (g2) with the initial true score x |
-|sigma_g3lx1  |Covariance of constant change factor (g3) with the initial true score x |
+|alpha_g2     |Mean of change factor (g2)                                              |
+|alpha_g3     |Mean of change factor (g3)                                              |
+|sigma2_g2    |Variance of change factor (g2)                                          |
+|sigma2_g3    |Variance of change factor (g3)                                          |
+|sigma_g2lx1  |Covariance of change factor (g2) with the initial true score x (lx1)    |
+|sigma_g3lx1  |Covariance of change factor (g3) with the initial true score x (lx1)    |
 |sigma_g2g3   |Covariance of change factors within construct x                         |
 |phi_x        |Autoregression of change scores x                                       |
 |**Construct Y**                                                                       |
 |gamma_ly1    |Mean of latent true scores y (Intercept)                                |
 |sigma2_ly1   |Variance of latent true scores y                                        |
 |sigma2_uy    |Variance of observed scores y                                           |
-|alpha_j2     |Mean of constant change factor (j2)                                     |
-|alpha_j3     |Mean of constant change factor (j3)                                     |
-|sigma2_j2    |Variance of constant change factor (j2)                                 |
-|sigma2_j3    |Variance of constant change factor (j3)                                 |
-|sigma_j2ly1  |Covariance of constant change factor (j2) with the initial true score y |
-|sigma_j3ly1  |Covariance of constant change factor (j3) with the initial true score y |
+|alpha_j2     |Mean of change factor (j2)                                              |
+|alpha_j3     |Mean of change factor (j3)                                              |
+|sigma2_j2    |Variance of change factor (j2)                                          |
+|sigma2_j3    |Variance of change factor (j3)                                          |
+|sigma_j2ly1  |Covariance of change factor (j2) with the initial true score y (ly1)    |
+|sigma_j3ly1  |Covariance of change factor (j3) with the initial true score y (ly1)    |
 |sigma_j2j3   |Covariance of change factors within construct y                         |
 |phi_y        |Autoregression of change scores y                                       |
 |**Coupeling X & Y**                                                                   |
 |sigma_su     |Covariance of residuals x and y                                         |
 |sigma_ly1lx1 |Covariance of intercepts x and y                                        |
-|delta_xy     |Change score x (t) determined by true score y (t-1)                     |
-|delta_yx     |Change score y (t) determined by true score x (t-1)                     |
-|xi_xy        |Change score x (t) determined by change score y (t-1)                   |
-|xi_yx        |Change score y (t) determined by change score x (t-1)                   |
+|sigma_g2ly1  |Covariance of change factor x (g2) with the initial true score y (ly1)  |
+|sigma_g3ly1  |Covariance of change factor x (g3) with the initial true score y (ly1)  |
+|sigma_j2lx1  |Covariance of change factor y (j2) with the initial true score x (lx1)  |
+|sigma_j3lx1  |Covariance of change factor y (j3) with the initial true score x (lx1)  |
+|sigma_j2g2   |Covariance of change factors y (j2) and x (g2)                          |
+|sigma_j2g3   | Covariance of change factors y (j2) and x (g3)                         |
+|sigma_j3g2   |Covariance of change factors y (j3) and x (g2)                          |
+|delta_con_xy |Change score x (t) determined by true score y (t)                       |
+|delta_con_yx |Change score y (t) determined by true score x (t)                       |
+|delta_lag_xy |Change score x (t) determined by true score y (t-1)                     |
+|delta_lag_yx |Change score y (t) determined by true score x (t-1)                     |
+|xi_con_xy    |Change score x (t) determined by change score y (t)                     |
+|xi_con_yx    |Change score y (t) determined by change score x (t)                     |
+|xi_lag_xy    |Change score x (t) determined by change score y (t-1)                   |
+|xi_lag_yx    |Change score y (t) determined by change score x (t-1)                   |
 
-# How to use `lcstools`
+# How to use `lcsm`
 
-Here are a few examples how to use the `lcstools` package.
+Here are a few examples how to use the `lcsm` package.
 
 ```r
 # Load packages ----
@@ -116,14 +128,14 @@ library(tidyverse)
 library(lavaan)
 library(broom)
 library(semPlot)
-library(lcstools) 
+library(lcsm) 
 
 # Load data ----
 
 data <- read_csv("~/ENTER/PATH/TO/DATA.csv")
 ```
 
-## Visualise data
+## 1. Visualise data
 
 The package has a function to create longitudinal plots of the measures.
 
@@ -138,7 +150,9 @@ plot_trajectories(data = data,
                   xlab = "Time", ylab = "Score")
 ```
 
-## Fit univariate and bivariate lcsm
+## 2. Fit LCS models
+
+### 2.1. Fit univariate LCS models
 
 The functions `fit_uni_lcsm()` and `fit_bi_lcsm()` can be used to specify and analyse a number of latent difference score models.
 It is also possible to extract the lavaan syntax that was specified and used to fit the model.
@@ -155,14 +169,22 @@ The following table descibes the different model specifications that the `model`
 |beta                |Proportional change factor                                      |
 |phi                 |Autoregression of change scores                                 |
 
+### 2.2. Fit bivariate LCS models
+
 To estimate coupling parameters for bivariate LCSM, the argument `coupling` from the `fit_bi_lcsm()` function can take the following specifications:
 
-|Coupling specification  |Description                                                    |
-|:-----------|:-----------------------------------------------------------------------|
-|delta_xy  |Change score x (t) is determined by true score y  (t-1)       |
-|delta_yx  |Change score y (t) is determined by true score x  (t-1)  |
-|xi_xy     |Change score x (t) is determined by change score y  (t-1)  |
-|xi_yx     |Change score y (t) is determined by change score x  (t-1)   |
+|Coupling specification |Description                                            |
+|:----------------------|:------------------------------------------------------|
+|coupling_piecewise     |Piecewise coupling parameters                          |
+|coupling_piecewise_num |Changepoint of piecewise coupling parameters           |
+|delta_con_xy           |Change score x (t) determined by true score y (t)      |
+|delta_con_yx           |Change score y (t) determined by true score x (t)      |
+|delta_lag_xy           |Change score x (t) determined by true score y (t-1)    |
+|delta_lag_yx           |Change score y (t) determined by true score x (t-1)    |
+|xi_con_xy              |Change score x (t) determined by change score y (t)    |
+|xi_con_yx              |Change score y (t) determined by change score x (t)    |
+|xi_lag_xy              |Change score x (t) determined by change score y (t-1)  |
+|xi_lag_yx              |Change score y (t) determined by change score x (t-1)  |
 
 
 ```r
@@ -202,7 +224,7 @@ cat(uni_lcsm_01)
 cat(bi_lcsm_01)
 ```
 
-## Extract fit statistics and parmeters
+## 3. Extract fit statistics and parmeters
 
 ```r
 # Extract fit statistics ----
@@ -217,7 +239,7 @@ extract_fit(# Specify which lavaan objects to extract fit from
 extract_param(fit_uni_lcsm_01)
 ```
 
-## Plot simplified path diagrams of lcsm
+## 4. Plot simplified path diagrams of lcsm
 
 ```r
 # First, a layout matrix has to be defined manually
@@ -256,3 +278,5 @@ plot_lcsm(lavaan_object = fit_uni_lcsm_01,
 plot_lcsm(lavaan_object = fit_bi_lcsm_01, 
           layout = layout_bi_lcsm)
 ```
+
+## 5. Simulate data
