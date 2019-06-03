@@ -1,7 +1,8 @@
 #' Extract fit statistics of lavaan objects
 #'
-#' @param lavaan_object Lavaan object(s). To extract fit from multiple lavaan objects use c().
-#' @param details Show detailed fit information.
+#' @param lavaan_object Vector, lavaan object(s)
+#' @param details Logical, if TRUE return all fit statistics.
+#' By default this is set to FALSE, a selection (chisq, npar, aic, bic, cfi, rmsea, srmr) of fit statistics is returned.
 
 #' @return This function returns a tibble.
 #' @export

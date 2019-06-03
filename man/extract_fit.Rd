@@ -7,9 +7,10 @@
 extract_fit(lavaan_object, details = FALSE)
 }
 \arguments{
-\item{lavaan_object}{Lavaan object(s). To extract fit from multiple lavaan objects use c().}
+\item{lavaan_object}{Vector, lavaan object(s)}
 
-\item{details}{Show detailed fit information.}
+\item{details}{Logical, if TRUE return all fit statistics.
+By default this is set to FALSE, a selection (chisq, npar, aic, bic, cfi, rmsea, srmr) of fit statistics is returned.}
 }
 \value{
 This function returns a tibble.

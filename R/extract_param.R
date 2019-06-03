@@ -1,7 +1,8 @@
 #' Extract labeled parameters of lavaan objects
 #'
 #' @param lavaan_object Lavaan object.
-#' @param printp If TRUE convert into easily readable p-values, not working at the moment.
+#' @param printp If TRUE convert into easily readable p-values.
+#' At the moment this function is deactivated, a warning message will be returned.
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
@@ -32,7 +33,7 @@ extract_param <- function(lavaan_object, printp = FALSE){
     # return(table4)
     
     # for now also return table 3
-    message("Sorry, the printp argument is not supported at the moment.\nThis returns the same object as using 'printp = FALSE' in the arguments.")
+    message("Sorry, the 'printp' argument is not supported at the moment.\nThis returns the same object as using 'printp = FALSE'.")
     return(table3)
   }
   
