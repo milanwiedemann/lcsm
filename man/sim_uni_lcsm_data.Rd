@@ -4,25 +4,43 @@
 \alias{sim_uni_lcsm_data}
 \title{Simulate data from a univariate latent change score model}
 \usage{
-sim_uni_lcsm_data(timepoints, model, var = "x", change_letter = "j",
-  sample.nobs = 500, ..., return_lavaan_syntax = FALSE,
-  return_lavaan_syntax_string = FALSE, lavaan_uni_model = NULL,
-  uni_model_param = NULL)
+sim_uni_lcsm_data(timepoints, model, model_param = NULL, var = "x",
+  change_letter = "j", sample.nobs = 500, na_pct = 0, ...,
+  return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE)
 }
 \arguments{
 \item{timepoints}{See \link[lcstools]{specify_lavaan_uni_model}}
 
 \item{model}{See \link[lcstools]{specify_lavaan_uni_model}}
 
+\item{model_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
+\itemize{
+\item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
+\item{\strong{\code{sigma2_lx1}}}: Variance of latent true scores x,
+\item{\strong{\code{sigma2_ux}}}: Variance of observed scores x,
+\item{\strong{\code{alpha_g2}}}: Mean of change factor (g2),
+\item{\strong{\code{alpha_g3}}}: Mean of change factor (g3),
+\item{\strong{\code{sigma2_g2}}}: Variance of constant change factor (g2).
+\item{\strong{\code{sigma2_g3}}}: Variance of constant change factor (g3),
+\item{\strong{\code{sigma_g2lx1}}}: Covariance of constant change factor (g2) with the initial true score x (lx1),
+\item{\strong{\code{sigma_g3lx1}}}: Covariance of constant change factor (g3) with the initial true score x (lx1),
+\item{\strong{\code{sigma_g2g3}}}: Covariance of change factors (g2 and g2),
+\item{\strong{\code{phi_x}}}: Autoregression of change scores x.
+}}
+
 \item{var}{See \link[lcstools]{specify_lavaan_uni_model}}
 
 \item{change_letter}{See \link[lcstools]{specify_lavaan_uni_model}}
 
+\item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcstools]{specify_lavaan_uni_model}}
+
+\item{na_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
+
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
-\item{lavaan_uni_model}{String, lavaan model syntax with "labals" for parameters}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
 
-\item{uni_model_param}{Placeholder, this might become an option where to scpecify parameter estimates}
+\item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
 }
 \description{
 Simulate data from a univariate latent change score model
