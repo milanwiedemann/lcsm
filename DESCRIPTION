@@ -1,8 +1,8 @@
 Package: lcsm
 Type: Package
 Title: Specifying, analysing, and visualising latent change score models
-Date: 2019-05-23
-Version: 0.0.3.9001
+Date: 2019-06-03
+Version: 0.0.4.9001
 Authors@R: c(
   person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X"))
   )
@@ -11,6 +11,7 @@ Description: Helper functions to define and analyse univariate and bivariate lat
   Plotting functions help to visualise longitudunal data (ggplot2) as well as simplified path models (semPlot).
   The lavaan syntax that gets created by the package can be extracted for inspection and further manual specifications.
   Parameters and fit statistics can also be extracted (broom).
+  Data for specifiv LCS models can be simulated by specifying estimates for parameters.
 Depends: 
     R (>= 3.5.0)
 License: GPL-3
