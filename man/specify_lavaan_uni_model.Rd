@@ -4,7 +4,7 @@
 \alias{specify_lavaan_uni_model}
 \title{Specify lavaan model for univariate latent change score models}
 \usage{
-specify_lavaan_uni_model(timepoints, model, variable, change_letter)
+specify_lavaan_uni_model(timepoints, model, var, change_letter)
 }
 \arguments{
 \item{timepoints}{Number if timepoints.}
@@ -19,7 +19,7 @@ specify_lavaan_uni_model(timepoints, model, variable, change_letter)
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
 
-\item{variable}{String, specifying letter to be used for of variables (Usually x or y).}
+\item{var}{String, specifying letter to be used for of variables (Usually x or y).}
 
 \item{change_letter}{String, specifying letter to be used for change factor (Usually g or j).}
 }
