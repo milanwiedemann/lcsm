@@ -74,7 +74,7 @@ Depending on the specified model, the following parameters can be estimated for 
 For bivariate LCS models, estimated parameters can be categorised into (1) **Construct X**, (2) **Construct Y**, and (3) **Coupeling between X and Y**.
 
 |Parameter    |Description                                                             |
-|:------------|:-----------------------------------------------------------------------|
+|------------|:-----------------------------------------------------------------------|
 |**Construct X**                                                                       |
 |  gamma_lx1    |Mean of latent true scores x (Intercept)                                |
 |  sigma2_lx1   |Variance of latent true scores x                                        |
