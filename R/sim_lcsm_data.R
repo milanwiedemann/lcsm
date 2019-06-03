@@ -334,50 +334,50 @@ sim_bi_lcsm_data <- function(timepoints,
   
   # Add missing values
   
-  # Get list with variable names for each constrct
-  var_names_x <- names(sim_data_model_ids)[2:timepoints + 1]
+  # # Get list with variable names for each constrct
+  var_names_x <- names(sim_data_model_ids)[2:(timepoints + 1)]
   var_names_y <- names(sim_data_model_ids)[(timepoints + 2):length(names(sim_data_model_ids))]
-  
+
   # Select data for each construct
   # Introduce NAs seperately for each construcht
-  
+
   # x ----
-  sim_data_x_model_ids <- sim_data_model_ids %>% 
+  sim_data_x_model_ids <- sim_data_model_ids %>%
     dplyr::select(id, var_names_x)
-  
+
   sim_data_x_model_ids_nas <- sim_data_x_model_ids %>%
     tidyr::gather(vars, value, -id) %>%
-    dplyr::mutate(vars = base::factor(vars, levels = var_names_x)) %>% 
-    dplyr::mutate(random_num = runif(nrow(.)),   
+    dplyr::mutate(vars = base::factor(vars, levels = var_names_x)) %>%
+    dplyr::mutate(random_num = runif(nrow(.)),
                   value = base::ifelse(vars %in% var_names_x & random_num <= na_x_pct, NA, value)) %>%
     dplyr::select(-random_num) %>%
-    tidyr::spread(vars, value) 
-  
+    tidyr::spread(vars, value)
+
   # y ----
-  sim_data_y_model_ids <- sim_data_model_ids %>% 
+  sim_data_y_model_ids <- sim_data_model_ids %>%
     dplyr::select(id, var_names_y)
-  
+
   sim_data_y_model_ids_nas <- sim_data_y_model_ids %>%
     tidyr::gather(vars, value, -id) %>%
-    dplyr::mutate(vars = base::factor(vars, levels = var_names_y)) %>% 
-    dplyr::mutate(random_num = runif(nrow(.)),   
+    dplyr::mutate(vars = base::factor(vars, levels = var_names_y)) %>%
+    dplyr::mutate(random_num = runif(nrow(.)),
                   value = base::ifelse(vars %in% var_names_y & random_num <= na_y_pct, NA, value)) %>%
     dplyr::select(-random_num) %>%
-    tidyr::spread(vars, value) 
-  
-  # Join x and y data
-  
-  sim_data_xy_model_ids_nas <- sim_data_x_model_ids_nas %>% 
-    dplyr::left_join(sim_data_y_model_ids_nas, by = "id")
-  
+    tidyr::spread(vars, value)
 
-  
-  # 7. Return 
+  # Join x and y data
+
+  sim_data_xy_model_ids_nas <- sim_data_x_model_ids_nas %>%
+    dplyr::left_join(sim_data_y_model_ids_nas, by = "id")
+
+
+
+  # 7. Return
   if (return_lavaan_syntax == FALSE){
     # Return simulated data
     return(sim_data_xy_model_ids_nas)
   } else if (return_lavaan_syntax == TRUE){
-    
+
     if (return_lavaan_syntax_string == TRUE){
       return(model_estimates)
     } else if (return_lavaan_syntax_string == FALSE){
