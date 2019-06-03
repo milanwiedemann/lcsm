@@ -40,7 +40,6 @@
 #' @return Lavaan model syntax including comments.
 #' @export 
 #' 
-
 specify_lavaan_bi_model <- function(timepoints,
                                     var_x,
                                     model_x,
@@ -96,10 +95,16 @@ specify_lavaan_bi_model <- function(timepoints,
 
   
   model_x_uni_lavaan <- "# Specify parameters for construct x ----\n"
-  model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, model = model_x, variable = var_x, change_letter = change_letter_x))
+  model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, 
+                                                                            model = model_x, 
+                                                                            var = var_x, 
+                                                                            change_letter = change_letter_x))
   
   model_y_uni_lavaan <- "# Specify parameters for construct y ----\n"
-  model_y_uni_lavaan <- paste0(model_y_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, model = model_y, variable = var_y, change_letter = change_letter_y))
+  model_y_uni_lavaan <- paste0(model_y_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, 
+                                                                            model = model_y, 
+                                                                            var = var_y, 
+                                                                            change_letter = change_letter_y))
 
   # Specify residual covariance to be equal across time  ----
   resid_covar <- ""  
