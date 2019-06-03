@@ -76,17 +76,17 @@ For bivariate LCS models, estimated parameters can be categorised into (1) **Con
 |Parameter    |Description                                                             |
 |:------------|:-----------------------------------------------------------------------|
 |**Construct X**                                                                       |
-|gamma_lx1    |Mean of latent true scores x (Intercept)                                |
-|sigma2_lx1   |Variance of latent true scores x                                        |
-|sigma2_ux    |Variance of observed scores x                                           |
-|alpha_g2     |Mean of change factor (g2)                                              |
-|alpha_g3     |Mean of change factor (g3)                                              |
-|sigma2_g2    |Variance of change factor (g2)                                          |
-|sigma2_g3    |Variance of change factor (g3)                                          |
-|sigma_g2lx1  |Covariance of change factor (g2) with the initial true score x (lx1)    |
-|sigma_g3lx1  |Covariance of change factor (g3) with the initial true score x (lx1)    |
-|sigma_g2g3   |Covariance of change factors within construct x                         |
-|phi_x        |Autoregression of change scores x                                       |
+|  gamma_lx1    |Mean of latent true scores x (Intercept)                                |
+|  sigma2_lx1   |Variance of latent true scores x                                        |
+|  sigma2_ux    |Variance of observed scores x                                           |
+|  alpha_g2     |Mean of change factor (g2)                                              |
+|  alpha_g3     |Mean of change factor (g3)                                              |
+|  sigma2_g2    |Variance of change factor (g2)                                          |
+|  sigma2_g3    |Variance of change factor (g3)                                          |
+|  sigma_g2lx1  |Covariance of change factor (g2) with the initial true score x (lx1)    |
+|  sigma_g3lx1  |Covariance of change factor (g3) with the initial true score x (lx1)    |
+|  sigma_g2g3   |Covariance of change factors within construct x                         |
+|  phi_x        |Autoregression of change scores x                                       |
 |**Construct Y**                                                                       |
 |gamma_ly1    |Mean of latent true scores y (Intercept)                                |
 |sigma2_ly1   |Variance of latent true scores y                                        |
