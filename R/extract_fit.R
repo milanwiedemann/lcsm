@@ -6,6 +6,7 @@
 
 #' @return This function returns a tibble.
 #' @export
+#' @examples
 
 extract_fit <- function(lavaan_object, details = FALSE) {
   

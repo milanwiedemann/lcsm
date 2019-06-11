@@ -6,6 +6,7 @@
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
+#' @examples
 
 extract_param <- function(lavaan_object, printp = FALSE){
   # Get tidy output tibble from lavaan fit object
