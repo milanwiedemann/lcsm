@@ -1,7 +1,10 @@
 #' Plot latent change score model path diagram
 #'
-#' @param lavaan_object lavaan object.
-#' @param layout Matrix specifying location of manifest and latent variables. 
+#' @param lavaan_object Lavaan object of univariate or bivariate LCS model.
+#' @param lavaan_syntax String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
+#' If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.
+#' @param layout Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.
+#' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.
 #' @param what See \code{semPlot}.
 #' @param whatLabels see \code{semPlot}.
 #' @param edge.width see \code{semPlot}.
@@ -28,6 +31,7 @@
 plot_lcsm <- function(lavaan_object,
                       layout = NULL,
                       lavaan_syntax = NULL,
+                      return_layout_from_lavaan_syntax = FALSE,
                       lcsm = c("univariate", "bivariate"),
                       curve_covar = .5,
                       what = "col",
@@ -169,31 +173,31 @@ plot_lcsm <- function(lavaan_object,
       
     }
     
+    if (return_layout_from_lavaan_syntax == TRUE){
+      return(layout_from_lavaan_syntax)
+    } else if (return_layout_from_lavaan_syntax == FALSE) {
+      graph <- semPlot::semPaths(
+        object = lavaan_object,
+        layout = layout_from_lavaan_syntax,
+        what = what,
+        whatLabels = whatLabels,
+        edge.width = edge.width,
+        node.width = node.width,
+        border.width = border.width,
+        fixedStyle = fixedStyle,
+        freeStyle = freeStyle,
+        residuals = residuals,
+        label.scale = label.scale,
+        sizeMan = sizeMan,
+        sizeLat = sizeLat,
+        intercepts = intercepts,
+        fade = fade,
+        nCharNodes = 0,
+        nCharEdges = 0,
+        DoNotPlot = TRUE,
+        ...)
+    }
     
-    
-    graph <- semPlot::semPaths(
-      object = lavaan_object,
-      layout = layout_from_lavaan_syntax,
-      what = what,
-      whatLabels = whatLabels,
-      edge.width = edge.width,
-      node.width = node.width,
-      border.width = border.width,
-      fixedStyle = fixedStyle,
-      freeStyle = freeStyle,
-      residuals = residuals,
-      label.scale = label.scale,
-      sizeMan = sizeMan,
-      sizeLat = sizeLat,
-      intercepts = intercepts,
-      fade = fade,
-      nCharNodes = 0,
-      nCharEdges = 0,
-      DoNotPlot = TRUE,
-      ...)
-    
-
-    # 
   } else if (is.null(layout) == FALSE) {
     
     graph <- semPlot::semPaths(
