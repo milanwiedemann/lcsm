@@ -1,5 +1,159 @@
-#' Specify lavaan model for bivariate latent change score models
+#' Specify lavaan model for univariate latent change score models
+#' @description TODO: Describe function
+#' @param timepoints Number if timepoints.
+#' @param model List of model specifications (logical) for the variables specified in \code{variable}.
+#' \itemize{
+#' \item{\code{alpha_constant}: Constant change factor},
+#' \item{\code{alpha_piecewise}: Piecewise constant change factors},
+#' \item{\code{alpha_piecewise_num}: Changepoint of piecewise constant change factors},
+#' \item{\code{alpha_linear}: Linear change factor},
+#' \item{\code{beta}: Proportional change factor},
+#' \item{\code{phi}: Autoregression of change scores}.
+#' }
+#' @param var String, specifying letter to be used for of variables (Usually x or y).
+#' @param change_letter String, specifying letter to be used for change factor (Usually g or j).
 #'
+#' @return Lavaan model syntax including comments.
+#' @export 
+#' @examples
+
+specify_lavaan_uni_model <- function(timepoints, model, var, change_letter) {
+  
+  # Code parameters in model that are not defined as FALSE
+  if (is.null(model$alpha_constant) == TRUE) {
+    model$alpha_constant <- FALSE
+  }
+  
+  if (is.null(model$beta) == TRUE) {
+    model$beta <- FALSE
+  }
+  
+  if (is.null(model$alpha_piecewise) == TRUE) {
+    model$alpha_piecewise <- FALSE
+  }
+  
+  if (is.null(model$alpha_piecewise_num) == TRUE) {
+    model$alpha_piecewise_num <- FALSE
+  }
+  
+  if (is.null(model$alpha_linear) == TRUE) {
+    model$alpha_linear <- FALSE
+  }
+  
+  if (is.null(model$phi) == TRUE) {
+    model$phi <- FALSE
+  }
+  
+  # Return error message when both constant change and piecewise constant change are defined
+  if (model$alpha_constant == TRUE & model$alpha_piecewise == TRUE){
+    stop("Choose only one constant change method.")
+  }
+  
+  # Return error message when both constant change and linear change are defined
+  if (model$alpha_constant == TRUE & model$alpha_linear == TRUE){
+    stop("Constant change is automatically added to model when linear change is selected. Set alpha_linear to TRUE and alpha_constant to FALSE to model both.")
+  }
+  
+  # Define empty str object 
+  lavaan_uni_model <- ''
+  
+  # Specify no change by default ----
+  # Specify latent true scores
+  lavaan_uni_model <- specify_lts(timepoints = timepoints, variable = var)
+  
+  # Specify means of latent true scores
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lts_mean(timepoints = timepoints, variable = var))
+  
+  # Specify variances of latent true scores
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lts_var(timepoints = timepoints, variable = var))
+  
+  # Specify observed intercepts
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_os_int(timepoints = timepoints, variable = var))
+  
+  # Specify observed residual variances
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_os_resid(timepoints = timepoints, variable = var)) 
+  
+  # Specify latent true score autoregressions
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lts_autoreg(timepoints = timepoints, variable = var))
+  
+  # Specify latent change scores
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lcs(timepoints = timepoints, variable = var))
+  
+  # Specify latent change score means
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lcs_mean(timepoints = timepoints, variable = var))
+  
+  # Specify latent change score variances
+  lavaan_uni_model <- paste0(lavaan_uni_model, specify_lcs_var(timepoints = timepoints, variable = var))
+  
+  # Specify constant change ----
+  if (model$alpha_constant == TRUE){
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change(timepoints = timepoints, variable = var, change_letter))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_mean(timepoints = timepoints, variable = var, change_letter, 2))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints = timepoints, variable = var, change_letter, 2))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints = timepoints, variable = var, change_letter, 2))
+  }
+  
+  # Specify piecewise constant change ----
+  if (model$alpha_piecewise == TRUE){
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_piecewise(timepoints = timepoints, variable = var, change_letter, model$alpha_piecewise_num))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_mean(timepoints = timepoints, variable = var, change_letter, 2))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_mean(timepoints = timepoints, variable = var, change_letter, 3))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints = timepoints, variable = var, change_letter, 2))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints = timepoints, variable = var, change_letter, 3))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints = timepoints, variable = var, change_letter, 2))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints = timepoints, variable = var, change_letter, 3))
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  }
+  
+  # Specify linear change ----
+  if (model$alpha_linear == TRUE){
+    
+    # Specify constant change
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change(timepoints = timepoints, variable = var, change_letter))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_mean(timepoints = timepoints, variable = var, change_letter, 2))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints = timepoints, variable = var, change_letter, 2))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints = timepoints, variable = var, change_letter, 2))
+    
+    # Specify linear change
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_linear_change(timepoints = timepoints, variable = var, change_letter))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_mean(timepoints = timepoints, variable = var, change_letter, 3))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_var(timepoints = timepoints, variable = var, change_letter, 3))
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_constant_change_covar_initial_ts(timepoints = timepoints, variable = var, change_letter, 3))
+    
+    # Specify change change
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  }
+  
+  # Specify covar between constant change and linear change ----
+  if (model$alpha_constant == TRUE & model$alpha_linear == TRUE){
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_uni_change_covar(change_letter, 2, change_letter, 3))
+  }
+  
+  # Specify proportional change ----
+  if (model$beta == TRUE){
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_proportional_effect(timepoints = timepoints, variable = var))
+  }
+  
+  # Specify autoregressive change scores ----
+  if (model$phi == TRUE){
+    
+    lavaan_uni_model <- paste0(lavaan_uni_model, specify_lcs_autoreg(timepoints = timepoints, variable = var))
+  }
+  return(lavaan_uni_model)
+}
+
+#' Specify lavaan model for bivariate latent change score models
+#' @description TODO: Describe function
 #' @param timepoints Number of timepoints.
 #' @param var_x Vector, specifying variables measuring one construct of the model.
 #' @param var_y Vector, specifying variables measuring another construct of the model.
@@ -39,6 +193,7 @@
 #'
 #' @return Lavaan model syntax including comments.
 #' @export 
+#' @examples
 #' 
 specify_lavaan_bi_model <- function(timepoints,
                                     var_x,
@@ -48,7 +203,7 @@ specify_lavaan_bi_model <- function(timepoints,
                                     coupling,
                                     change_letter_x = "g",
                                     change_letter_y = "j"
-                                    ) {
+) {
   
   # Code coupling parameters that are not defined as FALSE
   # Concurrent change (con)
@@ -92,7 +247,7 @@ specify_lavaan_bi_model <- function(timepoints,
   if (is.null(coupling$coupling_piecewise_num) == TRUE) {
     coupling$coupling_piecewise_num <- FALSE
   }
-
+  
   
   model_x_uni_lavaan <- "# Specify parameters for construct x ----\n"
   model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, 
@@ -105,7 +260,7 @@ specify_lavaan_bi_model <- function(timepoints,
                                                                             model = model_y, 
                                                                             var = var_y, 
                                                                             change_letter = change_letter_y))
-
+  
   # Specify residual covariance to be equal across time  ----
   resid_covar <- ""  
   resid_covar <- specify_resid_covar(timepoints = timepoints, variable_x = var_x, variable_y = var_y)
@@ -115,7 +270,7 @@ specify_lavaan_bi_model <- function(timepoints,
   
   # Specify covariances between intercepts
   lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_covar(var_x, var_y))
- 
+  
   # Specify covariances between constant change factors
   if (model_x$alpha_constant == TRUE){
     lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_x, variable = var_y))
@@ -224,4 +379,3 @@ specify_lavaan_bi_model <- function(timepoints,
   
   return(lavaan_bi_model)
 }
-
