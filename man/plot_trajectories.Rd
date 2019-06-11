@@ -26,9 +26,9 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 
 \item{point_alpha}{Numeric, specifying alpha of points.}
 
-\item{smooth}{Logical, add line of average using method = \code{smooth_method}.}
+\item{smooth}{Logical, add moothed conditional means using \link[ggplot2]{geom_smooth}.}
 
-\item{smooth_method}{String, specifying method to be used for calculating average line, see  \code{ggplot2}.}
+\item{smooth_method}{String, specifying method to be used for calculating average line, see \link[ggplot2]{geom_smooth}.}
 
 \item{smooth_se}{Locical, specifying whether to add standard error of average line or not.}
 
@@ -38,7 +38,7 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 
 \item{scale_x_num}{Logical, if \code{TRUE} print sequential numbers starting from 1 as x axis labels, if \code{FALSE} use variable names.}
 
-\item{scale_x_num_start}{Numeric, if \code{scale_x_num == TRUE} this is the starting value of the x axis.}
+\item{scale_x_num_start}{Numeric, if \code{scale_x_num = TRUE} this is the starting value of the x axis.}
 
 \item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.}
 
@@ -50,5 +50,5 @@ plot_trajectories(data, id_var, var_list, line_colour = "blue",
 ggplot2 object
 }
 \description{
-Plot individual trajectories
+TODO: Describe function
 }

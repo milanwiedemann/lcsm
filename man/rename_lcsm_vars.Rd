@@ -2,7 +2,7 @@
 % Please edit documentation in R/rename_vars.R
 \name{rename_lcsm_vars}
 \alias{rename_lcsm_vars}
-\title{Rename variables for univariate and bivariate models}
+\title{Rename variables for univariate and bivariate latent change score odels}
 \usage{
 rename_lcsm_vars(data, var_x, var_y)
 }
@@ -17,5 +17,5 @@ rename_lcsm_vars(data, var_x, var_y)
 Dataframe in wide format with renamed variables
 }
 \description{
-Rename variables for univariate and bivariate models
+Rename variables for univariate and bivariate latent change score odels
 }

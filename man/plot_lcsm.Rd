@@ -2,62 +2,67 @@
 % Please edit documentation in R/plot_lcsm.R
 \name{plot_lcsm}
 \alias{plot_lcsm}
-\title{Plot latent change score model path diagram}
+\title{Plot simplified path diagram of univariate and bivariate latent change score models}
 \usage{
-plot_lcsm(lavaan_object, layout = NULL, lcsm = c("univariate",
+plot_lcsm(lavaan_object, layout = NULL, lavaan_syntax = NULL,
+  return_layout_from_lavaan_syntax = FALSE, lcsm = c("univariate",
   "bivariate"), curve_covar = 0.5, what = "col", whatLabels = "est",
   edge.width = 1, node.width = 1, border.width = 1, fixedStyle = 1,
   freeStyle = 1, residuals = FALSE, label.scale = FALSE,
   sizeMan = 3, sizeLat = 5, intercepts = FALSE, fade = FALSE,
-  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5,
-  DoNotPlot = TRUE, ...)
+  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5, ...)
 }
 \arguments{
-\item{lavaan_object}{lavaan object.}
+\item{lavaan_object}{Lavaan object of univariate or bivariate LCS model.}
 
-\item{layout}{Matrix specifying location of manifest and latent variables.}
+\item{layout}{Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.}
 
-\item{curve_covar}{see \code{semPlot}.}
+\item{lavaan_syntax}{String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
+If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.}
+
+\item{return_layout_from_lavaan_syntax}{Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.}
+
+\item{lcsm}{String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.}
+
+\item{curve_covar}{See \link[semPlot]{semPaths}.}
 
 \item{what}{See \code{semPlot}.}
 
-\item{whatLabels}{see \code{semPlot}.}
+\item{whatLabels}{See \link[semPlot]{semPaths}.}
 
-\item{edge.width}{see \code{semPlot}.}
+\item{edge.width}{See \link[semPlot]{semPaths}.}
 
-\item{node.width}{see \code{semPlot}.}
+\item{node.width}{See \link[semPlot]{semPaths}.}
 
-\item{border.width}{see \code{semPlot}.}
+\item{border.width}{See \link[semPlot]{semPaths}.}
 
-\item{fixedStyle}{see \code{semPlot}.}
+\item{fixedStyle}{See \link[semPlot]{semPaths}.}
 
-\item{freeStyle}{see \code{semPlot}.}
+\item{freeStyle}{See \link[semPlot]{semPaths}.}
 
-\item{residuals}{see \code{semPlot}.}
+\item{residuals}{See \link[semPlot]{semPaths}.}
 
-\item{label.scale}{see \code{semPlot}.}
+\item{label.scale}{See \link[semPlot]{semPaths}.}
 
-\item{sizeMan}{see \code{semPlot}.}
+\item{sizeMan}{See \link[semPlot]{semPaths}.}
 
-\item{sizeLat}{see \code{semPlot}.}
+\item{sizeLat}{See \link[semPlot]{semPaths}.}
 
-\item{intercepts}{see \code{semPlot}.}
+\item{intercepts}{See \link[semPlot]{semPaths}.}
 
-\item{fade}{see \code{semPlot}.}
+\item{fade}{See \link[semPlot]{semPaths}.}
 
-\item{nCharNodes}{see \code{semPlot}.}
+\item{nCharNodes}{See \link[semPlot]{semPaths}.}
 
-\item{nCharEdges}{see \code{semPlot}.}
+\item{nCharEdges}{See \link[semPlot]{semPaths}.}
 
-\item{edge.label.cex}{see \code{semPlot}.}
+\item{edge.label.cex}{See \link[semPlot]{semPaths}.}
 
-\item{DoNotPlot}{see \code{semPlot}}
-
-\item{...}{Other functions passed on to \code{semPlot}.}
+\item{...}{Other arguments passed on to \link[semPlot]{semPaths}.}
 }
 \value{
 Plot
 }
 \description{
-Plot latent change score model path diagram
+Plot simplified path diagram of univariate and bivariate latent change score models
 }

@@ -9,9 +9,9 @@ sim_uni_lcsm_data(timepoints, model, model_param = NULL, var = "x",
   return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE)
 }
 \arguments{
-\item{timepoints}{See \link[lcstools]{specify_lavaan_uni_model}}
+\item{timepoints}{See \link[lcsm]{specify_lavaan_uni_model}}
 
-\item{model}{See \link[lcstools]{specify_lavaan_uni_model}}
+\item{model}{See \link[lcsm]{specify_lavaan_uni_model}}
 
 \item{model_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
 \itemize{
@@ -28,20 +28,28 @@ sim_uni_lcsm_data(timepoints, model, model_param = NULL, var = "x",
 \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 }}
 
-\item{var}{See \link[lcstools]{specify_lavaan_uni_model}}
+\item{var}{See \link[lcsm]{specify_lavaan_uni_model}}
 
-\item{change_letter}{See \link[lcstools]{specify_lavaan_uni_model}}
+\item{change_letter}{See \link[lcsm]{specify_lavaan_uni_model}}
 
-\item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcstools]{specify_lavaan_uni_model}}
+\item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}}
 
 \item{na_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
 
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
-\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}. 
+Note that this output cant be saved as an object.
+To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string' has to be set to TRUE.}
 
-\item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
+\item{return_lavaan_syntax_string}{Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string}
+}
+\value{
+tibble
 }
 \description{
-Simulate data from a univariate latent change score model
+TODO: Describe function
+}
+\examples{
+
 }

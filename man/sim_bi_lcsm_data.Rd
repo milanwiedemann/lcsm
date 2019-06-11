@@ -11,9 +11,9 @@ sim_bi_lcsm_data(timepoints, model_x, model_x_param = NULL, model_y,
   return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE)
 }
 \arguments{
-\item{timepoints}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{timepoints}{See \link[lcsm]{specify_lavaan_bi_model}}
 
-\item{model_x}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{model_x}{See \link[lcsm]{specify_lavaan_bi_model}}
 
 \item{model_x_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':
 \itemize{
@@ -30,7 +30,7 @@ sim_bi_lcsm_data(timepoints, model_x, model_x_param = NULL, model_y,
 \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 }}
 
-\item{model_y}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{model_y}{See \link[lcsm]{specify_lavaan_bi_model}}
 
 \item{model_y_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_y}':
 \itemize{
@@ -47,7 +47,7 @@ sim_bi_lcsm_data(timepoints, model_x, model_x_param = NULL, model_y,
 \item{\strong{\code{phi_y}}}: Autoregression of change scores y.
 }}
 
-\item{coupling}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{coupling}{See \link[lcsm]{specify_lavaan_bi_model}}
 
 \item{coupling_param}{List, specifying parameter estimates coupling parameters that have been specified in the argument '\code{coupling}':
 \itemize{
@@ -70,7 +70,7 @@ sim_bi_lcsm_data(timepoints, model_x, model_x_param = NULL, model_y,
 \item{\strong{\code{xi_lag_yx}}}: Change score y (t) determined by change score x (t-1)
 }}
 
-\item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcstools]{specify_lavaan_uni_model}}
+\item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}}
 
 \item{na_x_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
 
@@ -78,18 +78,24 @@ sim_bi_lcsm_data(timepoints, model_x, model_x_param = NULL, model_y,
 
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
-\item{var_x}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{var_x}{See \link[lcsm]{specify_lavaan_bi_model}}
 
-\item{var_y}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{var_y}{See \link[lcsm]{specify_lavaan_bi_model}}
 
-\item{change_letter_x}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{change_letter_x}{See \link[lcsm]{specify_lavaan_bi_model}}
 
-\item{change_letter_y}{See \link[lcstools]{specify_lavaan_bi_model}}
+\item{change_letter_y}{See \link[lcsm]{specify_lavaan_bi_model}}
 
 \item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
 
 \item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
 }
+\value{
+tibble
+}
 \description{
-Simulate data from a univariate latent change score model
+TODO: Describe function
+}
+\examples{
+
 }
