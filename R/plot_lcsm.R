@@ -19,7 +19,6 @@
 #' @param curve_covar  see \code{semPlot}.
 #' @param edge.label.cex  see \code{semPlot}.
 #' @param nCharEdges  see \code{semPlot}.
-#' @param DoNotPlot  see \code{semPlot}
 #' @param ... Other functions passed on to \code{semPlot}.  
 #'
 #' @return Plot
@@ -47,7 +46,7 @@ plot_lcsm <- function(lavaan_object,
                       nCharNodes = 0,
                       nCharEdges = 0,
                       edge.label.cex = 0.5,
-                      DoNotPlot = TRUE,
+                      # DoNotPlot = TRUE,
                       ...) {
   
   if (is.null(layout) == TRUE) {
@@ -63,7 +62,7 @@ plot_lcsm <- function(lavaan_object,
       dplyr::distinct() %>% 
       dplyr::pull()
     
-    timepoints <- length(row_x_mani_vars_lavaanify)
+    timepoints_x <- base::length(row_x_mani_vars_lavaanify)
     
     row_x_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
@@ -86,7 +85,7 @@ plot_lcsm <- function(lavaan_object,
       dplyr::distinct() %>% 
       dplyr::pull()
     
-    change_factors_x_freq <- length(row_x_change_factors_lavaanify)
+    change_factors_x_num <- length(row_x_change_factors_lavaanify)
     
     # Construct Y
     
@@ -96,6 +95,8 @@ plot_lcsm <- function(lavaan_object,
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
+    
+    timepoints_y <- base::length(row_y_mani_vars_lavaanify)
     
     row_y_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
@@ -118,7 +119,7 @@ plot_lcsm <- function(lavaan_object,
       dplyr::distinct() %>% 
       dplyr::pull()
     
-    change_factors_y_freq <- length(row_y_change_factors_lavaanify)
+    change_factors_y_num <- length(row_y_change_factors_lavaanify)
     
     # Create layout matrix 
     
@@ -128,15 +129,15 @@ plot_lcsm <- function(lavaan_object,
       row_x_mani_vars_layout <- row_x_mani_vars_lavaanify
       row_x_latent_vars_layout <- row_x_latent_vars_lavaanify
       row_x_change_scores_layout <- c(NA, row_x_change_scores_lavaanify)
-      row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints - 1 - change_factors_freq))
+      row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints_x - 1 - change_factors_x_num))
       
-      layout <- base::matrix(c(row_x_change_factors_layout, 
-                     row_x_change_scores_layout,
-                     row_x_latent_vars_layout,
-                     row_x_mani_vars_layout),
-                   ncol = timepoints,
-                   nrow = 4,
-                   byrow = TRUE)
+      layout_from_lavaan_syntax <- base::matrix(c(row_x_change_factors_layout, 
+                                                  row_x_change_scores_layout,
+                                                  row_x_latent_vars_layout,
+                                                  row_x_mani_vars_layout),
+                                                ncol = timepoints_x,
+                                                nrow = 4,
+                                                byrow = TRUE)
       
       
     } else if (lcsm == "bivariate") {
@@ -146,29 +147,53 @@ plot_lcsm <- function(lavaan_object,
       row_x_mani_vars_layout <- c(NA, NA, row_x_mani_vars_lavaanify)
       row_x_latent_vars_layout <- c(NA, NA, row_x_latent_vars_lavaanify)
       row_x_change_scores_layout <- c(NA, NA, NA, row_x_change_scores_lavaanify)
-      row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints + 1 - change_factors_x_freq))
+      row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints_x + 1 - change_factors_x_num))
       
       
       row_y_mani_vars_layout <- c(NA, NA, row_y_mani_vars_lavaanify)
       row_y_latent_vars_layout <- c(NA, NA, row_y_latent_vars_lavaanify)
       row_y_change_scores_layout <- c(NA, NA, NA, row_y_change_scores_lavaanify)
-      row_y_change_factors_layout <- c(NA, row_y_change_factors_lavaanify, rep(NA, timepoints + 1 - change_factors_y_freq))
+      row_y_change_factors_layout <- c(NA, row_y_change_factors_lavaanify, rep(NA, timepoints_y + 1 - change_factors_y_num))
       
-      layout <- base::matrix(c(row_y_mani_vars_layout, 
-                     row_y_latent_vars_layout,
-                     row_y_change_scores_layout,
-                     row_y_change_factors_layout,
-                     row_x_change_factors_layout, 
-                     row_x_change_scores_layout,
-                     row_x_latent_vars_layout,
-                     row_x_mani_vars_layout),
-                   ncol = timepoints + 2,
-                   nrow = 8,
-                   byrow = TRUE)
+      layout_from_lavaan_syntax <- base::matrix(c(row_y_mani_vars_layout, 
+                                                  row_y_latent_vars_layout,
+                                                  row_y_change_scores_layout,
+                                                  row_y_change_factors_layout,
+                                                  row_x_change_factors_layout, 
+                                                  row_x_change_scores_layout,
+                                                  row_x_latent_vars_layout,
+                                                  row_x_mani_vars_layout),
+                                                ncol = timepoints_x + 2,
+                                                nrow = 8,
+                                                byrow = TRUE)
       
     }
     
     
+    
+    graph <- semPlot::semPaths(
+      object = lavaan_object,
+      layout = layout_from_lavaan_syntax,
+      what = what,
+      whatLabels = whatLabels,
+      edge.width = edge.width,
+      node.width = node.width,
+      border.width = border.width,
+      fixedStyle = fixedStyle,
+      freeStyle = freeStyle,
+      residuals = residuals,
+      label.scale = label.scale,
+      sizeMan = sizeMan,
+      sizeLat = sizeLat,
+      intercepts = intercepts,
+      fade = fade,
+      nCharNodes = 0,
+      nCharEdges = 0,
+      DoNotPlot = TRUE,
+      ...)
+    
+
+    # 
   } else if (is.null(layout) == FALSE) {
     
     graph <- semPlot::semPaths(
@@ -189,16 +214,18 @@ plot_lcsm <- function(lavaan_object,
       fade = fade,
       nCharNodes = 0,
       nCharEdges = 0,
-      DoNotPlot = DoNotPlot,
+      DoNotPlot = TRUE,
       ...)
-    
-    # aww where did I get this from, must have googled it
-    graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, curve_covar, 0)
-    
-    # Create plot
-    plot(graph)
-    
   }
+  
+  
+  # aww where did I get this from, must have googled it
+  graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, curve_covar, 0)
+  
+  # Create plot
+  plot(graph)
+  
+  
   
   
 }

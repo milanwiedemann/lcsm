@@ -239,7 +239,7 @@ extract_fit(# Specify which lavaan objects to extract fit from
 extract_param(fit_uni_lcsm_01)
 ```
 
-## 4. Plot simplified path diagrams of lcsm
+## 4. Plot simplified path diagrams of LCS models
 
 ```r
 # First, a layout matrix has to be defined manually

@@ -21,8 +21,10 @@
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
-#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
-#' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}. 
+#' Note that this output cant be saved as an object.
+#' To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string' has to be set to TRUE.
+#' @param return_lavaan_syntax_string Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string
 #' @return
 #' @export
 #'
