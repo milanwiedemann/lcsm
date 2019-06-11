@@ -1,10 +1,10 @@
 #' Simulate data from a univariate latent change score model
-#'
-#' @param timepoints See \link[lcstools]{specify_lavaan_uni_model}
-#' @param var See \link[lcstools]{specify_lavaan_uni_model}
-#' @param model See \link[lcstools]{specify_lavaan_uni_model}
-#' @param change_letter See \link[lcstools]{specify_lavaan_uni_model}
-#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcstools]{specify_lavaan_uni_model}
+#' @description TODO: Describe function
+#' @param timepoints See \link[lcsm]{specify_lavaan_uni_model}
+#' @param var See \link[lcsm]{specify_lavaan_uni_model}
+#' @param model See \link[lcsm]{specify_lavaan_uni_model}
+#' @param change_letter See \link[lcsm]{specify_lavaan_uni_model}
+#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}
 #' @param na_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param model_param List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
 #' \itemize{
@@ -25,19 +25,20 @@
 #' Note that this output cant be saved as an object.
 #' To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string' has to be set to TRUE.
 #' @param return_lavaan_syntax_string Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string
-#' @return
+#' @return tibble
 #' @export
-#'
 #' @examples
+#' 
 sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "j", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
   
-  # 1. Create string object with lavaan syntax including labels for parameters
+  # 1. Create lavaan syntax  ----
+  # String including labels for parameters
   model <- specify_lavaan_uni_model(timepoints = timepoints,
                                     var = var,
                                     model = model,
                                     change_letter = change_letter)
   
-  # 2. Extract all labels from lavaan syntax using lavaan::lavaanify()
+  # 2. Extract all labels from lavaan syntax using lavaan::lavaanify() ----
   labels <- lavaan::lavaanify(model) %>% 
     tibble::as_tibble() %>%
     dplyr::mutate(label = dplyr::na_if(label, ""),
@@ -46,7 +47,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
     dplyr::distinct(label) %>% 
     base::unlist()
   
-  # 3. Enter values for all labels/estimates in lavaan syntax using base::readline()
+  # 3. Enter values for all labels/estimates in lavaan syntax using base::readline() ----
   if (base::is.null(model_param) == TRUE){
     base::message("Please enter the following parameter estimates for the data simulation:")
     
@@ -81,14 +82,14 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
     estimates <- model_param
   }
   
-  # 4. Replace all labels in lavaan syntax with values entered above
+  # 4. Replace all labels in lavaan syntax with values entered above ----
   model_estimates <- model
   
   for (estimate_i in seq_along(estimates)) {
     model_estimates <- stringr::str_replace_all(model_estimates, names(estimates[estimate_i]), as.character(estimates[estimate_i])) 
   }
   
-  # 5. Simulate data using lavaan::simulateData()
+  # 5. Simulate data using lavaan::simulateData() ----
   sim_data_model <- lavaan::simulateData(model = model_estimates, 
                                          model.type = "sem", 
                                          meanstructure = 'default', 
@@ -116,8 +117,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
                                          standardized = FALSE,
                                          ...)
   
-  # 6. Restructure data
-  
+  # 6. Restructure data ----
   # Add id variable
   sim_data_model_ids <- sim_data_model %>% 
     dplyr::as_tibble() %>% 
@@ -135,7 +135,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
     dplyr::select(-random_num) %>%
     tidyr::spread(vars, value) 
   
-  # 7. Return 
+  # 7. Return data ----
   if (return_lavaan_syntax == FALSE){
     # Return simulated data
     return(sim_data_model_ids_nas)
@@ -147,16 +147,13 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
       # Return lavaan syntax used to simulate datq
       return(base::cat(model_estimates))
     }
-    
   }
-  
 }
 
-
 #' Simulate data from a univariate latent change score model
-#'
-#' @param timepoints See \link[lcstools]{specify_lavaan_bi_model}
-#' @param model_x See \link[lcstools]{specify_lavaan_bi_model}
+#' @description TODO: Describe function
+#' @param timepoints See \link[lcsm]{specify_lavaan_bi_model}
+#' @param model_x See \link[lcsm]{specify_lavaan_bi_model}
 #' @param model_x_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':
 #' \itemize{
 #' \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
@@ -171,7 +168,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{sigma_g2g3}}}: Covariance of change factors (g2 and g2),
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
-#' @param model_y See \link[lcstools]{specify_lavaan_bi_model}
+#' @param model_y See \link[lcsm]{specify_lavaan_bi_model}
 #' @param model_y_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_y}':
 #' \itemize{
 #' \item{\strong{\code{gamma_ly1}}}: Mean of latent true scores y (Intercept),
@@ -186,7 +183,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{sigma_j2j3}}}: Covariance of change factors (j2 and j2),
 #' \item{\strong{\code{phi_y}}}: Autoregression of change scores y.
 #' }
-#' @param coupling See \link[lcstools]{specify_lavaan_bi_model}
+#' @param coupling See \link[lcsm]{specify_lavaan_bi_model}
 #' @param coupling_param List, specifying parameter estimates coupling parameters that have been specified in the argument '\code{coupling}':
 #' \itemize{
 #' \item{\strong{\code{sigma_su}}}: Covariance of residuals x and y,
@@ -207,21 +204,20 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{xi_lag_xy}}}: Change score x (t) determined by change score y (t-1),
 #' \item{\strong{\code{xi_lag_yx}}}: Change score y (t) determined by change score x (t-1)
 #' }
-#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcstools]{specify_lavaan_uni_model}
+#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}
 #' @param na_x_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param na_y_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
-#' @param var_x See \link[lcstools]{specify_lavaan_bi_model}
-#' @param var_y See \link[lcstools]{specify_lavaan_bi_model}
-#' @param change_letter_x See \link[lcstools]{specify_lavaan_bi_model}
-#' @param change_letter_y See \link[lcstools]{specify_lavaan_bi_model}
+#' @param var_x See \link[lcsm]{specify_lavaan_bi_model}
+#' @param var_y See \link[lcsm]{specify_lavaan_bi_model}
+#' @param change_letter_x See \link[lcsm]{specify_lavaan_bi_model}
+#' @param change_letter_y See \link[lcsm]{specify_lavaan_bi_model}
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
 #' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
-#'
-#' @return
+#' @return tibble
 #' @export
-#'
 #' @examples
+#' 
 sim_bi_lcsm_data <- function(timepoints, 
                              model_x, model_x_param = NULL, 
                              model_y, model_y_param = NULL, 
@@ -230,7 +226,8 @@ sim_bi_lcsm_data <- function(timepoints,
                              var_x = "x", var_y = "y", change_letter_x = "g", change_letter_y = "j", 
                              return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
   
-  # 1. Create string object with lavaan syntax including labels for parameters
+  # 1. Create lavaan syntax  ----
+  # String including labels for parameters
   model <- specify_lavaan_bi_model(timepoints = timepoints,
                                    var_x = var_x,
                                    model_x = model_x,
@@ -240,7 +237,7 @@ sim_bi_lcsm_data <- function(timepoints,
                                    change_letter_x = change_letter_x,
                                    change_letter_y = change_letter_y)
   
-  # 2. Extract all labels from lavaan syntax using lavaan::lavaanify()
+  # 2. Extract all labels from lavaan syntax using lavaan::lavaanify() ----
   labels <- lavaan::lavaanify(model) %>% 
     tibble::as_tibble() %>%
     dplyr::mutate(label = dplyr::na_if(label, ""),
@@ -249,7 +246,7 @@ sim_bi_lcsm_data <- function(timepoints,
     dplyr::distinct(label) %>% 
     base::unlist()
   
-  # 3. Enter values for all labels/estimates in lavaan syntax using base::readline()
+  # 3. Enter values for all labels/estimates in lavaan syntax using base::readline() ----
   # Only if all _param arguemtnts are NULL ask for values using base::readline()
   if (base::is.null(model_x_param) == TRUE & base::is.null(model_y_param) == TRUE & base::is.null(coupling_param) == TRUE){
     base::message("Please enter the following parameter estimates for the data simulation:")
@@ -261,6 +258,7 @@ sim_bi_lcsm_data <- function(timepoints,
       value <- base::readline(base::paste0("Enter value for ", label_i, ": "))
       estimates[label_i] <- base::as.numeric(value)
     }
+    
     # If at least one _param argument has values dont ask for other values
     # THis could be improved to be spcific for each model an coupling parameters maybe
   } else if (base::is.null(model_x_param) == FALSE | base::is.null(model_y_param) == FALSE | base::is.null(coupling_param) == FALSE){
@@ -289,7 +287,7 @@ sim_bi_lcsm_data <- function(timepoints,
     estimates <- model_param
   }
   
-  # 4. Replace all labels in lavaan syntax with values entered above
+  # 4. Replace all labels in lavaan syntax with values entered above ----
   
   # Create new object with lavaan model, this still has labels and not values
   model_estimates <- model
@@ -299,7 +297,7 @@ sim_bi_lcsm_data <- function(timepoints,
     model_estimates <- stringr::str_replace_all(model_estimates, names(estimates[estimate_i]), as.character(estimates[estimate_i])) 
   }
   
-  # 5. Simulate data using lavaan::simulateData()
+  # 5. Simulate data using lavaan::simulateData() ----
   sim_data_model <- lavaan::simulateData(model = model_estimates, 
                                          model.type = "sem", 
                                          meanstructure = 'default', 
@@ -327,7 +325,7 @@ sim_bi_lcsm_data <- function(timepoints,
                                          standardized = FALSE,
                                          ...)
   
-  # 6. Restructure data
+  # 6. Restructure data ----
   # Add id variable
   sim_data_model_ids <- sim_data_model %>% 
     dplyr::as_tibble() %>% 
@@ -339,14 +337,14 @@ sim_bi_lcsm_data <- function(timepoints,
   # # Get list with variable names for each constrct
   var_names_x <- names(sim_data_model_ids)[2:(timepoints + 1)]
   var_names_y <- names(sim_data_model_ids)[(timepoints + 2):length(names(sim_data_model_ids))]
-
+  
   # Select data for each construct
   # Introduce NAs seperately for each construcht
-
-  # x ----
+  
+  # X
   sim_data_x_model_ids <- sim_data_model_ids %>%
     dplyr::select(id, var_names_x)
-
+  
   sim_data_x_model_ids_nas <- sim_data_x_model_ids %>%
     tidyr::gather(vars, value, -id) %>%
     dplyr::mutate(vars = base::factor(vars, levels = var_names_x)) %>%
@@ -354,11 +352,11 @@ sim_bi_lcsm_data <- function(timepoints,
                   value = base::ifelse(vars %in% var_names_x & random_num <= na_x_pct, NA, value)) %>%
     dplyr::select(-random_num) %>%
     tidyr::spread(vars, value)
-
-  # y ----
+  
+  # Y
   sim_data_y_model_ids <- sim_data_model_ids %>%
     dplyr::select(id, var_names_y)
-
+  
   sim_data_y_model_ids_nas <- sim_data_y_model_ids %>%
     tidyr::gather(vars, value, -id) %>%
     dplyr::mutate(vars = base::factor(vars, levels = var_names_y)) %>%
@@ -366,20 +364,17 @@ sim_bi_lcsm_data <- function(timepoints,
                   value = base::ifelse(vars %in% var_names_y & random_num <= na_y_pct, NA, value)) %>%
     dplyr::select(-random_num) %>%
     tidyr::spread(vars, value)
-
+  
   # Join x and y data
-
   sim_data_xy_model_ids_nas <- sim_data_x_model_ids_nas %>%
     dplyr::left_join(sim_data_y_model_ids_nas, by = "id")
-
-
-
-  # 7. Return
+  
+  # 7. Return data----
   if (return_lavaan_syntax == FALSE){
     # Return simulated data
     return(sim_data_xy_model_ids_nas)
   } else if (return_lavaan_syntax == TRUE){
-
+    
     if (return_lavaan_syntax_string == TRUE){
       return(model_estimates)
     } else if (return_lavaan_syntax_string == FALSE){

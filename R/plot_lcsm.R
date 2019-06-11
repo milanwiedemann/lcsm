@@ -1,28 +1,29 @@
-#' Plot latent change score model path diagram
+#' Plot simplified path diagram of univariate and bivariate latent change score models 
 #'
 #' @param lavaan_object Lavaan object of univariate or bivariate LCS model.
 #' @param lavaan_syntax String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
 #' If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.
 #' @param layout Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.
 #' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.
+#' @param lcsm String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.
 #' @param what See \code{semPlot}.
-#' @param whatLabels see \code{semPlot}.
-#' @param edge.width see \code{semPlot}.
-#' @param node.width  see \code{semPlot}.
-#' @param border.width  see \code{semPlot}.
-#' @param fixedStyle  see \code{semPlot}.
-#' @param freeStyle  see \code{semPlot}.
-#' @param residuals  see \code{semPlot}.
-#' @param label.scale  see \code{semPlot}.
-#' @param sizeMan  see \code{semPlot}.
-#' @param sizeLat  see \code{semPlot}.
-#' @param intercepts  see \code{semPlot}.
-#' @param fade  see \code{semPlot}.
-#' @param nCharNodes  see \code{semPlot}.
-#' @param curve_covar  see \code{semPlot}.
-#' @param edge.label.cex  see \code{semPlot}.
-#' @param nCharEdges  see \code{semPlot}.
-#' @param ... Other functions passed on to \code{semPlot}.  
+#' @param whatLabels See \link[semPlot]{semPaths}.
+#' @param edge.width See \link[semPlot]{semPaths}.
+#' @param node.width  See \link[semPlot]{semPaths}.
+#' @param border.width See \link[semPlot]{semPaths}.
+#' @param fixedStyle See \link[semPlot]{semPaths}.
+#' @param freeStyle See \link[semPlot]{semPaths}.
+#' @param residuals See \link[semPlot]{semPaths}.
+#' @param label.scale See \link[semPlot]{semPaths}.
+#' @param sizeMan See \link[semPlot]{semPaths}.
+#' @param sizeLat See \link[semPlot]{semPaths}.
+#' @param intercepts See \link[semPlot]{semPaths}.
+#' @param fade See \link[semPlot]{semPaths}.
+#' @param nCharNodes See \link[semPlot]{semPaths}.
+#' @param curve_covar See \link[semPlot]{semPaths}.
+#' @param edge.label.cex See \link[semPlot]{semPaths}.
+#' @param nCharEdges See \link[semPlot]{semPaths}.
+#' @param ... Other arguments passed on to \link[semPlot]{semPaths}.
 #'
 #' @return Plot
 #' @export 
@@ -61,7 +62,7 @@ plot_lcsm <- function(lavaan_object,
     
     row_x_mani_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^x\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^x\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
@@ -70,21 +71,21 @@ plot_lcsm <- function(lavaan_object,
     
     row_x_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^lx\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^lx\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
     
     row_x_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^dx\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^dx\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
     
     row_x_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^g\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^g\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
@@ -95,7 +96,7 @@ plot_lcsm <- function(lavaan_object,
     
     row_y_mani_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^y\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^y\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
@@ -104,21 +105,21 @@ plot_lcsm <- function(lavaan_object,
     
     row_y_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^ly\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^ly\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
     
     row_y_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^dy\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^dy\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()
     
     row_y_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
       dplyr::as_tibble() %>% 
-      dplyr::filter(str_detect(rhs, "^j\\d")) %>% 
+      dplyr::filter(stringr::str_detect(rhs, "^j\\d")) %>% 
       dplyr::select(rhs) %>% 
       dplyr::distinct() %>% 
       dplyr::pull()

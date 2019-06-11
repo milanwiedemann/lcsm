@@ -1,4 +1,4 @@
-#' Rename variables for univariate and bivariate models
+#' Rename variables for univariate and bivariate latent change score odels
 #'
 #' @param data Dataframe in wide format
 #' @param var_x List of variables measuring first construct
