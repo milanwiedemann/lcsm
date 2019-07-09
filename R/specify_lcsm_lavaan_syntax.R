@@ -20,6 +20,9 @@
 specify_lavaan_uni_model <- function(timepoints, model, var, change_letter) {
   
   # Code parameters in model that are not defined as FALSE
+  
+  # Set parameters ----
+  # Set parameters not specified in model for FALSE
   if (is.null(model$alpha_constant) == TRUE) {
     model$alpha_constant <- FALSE
   }
@@ -204,6 +207,58 @@ specify_lavaan_bi_model <- function(timepoints,
                                     change_letter_x = "g",
                                     change_letter_y = "j"
 ) {
+  
+  # Set parameters ----
+  # Set parameters not specified in model_x for FALSE
+  
+  if (is.null(model_x$alpha_constant) == TRUE) {
+    model_x$alpha_constant <- FALSE
+  }
+  
+  if (is.null(model_x$beta) == TRUE) {
+    model_x$beta <- FALSE
+  }
+  
+  if (is.null(model_x$alpha_piecewise) == TRUE) {
+    model_x$alpha_piecewise <- FALSE
+  }
+  
+  if (is.null(model_x$alpha_piecewise_num) == TRUE) {
+    model_x$alpha_piecewise_num <- FALSE
+  }
+  
+  if (is.null(model_x$alpha_linear) == TRUE) {
+    model_x$alpha_linear <- FALSE
+  }
+  
+  if (is.null(model_x$phi) == TRUE) {
+    model_x$phi <- FALSE
+  }
+  
+  # Set parameters not specified in model_y for FALSE
+  if (is.null(model_y$alpha_constant) == TRUE) {
+    model_y$alpha_constant <- FALSE
+  }
+  
+  if (is.null(model_y$beta) == TRUE) {
+    model_y$beta <- FALSE
+  }
+  
+  if (is.null(model_y$alpha_piecewise) == TRUE) {
+    model_y$alpha_piecewise <- FALSE
+  }
+  
+  if (is.null(model_y$alpha_piecewise_num) == TRUE) {
+    model_y$alpha_piecewise_num <- FALSE
+  }
+  
+  if (is.null(model_y$alpha_linear) == TRUE) {
+    model_y$alpha_linear <- FALSE
+  }
+  
+  if (is.null(model_y$phi) == TRUE) {
+    model_y$phi <- FALSE
+  }
   
   # Code coupling parameters that are not defined as FALSE
   # Concurrent change (con)
