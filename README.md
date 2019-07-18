@@ -1,13 +1,17 @@
 # lcsm: Specifying, analysing, and visualising latent change score models
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--06--03-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--07--18-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 [![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.3-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
-This package contains helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/). For details about this method see for example McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
-[These slides](https://docs.google.com/presentation/d/1q-SVbTA6n_HiC1bLjmCWySk1_b2u6rj12XrfK8-WEE0/edit?usp=sharing) illustrate some of the models that can be specified and analysed using this package.
+This package contains helper functions to specify and analyse univariate and bivariate latent change score (LCS) models using [lavaan](http://lavaan.ugent.be/). 
+For details about this method see for example
+McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), 
+Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), 
+Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and 
+Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
 # Installation
 
@@ -195,9 +199,7 @@ fit_uni_lcsm_01 <- fit_uni_lcsm(# Specify dataset in wide format
                                 # Specify which variables to use
                                 var = c("x1", "x2", "x3", "x4", "x5", "x6", "x7"),
                                 # Specify which parameters to estimate in model
-                                model = list(alpha_constant = FALSE, beta = TRUE),
-                                # Create object in Global Environment with lavaan model syntax
-                                export_model_syntax = TRUE, name_model_syntax = "uni_lcsm_01")
+                                model = list(alpha_constant = FALSE, beta = TRUE))
                              
 # Fit bivariate lcsm ----
 # To see all parameters that can be estimated for bivariate lcsm see help(fit_bi_lcsm)
@@ -209,19 +211,9 @@ fit_bi_lcsm_01 <- fit_bi_lcsm(data = data,
                               coupling = list(# delta_xy parameter estimates change score x (t) 
                                               # determined by true score y (t-1)
                                               delta_xy = TRUE, delta_yx = TRUE, 
-                                              # xi_xy parameter estimates change score x (t) 
+                                              # xi_lag_xy parameter estimates change score x (t) 
                                               # determined by change score y (t-1)
-                                              xi_xy = TRUE, xi_yx = TRUE),
-                              export_model_syntax = TRUE, name_model_syntax = "bi_lcsm_01")
-                              
-# Look at lavaan model syntax that was specified and fit for these models
-# Use 'export_model_syntax = TRUE' to export model syntax to the global environment
-
-# To see the model syntax that was speficied for the model 'fit_uni_lcsm_01' use:
-cat(uni_lcsm_01)
-
-# To see the model syntax that was speficied for the model 'fit_bi_lcsm_01' use:
-cat(bi_lcsm_01)
+                                              xi_lag_xy = TRUE, xi_lag_yx = TRUE))
 ```
 
 ## 3. Extract fit statistics and parmeters
@@ -240,43 +232,5 @@ extract_param(fit_uni_lcsm_01)
 ```
 
 ## 4. Plot simplified path diagrams of LCS models
-
-```r
-# First, a layout matrix has to be defined manually
-# This will be used by the semPlot package to arrange the different elements in the plot
-
-# Create layout matrix for univariate LCSM without intercepts
-layout_uni_lcsm <- matrix(
-  c(NA, "g2", NA, NA, NA, NA, NA, 
-    NA, "dx2", "dx3", "dx4", "dx5", "dx6", "dx7",
-    "lx1", "lx2", "lx3", "lx4", "lx5", "lx6", "lx7",
-    "x1", "x2", "x3", "x4", "x5", "x6", "x7"),
-  4, byrow = TRUE)
-
-# Create layout matrix for bivariate LCSM without intercepts
-layout_bi_lcsm <- matrix(
-  c(NA, NA, "y1", "y2", "y3", "y4", "y5", "y6", "y7",
-    NA, NA, "ly1", "ly2", "ly3", "ly4", "ly5", "ly6", "ly7",
-    NA, NA, NA, "dy2", "dy3", "dy4", "dy5", "dy6", "dy7",
-    NA, "j2",NA,NA, NA,  NA, NA, NA, NA, 
-    NA, "g2", NA,NA, NA,  NA, NA, NA, NA, 
-    NA, NA, NA, "dx2", "dx3", "dx4", "dx5", "dx6", "dx7", 
-    NA, NA, "lx1", "lx2", "lx3", "lx4", "lx5", "lx6", "lx7",
-    NA, NA, "x1", "x2", "x3", "x4", "x5", "x6", "x7"),
-  8, byrow = TRUE)
-
-# Plot simplified path diagram using semPlot package
-# The lavaan_object argument takes any lavaan object as input
-# The layout argument is the above specified matrix
-# Depending on the number of measurement points this matrix has to be adapted manually at the moment
-
-# This command plots the univariate lcsm 'fit_uni_lcsm_01' using the predifined matrix 'layout_uni_lcsm'
-plot_lcsm(lavaan_object = fit_uni_lcsm_01, 
-          layout = layout_uni_lcsm)
-          
-# This command plots the bivariate lcsm 'fit_bi_lcsm_01' using the predifined matrix 'layout_bi_lcsm'
-plot_lcsm(lavaan_object = fit_bi_lcsm_01, 
-          layout = layout_bi_lcsm)
-```
 
 ## 5. Simulate data
