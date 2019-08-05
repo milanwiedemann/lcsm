@@ -1,10 +1,10 @@
 #' Simulate data from a univariate latent change score model
 #' @description TODO: Describe function
-#' @param timepoints See \link[lcsm]{specify_lavaan_uni_model}
-#' @param var See \link[lcsm]{specify_lavaan_uni_model}
-#' @param model See \link[lcsm]{specify_lavaan_uni_model}
-#' @param change_letter See \link[lcsm]{specify_lavaan_uni_model}
-#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}
+#' @param timepoints See \link[lcsm]{specify_uni_lcsm}
+#' @param var See \link[lcsm]{specify_uni_lcsm}
+#' @param model See \link[lcsm]{specify_uni_lcsm}
+#' @param change_letter See \link[lcsm]{specify_uni_lcsm}
+#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
 #' @param na_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param model_param List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
 #' \itemize{
@@ -27,13 +27,25 @@
 #' @param return_lavaan_syntax_string Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string
 #' @return tibble
 #' @export
-#' @examples
+#' @examples # Simulate data from univariate LCS model parameters 
+#' sim_uni_lcsm(timepoints = 10, 
+#'              model = list(alpha_constant = TRUE, beta = FALSE, phi = TRUE), 
+#'              model_param = list(gamma_lx1 = 21, 
+#'                                 sigma2_lx1 = 1.5,
+#'                                 sigma2_ux = .2, 
+#'                                 alpha_j2 = -.93,
+#'                                 sigma2_j2 = .1,
+#'                                 sigma_j2lx1 = .2),
+#'              return_lavaan_syntax = FALSE, 
+#'              return_lavaan_syntax_string = FALSE,
+#'              sample.nobs = 1000,
+#'              na_pct = .3)
 #' 
-sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "j", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
+sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "j", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
-  model <- specify_lavaan_uni_model(timepoints = timepoints,
+  model <- specify_uni_lcsm(timepoints = timepoints,
                                     var = var,
                                     model = model,
                                     change_letter = change_letter)
@@ -152,8 +164,8 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 
 #' Simulate data from a univariate latent change score model
 #' @description TODO: Describe function
-#' @param timepoints See \link[lcsm]{specify_lavaan_bi_model}
-#' @param model_x See \link[lcsm]{specify_lavaan_bi_model}
+#' @param timepoints See \link[lcsm]{specify_bi_lcsm}
+#' @param model_x See \link[lcsm]{specify_bi_lcsm}
 #' @param model_x_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':
 #' \itemize{
 #' \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
@@ -168,7 +180,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{sigma_g2g3}}}: Covariance of change factors (g2 and g2),
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
-#' @param model_y See \link[lcsm]{specify_lavaan_bi_model}
+#' @param model_y See \link[lcsm]{specify_bi_lcsm}
 #' @param model_y_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_y}':
 #' \itemize{
 #' \item{\strong{\code{gamma_ly1}}}: Mean of latent true scores y (Intercept),
@@ -183,7 +195,7 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{sigma_j2j3}}}: Covariance of change factors (j2 and j2),
 #' \item{\strong{\code{phi_y}}}: Autoregression of change scores y.
 #' }
-#' @param coupling See \link[lcsm]{specify_lavaan_bi_model}
+#' @param coupling See \link[lcsm]{specify_bi_lcsm}
 #' @param coupling_param List, specifying parameter estimates coupling parameters that have been specified in the argument '\code{coupling}':
 #' \itemize{
 #' \item{\strong{\code{sigma_su}}}: Covariance of residuals x and y,
@@ -204,21 +216,51 @@ sim_uni_lcsm_data <- function(timepoints, model, model_param = NULL, var = "x", 
 #' \item{\strong{\code{xi_lag_xy}}}: Change score x (t) determined by change score y (t-1),
 #' \item{\strong{\code{xi_lag_yx}}}: Change score y (t) determined by change score x (t-1)
 #' }
-#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_lavaan_uni_model}
+#' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
 #' @param na_x_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param na_y_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
-#' @param var_x See \link[lcsm]{specify_lavaan_bi_model}
-#' @param var_y See \link[lcsm]{specify_lavaan_bi_model}
-#' @param change_letter_x See \link[lcsm]{specify_lavaan_bi_model}
-#' @param change_letter_y See \link[lcsm]{specify_lavaan_bi_model}
+#' @param var_x See \link[lcsm]{specify_bi_lcsm}
+#' @param var_y See \link[lcsm]{specify_bi_lcsm}
+#' @param change_letter_x See \link[lcsm]{specify_bi_lcsm}
+#' @param change_letter_y See \link[lcsm]{specify_bi_lcsm}
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
 #' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
 #' @return tibble
 #' @export
-#' @examples
+#' @examples # Simulate data from bivariate LCS model parameters 
+#' sim_bi_lcsm(timepoints = 12, 
+#'             na_x_pct = .05,
+#'             na_y_pct = .1,
+#'             model_x = list(alpha_constant = TRUE, beta = TRUE, phi = FALSE),
+#'             model_x_param = list(gamma_lx1 = 21,
+#'                                  sigma2_lx1 = .5,
+#'                                  sigma2_ux = .2,
+#'                                  alpha_g2 = -.4,
+#'                                  sigma2_g2 = .4,
+#'                                  sigma_g2lx1 = .2,
+#'                                  beta_x = -.1),
+#'             model_y = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),
+#'             model_y_param = list(gamma_ly1 = 5,
+#'                                  sigma2_ly1 = .2,
+#'                                  sigma2_uy = .2,
+#'                                  alpha_j2 = -.2,
+#'                                  sigma2_j2 = .1,
+#'                                  sigma_j2ly1 = .02,
+#'                                  beta_y = -.2,
+#'                                  phi_y = .1),
+#'             coupling = list(delta_lag_xy = TRUE, 
+#'                             xi_lag_yx = TRUE),
+#'             coupling_param =list(sigma_su = .01,
+#'                                  sigma_ly1lx1 = .2,
+#'                                  sigma_g2ly1 = .1,
+#'                                  sigma_j2lx1 = .1,
+#'                                  sigma_j2g2 = .01,
+#'                                  delta_lag_xy = .13,
+#'                                  xi_lag_yx = .4),
+#'             return_lavaan_syntax = FALSE)
 #' 
-sim_bi_lcsm_data <- function(timepoints, 
+sim_bi_lcsm <- function(timepoints, 
                              model_x, model_x_param = NULL, 
                              model_y, model_y_param = NULL, 
                              coupling, coupling_param = NULL,
@@ -228,7 +270,7 @@ sim_bi_lcsm_data <- function(timepoints,
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
-  model <- specify_lavaan_bi_model(timepoints = timepoints,
+  model <- specify_bi_lcsm(timepoints = timepoints,
                                    var_x = var_x,
                                    model_x = model_x,
                                    var_y = var_y,
