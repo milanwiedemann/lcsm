@@ -51,14 +51,14 @@ select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only =
 select_bi_cases <- function(data, id_var, var_list_x, var_list_y, min_count_x, min_count_y) {
   
   # Select cases from x and return id only
-  id_select_x <- lcsm::select_uni_cases(data = data,
+  id_select_x <- select_uni_cases(data = data,
                                         id_var =  id_var,
                                         var_list = var_list_x,
                                         min_count = min_count_x,
                                         return_id_only = TRUE)
   
   # Select cases from y and return id only
-  id_select_y <- lcsm::select_uni_cases(data = data,
+  id_select_y <- select_uni_cases(data = data,
                                         id_var =  id_var,
                                         var_list = var_list_y,
                                         min_count = min_count_y,
