@@ -17,7 +17,7 @@
 #' @export 
 #' @examples
 
-specify_lavaan_uni_model <- function(timepoints, model, var, change_letter) {
+specify_uni_lcsm <- function(timepoints, model, var, change_letter) {
   
   # Code parameters in model that are not defined as FALSE
   
@@ -198,7 +198,7 @@ specify_lavaan_uni_model <- function(timepoints, model, var, change_letter) {
 #' @export 
 #' @examples
 #' 
-specify_lavaan_bi_model <- function(timepoints,
+specify_bi_lcsm <- function(timepoints,
                                     var_x,
                                     model_x,
                                     var_y,
@@ -305,13 +305,13 @@ specify_lavaan_bi_model <- function(timepoints,
   
   
   model_x_uni_lavaan <- "# Specify parameters for construct x ----\n"
-  model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, 
+  model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_uni_lcsm(timepoints = timepoints, 
                                                                             model = model_x, 
                                                                             var = var_x, 
                                                                             change_letter = change_letter_x))
   
   model_y_uni_lavaan <- "# Specify parameters for construct y ----\n"
-  model_y_uni_lavaan <- paste0(model_y_uni_lavaan, specify_lavaan_uni_model(timepoints = timepoints, 
+  model_y_uni_lavaan <- paste0(model_y_uni_lavaan, specify_uni_lcsm(timepoints = timepoints, 
                                                                             model = model_y, 
                                                                             var = var_y, 
                                                                             change_letter = change_letter_y))

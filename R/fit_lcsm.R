@@ -43,7 +43,7 @@ fit_uni_lcsm <- function(data,
                                 )  
   
   # Specify model ----
-  model_uni <- specify_lavaan_uni_model(timepoints = timepoints,
+  model_uni <- specify_uni_lcsm(timepoints = timepoints,
                                         var = "x",
                                         model = model,
                                         change_letter = "g"
@@ -150,7 +150,7 @@ fit_bi_lcsm <- function(data,
                                 var_y = var_y)
   
   # Specify model ----
-  model_bi <- specify_lavaan_bi_model(timepoints = timepoints,
+  model_bi <- specify_bi_lcsm(timepoints = timepoints,
                                       var_x = "x",
                                       model_x = model_x,
                                       var_y = "y",
