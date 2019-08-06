@@ -29,6 +29,22 @@ Lavaan model syntax including comments.
 \description{
 TODO: Describe function
 }
+\examples{
+# Specify univariate LCS model
+lavaan_uni_lcsm_01 <- specify_uni_lcsm(timepoints = 10, 
+                                       model = list(alpha_constant = TRUE, 
+                                                    beta = TRUE, 
+                                                    phi = TRUE), 
+                                       var = "x",  
+                                       change_letter = "j")
+                 
+#' # To look at string simply return the object                                    
+lavaan_uni_lcsm_01
+
+# To get a readable output use cat() function
+cat(lavaan_uni_lcsm_01)
+
+}
 \references{
 Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 \url{http://www.jstatsoft.org/v48/i02/}.

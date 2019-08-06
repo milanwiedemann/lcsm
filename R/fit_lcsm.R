@@ -19,8 +19,12 @@
 #' @param missing See \link[lavaan]{lavaan}.
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavaan}.
 #' @return This function returns a lavaan class object.
+#' @references Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
+#' \url{http://www.jstatsoft.org/v48/i02/}.
 #' @export
-#' @examples
+#' @examples # Fit univariate latent change score model
+#' fit_uni_lcsm(data = data_uni_lcsm, var = names(data_uni_lcsm)[-1],
+#'              model = list(alpha_constant = TRUE, beta = FALSE, phi = FALSE))
 
 fit_uni_lcsm <- function(data,
                          var,
@@ -122,7 +126,13 @@ fit_uni_lcsm <- function(data,
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavaan}.
 #' @return This function returns a lavaan class object.
 #' @export
-#' @examples
+#' @examples # Fit 
+#' fit_bi_lcsm(data = data_bi_lcsm, 
+#'             var_x = names(data_bi_lcsm)[2:11], 
+#'             var_y = names(data_bi_lcsm)[12:21],
+#'             model_x = list(alpha_constant = TRUE, beta = TRUE, phi = FALSE),
+#'             model_y = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),
+#'             coupling = list(delta_lag_xy = TRUE, xi_lag_yx = TRUE))
 
 fit_bi_lcsm <- function(data,
                         var_x,
@@ -139,7 +149,7 @@ fit_bi_lcsm <- function(data,
   
   # Count timepoints ----
   if (length(var_x) != length(var_y)){
-    stop("Unequal number of variables specified for x and y. Both lists need to have the same number of variables.")
+    stop("Unequal number of variables specified for x and y. Both vectors 'var_x' and 'var_x' need to have the same number of variables.")
   }
   
   timepoints <- length(var_x)

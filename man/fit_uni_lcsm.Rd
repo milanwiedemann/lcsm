@@ -41,3 +41,12 @@ This function returns a lavaan class object.
 \description{
 Fit univariate latent change score models.
 }
+\examples{
+# Fit univariate latent change score model
+fit_uni_lcsm(data = data_uni_lcsm, var = names(data_uni_lcsm)[-1],
+             model = list(alpha_constant = TRUE, beta = FALSE, phi = FALSE))
+}
+\references{
+Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
+\url{http://www.jstatsoft.org/v48/i02/}.
+}

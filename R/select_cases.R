@@ -9,6 +9,10 @@
 #' @return tibble
 #' @export
 #' @examples
+#' select_uni_cases(data_uni_lcsm, 
+#'                  id_var = "id", 
+#'                  var_list = names(data_uni_lcsm)[-1], 
+#'                  min_count = 7)
 #' 
 
 select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only = FALSE) {
@@ -47,6 +51,13 @@ select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only =
 #' @return tibble
 #' @export
 #' @examples
+#' select_bi_cases(data_bi_lcsm, 
+#'                 id_var = "id", 
+#'                 var_list_x = names(data_bi_lcsm)[2:11],
+#'                 var_list_y = names(data_bi_lcsm)[12:21],
+#'                 min_count_x = 7,
+#'                 min_count_y = 7)
+#' 
 
 select_bi_cases <- function(data, id_var, var_list_x, var_list_y, min_count_x, min_count_y) {
   

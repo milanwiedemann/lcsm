@@ -16,7 +16,20 @@
 #' \url{http://www.jstatsoft.org/v48/i02/}.
 #' @return Lavaan model syntax including comments.
 #' @export 
-#' @examples
+#' @examples # Specify univariate LCS model
+#' lavaan_uni_lcsm_01 <- specify_uni_lcsm(timepoints = 10, 
+#'                                        model = list(alpha_constant = TRUE, 
+#'                                                     beta = TRUE, 
+#'                                                     phi = TRUE), 
+#'                                        var = "x",  
+#'                                        change_letter = "j")
+#'                  
+#' #' # To look at string simply return the object                                    
+#' lavaan_uni_lcsm_01
+#' 
+#' # To get a readable output use cat() function
+#' cat(lavaan_uni_lcsm_01)
+#' 
 
 specify_uni_lcsm <- function(timepoints, model, var, change_letter) {
   
@@ -197,7 +210,26 @@ specify_uni_lcsm <- function(timepoints, model, var, change_letter) {
 #'
 #' @return Lavaan model syntax including comments.
 #' @export 
-#' @examples
+#' @examples # Specify biivariate LCS model
+#' lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 10, 
+#'                                      var_x = "x",
+#'                                      model_x = list(alpha_constant = TRUE, 
+#'                                                     beta = TRUE, 
+#'                                                     phi = TRUE),
+#'                                      var_y = "y",  
+#'                                      model_y = list(alpha_constant = TRUE, 
+#'                                                     beta = TRUE, 
+#'                                                     phi = TRUE),  
+#'                                      coupling = list(delta_lag_xy = TRUE, 
+#'                                                      delta_lag_yx = TRUE),
+#'                                      change_letter_x = "g",
+#'                                      change_letter_y = "j")
+#' 
+#' # To look at string simply return the object                                    
+#' lavaan_bi_lcsm_01
+#' 
+#' # To get a readable output use cat() function
+#' cat(lavaan_bi_lcsm_01)
 #' 
 specify_bi_lcsm <- function(timepoints,
                                     var_x,

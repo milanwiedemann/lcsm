@@ -25,5 +25,9 @@ tibble
 Select cases based on minimum number of available session scores on one longitudinal measure
 }
 \examples{
+select_uni_cases(data_uni_lcsm, 
+                 id_var = "id", 
+                 var_list = names(data_uni_lcsm)[-1], 
+                 min_count = 7)
 
 }
