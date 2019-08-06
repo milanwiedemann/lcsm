@@ -66,3 +66,7 @@ Plot
 \description{
 Plot simplified path diagram of univariate and bivariate latent change score models
 }
+\references{
+Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
+\url{https://CRAN.R-project.org/package=semPlot}
+}

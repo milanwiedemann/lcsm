@@ -12,7 +12,8 @@
 #' }
 #' @param var String, specifying letter to be used for of variables (Usually x or y).
 #' @param change_letter String, specifying letter to be used for change factor (Usually g or j).
-#'
+#' @references Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
+#' \url{http://www.jstatsoft.org/v48/i02/}.
 #' @return Lavaan model syntax including comments.
 #' @export 
 #' @examples

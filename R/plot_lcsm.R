@@ -24,7 +24,8 @@
 #' @param edge.label.cex See \link[semPlot]{semPaths}.
 #' @param nCharEdges See \link[semPlot]{semPaths}.
 #' @param ... Other arguments passed on to \link[semPlot]{semPaths}.
-#'
+#' @references Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
+#' \url{https://CRAN.R-project.org/package=semPlot}
 #' @return Plot
 #' @export 
 #'
