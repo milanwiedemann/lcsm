@@ -30,3 +30,7 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
 # Now extract fit statistics                          
 extract_param(bi_lcsm_01)
 }
+\references{
+David Robinson and Alex Hayes (2019). broom: Convert Statistical Analysis Objects into Tidy Tibbles. R package version 0.5.2.
+\url{https://CRAN.R-project.org/package=broom}
+}

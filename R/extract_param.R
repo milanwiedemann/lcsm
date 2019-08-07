@@ -6,6 +6,8 @@
 
 #' @return This function returns a tibble with labeled parameters.
 #' @export
+#' @references David Robinson and Alex Hayes (2019). broom: Convert Statistical Analysis Objects into Tidy Tibbles. R package version 0.5.2.
+#' \url{https://CRAN.R-project.org/package=broom}
 #' @examples # First create a lavaan object
 #' bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm, 
 #'                           var_x = names(data_bi_lcsm)[2:11], 
