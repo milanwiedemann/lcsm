@@ -271,23 +271,23 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #'             return_lavaan_syntax = FALSE)
 #' 
 sim_bi_lcsm <- function(timepoints, 
-                             model_x, model_x_param = NULL, 
-                             model_y, model_y_param = NULL, 
-                             coupling, coupling_param = NULL,
-                             sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, ...,
-                             var_x = "x", var_y = "y", change_letter_x = "g", change_letter_y = "j", 
-                             return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
+                        model_x, model_x_param = NULL, 
+                        model_y, model_y_param = NULL, 
+                        coupling, coupling_param = NULL,
+                        sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, ...,
+                        var_x = "x", var_y = "y", change_letter_x = "g", change_letter_y = "j", 
+                        return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
   model <- specify_bi_lcsm(timepoints = timepoints,
-                                   var_x = var_x,
-                                   model_x = model_x,
-                                   var_y = var_y,
-                                   model_y = model_y,
-                                   coupling = coupling,
-                                   change_letter_x = change_letter_x,
-                                   change_letter_y = change_letter_y)
+                           var_x = var_x,
+                           model_x = model_x,
+                           var_y = var_y,
+                           model_y = model_y,
+                           coupling = coupling,
+                           change_letter_x = change_letter_x,
+                           change_letter_y = change_letter_y)
   
   # 2. Extract all labels from lavaan syntax using lavaan::lavaanify() ----
   labels <- lavaan::lavaanify(model) %>% 
