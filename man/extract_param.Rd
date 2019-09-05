@@ -27,7 +27,7 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
                           model_y = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),
                           coupling = list(delta_lag_xy = TRUE, xi_lag_yx = TRUE))
 
-# Now extract fit statistics                          
+# Now extract parameter estimates                          
 extract_param(bi_lcsm_01)
 }
 \references{
