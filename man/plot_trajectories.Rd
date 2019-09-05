@@ -52,3 +52,19 @@ ggplot2 object
 \description{
 TODO: Describe function
 }
+\examples{
+# Create plot for construct x
+plot_trajectories(data = data_bi_lcsm,
+                  id_var = "id", 
+                  var_list = c("x1", "x2", "x3", "x4", "x5", 
+                               "x6", "x7", "x8", "x9", "x10"))
+
+# Create plot for construct y specifying some ather arguments
+plot_trajectories(data = data_bi_lcsm,
+                  id_var = "id", 
+                  var_list = c("y1", "y2", "y3", "y4", "y5", 
+                               "y6", "y7", "y8", "y9", "y10"),
+                  xlab = "Time", ylab = "Y Score",
+                  connect_missing = FALSE, random_sample_frac = 0.5)
+
+}

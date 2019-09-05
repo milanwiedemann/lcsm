@@ -17,6 +17,20 @@
 #' @param random_sample_frac The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.
 #' @param connect_missing Logical, speciying whether to connect points by \code{id_var} across missing values.
 #' @param title_n Logical, speciying whether to print title with number and percentage of cases used for the plot.
+#' @examples 
+#' # Create plot for construct x
+#' plot_trajectories(data = data_bi_lcsm,
+#'                   id_var = "id", 
+#'                   var_list = c("x1", "x2", "x3", "x4", "x5", 
+#'                                "x6", "x7", "x8", "x9", "x10"))
+#' 
+#' # Create plot for construct y specifying some ather arguments
+#' plot_trajectories(data = data_bi_lcsm,
+#'                   id_var = "id", 
+#'                   var_list = c("y1", "y2", "y3", "y4", "y5", 
+#'                                "y6", "y7", "y8", "y9", "y10"),
+#'                   xlab = "Time", ylab = "Y Score",
+#'                   connect_missing = FALSE, random_sample_frac = 0.5)
 #' 
 #' @return ggplot2 object
 #' @export
