@@ -8,12 +8,13 @@
 status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build
 status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
-[![lcsm-version](https://img.shields.io/badge/Version-0.0.5-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 
 This package contains some helper functions to specify and analyse
 univariate and bivariate latent change score (LCS) models using
-[lavaan](http://lavaan.ugent.be/). The two main aims of this package are
-to For details about this method see for example McArdle
+[lavaan](http://lavaan.ugent.be/) (Rosseel,
+[2012](http://www.jstatsoft.org/v48/i02/)) For details about this method
+see for example McArdle
 ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
 et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
@@ -151,7 +152,9 @@ help files `help(fit_uni_lcsm)`.
 | phi                 | Autoregression of change scores |
 
 The example below shows how to specify a generic univariate latent
-change score model using the function `specify_uni_lcsm()`.
+change score model using the function `specify_uni_lcsm()`. A table of
+the description of all parameters that can be estimated is shown
+[here](#overview-of-estimated-lcs-model-parameters).
 
 ``` r
 specify_uni_lcsm(timepoints = 5,
@@ -424,8 +427,8 @@ cat(syntax)
 #### 2.2. Fit bivariate LCS models
 
 The function `fit_bi_lcsm()` allowes to specify two univariate LCS
-models using the arguments `model_x` and `model_x`. These models can
-then be connected using the `coupling` argument. More details can be
+models using the arguments `model_x` and `model_x`. These two constructs
+can then be connected using the `coupling` argument. More details can be
 found in the help files
 `help(fit_bi_lcsm)`.
 
@@ -481,9 +484,14 @@ fit_bi_lcsm(data = data_bi_lcsm,
 The main underlying functions to extract parameters and fit statistics
 come from the `broom` package: `broom::tidy()` and `broom::glance()`.
 The functions `extract_param()` and `extract_fit()` offer some tools
-that I find helpful when running LCS models in R, for example: - only
-one row per estimated parameter `extract_param()`, - fit statistics for
-multiple lavaan objects can be looked at using `extract_fit()`.
+that I find helpful when running LCS models in R, for example:
+
+  - `extract_param()`: only one row per estimated parameter,
+  - `extract_fit()`: fit statistics for multiple lavaan objects can be
+    extracted.
+
+A table of the description of all parameters that can be estimated is
+shown [here](#overview-of-estimated-lcs-model-parameters).
 
 ``` r
 # First create a lavaan object
@@ -586,7 +594,9 @@ plot_lcsm(lavaan_object = bi_lavaan_results,
 ### 5\. Simulate data
 
 The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based
-on some some parameters that can be specified.
+on some some parameters that can be specified. See the tables
+[here](#overview-of-estimated-lcs-model-parameters) for a full list of
+parameters that can be specified for the data simulation.
 
 ``` r
 # Simulate some data 
