@@ -3,7 +3,7 @@
 
 # lcsm: An R package and tutorial on latent change score modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--09--05-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--09--09-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build
 status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build
@@ -12,8 +12,8 @@ status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](
 
 This package contains some helper functions to specify and analyse
 univariate and bivariate latent change score (LCS) models using
-[lavaan](http://lavaan.ugent.be/). For details about this method see for
-example McArdle
+[lavaan](http://lavaan.ugent.be/). The two main aims of this package are
+to For details about this method see for example McArdle
 ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
 et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
@@ -96,7 +96,7 @@ library(lcsm)
 ### 1\. Visualise data
 
 Longitudinal data can be visualised using the `plot_trajectories()`
-function. Here only 30% of the data is visualised for using the argument
+function. Here only 30% of the data is visualised using the argument
 `random_sample_frac = 0.3`. Only consecutive measures are connected by
 lines as specified in `connect_missing = FALSE`.
 
@@ -150,8 +150,8 @@ help files `help(fit_uni_lcsm)`.
 | beta                | Proportional change factor      |
 | phi                 | Autoregression of change scores |
 
-Here is the syntax to specify a generic univariate latent change score
-model
+The example below shows how to specify a generic univariate latent
+change score model using the function `specify_uni_lcsm()`.
 
 ``` r
 specify_uni_lcsm(timepoints = 5,
@@ -164,7 +164,8 @@ specify_uni_lcsm(timepoints = 5,
 
 <details>
 
-<summary>Click here to see the lavaan syntax specified above.</summary>
+<summary>Click here to see the <code>lavaan</code> syntax specified
+above.</summary>
 
 <p>
 
@@ -240,8 +241,10 @@ specify_uni_lcsm(timepoints = 5,
 
 </details>
 
-The following code shows how to fit a univariate LCS model using the
-sample data set `data_uni_lcsm`.
+The function `fit_uni_lcsm()` can be used to fit a univariate LCS model
+using the sample data set `data_uni_lcsm`. This functions first writes
+the lavaan syntax specified in the `model` argument and passes it on to
+`lavaaan::lavaan()`.
 
 ``` r
 # Fit univariate latent change score model
@@ -273,7 +276,11 @@ fit_uni_lcsm(data = data_uni_lcsm,
 
 It is also possible to show the lavaan syntax that was created to fit
 the model by the function `specify_uni_lcsm()`. The lavaan syntax
-includes comments describing some parts of the syntax in more detail.
+includes comments describing some parts of the syntax in more detail. To
+save the syntax in an object the argument `return_lavaan_syntax_string`
+has to be set to `TRUE`. This object can be returned in an easy to read
+format using `cat(syntax)`, or as a simple string without the `cat()`
+function.
 
 ``` r
 # Fit univariate latent change score model
@@ -283,7 +290,11 @@ syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                        model = list(alpha_constant = TRUE, 
                                     beta = FALSE, 
                                     phi = TRUE),
-                      return_lavaan_syntax = TRUE)
+                      return_lavaan_syntax = TRUE,
+                      return_lavaan_syntax_string = TRUE)
+
+# Return lavaan syntax in easy to read format
+cat(syntax)
 ```
 
 <details>
@@ -412,9 +423,10 @@ syntax <- fit_uni_lcsm(data = data_uni_lcsm,
 
 #### 2.2. Fit bivariate LCS models
 
-To estimate coupling parameters for bivariate LCSM, the argument
-`coupling` from the `fit_bi_lcsm()` function can take the following
-specifications. More detail can be found in the help files
+The function `fit_bi_lcsm()` allowes to specify two univariate LCS
+models using the arguments `model_x` and `model_x`. These models can
+then be connected using the `coupling` argument. More details can be
+found in the help files
 `help(fit_bi_lcsm)`.
 
 | Coupling specification   | Description                                           |
@@ -466,7 +478,12 @@ fit_bi_lcsm(data = data_bi_lcsm,
 
 ### 3\. Extract fit statistics and parmeters
 
-The functions XXX and YYY can be used to …
+The main underlying functions to extract parameters and fit statistics
+come from the `broom` package: `broom::tidy()` and `broom::glance()`.
+The functions `extract_param()` and `extract_fit()` offer some tools
+that I find helpful when running LCS models in R, for example: - only
+one row per estimated parameter `extract_param()`, - fit statistics for
+multiple lavaan objects can be looked at using `extract_fit()`.
 
 ``` r
 # First create a lavaan object
@@ -475,55 +492,101 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
                                     "x6", "x7", "x8", "x9", "x10"),
                           var_y = c("y1", "y2", "y3", "y4", "y5", 
                                     "y6", "y7", "y8", "y9", "y10"),
-                         model_x = list(alpha_constant = TRUE, 
-                                        beta = TRUE, 
-                                        phi = FALSE),
-                         model_y = list(alpha_constant = TRUE, 
-                                        beta = TRUE, 
-                                        phi = TRUE),
-                         coupling = list(delta_lag_xy = TRUE, 
-                                         xi_lag_yx = TRUE))
+                          model_x = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = FALSE),
+                          model_y = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = TRUE),
+                          coupling = list(delta_lag_xy = TRUE, 
+                                          xi_lag_yx = TRUE))
 
-# Now extract parameter estimates                           
-param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ ,1:7]
+# Now extract parameter estimates
+# Only extract first 7 columns for this example by adding [ , 1:7]
+param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ , 1:7]
 
 # Print table of parameter estimates
-kable(param_bi_lcsm_01)
+kable(param_bi_lcsm_01, digits = 3)
 ```
 
-| label          |    estimate | std.error |    statistic |   p.value |    conf.low |   conf.high |
-| :------------- | ----------: | --------: | -----------: | --------: | ----------: | ----------: |
-| gamma\_lx1     |  21.0657621 | 0.0358148 |  588.1867011 | 0.0000000 |  20.9955665 |  21.1359577 |
-| sigma2\_lx1    |   0.4926145 | 0.0365295 |   13.4853836 | 0.0000000 |   0.4210180 |   0.5642110 |
-| sigma2\_ux     |   0.2009720 | 0.0044363 |   45.3012584 | 0.0000000 |   0.1922770 |   0.2096671 |
-| alpha\_g2      | \-0.3091272 | 0.0529838 |  \-5.8343717 | 0.0000000 | \-0.4129735 | \-0.2052808 |
-| sigma2\_g2     |   0.3946950 | 0.0275426 |   14.3303528 | 0.0000000 |   0.3407125 |   0.4486775 |
-| sigma\_g2lx1   |   0.1549412 | 0.0220816 |    7.0167722 | 0.0000000 |   0.1116622 |   0.1982203 |
-| beta\_x        | \-0.1060129 | 0.0034400 | \-30.8180341 | 0.0000000 | \-0.1127552 | \-0.0992707 |
-| gamma\_ly1     |   5.0248664 | 0.0290815 |  172.7858133 | 0.0000000 |   4.9678677 |   5.0818650 |
-| sigma2\_ly1    |   0.2083415 | 0.0191845 |   10.8599098 | 0.0000000 |   0.1707407 |   0.2459424 |
-| sigma2\_uy     |   0.1927999 | 0.0048566 |   39.6983538 | 0.0000000 |   0.1832811 |   0.2023187 |
-| alpha\_j2      | \-0.2029207 | 0.0388953 |  \-5.2171080 | 0.0000002 | \-0.2791540 | \-0.1266874 |
-| sigma2\_j2     |   0.0929112 | 0.0078963 |   11.7664417 | 0.0000000 |   0.0774348 |   0.1083877 |
-| sigma\_j2ly1   |   0.0169689 | 0.0078718 |    2.1556533 | 0.0311107 |   0.0015404 |   0.0323975 |
-| beta\_y        | \-0.1969627 | 0.0049786 | \-39.5618836 | 0.0000000 | \-0.2067205 | \-0.1872048 |
-| phi\_y         |   0.1439509 | 0.0290047 |    4.9630121 | 0.0000007 |   0.0871027 |   0.2007992 |
-| sigma\_su      |   0.0085980 | 0.0033308 |    2.5813637 | 0.0098411 |   0.0020698 |   0.0151263 |
-| sigma\_ly1lx1  |   0.1848025 | 0.0207529 |    8.9048938 | 0.0000000 |   0.1441276 |   0.2254775 |
-| sigma\_g2ly1   |   0.0721028 | 0.0162510 |    4.4368113 | 0.0000091 |   0.0402514 |   0.1039543 |
-| sigma\_j2lx1   |   0.0934682 | 0.0118082 |    7.9155160 | 0.0000000 |   0.0703245 |   0.1166119 |
-| sigma\_j2g2    |   0.0054737 | 0.0118264 |    0.4628345 | 0.6434830 | \-0.0177056 |   0.0286530 |
-| delta\_lag\_xy |   0.1399998 | 0.0058733 |   23.8368185 | 0.0000000 |   0.1284885 |   0.1515112 |
-| xi\_lag\_yx    |   0.3602020 | 0.0373872 |    9.6343747 | 0.0000000 |   0.2869245 |   0.4334796 |
+| label          | estimate | std.error | statistic | p.value | conf.low | conf.high |
+| :------------- | -------: | --------: | --------: | ------: | -------: | --------: |
+| gamma\_lx1     |   21.066 |     0.036 |   588.187 |   0.000 |   20.996 |    21.136 |
+| sigma2\_lx1    |    0.493 |     0.037 |    13.485 |   0.000 |    0.421 |     0.564 |
+| sigma2\_ux     |    0.201 |     0.004 |    45.301 |   0.000 |    0.192 |     0.210 |
+| alpha\_g2      |  \-0.309 |     0.053 |   \-5.834 |   0.000 |  \-0.413 |   \-0.205 |
+| sigma2\_g2     |    0.395 |     0.028 |    14.330 |   0.000 |    0.341 |     0.449 |
+| sigma\_g2lx1   |    0.155 |     0.022 |     7.017 |   0.000 |    0.112 |     0.198 |
+| beta\_x        |  \-0.106 |     0.003 |  \-30.818 |   0.000 |  \-0.113 |   \-0.099 |
+| gamma\_ly1     |    5.025 |     0.029 |   172.786 |   0.000 |    4.968 |     5.082 |
+| sigma2\_ly1    |    0.208 |     0.019 |    10.860 |   0.000 |    0.171 |     0.246 |
+| sigma2\_uy     |    0.193 |     0.005 |    39.698 |   0.000 |    0.183 |     0.202 |
+| alpha\_j2      |  \-0.203 |     0.039 |   \-5.217 |   0.000 |  \-0.279 |   \-0.127 |
+| sigma2\_j2     |    0.093 |     0.008 |    11.766 |   0.000 |    0.077 |     0.108 |
+| sigma\_j2ly1   |    0.017 |     0.008 |     2.156 |   0.031 |    0.002 |     0.032 |
+| beta\_y        |  \-0.197 |     0.005 |  \-39.562 |   0.000 |  \-0.207 |   \-0.187 |
+| phi\_y         |    0.144 |     0.029 |     4.963 |   0.000 |    0.087 |     0.201 |
+| sigma\_su      |    0.009 |     0.003 |     2.581 |   0.010 |    0.002 |     0.015 |
+| sigma\_ly1lx1  |    0.185 |     0.021 |     8.905 |   0.000 |    0.144 |     0.225 |
+| sigma\_g2ly1   |    0.072 |     0.016 |     4.437 |   0.000 |    0.040 |     0.104 |
+| sigma\_j2lx1   |    0.093 |     0.012 |     7.916 |   0.000 |    0.070 |     0.117 |
+| sigma\_j2g2    |    0.005 |     0.012 |     0.463 |   0.643 |  \-0.018 |     0.029 |
+| delta\_lag\_xy |    0.140 |     0.006 |    23.837 |   0.000 |    0.128 |     0.152 |
+| xi\_lag\_yx    |    0.360 |     0.037 |     9.634 |   0.000 |    0.287 |     0.433 |
 
 ### 4\. Plot simplified path diagrams of LCS models
 
-Work in progress\!
+This function is work in progress and can only plot univariate and
+bivariate LCS models that were specified with `fit_uni_lcsm()` or
+`fit_bi_lcsm()`. Modified LCS models will probably return errors as the
+layout matrix that gets created by this function only supports some
+basic layouts.
+
+``` r
+# Fit bivariate lcsm and save the results 
+bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                 var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                 var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                 model_x = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = FALSE),
+                                 model_y = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE),
+                                 coupling = list(delta_lag_xy = TRUE, 
+                                                 xi_lag_yx = TRUE))
+
+# Save the lavaan syntax that was used to create the layout matrix for semPlot
+bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                model_x = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = FALSE),
+                                model_y = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                coupling = list(delta_lag_xy = TRUE, 
+                                                xi_lag_yx = TRUE),
+                                return_lavaan_syntax = TRUE, 
+                                return_lavaan_syntax_string = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = bi_lavaan_results, 
+          lavaan_syntax = bi_lavaan_syntax,
+          lcsm = "bivariate")
+#> Registered S3 methods overwritten by 'huge':
+#>   method    from   
+#>   plot.sim  BDgraph
+#>   print.sim BDgraph
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
 ### 5\. Simulate data
 
-The functions `sim_uni_lcsm` and `sim_bi_lcsm` simulate data based on
-some some parameters that can be specified.
+The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based
+on some some parameters that can be specified.
 
 ``` r
 # Simulate some data 
@@ -543,16 +606,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  20.3  19.4  18.2  17.0  NA  
-#>  2     2  21.0  20.1  17.8  15.2  14.3
-#>  3     3  NA    NA    15.1  13.2  NA  
-#>  4     4  21.8  21.0  21.4  20.4  NA  
-#>  5     5  18.3  NA    NA    13.3  NA  
-#>  6     6  20.5  20.7  19.6  19.2  17.7
-#>  7     7  22.7  NA    NA    NA    18.1
-#>  8     8  20.4  19.2  NA    16.1  14.7
-#>  9     9  NA    23.1  22.8  22.2  21.7
-#> 10    10  21.7  20.6  21.0  20.6  NA  
+#>  1     1  21.5  22.9  NA    22.2  20.9
+#>  2     2  20.3  19.3  18.3  16.3  NA  
+#>  3     3  20.4  20.2  NA    18.8  17.4
+#>  4     4  NA    20.0  20.0  NA    17.3
+#>  5     5  NA    19.8  NA    16.8  15.2
+#>  6     6  NA    18.3  16.2  NA    13.0
+#>  7     7  NA    19.4  18.4  15.9  13.9
+#>  8     8  NA    20.8  19.4  18.4  17.3
+#>  9     9  21.0  20.8  NA    17.6  16.6
+#> 10    10  NA    22.2  NA    20.0  18.6
 #> # … with 990 more rows
 ```
 

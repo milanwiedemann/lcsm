@@ -19,12 +19,13 @@ knitr::opts_chunk$set(
 
 # lcsm: An R package and tutorial on latent change score modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--09--05-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--09--09-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.5-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
 This package contains some helper functions to specify and analyse univariate and bivariate latent change score (LCS) models using [lavaan](http://lavaan.ugent.be/). 
+The two main aims of this package are to 
 For details about this method see for example
 McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), 
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), 
@@ -77,7 +78,7 @@ library(lcsm)
 ### 1. Visualise data
 
 Longitudinal data can be visualised using the `plot_trajectories()` function.
-Here only 30% of the data is visualised for using the argument `random_sample_frac = 0.3`.
+Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
 Only consecutive measures are connected by lines as specified in `connect_missing = FALSE`.
 
 ```{r, fig.width = 6, fig.height = 3.5, dpi = 300, cache=TRUE}
@@ -115,14 +116,14 @@ More detail can be found in the help files `help(fit_uni_lcsm)`.
 
 #### 2.1. Fit univariate LCS models
 
-|Model specification  |Description                                                    |
-|:-----------|:-----------------------------------------------------------------------|
-|alpha_constant      |Constant change factor                                          |
-|beta                |Proportional change factor                                      |
-|phi                 |Autoregression of change scores                                 |
+|Model specification |Description                                                    |
+|:-------------------|:--------------------------------------------------------------|
+|alpha_constant      |Constant change factor                                         |
+|beta                |Proportional change factor                                     |
+|phi                 |Autoregression of change scores                                |
 
 
-Here is the syntax to specify a generic univariate latent change score model
+The example below shows how to specify a generic univariate latent change score model using the function `specify_uni_lcsm()`.
 
 ```{r, eval=FALSE}
 specify_uni_lcsm(timepoints = 5,
@@ -134,7 +135,7 @@ specify_uni_lcsm(timepoints = 5,
 ```
 
 <details>
-<summary>Click here to see the lavaan syntax specified above.</summary>
+<summary>Click here to see the <code>lavaan</code> syntax specified above.</summary>
 <p>
 ```
 # Specify latent true scores 
@@ -209,7 +210,8 @@ dx5 ~ phi_x * dx4
 </details>
 
 
-The following code shows how to fit a univariate LCS model using the sample data set `data_uni_lcsm`.
+The function `fit_uni_lcsm()` can be used to fit a univariate LCS model using the sample data set `data_uni_lcsm`.
+This functions first writes the lavaan syntax specified in the `model` argument and passes it on to `lavaaan::lavaan()`.
 
 ```{r, cache=TRUE}
 # Fit univariate latent change score model
@@ -223,6 +225,8 @@ fit_uni_lcsm(data = data_uni_lcsm,
 
 It is also possible to show the lavaan syntax that was created to fit the model by the function `specify_uni_lcsm()`.
 The lavaan syntax includes comments describing some parts of the syntax in more detail.
+To save the syntax in an object the argument `return_lavaan_syntax_string` has to be set to `TRUE`.
+This object can be returned in an easy to read format using `cat(syntax)`, or as a simple string without the `cat()` function.
 
 ```{r, eval=FALSE}
 # Fit univariate latent change score model
@@ -232,7 +236,11 @@ syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                        model = list(alpha_constant = TRUE, 
                                     beta = FALSE, 
                                     phi = TRUE),
-                      return_lavaan_syntax = TRUE)
+                      return_lavaan_syntax = TRUE,
+                      return_lavaan_syntax_string = TRUE)
+
+# Return lavaan syntax in easy to read format
+cat(syntax)
 ```
 
 
@@ -358,8 +366,9 @@ dx10 ~ phi_x * dx9
 
 #### 2.2. Fit bivariate LCS models
 
-To estimate coupling parameters for bivariate LCSM, the argument `coupling` from the `fit_bi_lcsm()` function can take the following specifications.
-More detail can be found in the help files `help(fit_bi_lcsm)`.
+The function `fit_bi_lcsm()` allowes to specify two univariate LCS models using the arguments `model_x` and `model_x`.
+These models can then be connected using the `coupling` argument. 
+More details can be found in the help files `help(fit_bi_lcsm)`.
 
 |Coupling specification |Description                                            |
 |:----------------------|:------------------------------------------------------|
@@ -392,8 +401,10 @@ fit_bi_lcsm(data = data_bi_lcsm,
 
 ### 3. Extract fit statistics and parmeters
 
-The functions XXX and YYY can be used to ...
-
+The main underlying functions to extract parameters and fit statistics come from the `broom` package: `broom::tidy()` and `broom::glance()`. 
+The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCS models in R, for example:
+- only one row per estimated parameter `extract_param()`,
+- fit statistics for multiple lavaan objects can be looked at using `extract_fit()`.
 
 ```{r, cache=TRUE}
 # First create a lavaan object
@@ -402,29 +413,67 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
                                     "x6", "x7", "x8", "x9", "x10"),
                           var_y = c("y1", "y2", "y3", "y4", "y5", 
                                     "y6", "y7", "y8", "y9", "y10"),
-                         model_x = list(alpha_constant = TRUE, 
-                                        beta = TRUE, 
-                                        phi = FALSE),
-                         model_y = list(alpha_constant = TRUE, 
-                                        beta = TRUE, 
-                                        phi = TRUE),
-                         coupling = list(delta_lag_xy = TRUE, 
-                                         xi_lag_yx = TRUE))
+                          model_x = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = FALSE),
+                          model_y = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = TRUE),
+                          coupling = list(delta_lag_xy = TRUE, 
+                                          xi_lag_yx = TRUE))
 
-# Now extract parameter estimates                           
-param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ ,1:7]
+# Now extract parameter estimates
+# Only extract first 7 columns for this example by adding [ , 1:7]
+param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ , 1:7]
 
 # Print table of parameter estimates
-kable(param_bi_lcsm_01)
+kable(param_bi_lcsm_01, digits = 3)
 ```
 
 ### 4. Plot simplified path diagrams of LCS models
 
-Work in progress!
+This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
+Modified LCS models will probably return errors as the layout matrix that gets created by this function only supports some basic layouts. 
+
+```{r, fig.width = 6, fig.height = 4, dpi = 320, cache=TRUE}
+# Fit bivariate lcsm and save the results 
+bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                 var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                 var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                 model_x = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = FALSE),
+                                 model_y = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE),
+                                 coupling = list(delta_lag_xy = TRUE, 
+                                                 xi_lag_yx = TRUE))
+
+# Save the lavaan syntax that was used to create the layout matrix for semPlot
+bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                model_x = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = FALSE),
+                                model_y = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                coupling = list(delta_lag_xy = TRUE, 
+                                                xi_lag_yx = TRUE),
+                                return_lavaan_syntax = TRUE, 
+                                return_lavaan_syntax_string = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = bi_lavaan_results, 
+          lavaan_syntax = bi_lavaan_syntax,
+          lcsm = "bivariate")
+```
+
 
 ### 5. Simulate data
 
-The functions `sim_uni_lcsm` and `sim_bi_lcsm` simulate data based on some some parameters that can be specified.
+The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based on some some parameters that can be specified.
 
 ```{r sim-uni-data}
 # Simulate some data 

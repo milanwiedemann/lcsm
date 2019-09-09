@@ -196,6 +196,7 @@ plot_lcsm <- function(lavaan_object,
         fade = fade,
         nCharNodes = 0,
         nCharEdges = 0,
+        edge.label.cex = edge.label.cex,
         DoNotPlot = TRUE,
         ...)
     }
@@ -220,6 +221,7 @@ plot_lcsm <- function(lavaan_object,
       fade = fade,
       nCharNodes = 0,
       nCharEdges = 0,
+      edge.label.cex = edge.label.cex,
       DoNotPlot = TRUE,
       ...)
   }
@@ -230,9 +232,6 @@ plot_lcsm <- function(lavaan_object,
   
   # Create plot
   plot(graph)
-  
-  
-  
   
 }
 
