@@ -4,12 +4,25 @@
 \alias{plot_trajectories}
 \title{Plot individual trajectories}
 \usage{
-plot_trajectories(data, id_var, var_list, line_colour = "blue",
-  point_colour = "black", line_alpha = 0.2, point_alpha = 0.2,
-  smooth = FALSE, smooth_method = "loess", smooth_se = FALSE,
-  xlab = "X", ylab = "Y", scale_x_num = FALSE,
-  scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE,
-  connect_missing = TRUE)
+plot_trajectories(
+  data,
+  id_var,
+  var_list,
+  line_colour = "blue",
+  point_colour = "black",
+  line_alpha = 0.2,
+  point_alpha = 0.2,
+  smooth = FALSE,
+  smooth_method = "loess",
+  smooth_se = FALSE,
+  xlab = "X",
+  ylab = "Y",
+  scale_x_num = FALSE,
+  scale_x_num_start = 1,
+  random_sample_frac = 1,
+  title_n = FALSE,
+  connect_missing = TRUE
+)
 }
 \arguments{
 \item{data}{Dataset in wide format.}

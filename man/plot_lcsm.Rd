@@ -4,13 +4,31 @@
 \alias{plot_lcsm}
 \title{Plot simplified path diagram of univariate and bivariate latent change score models}
 \usage{
-plot_lcsm(lavaan_object, layout = NULL, lavaan_syntax = NULL,
-  return_layout_from_lavaan_syntax = FALSE, lcsm = c("univariate",
-  "bivariate"), curve_covar = 0.5, what = "col", whatLabels = "est",
-  edge.width = 1, node.width = 1, border.width = 1, fixedStyle = 1,
-  freeStyle = 1, residuals = FALSE, label.scale = FALSE,
-  sizeMan = 3, sizeLat = 5, intercepts = FALSE, fade = FALSE,
-  nCharNodes = 0, nCharEdges = 0, edge.label.cex = 0.5, ...)
+plot_lcsm(
+  lavaan_object,
+  layout = NULL,
+  lavaan_syntax = NULL,
+  return_layout_from_lavaan_syntax = FALSE,
+  lcsm = c("univariate", "bivariate"),
+  curve_covar = 0.5,
+  what = "col",
+  whatLabels = "est",
+  edge.width = 1,
+  node.width = 1,
+  border.width = 1,
+  fixedStyle = 1,
+  freeStyle = 1,
+  residuals = FALSE,
+  label.scale = FALSE,
+  sizeMan = 3,
+  sizeLat = 5,
+  intercepts = FALSE,
+  fade = FALSE,
+  nCharNodes = 0,
+  nCharEdges = 0,
+  edge.label.cex = 0.5,
+  ...
+)
 }
 \arguments{
 \item{lavaan_object}{Lavaan object of univariate or bivariate LCS model.}

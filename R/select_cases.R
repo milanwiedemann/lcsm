@@ -1,10 +1,9 @@
 #' Select cases based on minimum number of available session scores on one longitudinal measure
-#'
-#' @param data  TODO
-#' @param id_var  TODO
-#' @param var_list  TODO
-#' @param min_count  TODO
-#' @param return_id_only  TODO
+#' @param data  Dataset in wide format.
+#' @param id_var String, specifying id variable.
+#' @param var_list  Vector, specifying variable names in sequential order.
+#' @param min_count  Numeric, specifying minimum number of available scores
+#' @param return_id_only Logical, if TRUE only return ID. This is needed for select_bi_cases
 #'
 #' @return tibble
 #' @export
@@ -40,13 +39,12 @@ select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only =
 }
 
 #' Select cases based on minimum number of available session scores on two longitudinal measures
-#' @description TODO: Describe function
-#' @param data  TODO
-#' @param id_var  TODO
-#' @param var_list_x  TODO
-#' @param var_list_y  TODO
-#' @param min_count_x  TODO
-#' @param min_count_y  TODO
+#' @param data Dataset in wide format.
+#' @param id_var String, specifying id variable.
+#' @param var_list_x  Vector, specifying variable names of construct X in sequential order.
+#' @param var_list_y  Vector, specifying variable names of construct Y in sequential order.
+#' @param min_count_x  Numeric, specifying minimum number of available scores for construct X
+#' @param min_count_y  Numeric, specifying minimum number of available scores for construct Y
 #'
 #' @return tibble
 #' @export

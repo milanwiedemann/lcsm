@@ -4,11 +4,25 @@
 \alias{sim_bi_lcsm}
 \title{Simulate data from a univariate latent change score model}
 \usage{
-sim_bi_lcsm(timepoints, model_x, model_x_param = NULL, model_y,
-  model_y_param = NULL, coupling, coupling_param = NULL,
-  sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, ..., var_x = "x",
-  var_y = "y", change_letter_x = "g", change_letter_y = "j",
-  return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE)
+sim_bi_lcsm(
+  timepoints,
+  model_x,
+  model_x_param = NULL,
+  model_y,
+  model_y_param = NULL,
+  coupling,
+  coupling_param = NULL,
+  sample.nobs = 500,
+  na_x_pct = 0,
+  na_y_pct = 0,
+  ...,
+  var_x = "x",
+  var_y = "y",
+  change_letter_x = "g",
+  change_letter_y = "j",
+  return_lavaan_syntax = FALSE,
+  return_lavaan_syntax_string = FALSE
+)
 }
 \arguments{
 \item{timepoints}{See \link[lcsm]{specify_bi_lcsm}}

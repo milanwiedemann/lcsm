@@ -4,19 +4,18 @@
 \alias{select_uni_cases}
 \title{Select cases based on minimum number of available session scores on one longitudinal measure}
 \usage{
-select_uni_cases(data, id_var, var_list, min_count,
-  return_id_only = FALSE)
+select_uni_cases(data, id_var, var_list, min_count, return_id_only = FALSE)
 }
 \arguments{
-\item{data}{TODO}
+\item{data}{Dataset in wide format.}
 
-\item{id_var}{TODO}
+\item{id_var}{String, specifying id variable.}
 
-\item{var_list}{TODO}
+\item{var_list}{Vector, specifying variable names in sequential order.}
 
-\item{min_count}{TODO}
+\item{min_count}{Numeric, specifying minimum number of available scores}
 
-\item{return_id_only}{TODO}
+\item{return_id_only}{Logical, if TRUE only return ID. This is needed for select_bi_cases}
 }
 \value{
 tibble

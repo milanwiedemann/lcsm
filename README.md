@@ -36,54 +36,27 @@ devtools::install_github("milanwiedemann/lcsm")
 The `lcsm` package contains the following functions that can be
 categorised into:
 
-1.  Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for
+  - Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for
     models:
-
-<!-- end list -->
-
-  - `specify_uni_lcsm()`: write syntax for univariate LCSM
-  - `specify_bi_lcsm()`: write syntax for bivariate LCSM
-
-<!-- end list -->
-
-2.  Functions to fit models using [lavaan](http://lavaan.ugent.be/):
-
-<!-- end list -->
-
-  - `fit_uni_lcsm()`: fit univariate LCSM
-  - `fit_bi_lcsm()`: fit bivariate LCSM
-
-<!-- end list -->
-
-3.  Functions to extract numbers from models using
+      - `specify_uni_lcsm()`: write syntax for univariate LCSM
+      - `specify_bi_lcsm()`: write syntax for bivariate LCSM
+  - Functions to fit models using [lavaan](http://lavaan.ugent.be/):
+      - `fit_uni_lcsm()`: fit univariate LCSM
+      - `fit_bi_lcsm()`: fit bivariate LCSM
+  - Functions to extract numbers from models using
     [broom](https://broom.tidyverse.org/):
-
-<!-- end list -->
-
-  - `extract_fit()`: extract fit statistics
-  - `extract_param()`: extract estimated parameters
-
-<!-- end list -->
-
-4.  Simulate data using [lavaan](http://lavaan.ugent.be/):
-
-<!-- end list -->
-
-  - `sim_uni_lcsm_data()`: Simulate data from a univariate LCS model
-  - `sim_bi_lcsm_data()`: Simulate data from a bivariate LCS model
-
-<!-- end list -->
-
-5.  Helper functions:
-
-<!-- end list -->
-
-  - `plot_lcsm()`: visualise LCSM using
-    [semPlot](http://sachaepskamp.com/semPlot)
-  - `select_uni_cases()`: select cases for analysis based on available
-    scores on one construct
-  - `select_bi_cases()`: select cases for analysis based on available
-    scores on two construct
+      - `extract_fit()`: extract fit statistics
+      - `extract_param()`: extract estimated parameters
+  - Simulate data using [lavaan](http://lavaan.ugent.be/):
+      - `sim_uni_lcsm()`: Simulate data from a univariate LCSM
+      - `sim_bi_lcsm()`: Simulate data from a bivariate LCSM
+  - Helper functions:
+      - `plot_lcsm()`: visualise LCSM using
+        [semPlot](http://sachaepskamp.com/semPlot)
+      - `select_uni_cases()`: select cases for analysis based on
+        available scores on one construct
+      - `select_bi_cases()`: select cases for analysis based on
+        available scores on two construct
 
 ## How to use `lcsm`
 
@@ -124,10 +97,10 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 ggpubr::ggarrange(plot_x,
                   plot_y,
                   labels = c("a", "b"))
-#> Warning: Removed 72 rows containing missing values (geom_point).
-#> Warning: Removed 18 rows containing missing values (geom_path).
-#> Warning: Removed 154 rows containing missing values (geom_point).
-#> Warning: Removed 27 rows containing missing values (geom_path).
+#> Warning: Removed 79 rows containing missing values (geom_point).
+#> Warning: Removed 13 rows containing missing values (geom_path).
+#> Warning: Removed 151 rows containing missing values (geom_point).
+#> Warning: Removed 31 rows containing missing values (geom_path).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -616,16 +589,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  21.5  22.9  NA    22.2  20.9
-#>  2     2  20.3  19.3  18.3  16.3  NA  
-#>  3     3  20.4  20.2  NA    18.8  17.4
-#>  4     4  NA    20.0  20.0  NA    17.3
-#>  5     5  NA    19.8  NA    16.8  15.2
-#>  6     6  NA    18.3  16.2  NA    13.0
-#>  7     7  NA    19.4  18.4  15.9  13.9
-#>  8     8  NA    20.8  19.4  18.4  17.3
-#>  9     9  21.0  20.8  NA    17.6  16.6
-#> 10    10  NA    22.2  NA    20.0  18.6
+#>  1     1  21.5  NA    20.7  19.6  18.4
+#>  2     2  19.8  18.7  17.0  16.8  14.9
+#>  3     3  22.2  NA    20.1  19.1  18.2
+#>  4     4  19.5  19.3  NA    15.5  13.3
+#>  5     5  19.9  18.0  NA    15.2  NA  
+#>  6     6  20.1  18.3  16.7  NA    11.4
+#>  7     7  21.6  21.6  NA    19.9  19.1
+#>  8     8  NA    19.0  NA    17.1  NA  
+#>  9     9  NA    21.7  20.4  19.7  18.5
+#> 10    10  23.2  21.9  22.0  21.6  NA  
 #> # … with 990 more rows
 ```
 

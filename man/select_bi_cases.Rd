@@ -4,27 +4,26 @@
 \alias{select_bi_cases}
 \title{Select cases based on minimum number of available session scores on two longitudinal measures}
 \usage{
-select_bi_cases(data, id_var, var_list_x, var_list_y, min_count_x,
-  min_count_y)
+select_bi_cases(data, id_var, var_list_x, var_list_y, min_count_x, min_count_y)
 }
 \arguments{
-\item{data}{TODO}
+\item{data}{Dataset in wide format.}
 
-\item{id_var}{TODO}
+\item{id_var}{String, specifying id variable.}
 
-\item{var_list_x}{TODO}
+\item{var_list_x}{Vector, specifying variable names of construct X in sequential order.}
 
-\item{var_list_y}{TODO}
+\item{var_list_y}{Vector, specifying variable names of construct Y in sequential order.}
 
-\item{min_count_x}{TODO}
+\item{min_count_x}{Numeric, specifying minimum number of available scores for construct X}
 
-\item{min_count_y}{TODO}
+\item{min_count_y}{Numeric, specifying minimum number of available scores for construct Y}
 }
 \value{
 tibble
 }
 \description{
-TODO: Describe function
+Select cases based on minimum number of available session scores on two longitudinal measures
 }
 \examples{
 select_bi_cases(data_bi_lcsm, 

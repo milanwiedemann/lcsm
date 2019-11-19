@@ -43,23 +43,23 @@ devtools::install_github("milanwiedemann/lcsm")
 
 The `lcsm` package contains the following functions that can be categorised into:
 
-1. Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
+- Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
   - `specify_uni_lcsm()`: write syntax for univariate LCSM
   - `specify_bi_lcsm()`: write syntax for bivariate LCSM
   
-2. Functions to fit models using [lavaan](http://lavaan.ugent.be/):
+- Functions to fit models using [lavaan](http://lavaan.ugent.be/):
   - `fit_uni_lcsm()`: fit univariate LCSM
   - `fit_bi_lcsm()`: fit bivariate LCSM
   
-3. Functions to extract numbers from models using [broom](https://broom.tidyverse.org/):
+- Functions to extract numbers from models using [broom](https://broom.tidyverse.org/):
   - `extract_fit()`: extract fit statistics
   - `extract_param()`: extract estimated parameters
   
-4. Simulate data using [lavaan](http://lavaan.ugent.be/):
-  - `sim_uni_lcsm_data()`: Simulate data from a univariate LCS model
-  - `sim_bi_lcsm_data()`: Simulate data from a bivariate LCS model
+- Simulate data using [lavaan](http://lavaan.ugent.be/):
+  - `sim_uni_lcsm()`: Simulate data from a univariate LCSM
+  - `sim_bi_lcsm()`: Simulate data from a bivariate LCSM
   
-5. Helper functions:
+- Helper functions:
   - `plot_lcsm()`: visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
   - `select_uni_cases()`: select cases for analysis based on available scores on one construct
   - `select_bi_cases()`: select cases for analysis based on available scores on two construct

@@ -4,9 +4,18 @@
 \alias{sim_uni_lcsm}
 \title{Simulate data from a univariate latent change score model}
 \usage{
-sim_uni_lcsm(timepoints, model, model_param = NULL, var = "x",
-  change_letter = "j", sample.nobs = 500, na_pct = 0, ...,
-  return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE)
+sim_uni_lcsm(
+  timepoints,
+  model,
+  model_param = NULL,
+  var = "x",
+  change_letter = "j",
+  sample.nobs = 500,
+  na_pct = 0,
+  ...,
+  return_lavaan_syntax = FALSE,
+  return_lavaan_syntax_string = FALSE
+)
 }
 \arguments{
 \item{timepoints}{See \link[lcsm]{specify_uni_lcsm}}

@@ -4,10 +4,20 @@
 \alias{fit_bi_lcsm}
 \title{Fit bivariate latent change score models}
 \usage{
-fit_bi_lcsm(data, var_x, var_y, model_x, model_y, coupling,
-  mimic = "Mplus", estimator = "MLR", missing = "FIML",
-  return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE,
-  ...)
+fit_bi_lcsm(
+  data,
+  var_x,
+  var_y,
+  model_x,
+  model_y,
+  coupling,
+  mimic = "Mplus",
+  estimator = "MLR",
+  missing = "FIML",
+  return_lavaan_syntax = FALSE,
+  return_lavaan_syntax_string = FALSE,
+  ...
+)
 }
 \arguments{
 \item{data}{Wide dataset.}

@@ -4,8 +4,16 @@
 \alias{specify_bi_lcsm}
 \title{Specify lavaan model for bivariate latent change score models}
 \usage{
-specify_bi_lcsm(timepoints, var_x, model_x, var_y, model_y, coupling,
-  change_letter_x = "g", change_letter_y = "j")
+specify_bi_lcsm(
+  timepoints,
+  var_x,
+  model_x,
+  var_y,
+  model_y,
+  coupling,
+  change_letter_x = "g",
+  change_letter_y = "j"
+)
 }
 \arguments{
 \item{timepoints}{Number of timepoints.}
