@@ -114,13 +114,31 @@
     <p>Plot simplified path diagram of univariate and bivariate latent change score models</p>
     </div>
 
-    <pre class="usage"><span class='fu'>plot_lcsm</span>(<span class='no'>lavaan_object</span>, <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>lavaan_syntax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>return_layout_from_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>lcsm</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"univariate"</span>,
-  <span class='st'>"bivariate"</span>), <span class='kw'>curve_covar</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>"col"</span>, <span class='kw'>whatLabels</span> <span class='kw'>=</span> <span class='st'>"est"</span>,
-  <span class='kw'>edge.width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>node.width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>border.width</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>fixedStyle</span> <span class='kw'>=</span> <span class='fl'>1</span>,
-  <span class='kw'>freeStyle</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>residuals</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>label.scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>sizeMan</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>sizeLat</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>intercepts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>fade</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>nCharNodes</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>nCharEdges</span> <span class='kw'>=</span> <span class='fl'>0</span>, <span class='kw'>edge.label.cex</span> <span class='kw'>=</span> <span class='fl'>0.5</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>plot_lcsm</span>(
+  <span class='no'>lavaan_object</span>,
+  <span class='kw'>layout</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>lavaan_syntax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>return_layout_from_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>lcsm</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"univariate"</span>, <span class='st'>"bivariate"</span>),
+  <span class='kw'>curve_covar</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>"col"</span>,
+  <span class='kw'>whatLabels</span> <span class='kw'>=</span> <span class='st'>"est"</span>,
+  <span class='kw'>edge.width</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>node.width</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>border.width</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>fixedStyle</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>freeStyle</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>residuals</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>label.scale</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>sizeMan</span> <span class='kw'>=</span> <span class='fl'>3</span>,
+  <span class='kw'>sizeLat</span> <span class='kw'>=</span> <span class='fl'>5</span>,
+  <span class='kw'>intercepts</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>fade</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>nCharNodes</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>nCharEdges</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>edge.label.cex</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
