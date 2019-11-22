@@ -9,7 +9,7 @@ sim_uni_lcsm(
   model,
   model_param = NULL,
   var = "x",
-  change_letter = "j",
+  change_letter = "g",
   sample.nobs = 500,
   na_pct = 0,
   ...,

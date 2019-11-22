@@ -4,7 +4,7 @@
 \alias{specify_uni_lcsm}
 \title{Specify lavaan model for univariate latent change score models}
 \usage{
-specify_uni_lcsm(timepoints, model, var, change_letter)
+specify_uni_lcsm(timepoints, model, var, change_letter = "g")
 }
 \arguments{
 \item{timepoints}{Number if timepoints.}
@@ -36,7 +36,7 @@ lavaan_uni_lcsm_01 <- specify_uni_lcsm(timepoints = 10,
                                                     beta = TRUE, 
                                                     phi = TRUE), 
                                        var = "x",  
-                                       change_letter = "j")
+                                       change_letter = "g")
                  
 #' # To look at string simply return the object                                    
 lavaan_uni_lcsm_01
