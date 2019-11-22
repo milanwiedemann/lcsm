@@ -41,7 +41,7 @@
 #'              sample.nobs = 1000,
 #'              na_pct = .3)
 #' 
-sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "j", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
+sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "g", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters

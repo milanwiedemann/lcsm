@@ -3,7 +3,7 @@
 
 # lcsm: An R package and tutorial on latent change score modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--09--09-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2019--11--22-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build
 status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build
@@ -132,7 +132,7 @@ the description of all parameters that can be estimated is shown
 ``` r
 specify_uni_lcsm(timepoints = 5,
                  var = "x",  
-                 change_letter = "j",
+                 change_letter = "g",
                  model = list(alpha_constant = TRUE, 
                               beta = TRUE, 
                               phi = TRUE))
@@ -196,13 +196,13 @@ above.</summary>
     dx4 ~~ 0 * dx4 
     dx5 ~~ 0 * dx5 
     # Specify constant change factor 
-    j2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 
+    g2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 
     # Specify constant change factor mean 
-    j2 ~ alpha_j2 * 1 
+    g2 ~ alpha_g2 * 1 
     # Specify constant change factor variance 
-    j2 ~~ sigma2_j2 * j2 
+    g2 ~~ sigma2_g2 * g2 
     # Specify constant change factor covariance with the initial true score 
-    j2 ~~ sigma_j2lx1 * lx1
+    g2 ~~ sigma_g2lx1 * lx1
     # Specify proportional change component 
     dx2 ~ beta_x * lx1 
     dx3 ~ beta_x * lx2 
@@ -585,20 +585,23 @@ sim_uni_lcsm(timepoints = 5,
              sample.nobs = 1000,
              na_pct = 0.3)
 #> Parameter estimates for the data simulation are taken from the argument 'model_param'.
-#> All parameter estimates for the LCS model have been specified in the argument 'model_param'.
+#> Warning: The following parameters are specified in LCS model but no parameter estimates have been entered in 'model_param':
+#> -  alpha_g2
+#> -  sigma2_g2
+#> -  sigma_g2lx1
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  21.5  NA    20.7  19.6  18.4
-#>  2     2  19.8  18.7  17.0  16.8  14.9
-#>  3     3  22.2  NA    20.1  19.1  18.2
-#>  4     4  19.5  19.3  NA    15.5  13.3
-#>  5     5  19.9  18.0  NA    15.2  NA  
-#>  6     6  20.1  18.3  16.7  NA    11.4
-#>  7     7  21.6  21.6  NA    19.9  19.1
-#>  8     8  NA    19.0  NA    17.1  NA  
-#>  9     9  NA    21.7  20.4  19.7  18.5
-#> 10    10  23.2  21.9  22.0  21.6  NA  
+#>  1     1  19.6  NA    18.7  18.7  18.6
+#>  2     2  20.7  21.7  23.9  24.3  26.3
+#>  3     3  20.9  NA    19.1  18.0  16.8
+#>  4     4  21.6  23.4  NA    24.0  25.4
+#>  5     5  21.6  21.9  NA    26.0  NA  
+#>  6     6  24.0  24.2  23.7  NA    25.1
+#>  7     7  19.4  19.5  NA    17.9  17.2
+#>  8     8  NA    21.1  NA    23.0  NA  
+#>  9     9  NA    19.8  18.7  17.8  17.5
+#> 10    10  19.7  17.6  16.7  15.0  NA  
 #> # … with 990 more rows
 ```
 

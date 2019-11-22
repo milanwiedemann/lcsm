@@ -28,7 +28,7 @@
 #'                                                     beta = TRUE, 
 #'                                                     phi = TRUE), 
 #'                                        var = "x",  
-#'                                        change_letter = "j")
+#'                                        change_letter = "g")
 #'                  
 #' #' # To look at string simply return the object                                    
 #' lavaan_uni_lcsm_01
@@ -37,7 +37,7 @@
 #' cat(lavaan_uni_lcsm_01)
 #' 
 
-specify_uni_lcsm <- function(timepoints, model, var, change_letter) {
+specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
   
   # Code parameters in model that are not defined as FALSE
   
@@ -375,12 +375,12 @@ specify_bi_lcsm <- function(timepoints,
   
   # Specify covariances between constant change factors
   if (model_x$alpha_constant == TRUE){
-    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_x, variable = var_y))
+    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_between_covar(change_letter = change_letter_x, variable = var_y))
   }
   
   # Specify covariances between constant change factors
   if (model_y$alpha_constant == TRUE){
-    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_covar(change_letter = change_letter_y, variable = var_x))
+    lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_change_between_covar(change_letter = change_letter_y, variable = var_x))
   }
   
   # Specify covariances between constant change factors

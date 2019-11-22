@@ -315,6 +315,17 @@ specify_int_change_covar  <- function(variable, change_letter){
   return(lavaan_str)
 }
 
+# Specify covariance of constant change and intercept within the same construct
+# This is the same as above just with a different comment
+specify_int_change_between_covar  <- function(variable, change_letter){
+  
+  lavaan_str <- "# Specify covariance of constant change and intercept between constructs \n"
+  
+  lavaan_str <- paste(lavaan_str, "l", variable, "1", " ~~ ", "sigma_", change_letter, "2", "l", variable, "1"," * ", change_letter, "2", " \n" , sep = "")
+  
+  return(lavaan_str)
+}
+
 
 # Specify residual covariances
 specify_resid_covar <- function(timepoints, variable_x, variable_y){
