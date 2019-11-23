@@ -351,13 +351,13 @@ specify_bi_lcsm <- function(timepoints,
   }
   
   
-  model_x_uni_lavaan <- "# Specify parameters for construct x ----\n"
+  model_x_uni_lavaan <- "# # # # # # # # # # # # # # # # # # # # #\n# Specify parameters for construct x ----\n# # # # # # # # # # # # # # # # # # # # #\n"
   model_x_uni_lavaan <- paste0(model_x_uni_lavaan, specify_uni_lcsm(timepoints = timepoints, 
                                                                             model = model_x, 
                                                                             var = var_x, 
                                                                             change_letter = change_letter_x))
   
-  model_y_uni_lavaan <- "# Specify parameters for construct y ----\n"
+  model_y_uni_lavaan <- "# # # # # # # # # # # # # # # # # # # # #\n# Specify parameters for construct y ----\n# # # # # # # # # # # # # # # # # # # # #\n"
   model_y_uni_lavaan <- paste0(model_y_uni_lavaan, specify_uni_lcsm(timepoints = timepoints, 
                                                                             model = model_y, 
                                                                             var = var_y, 
@@ -368,7 +368,7 @@ specify_bi_lcsm <- function(timepoints,
   resid_covar <- specify_resid_covar(timepoints = timepoints, variable_x = var_x, variable_y = var_y)
   
   # Specify covariances for bivariate latent change score model ----
-  lavaan_bi_change <- "# Specify covariances betweeen specified change components (alpha) and intercepts (initial latent true scores lx1 and ly1) ----\n"
+  lavaan_bi_change <- "# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n# Specify covariances betweeen specified change components (alpha) and intercepts (initial latent true scores lx1 and ly1) ----\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n"
   
   # Specify covariances between intercepts
   lavaan_bi_change <- paste0(lavaan_bi_change, specify_int_covar(var_x, var_y))
@@ -389,7 +389,7 @@ specify_bi_lcsm <- function(timepoints,
   }
   
   # Define empty str object 
-  lavaan_bi_coupling <- "# Specify between-construct coupling parameters ----\n"
+  lavaan_bi_coupling <- "# # # # # # # # # # # # # # # # # # # # # # # # # # #\n# Specify between-construct coupling parameters ----\n# # # # # # # # # # # # # # # # # # # # # # # # # # #\n"
   
   if (coupling$coupling_piecewise == FALSE) {
     
