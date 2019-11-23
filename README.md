@@ -21,6 +21,9 @@ et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
+
+A shiny application illustrating some functions of this package is available at [here](https://milanwiedemann.shinyapps.io/shinychange/). The main aim is to show how different univariate and bivariate latent change score models (lcsm) can be implemented in R using lavaan syntax. The application also provides data simulation tools to explore the effect of different parameters.
+
 ## Installation
 
 You can install the development version from
