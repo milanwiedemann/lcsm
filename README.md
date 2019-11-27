@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# lcsm: An R package and tutorial on latent change score modeling
+# lcsm: An R package and interactive tutorial on latent change score modeling
 
 [![last-change](https://img.shields.io/badge/Last%20change-2019--11--22-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build
