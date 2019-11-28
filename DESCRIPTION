@@ -1,6 +1,6 @@
 Package: lcsm
 Type: Package
-Title: lcsm: An R package and tutorial on latent change score modeling
+Title: lcsm: An R Package for Specifying, Simulating, and Analysing Latent Change Score Models Using lavaan
 Date: 2019-11-27
 Version: 0.0.6.9003
 Authors@R: c(
