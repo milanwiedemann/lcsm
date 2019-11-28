@@ -17,19 +17,24 @@ knitr::opts_chunk$set(
 )
 ```
 
-# lcsm: An R package and tutorial on latent change score modeling
+# lcsm: An R Package for Latent Change Score Modeling
 
 [![last-change](https://img.shields.io/badge/Last%20change-2019--11--22-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
-This package contains some helper functions to specify and analyse univariate and bivariate latent change score (LCS) models using [lavaan](http://lavaan.ugent.be/) (Rosseel, [2012](http://www.jstatsoft.org/v48/i02/))
+This package contains some helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/) (Rosseel, [2012](http://www.jstatsoft.org/v48/i02/))
 For details about this method see for example
 McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), 
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), 
 Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and 
 Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
+
+I started working on this project to better understand how latent change score modeling works.
+This package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by generating lavaan syntax that helps these packages work together.
+A shiny application illustrating some functions of this package is available [here](https://milanwiedemann.shinyapps.io/shinychange/), the code can be found [here](https://github.com/milanwiedemann/shinychange).
+This is work in progress and feedback is very welcome!
 
 ## Installation
 

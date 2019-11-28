@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# lcsm: An R Package for Specifying, Simulating, and Analysing Latent Change Score Models Using lavaan
+# lcsm: An R Package for Latent Change Score Modeling
 
 [![last-change](https://img.shields.io/badge/Last%20change-2019--11--22-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build
@@ -11,7 +11,7 @@ status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 
 This package contains some helper functions to specify and analyse
-univariate and bivariate latent change score (LCS) models using
+univariate and bivariate latent change score models (LCSM) using
 [lavaan](http://lavaan.ugent.be/) (Rosseel,
 [2012](http://www.jstatsoft.org/v48/i02/)) For details about this method
 see for example McArdle
@@ -21,8 +21,16 @@ et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
-
-A shiny application illustrating some functions of this package is available at [here](https://milanwiedemann.shinyapps.io/shinychange/). The main aim is to show how different univariate and bivariate latent change score models (lcsm) can be implemented in R using lavaan syntax. The application also provides data simulation tools to explore the effect of different parameters.
+I started working on this project to better understand how latent change
+score modeling works. This package combines the strengths of other R
+packages like [lavaan](http://lavaan.ugent.be/),
+[broom](https://broom.tidyverse.org), and
+[semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
+generating lavaan syntax that helps these packages work together. A
+shiny application illustrating some functions of this package is
+available [here](https://milanwiedemann.shinyapps.io/shinychange/), the
+code can be found [here](https://github.com/milanwiedemann/shinychange).
+This is work in progress and feedback is very welcome\!
 
 ## Installation
 

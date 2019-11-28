@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6.9003</span>
       </span>
     </div>
 
@@ -119,7 +119,7 @@
   <span class='no'>model</span>,
   <span class='kw'>model_param</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-  <span class='kw'>change_letter</span> <span class='kw'>=</span> <span class='st'>"j"</span>,
+  <span class='kw'>change_letter</span> <span class='kw'>=</span> <span class='st'>"g"</span>,
   <span class='kw'>sample.nobs</span> <span class='kw'>=</span> <span class='fl'>500</span>,
   <span class='kw'>na_pct</span> <span class='kw'>=</span> <span class='fl'>0</span>,
   <span class='no'>...</span>,
@@ -204,19 +204,22 @@ To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string
              <span class='kw'>return_lavaan_syntax_string</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
              <span class='kw'>sample.nobs</span> <span class='kw'>=</span> <span class='fl'>1000</span>,
              <span class='kw'>na_pct</span> <span class='kw'>=</span> <span class='fl'>.3</span>)</div><div class='output co'>#&gt; <span class='message'>Parameter estimates for the data simulation are taken from the argument 'model_param'.</span></div><div class='output co'>#&gt; <span class='warning'>Warning: The following parameters are specified in LCS model but no parameter estimates have been entered in 'model_param':</span>
+#&gt; <span class='warning'>-  alpha_g2</span>
+#&gt; <span class='warning'>-  sigma2_g2</span>
+#&gt; <span class='warning'>-  sigma_g2lx1</span>
 #&gt; <span class='warning'>-  phi_x</span></div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING: some regression coefficients are unspecified and will be set to zero</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,000 x 11</span><span>
 #&gt;       id    x1    x2    x3    x4    x5    x6    x7    x8    x9   x10
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1  19.7  19.4  18.5  18.3  18.4  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   13.9  </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 2</span><span>     2  </span><span style='color: #BB0000;'>NA</span><span>    20.9  </span><span style='color: #BB0000;'>NA</span><span>    18.0  17.1  </span><span style='color: #BB0000;'>NA</span><span>    15.2  13.4 11.5  11.0 
-#&gt; </span><span style='color: #555555;'> 3</span><span>     3  21.1  18.8  18.8  16.5  15.0  14.2  </span><span style='color: #BB0000;'>NA</span><span>    11.5 11.3  </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 4</span><span>     4  21.5  20.1  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    18.7  19.6  18.6  17.9 17.4  16.9 
-#&gt; </span><span style='color: #555555;'> 5</span><span>     5  20.7  18.2  </span><span style='color: #BB0000;'>NA</span><span>    15.6  13.6  </span><span style='color: #BB0000;'>NA</span><span>    10.6  </span><span style='color: #BB0000;'>NA</span><span>    8.35  6.79
-#&gt; </span><span style='color: #555555;'> 6</span><span>     6  19.9  18.1  16.6  15.3  15.4  12.9  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>     7.60
-#&gt; </span><span style='color: #555555;'> 7</span><span>     7  </span><span style='color: #BB0000;'>NA</span><span>    18.9  16.8  </span><span style='color: #BB0000;'>NA</span><span>    14.9  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>   
-#&gt; </span><span style='color: #555555;'> 8</span><span>     8  20.1  18.9  18.0  </span><span style='color: #BB0000;'>NA</span><span>    14.6  12.9  11.6  </span><span style='color: #BB0000;'>NA</span><span>    8.44  7.27
-#&gt; </span><span style='color: #555555;'> 9</span><span>     9  20.3  </span><span style='color: #BB0000;'>NA</span><span>    18.1  17.9  16.6  16.1  </span><span style='color: #BB0000;'>NA</span><span>    13.9 12.8  11.9 
-#&gt; </span><span style='color: #555555;'>10</span><span>    10  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    18.4  17.7  16.2  16.4  14.3 14.4  13.1 
+#&gt; </span><span style='color: #555555;'> 1</span><span>     1  21.6  21.5  20.7  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    18.2  </span><span style='color: #BB0000;'>NA</span><span>    17.6  17.1  16.5
+#&gt; </span><span style='color: #555555;'> 2</span><span>     2  20.3  20.4  21.2  </span><span style='color: #BB0000;'>NA</span><span>    22.4  23.5  23.5  23.9  23.6  24.2
+#&gt; </span><span style='color: #555555;'> 3</span><span>     3  </span><span style='color: #BB0000;'>NA</span><span>    19.5  18.2  19.0  </span><span style='color: #BB0000;'>NA</span><span>    18.9  </span><span style='color: #BB0000;'>NA</span><span>    17.8  18.0  17.5
+#&gt; </span><span style='color: #555555;'> 4</span><span>     4  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    20.0  </span><span style='color: #BB0000;'>NA</span><span>    20.3  19.5  19.8  20.4  </span><span style='color: #BB0000;'>NA</span><span>    20.8
+#&gt; </span><span style='color: #555555;'> 5</span><span>     5  20.2  18.8  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    15.6  14.2  12.7  </span><span style='color: #BB0000;'>NA</span><span>    11.9
+#&gt; </span><span style='color: #555555;'> 6</span><span>     6  20.8  </span><span style='color: #BB0000;'>NA</span><span>    20.5  </span><span style='color: #BB0000;'>NA</span><span>    21.1  20.7  </span><span style='color: #BB0000;'>NA</span><span>    19.3  19.4  19.7
+#&gt; </span><span style='color: #555555;'> 7</span><span>     7  20.9  21.3  21.1  22.2  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    23.7  23.9  </span><span style='color: #BB0000;'>NA</span><span>    25.2
+#&gt; </span><span style='color: #555555;'> 8</span><span>     8  18.2  17.4  </span><span style='color: #BB0000;'>NA</span><span>    16.8  15.6  15.4  14.4  13.0  </span><span style='color: #BB0000;'>NA</span><span>    12.9
+#&gt; </span><span style='color: #555555;'> 9</span><span>     9  19.9  19.8  </span><span style='color: #BB0000;'>NA</span><span>    18.7  </span><span style='color: #BB0000;'>NA</span><span>    18.1  18.1  17.7  </span><span style='color: #BB0000;'>NA</span><span>    17.5
+#&gt; </span><span style='color: #555555;'>10</span><span>    10  20.9  20.5  23.6  24.4  </span><span style='color: #BB0000;'>NA</span><span>    </span><span style='color: #BB0000;'>NA</span><span>    29.6  29.6  32.0  33.6
 #&gt; </span><span style='color: #555555;'># … with 990 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>

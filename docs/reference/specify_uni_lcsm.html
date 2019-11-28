@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6.9001</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6.9003</span>
       </span>
     </div>
 
@@ -114,7 +114,7 @@
     <p>TODO: Describe function</p>
     </div>
 
-    <pre class="usage"><span class='fu'>specify_uni_lcsm</span>(<span class='no'>timepoints</span>, <span class='no'>model</span>, <span class='no'>var</span>, <span class='no'>change_letter</span>)</pre>
+    <pre class="usage"><span class='fu'>specify_uni_lcsm</span>(<span class='no'>timepoints</span>, <span class='no'>model</span>, <span class='no'>var</span>, <span class='kw'>change_letter</span> <span class='kw'>=</span> <span class='st'>"g"</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -162,10 +162,10 @@
                                                     <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
                                                     <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
                                        <span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-                                       <span class='kw'>change_letter</span> <span class='kw'>=</span> <span class='st'>"j"</span>)
+                                       <span class='kw'>change_letter</span> <span class='kw'>=</span> <span class='st'>"g"</span>)
 
 <span class='co'>#' # To look at string simply return the object                                    </span>
-<span class='no'>lavaan_uni_lcsm_01</span></div><div class='output co'>#&gt; [1] "# Specify latent true scores \nlx1 =~ 1 * x1 \nlx2 =~ 1 * x2 \nlx3 =~ 1 * x3 \nlx4 =~ 1 * x4 \nlx5 =~ 1 * x5 \nlx6 =~ 1 * x6 \nlx7 =~ 1 * x7 \nlx8 =~ 1 * x8 \nlx9 =~ 1 * x9 \nlx10 =~ 1 * x10 \n# Specify mean of latent true scores \nlx1 ~ gamma_lx1 * 1 \nlx2 ~ 0 * 1 \nlx3 ~ 0 * 1 \nlx4 ~ 0 * 1 \nlx5 ~ 0 * 1 \nlx6 ~ 0 * 1 \nlx7 ~ 0 * 1 \nlx8 ~ 0 * 1 \nlx9 ~ 0 * 1 \nlx10 ~ 0 * 1 \n# Specify variance of latent true scores \nlx1 ~~ sigma2_lx1 * lx1 \nlx2 ~~ 0 * lx2 \nlx3 ~~ 0 * lx3 \nlx4 ~~ 0 * lx4 \nlx5 ~~ 0 * lx5 \nlx6 ~~ 0 * lx6 \nlx7 ~~ 0 * lx7 \nlx8 ~~ 0 * lx8 \nlx9 ~~ 0 * lx9 \nlx10 ~~ 0 * lx10 \n# Specify intercept of obseved scores \nx1 ~ 0 * 1 \nx2 ~ 0 * 1 \nx3 ~ 0 * 1 \nx4 ~ 0 * 1 \nx5 ~ 0 * 1 \nx6 ~ 0 * 1 \nx7 ~ 0 * 1 \nx8 ~ 0 * 1 \nx9 ~ 0 * 1 \nx10 ~ 0 * 1 \n# Specify variance of observed scores \nx1 ~~ sigma2_ux * x1 \nx2 ~~ sigma2_ux * x2 \nx3 ~~ sigma2_ux * x3 \nx4 ~~ sigma2_ux * x4 \nx5 ~~ sigma2_ux * x5 \nx6 ~~ sigma2_ux * x6 \nx7 ~~ sigma2_ux * x7 \nx8 ~~ sigma2_ux * x8 \nx9 ~~ sigma2_ux * x9 \nx10 ~~ sigma2_ux * x10 \n# Specify autoregressions of latent variables \nlx2 ~ 1 * lx1 \nlx3 ~ 1 * lx2 \nlx4 ~ 1 * lx3 \nlx5 ~ 1 * lx4 \nlx6 ~ 1 * lx5 \nlx7 ~ 1 * lx6 \nlx8 ~ 1 * lx7 \nlx9 ~ 1 * lx8 \nlx10 ~ 1 * lx9 \n# Specify latent change scores \ndx2 =~ 1 * lx2 \ndx3 =~ 1 * lx3 \ndx4 =~ 1 * lx4 \ndx5 =~ 1 * lx5 \ndx6 =~ 1 * lx6 \ndx7 =~ 1 * lx7 \ndx8 =~ 1 * lx8 \ndx9 =~ 1 * lx9 \ndx10 =~ 1 * lx10 \n# Specify latent change scores means \ndx2 ~ 0 * 1 \ndx3 ~ 0 * 1 \ndx4 ~ 0 * 1 \ndx5 ~ 0 * 1 \ndx6 ~ 0 * 1 \ndx7 ~ 0 * 1 \ndx8 ~ 0 * 1 \ndx9 ~ 0 * 1 \ndx10 ~ 0 * 1 \n# Specify latent change scores variances \ndx2 ~~ 0 * dx2 \ndx3 ~~ 0 * dx3 \ndx4 ~~ 0 * dx4 \ndx5 ~~ 0 * dx5 \ndx6 ~~ 0 * dx6 \ndx7 ~~ 0 * dx7 \ndx8 ~~ 0 * dx8 \ndx9 ~~ 0 * dx9 \ndx10 ~~ 0 * dx10 \n# Specify constant change factor \nj2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 + 1 * dx6 + 1 * dx7 + 1 * dx8 + 1 * dx9 + 1 * dx10 \n# Specify constant change factor mean \nj2 ~ alpha_j2 * 1 \n# Specify constant change factor variance \nj2 ~~ sigma2_j2 * j2 \n# Specify constant change factor covariance with the initial true score \nj2 ~~ sigma_j2lx1 * lx1\n# Specify proportional change component \ndx2 ~ beta_x * lx1 \ndx3 ~ beta_x * lx2 \ndx4 ~ beta_x * lx3 \ndx5 ~ beta_x * lx4 \ndx6 ~ beta_x * lx5 \ndx7 ~ beta_x * lx6 \ndx8 ~ beta_x * lx7 \ndx9 ~ beta_x * lx8 \ndx10 ~ beta_x * lx9 \n# Specify autoregression of change score \ndx3 ~ phi_x * dx2 \ndx4 ~ phi_x * dx3 \ndx5 ~ phi_x * dx4 \ndx6 ~ phi_x * dx5 \ndx7 ~ phi_x * dx6 \ndx8 ~ phi_x * dx7 \ndx9 ~ phi_x * dx8 \ndx10 ~ phi_x * dx9 \n"</div><div class='input'>
+<span class='no'>lavaan_uni_lcsm_01</span></div><div class='output co'>#&gt; [1] "# Specify latent true scores \nlx1 =~ 1 * x1 \nlx2 =~ 1 * x2 \nlx3 =~ 1 * x3 \nlx4 =~ 1 * x4 \nlx5 =~ 1 * x5 \nlx6 =~ 1 * x6 \nlx7 =~ 1 * x7 \nlx8 =~ 1 * x8 \nlx9 =~ 1 * x9 \nlx10 =~ 1 * x10 \n# Specify mean of latent true scores \nlx1 ~ gamma_lx1 * 1 \nlx2 ~ 0 * 1 \nlx3 ~ 0 * 1 \nlx4 ~ 0 * 1 \nlx5 ~ 0 * 1 \nlx6 ~ 0 * 1 \nlx7 ~ 0 * 1 \nlx8 ~ 0 * 1 \nlx9 ~ 0 * 1 \nlx10 ~ 0 * 1 \n# Specify variance of latent true scores \nlx1 ~~ sigma2_lx1 * lx1 \nlx2 ~~ 0 * lx2 \nlx3 ~~ 0 * lx3 \nlx4 ~~ 0 * lx4 \nlx5 ~~ 0 * lx5 \nlx6 ~~ 0 * lx6 \nlx7 ~~ 0 * lx7 \nlx8 ~~ 0 * lx8 \nlx9 ~~ 0 * lx9 \nlx10 ~~ 0 * lx10 \n# Specify intercept of obseved scores \nx1 ~ 0 * 1 \nx2 ~ 0 * 1 \nx3 ~ 0 * 1 \nx4 ~ 0 * 1 \nx5 ~ 0 * 1 \nx6 ~ 0 * 1 \nx7 ~ 0 * 1 \nx8 ~ 0 * 1 \nx9 ~ 0 * 1 \nx10 ~ 0 * 1 \n# Specify variance of observed scores \nx1 ~~ sigma2_ux * x1 \nx2 ~~ sigma2_ux * x2 \nx3 ~~ sigma2_ux * x3 \nx4 ~~ sigma2_ux * x4 \nx5 ~~ sigma2_ux * x5 \nx6 ~~ sigma2_ux * x6 \nx7 ~~ sigma2_ux * x7 \nx8 ~~ sigma2_ux * x8 \nx9 ~~ sigma2_ux * x9 \nx10 ~~ sigma2_ux * x10 \n# Specify autoregressions of latent variables \nlx2 ~ 1 * lx1 \nlx3 ~ 1 * lx2 \nlx4 ~ 1 * lx3 \nlx5 ~ 1 * lx4 \nlx6 ~ 1 * lx5 \nlx7 ~ 1 * lx6 \nlx8 ~ 1 * lx7 \nlx9 ~ 1 * lx8 \nlx10 ~ 1 * lx9 \n# Specify latent change scores \ndx2 =~ 1 * lx2 \ndx3 =~ 1 * lx3 \ndx4 =~ 1 * lx4 \ndx5 =~ 1 * lx5 \ndx6 =~ 1 * lx6 \ndx7 =~ 1 * lx7 \ndx8 =~ 1 * lx8 \ndx9 =~ 1 * lx9 \ndx10 =~ 1 * lx10 \n# Specify latent change scores means \ndx2 ~ 0 * 1 \ndx3 ~ 0 * 1 \ndx4 ~ 0 * 1 \ndx5 ~ 0 * 1 \ndx6 ~ 0 * 1 \ndx7 ~ 0 * 1 \ndx8 ~ 0 * 1 \ndx9 ~ 0 * 1 \ndx10 ~ 0 * 1 \n# Specify latent change scores variances \ndx2 ~~ 0 * dx2 \ndx3 ~~ 0 * dx3 \ndx4 ~~ 0 * dx4 \ndx5 ~~ 0 * dx5 \ndx6 ~~ 0 * dx6 \ndx7 ~~ 0 * dx7 \ndx8 ~~ 0 * dx8 \ndx9 ~~ 0 * dx9 \ndx10 ~~ 0 * dx10 \n# Specify constant change factor \ng2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 + 1 * dx6 + 1 * dx7 + 1 * dx8 + 1 * dx9 + 1 * dx10 \n# Specify constant change factor mean \ng2 ~ alpha_g2 * 1 \n# Specify constant change factor variance \ng2 ~~ sigma2_g2 * g2 \n# Specify constant change factor covariance with the initial true score \ng2 ~~ sigma_g2lx1 * lx1\n# Specify proportional change component \ndx2 ~ beta_x * lx1 \ndx3 ~ beta_x * lx2 \ndx4 ~ beta_x * lx3 \ndx5 ~ beta_x * lx4 \ndx6 ~ beta_x * lx5 \ndx7 ~ beta_x * lx6 \ndx8 ~ beta_x * lx7 \ndx9 ~ beta_x * lx8 \ndx10 ~ beta_x * lx9 \n# Specify autoregression of change score \ndx3 ~ phi_x * dx2 \ndx4 ~ phi_x * dx3 \ndx5 ~ phi_x * dx4 \ndx6 ~ phi_x * dx5 \ndx7 ~ phi_x * dx6 \ndx8 ~ phi_x * dx7 \ndx9 ~ phi_x * dx8 \ndx10 ~ phi_x * dx9 \n"</div><div class='input'>
 <span class='co'># To get a readable output use cat() function</span>
 <span class='fu'><a href='https://rdrr.io/r/base/cat.html'>cat</a></span>(<span class='no'>lavaan_uni_lcsm_01</span>)</div><div class='output co'>#&gt; # Specify latent true scores 
 #&gt; lx1 =~ 1 * x1 
@@ -263,13 +263,13 @@
 #&gt; dx9 ~~ 0 * dx9 
 #&gt; dx10 ~~ 0 * dx10 
 #&gt; # Specify constant change factor 
-#&gt; j2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 + 1 * dx6 + 1 * dx7 + 1 * dx8 + 1 * dx9 + 1 * dx10 
+#&gt; g2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 + 1 * dx6 + 1 * dx7 + 1 * dx8 + 1 * dx9 + 1 * dx10 
 #&gt; # Specify constant change factor mean 
-#&gt; j2 ~ alpha_j2 * 1 
+#&gt; g2 ~ alpha_g2 * 1 
 #&gt; # Specify constant change factor variance 
-#&gt; j2 ~~ sigma2_j2 * j2 
+#&gt; g2 ~~ sigma2_g2 * g2 
 #&gt; # Specify constant change factor covariance with the initial true score 
-#&gt; j2 ~~ sigma_j2lx1 * lx1
+#&gt; g2 ~~ sigma_g2lx1 * lx1
 #&gt; # Specify proportional change component 
 #&gt; dx2 ~ beta_x * lx1 
 #&gt; dx3 ~ beta_x * lx2 
