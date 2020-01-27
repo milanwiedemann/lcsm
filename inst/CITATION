@@ -1,9 +1,9 @@
 utils::citEntry(
   "manual"
-  , "Wiedemann, M. (2018). lcsm: An R package for latent change score modeling. R package version 0.0.6. Retrieved from https://github.com/milanwiedemann/lcsm."
+  , "Wiedemann, M. (2020). lcsm: An R package for latent change score modeling. R package version 0.0.6. Retrieved from https://github.com/milanwiedemann/lcsm."
   , author = c("Milan Wiedemann")
   , title = "{lcsm}: {An} {R} package latent change score modeling"
-  , year = "2018"
+  , year = "2020"
   , note = "R package version 0.0.6"
   , url = "https://github.com/milanwiedemann/lcsm"
 )
