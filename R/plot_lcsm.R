@@ -8,6 +8,7 @@
 #' @param lcsm String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.
 #' @param what See \code{semPlot}.
 #' @param whatLabels See \link[semPlot]{semPaths}.
+#' @param lcsm_colours Logical, if TRUE the following colours will be used to highlight different parts of the model: Observed variables (White); Latent true scores (Green); Latent change scores (Blue) ; Change factors (Yellow).
 #' @param edge.width See \link[semPlot]{semPaths}.
 #' @param node.width  See \link[semPlot]{semPaths}.
 #' @param border.width See \link[semPlot]{semPaths}.
@@ -26,6 +27,29 @@
 #' @param ... Other arguments passed on to \link[semPlot]{semPaths}.
 #' @references Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
 #' \url{https://CRAN.R-project.org/package=semPlot}
+#' @example 
+#' 
+#' lavaan_syntax_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
+#'                                   var = c("x1", "x2", "x3", "x4", "x5"),
+#'                                   model = list(alpha_constant = TRUE, 
+#'                                                beta = TRUE, 
+#'                                                phi = TRUE),
+#'                                   return_lavaan_syntax = TRUE,
+#'                                   return_lavaan_syntax_string = TRUE)
+#' 
+#' lavaan_object_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
+#'                                   var = c("x1", "x2", "x3", "x4", "x5"),
+#'                                   model = list(alpha_constant = TRUE, 
+#'                                                beta = TRUE, 
+#'                                                phi = TRUE))
+#' 
+#' plot_lcsm(lavaan_object = lavaan_object_uni, 
+#'           what = "cons", whatLabels = "invisible", 
+#'           lavaan_syntax = lavaan_syntax_uni,
+#'           lcsm = "univariate")
+#' 
+#' 
+#' 
 #' @return Plot
 #' @export 
 #'
@@ -35,6 +59,7 @@ plot_lcsm <- function(lavaan_object,
                       lavaan_syntax = NULL,
                       return_layout_from_lavaan_syntax = FALSE,
                       lcsm = c("univariate", "bivariate"),
+                      lcsm_colours = FALSE,
                       curve_covar = .5,
                       what = "col",
                       whatLabels = "est",
@@ -146,6 +171,23 @@ plot_lcsm <- function(lavaan_object,
                                                 byrow = TRUE)
       
       
+      if (lcsm_colours == TRUE) {
+        
+        lcsm_colour_matrix <- c(
+          rep("white", timepoints_x), # bottom 1
+          rep("#56C667FF", timepoints_x), # bottom 2
+          rep("#2D718EFF", timepoints_x - 1), # bottom 3
+          rep("#FDE725FF", 1) # bottom 4
+        )
+        
+      } else {
+        lcsm_colour_matrix <-  "white"
+      }
+      
+      
+
+      
+      
     } else if (lcsm == "bivariate") {
       # Create bivariate layoiut matrix
       
@@ -173,6 +215,26 @@ plot_lcsm <- function(lavaan_object,
                                                 nrow = 8,
                                                 byrow = TRUE)
       
+      
+      if (lcsm_colours == TRUE) {
+        
+        lcsm_colour_matrix <- c(
+          rep("white", timepoints_x), # bottom 1
+          rep("white", timepoints_x), # top 1
+          rep("#56C667FF", timepoints_x), # bottom 2
+          rep("#2D718EFF", timepoints_y - 1), # bottom 3
+          rep("#FDE725FF", 1), # bottom 4
+          rep("#56C667FF", timepoints_x), # top 2
+          rep("#2D718EFF", timepoints_x - 1), # top 3
+          rep("#FDE725FF", 1)  # top 4
+        )
+        
+      } else {
+        lcsm_colour_matrix <-  "white"
+      }
+      
+
+      
     }
     
     if (return_layout_from_lavaan_syntax == TRUE){
@@ -182,6 +244,7 @@ plot_lcsm <- function(lavaan_object,
         object = lavaan_object,
         layout = layout_from_lavaan_syntax,
         what = what,
+        color = lcsm_colour_matrix,
         whatLabels = whatLabels,
         edge.width = edge.width,
         node.width = node.width,
@@ -207,6 +270,7 @@ plot_lcsm <- function(lavaan_object,
       object = lavaan_object,
       layout = layout,
       what = what,
+      color = lcsm_colour_matrix,
       whatLabels = whatLabels,
       edge.width = edge.width,
       node.width = node.width,

@@ -85,7 +85,7 @@ Longitudinal data can be visualised using the `plot_trajectories()` function.
 Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
 Only consecutive measures are connected by lines as specified in `connect_missing = FALSE`.
 
-```{r, fig.width = 6, fig.height = 3.5, dpi = 300, cache=TRUE}
+```{r, fig.width = 6, fig.height = 3.5, dpi = 300}
 # Create plot for construct x
 plot_x <- plot_trajectories(data = data_bi_lcsm,
                             id_var = "id", 
@@ -220,7 +220,7 @@ dx5 ~ phi_x * dx4
 The function `fit_uni_lcsm()` can be used to fit a univariate LCS model using the sample data set `data_uni_lcsm`.
 This functions first writes the lavaan syntax specified in the `model` argument and passes it on to `lavaaan::lavaan()`.
 
-```{r, cache=TRUE}
+```{r}
 # Fit univariate latent change score model
 fit_uni_lcsm(data = data_uni_lcsm, 
              var =  c("x1", "x2", "x3", "x4", "x5",
@@ -390,7 +390,7 @@ More details can be found in the help files `help(fit_bi_lcsm)`.
 |xi_lag_xy              |Change score x (t) determined by change score y (t-1)  |
 |xi_lag_yx              |Change score y (t) determined by change score x (t-1)  |
 
-```{r, cache=TRUE}
+```{r}
 fit_bi_lcsm(data = data_bi_lcsm, 
             var_x = c("x1", "x2", "x3", "x4", "x5",
                       "x6", "x7", "x8", "x9", "x10"),
@@ -416,7 +416,7 @@ The functions `extract_param()` and `extract_fit()` offer some tools that I find
 
 A table of the description of all parameters that can be estimated is shown [here](#overview-of-estimated-lcs-model-parameters).
 
-```{r, cache=TRUE}
+```{r}
 # First create a lavaan object
 bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm, 
                           var_x = c("x1", "x2", "x3", "x4", "x5",
@@ -445,7 +445,7 @@ kable(param_bi_lcsm_01, digits = 3)
 This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
 Modified LCS models will probably return errors as the layout matrix that gets created by this function only supports some basic layouts. 
 
-```{r, fig.width = 6, fig.height = 4, dpi = 320, cache=TRUE}
+```{r, fig.width = 6, fig.height = 4, dpi = 320}
 # Fit bivariate lcsm and save the results 
 bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm, 
                                  var_x = c("x1", "x2", "x3", "x4", "x5"),

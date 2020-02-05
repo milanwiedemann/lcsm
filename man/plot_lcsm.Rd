@@ -10,6 +10,7 @@ plot_lcsm(
   lavaan_syntax = NULL,
   return_layout_from_lavaan_syntax = FALSE,
   lcsm = c("univariate", "bivariate"),
+  lcsm_colours = FALSE,
   curve_covar = 0.5,
   what = "col",
   whatLabels = "est",
@@ -41,6 +42,8 @@ If \code{lavaan_syntax} is provided a layout matrix will be generated automatica
 \item{return_layout_from_lavaan_syntax}{Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.}
 
 \item{lcsm}{String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.}
+
+\item{lcsm_colours}{Logical, if TRUE the following colours will be used to highlight different parts of the model: Observed variables (White); Latent true scores (Green); Latent change scores (Blue) ; Change factors (Yellow).}
 
 \item{curve_covar}{See \link[semPlot]{semPaths}.}
 
