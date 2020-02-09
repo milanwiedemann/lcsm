@@ -7,6 +7,7 @@
 #' @param point_colour String, specifying, colour of points.
 #' @param line_alpha Numeric, specifying alpha of lines.
 #' @param point_alpha Numeric, specifying alpha of points.
+#' @param point_size Numeric, size of  point
 #' @param smooth Logical, add moothed conditional means using \link[ggplot2]{geom_smooth}.
 #' @param smooth_method String, specifying method to be used for calculating average line, see \link[ggplot2]{geom_smooth}.
 #' @param smooth_se Locical, specifying whether to add standard error of average line or not.
@@ -35,7 +36,7 @@
 #' @return ggplot2 object
 #' @export
 
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, point_size = 1, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   
@@ -46,7 +47,6 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   
   plot <- data_plot %>%
     ggplot2::ggplot(ggplot2::aes(variable, value)) +
-    ggplot2::geom_point(colour = point_colour, alpha = point_alpha, size = 1) +
     ggplot2::labs(x = xlab, y = ylab) +
     ggplot2::theme_classic() +
     ggplot2::theme(text = ggplot2::element_text(size = 12))
@@ -56,6 +56,9 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", poin
   } else if (connect_missing == FALSE) {
     plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), colour = line_colour, alpha = line_alpha)
   }
+  
+  
+  plot <- plot + ggplot2::geom_point(colour = point_colour, alpha = point_alpha, size = point_size)
   
   if (title_n == TRUE){
     plot <- plot + ggplot2::ggtitle(paste0("N = ", nrow(data), " (", round(random_sample_frac * 100, 2), "% of the sample)"))

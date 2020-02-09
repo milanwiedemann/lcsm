@@ -478,6 +478,8 @@ bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm,
 plot_lcsm(lavaan_object = bi_lavaan_results, 
           lavaan_syntax = bi_lavaan_syntax,
           lcsm = "bivariate")
+
+
 ```
 
 
