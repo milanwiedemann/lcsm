@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 
 # lcsm: An R Package for Latent Change Score Modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2019--11--22-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2020--02--11-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
@@ -48,26 +48,26 @@ devtools::install_github("milanwiedemann/lcsm")
 
 The `lcsm` package contains the following functions that can be categorised into:
 
-- Functions to specify [lavaan](http://lavaan.ugent.be/) syntax for models:
-  - `specify_uni_lcsm()`: write syntax for univariate LCSM
-  - `specify_bi_lcsm()`: write syntax for bivariate LCSM
+- Functions to generate [lavaan](http://lavaan.ugent.be/) syntax for different model specifications:
+  - `specify_uni_lcsm()`: Generate syntax for univariate LCSM
+  - `specify_bi_lcsm()`: Generate syntax for bivariate LCSM
   
 - Functions to fit models using [lavaan](http://lavaan.ugent.be/):
-  - `fit_uni_lcsm()`: fit univariate LCSM
-  - `fit_bi_lcsm()`: fit bivariate LCSM
+  - `fit_uni_lcsm()`: Fit univariate LCSM
+  - `fit_bi_lcsm()`: Fit bivariate LCSM
   
-- Functions to extract numbers from models using [broom](https://broom.tidyverse.org/):
-  - `extract_fit()`: extract fit statistics
-  - `extract_param()`: extract estimated parameters
+- Functions to extract results from models using [broom](https://broom.tidyverse.org/):
+  - `extract_fit()`: Extract fit statistics
+  - `extract_param()`: Extract estimated parameters
   
 - Simulate data using [lavaan](http://lavaan.ugent.be/):
-  - `sim_uni_lcsm()`: Simulate data from a univariate LCSM
-  - `sim_bi_lcsm()`: Simulate data from a bivariate LCSM
+  - `sim_uni_lcsm()`: Simulate data by specifying parameters for a univariate LCSM
+  - `sim_bi_lcsm()`: Simulate data by specifying parameters for a bivariate LCSM
   
 - Helper functions:
-  - `plot_lcsm()`: visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
-  - `select_uni_cases()`: select cases for analysis based on available scores on one construct
-  - `select_bi_cases()`: select cases for analysis based on available scores on two construct
+  - `plot_lcsm()`: Visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
+  - `select_uni_cases()`: Select cases for analysis based on available scores on one construct
+  - `select_bi_cases()`: Select cases for analysis based on available scores on two construct
 
 ## How to use `lcsm`
 
