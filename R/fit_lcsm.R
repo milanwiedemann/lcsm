@@ -53,11 +53,21 @@ fit_uni_lcsm <- function(data,
                                 )  
   
   # Specify model ----
-  model_uni <- specify_uni_lcsm(timepoints = timepoints,
-                                        var = "x",
-                                        model = model,
-                                        change_letter = "g"
-                                        )
+  
+  # Option to specify character lavaan syntax or model parameters as list 
+  if (is.list(model) == TRUE) {
+    
+    model_uni <- specify_uni_lcsm(timepoints = timepoints,
+                                  var = "x",
+                                  model = model,
+                                  change_letter = "g"
+    )
+    
+  } else if (is.character(model) == TRUE) {
+    model_uni <- model
+  }
+  
+
   
   # Return ----
   if (return_lavaan_syntax == FALSE) {
@@ -174,6 +184,10 @@ fit_bi_lcsm <- function(data,
                                 var_y = var_y)
   
   # Specify model ----
+  # TODO Option to specify character lavaan syntax or model parameters as list 
+  # THIS NEEDS TO BE DIFFERENT FROM UNIVARIATE SOLUTION
+  # PROBABLY ADD ONE MORE ARGUMENT TO FUNCTION TO ADD STRING HERe
+  
   model_bi <- specify_bi_lcsm(timepoints = timepoints,
                                       var_x = "x",
                                       model_x = model_x,
