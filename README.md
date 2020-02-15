@@ -26,11 +26,11 @@ score modeling works. This package combines the strengths of other R
 packages like [lavaan](http://lavaan.ugent.be/),
 [broom](https://broom.tidyverse.org), and
 [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
-generating lavaan syntax that helps these packages work together. A
-shiny application illustrating some functions of this package is
-available [here](https://milanwiedemann.shinyapps.io/shinychange/), the
-code can be found [here](https://github.com/milanwiedemann/shinychange).
-This is work in progress and feedback is very welcome\!
+generating lavaan syntax that helps these packages work together. 
+
+An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
+illustrates some functions of this package.
+This is work in progress and feedback is very welcome!
 
 ## Installation
 
