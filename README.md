@@ -111,10 +111,10 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 ggpubr::ggarrange(plot_x,
                   plot_y,
                   labels = c("a", "b"))
-#> Warning: Removed 13 rows containing missing values (geom_path).
+#> Warning: Removed 10 rows containing missing values (geom_path).
 #> Warning: Removed 75 rows containing missing values (geom_point).
-#> Warning: Removed 29 rows containing missing values (geom_path).
-#> Warning: Removed 146 rows containing missing values (geom_point).
+#> Warning: Removed 25 rows containing missing values (geom_path).
+#> Warning: Removed 142 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -665,16 +665,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  20.9  20.4  21.6  NA   19.3 
-#>  2     2  21.2  21.7  23.1  24.5 25.4 
-#>  3     3  21.0  22.5  23.6  25.1 27.7 
-#>  4     4  NA    21.6  22.2  NA   22.9 
-#>  5     5  NA    NA    NA    NA   15.1 
-#>  6     6  22.1  23.2  NA    25.4 NA   
-#>  7     7  NA    21.4  21.0  NA   22.7 
-#>  8     8  21.6  NA    21.6  21.7 21.6 
-#>  9     9  NA    16.8  NA    11.0  8.11
-#> 10    10  21.0  NA    17.5  15.6 NA   
+#>  1     1  NA    NA    NA    25.7 28.2 
+#>  2     2  NA    NA    24.9  26.0 NA   
+#>  3     3  NA    20.8  20.6  21.8 21.6 
+#>  4     4  19.2  18.6  17.9  NA   15.8 
+#>  5     5  21.7  22.9  23.7  23.9 25.3 
+#>  6     6  NA    21.7  21.9  22.8 23.6 
+#>  7     7  21.2  NA    NA    20.1 20.6 
+#>  8     8  22.1  NA    20.2  17.7 16.3 
+#>  9     9  21.1  18.4  NA    NA    7.98
+#> 10    10  20.5  19.2  NA    14.6 12.3 
 #> # … with 990 more rows
 ```
 
