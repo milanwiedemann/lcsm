@@ -10,11 +10,11 @@ status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://tr
 status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 
-This package contains some helper functions to specify and analyse
+This package offers some helper functions to specify and analyse
 univariate and bivariate latent change score models (LCSM) using
 [lavaan](http://lavaan.ugent.be/) (Rosseel,
-[2012](http://www.jstatsoft.org/v48/i02/)) For details about this method
-see for example McArdle
+[2012](http://www.jstatsoft.org/v48/i02/)). For details about this
+method see for example McArdle
 ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
 et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
@@ -26,11 +26,12 @@ score modeling works. This package combines the strengths of other R
 packages like [lavaan](http://lavaan.ugent.be/),
 [broom](https://broom.tidyverse.org), and
 [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
-generating lavaan syntax that helps these packages work together. 
+generating lavaan syntax that helps these packages work together.
 
-An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
-illustrates some functions of this package.
-This is work in progress and feedback is very welcome!
+An interactive web application
+**[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
+illustrates some functions of this package. This is work in progress and
+feedback is very welcome\!
 
 ## Installation
 
@@ -80,7 +81,7 @@ Here are a few examples how to use the `lcsm` package.
 library(lcsm)
 ```
 
-### 1\. Visualise data
+### Visualise data
 
 Longitudinal data can be visualised using the `plot_trajectories()`
 function. Here only 30% of the data is visualised using the argument
@@ -111,14 +112,14 @@ ggpubr::ggarrange(plot_x,
                   plot_y,
                   labels = c("a", "b"))
 #> Warning: Removed 13 rows containing missing values (geom_path).
-#> Warning: Removed 80 rows containing missing values (geom_point).
-#> Warning: Removed 41 rows containing missing values (geom_path).
-#> Warning: Removed 156 rows containing missing values (geom_point).
+#> Warning: Removed 75 rows containing missing values (geom_point).
+#> Warning: Removed 29 rows containing missing values (geom_path).
+#> Warning: Removed 146 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
 
-### 2\. Fit LCS models
+### Fit LCS models
 
 In a first step the functions `specify_uni_lcsm()` and
 `specify_bi_lcsm()` are used to specify the lavaan syntax for a specific
@@ -129,7 +130,7 @@ The following table descibes some of the different model specifications
 that the `model` arguments can take. More detail can be found in the
 help files `help(fit_uni_lcsm)`.
 
-#### 2.1. Fit univariate LCS models
+#### Fit univariate LCS models
 
 | Model specification | Description                     |
 | :------------------ | :------------------------------ |
@@ -410,7 +411,7 @@ cat(syntax)
 
 </details>
 
-#### 2.2. Fit bivariate LCS models
+#### Fit bivariate LCS models
 
 The function `fit_bi_lcsm()` allowes to specify two univariate LCS
 models using the arguments `model_x` and `model_x`. These two constructs
@@ -465,7 +466,7 @@ fit_bi_lcsm(data = data_bi_lcsm,
 #>     for the Yuan-Bentler correction (Mplus variant)
 ```
 
-### 3\. Extract fit statistics and parmeters
+### Extract fit statistics and parmeters
 
 The main underlying functions to extract parameters and fit statistics
 come from the `broom` package: `broom::tidy()` and `broom::glance()`.
@@ -528,13 +529,74 @@ kable(param_bi_lcsm_01, digits = 3)
 | delta\_lag\_xy |    0.140 |     0.006 |    23.837 |   0.000 |    0.128 |     0.152 |
 | xi\_lag\_yx    |    0.360 |     0.037 |     9.634 |   0.000 |    0.287 |     0.433 |
 
-### 4\. Plot simplified path diagrams of LCS models
+### Plot simplified path diagrams of LCS models
 
 This function is work in progress and can only plot univariate and
 bivariate LCS models that were specified with `fit_uni_lcsm()` or
 `fit_bi_lcsm()`. Modified LCS models will probably return errors as the
-layout matrix that gets created by this function only supports some
-basic layouts.
+layout matrix that gets created by this plot function only supports the
+specifications that can be modelled with this package. The input
+arguments for plotting a simplified path dioagram are:
+
+  - the estimated lavaan object `lavaan_object`,
+  - the `lavaan_syntax` and ,
+  - `lcsm` indicating whether the LCS model is “univariate” or
+    “bivariate”
+
+Optional arguments can be used to change the look of the plot, for
+example:
+
+  - `lcsm_colours` can be used to highlight the different parts of the
+    latent change score model
+      - white: observed scores
+      - green: latent true scores
+      - blue: latent change scores
+      - yellow: latent change scores
+
+Further arguments can be passed on to `semPlot::semPaths()`, for
+example:
+
+  - `what`, **“path”** to show unweighted gray edges, **“par”** to show
+    parameter estimates as weighted (green/red) edges  
+  - `whatLabels`, **“label”** to show edege names as label or **“est”**
+    for parameter estimates, **“hide”** to hide edge labels
+
+#### Univariate LCS model
+
+``` r
+# Fit bivariate lcsm and save the results 
+uni_lavaan_results <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                   var = c("x1", "x2", "x3", "x4", "x5"),
+                                   model = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE)
+                                  )
+#> Warning in lav_data_full(data = data, group = group, cluster = cluster, : lavaan WARNING: some cases are empty and will be ignored:
+#>   239
+
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
+uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                  var = c("x1", "x2", "x3", "x4", "x5"),
+                                  model = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                  return_lavaan_syntax = TRUE, 
+                                  return_lavaan_syntax_string = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = uni_lavaan_results, 
+          lavaan_syntax = uni_lavaan_syntax,
+          lcsm_colours = TRUE,
+          lcsm = "univariate")
+#> Registered S3 methods overwritten by 'huge':
+#>   method    from   
+#>   plot.sim  BDgraph
+#>   print.sim BDgraph
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+#### Bivariate LCS model
 
 ``` r
 # Fit bivariate lcsm and save the results 
@@ -550,7 +612,7 @@ bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm,
                                  coupling = list(delta_lag_xy = TRUE, 
                                                  xi_lag_yx = TRUE))
 
-# Save the lavaan syntax that was used to create the layout matrix for semPlot
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
 bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm, 
                                 var_x = c("x1", "x2", "x3", "x4", "x5"),
                                 var_y = c("y1", "y2", "y3", "y4", "y5"),
@@ -568,16 +630,14 @@ bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm,
 # Plot the results
 plot_lcsm(lavaan_object = bi_lavaan_results, 
           lavaan_syntax = bi_lavaan_syntax,
+          lcsm_colours = TRUE,
+          whatLabels = "hide",
           lcsm = "bivariate")
-#> Registered S3 methods overwritten by 'huge':
-#>   method    from   
-#>   plot.sim  BDgraph
-#>   print.sim BDgraph
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
-### 5\. Simulate data
+### Simulate data
 
 The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based
 on some some parameters that can be specified. See the tables
@@ -605,16 +665,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  19.7  19.8  19.7  19.6  19.3
-#>  2     2  19.5  19.1  18.0  16.6  NA  
-#>  3     3  21.9  23.0  NA    27.6  NA  
-#>  4     4  NA    20.2  18.5  NA    15.5
-#>  5     5  21.1  22.8  23.7  25.2  NA  
-#>  6     6  21.8  19.8  15.3  NA    NA  
-#>  7     7  NA    17.5  18.2  16.3  15.3
-#>  8     8  21.5  20.6  19.2  NA    NA  
-#>  9     9  NA    19.7  20.1  NA    19.9
-#> 10    10  20.1  NA    19.5  NA    17.3
+#>  1     1  20.9  20.4  21.6  NA   19.3 
+#>  2     2  21.2  21.7  23.1  24.5 25.4 
+#>  3     3  21.0  22.5  23.6  25.1 27.7 
+#>  4     4  NA    21.6  22.2  NA   22.9 
+#>  5     5  NA    NA    NA    NA   15.1 
+#>  6     6  22.1  23.2  NA    25.4 NA   
+#>  7     7  NA    21.4  21.0  NA   22.7 
+#>  8     8  21.6  NA    21.6  21.7 21.6 
+#>  9     9  NA    16.8  NA    11.0  8.11
+#> 10    10  21.0  NA    17.5  15.6 NA   
 #> # … with 990 more rows
 ```
 
@@ -843,6 +903,7 @@ models:
 | sigma\_g2lx1 | Covariance of change factor (g2) with the initial true score x |
 | sigma\_g3lx1 | Covariance of change factor (g3) with the initial true score x |
 | sigma\_g2g3  | Covariance of change factors within construct x                |
+| beta\_x      | Proportional change x                                          |
 | phi\_x       | Autoregression of change scores x                              |
 
 ### Bivariate LCS models
@@ -862,6 +923,7 @@ Y**.
 | alpha\_g3           | Mean of change factor (g3)                                             |
 | sigma2\_g2          | Variance of change factor (g2)                                         |
 | sigma2\_g3          | Variance of change factor (g3)                                         |
+| beta\_x             | Proportional change x                                                  |
 | sigma\_g2lx1        | Covariance of change factor (g2) with the initial true score x (lx1)   |
 | sigma\_g3lx1        | Covariance of change factor (g3) with the initial true score x (lx1)   |
 | sigma\_g2g3         | Covariance of change factors within construct x                        |
@@ -874,6 +936,7 @@ Y**.
 | alpha\_j3           | Mean of change factor (j3)                                             |
 | sigma2\_j2          | Variance of change factor (j2)                                         |
 | sigma2\_j3          | Variance of change factor (j3)                                         |
+| beta\_y             | Proportional change y                                                  |
 | sigma\_j2ly1        | Covariance of change factor (j2) with the initial true score y (ly1)   |
 | sigma\_j3ly1        | Covariance of change factor (j3) with the initial true score y (ly1)   |
 | sigma\_j2j3         | Covariance of change factors within construct y                        |

@@ -24,16 +24,26 @@ knitr::opts_chunk$set(
 [![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
 [![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
 
-This package contains some helper functions to specify and analyse univariate and bivariate latent change score models (LCSM) using [lavaan](http://lavaan.ugent.be/) (Rosseel, [2012](http://www.jstatsoft.org/v48/i02/))
-For details about this method see for example
-McArdle ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)), 
-Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), 
-Grimm et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and 
-Grimm, Ram & Estabrook ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
+This package offers some helper functions to specify and analyse
+univariate and bivariate latent change score models (LCSM) using
+[lavaan](http://lavaan.ugent.be/) (Rosseel,
+[2012](http://www.jstatsoft.org/v48/i02/)).
+For details about this method see for example McArdle
+([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
+Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
+et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
+Grimm, Ram & Estabrook
+([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
-I started working on this project to better understand how latent change score modeling works.
-This package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by generating lavaan syntax that helps these packages work together.
-A shiny application illustrating some functions of this package is available [here](https://milanwiedemann.shinyapps.io/shinychange/), the code can be found [here](https://github.com/milanwiedemann/shinychange).
+I started working on this project to better understand how latent change
+score modeling works. This package combines the strengths of other R
+packages like [lavaan](http://lavaan.ugent.be/),
+[broom](https://broom.tidyverse.org), and
+[semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
+generating lavaan syntax that helps these packages work together. 
+
+An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
+illustrates some functions of this package.
 This is work in progress and feedback is very welcome!
 
 ## Installation
@@ -79,7 +89,7 @@ library(lcsm)
 ```
 
 
-### 1. Visualise data
+### Visualise data
 
 Longitudinal data can be visualised using the `plot_trajectories()` function.
 Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
@@ -110,7 +120,7 @@ ggpubr::ggarrange(plot_x,
                   labels = c("a", "b"))
 ```
 
-### 2. Fit LCS models
+### Fit LCS models
 
 In a first step the functions `specify_uni_lcsm()` and `specify_bi_lcsm()` are used to specify the lavaan syntax for a specific LCS model.
 The functions `fit_uni_lcsm()` and `fit_bi_lcsm()` are running specifying the syntax before passing it on to lavaan.
@@ -118,7 +128,7 @@ The functions `fit_uni_lcsm()` and `fit_bi_lcsm()` are running specifying the sy
 The following table descibes some of the different model specifications that the `model` arguments can take.
 More detail can be found in the help files `help(fit_uni_lcsm)`.
 
-#### 2.1. Fit univariate LCS models
+#### Fit univariate LCS models
 
 |Model specification |Description                                                    |
 |:-------------------|:--------------------------------------------------------------|
@@ -371,7 +381,7 @@ dx10 ~ phi_x * dx9
 </p>
 </details>
 
-#### 2.2. Fit bivariate LCS models
+#### Fit bivariate LCS models
 
 The function `fit_bi_lcsm()` allowes to specify two univariate LCS models using the arguments `model_x` and `model_x`.
 These two constructs can then be connected using the `coupling` argument. 
@@ -406,7 +416,7 @@ fit_bi_lcsm(data = data_bi_lcsm,
                             xi_lag_yx = TRUE))
 ```
 
-### 3. Extract fit statistics and parmeters
+### Extract fit statistics and parmeters
 
 The main underlying functions to extract parameters and fit statistics come from the `broom` package: `broom::tidy()` and `broom::glance()`. 
 The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCS models in R, for example:
@@ -440,10 +450,58 @@ param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ , 1:7]
 kable(param_bi_lcsm_01, digits = 3)
 ```
 
-### 4. Plot simplified path diagrams of LCS models
+### Plot simplified path diagrams of LCS models
 
 This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
-Modified LCS models will probably return errors as the layout matrix that gets created by this function only supports some basic layouts. 
+Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package.
+The input arguments for plotting a simplified path dioagram are: 
+
+- the estimated lavaan object `lavaan_object`,
+- the `lavaan_syntax` and ,
+- `lcsm` indicating whether the LCS model is "univariate" or "bivariate"
+
+Optional arguments can be used to change the look of the plot, for example:
+
+- `lcsm_colours` can be used to highlight the different parts of the latent change score model
+  - white: observed scores
+  - green: latent true scores
+  - blue: latent change scores
+  - yellow: latent change scores
+
+Further arguments can be passed on to `semPlot::semPaths()`, for example:
+
+  - `what`, **"path"** to show unweighted gray edges, **"par"** to show parameter estimates as weighted (green/red) edges   
+  - `whatLabels`, **"label"** to show edege names as label or **"est"** for parameter estimates, **"hide"** to hide edge labels
+
+#### Univariate LCS model
+
+```{r, fig.width = 6, fig.height = 4, dpi = 320}
+# Fit bivariate lcsm and save the results 
+uni_lavaan_results <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                   var = c("x1", "x2", "x3", "x4", "x5"),
+                                   model = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE)
+                                  )
+
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
+uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                  var = c("x1", "x2", "x3", "x4", "x5"),
+                                  model = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                  return_lavaan_syntax = TRUE, 
+                                  return_lavaan_syntax_string = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = uni_lavaan_results, 
+          lavaan_syntax = uni_lavaan_syntax,
+          lcsm_colours = TRUE,
+          lcsm = "univariate")
+
+```
+
+#### Bivariate LCS model
 
 ```{r, fig.width = 6, fig.height = 4, dpi = 320}
 # Fit bivariate lcsm and save the results 
@@ -459,7 +517,7 @@ bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm,
                                  coupling = list(delta_lag_xy = TRUE, 
                                                  xi_lag_yx = TRUE))
 
-# Save the lavaan syntax that was used to create the layout matrix for semPlot
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
 bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm, 
                                 var_x = c("x1", "x2", "x3", "x4", "x5"),
                                 var_y = c("y1", "y2", "y3", "y4", "y5"),
@@ -477,13 +535,14 @@ bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm,
 # Plot the results
 plot_lcsm(lavaan_object = bi_lavaan_results, 
           lavaan_syntax = bi_lavaan_syntax,
+          lcsm_colours = TRUE,
+          whatLabels = "hide",
           lcsm = "bivariate")
-
 
 ```
 
 
-### 5. Simulate data
+### Simulate data
 
 The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based on some some parameters that can be specified.
 See the tables [here](#overview-of-estimated-lcs-model-parameters) for a full list of parameters that can be specified for the data simulation.
@@ -707,13 +766,6 @@ dy5 ~ 0.4 * dx4
 </details>
 
 
-
-
-
-
-
-
-
 ## Overview of estimated LCS model parameters
 
 ### Univariate LCS models
@@ -732,6 +784,7 @@ Depending on the specified model, the following parameters can be estimated for 
 |sigma_g2lx1 |Covariance of change factor (g2) with the initial true score x          |
 |sigma_g3lx1 |Covariance of change factor (g3) with the initial true score x          |
 |sigma_g2g3  |Covariance of change factors within construct x                         |
+|beta\_x     | Proportional change x                                                  |
 |phi_x       |Autoregression of change scores x                                       |
 
 ### Bivariate LCS models
@@ -748,6 +801,7 @@ For bivariate LCS models, estimated parameters can be categorised into (1) **Con
 |alpha_g3     |Mean of change factor (g3)                                              |
 |sigma2_g2    |Variance of change factor (g2)                                          |
 |sigma2_g3    |Variance of change factor (g3)                                          |
+| beta\_x     | Proportional change x                                                  |
 |sigma_g2lx1  |Covariance of change factor (g2) with the initial true score x (lx1)    |
 |sigma_g3lx1  |Covariance of change factor (g3) with the initial true score x (lx1)    |
 |sigma_g2g3   |Covariance of change factors within construct x                         |
@@ -760,6 +814,7 @@ For bivariate LCS models, estimated parameters can be categorised into (1) **Con
 |alpha_j3     |Mean of change factor (j3)                                              |
 |sigma2_j2    |Variance of change factor (j2)                                          |
 |sigma2_j3    |Variance of change factor (j3)                                          |
+| beta\_y     | Proportional change y                                                  |
 |sigma_j2ly1  |Covariance of change factor (j2) with the initial true score y (ly1)    |
 |sigma_j3ly1  |Covariance of change factor (j3) with the initial true score y (ly1)    |
 |sigma_j2j3   |Covariance of change factors within construct y                         |
