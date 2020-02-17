@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.6.9003</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.67.9005</span>
       </span>
     </div>
 
@@ -86,12 +86,7 @@
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="https://github.com/milanwiedemann/lcsm">
-    <span class="fab fa fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+        
       </ul>
       
     </div><!--/.nav-collapse -->
@@ -106,7 +101,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Plot simplified path diagram of univariate and bivariate latent change score models</h1>
-    <small class="dont-index">Source: <a href='https://github.com/milanwiedemann/lcsm/blob/master/R/plot_lcsm.R'><code>R/plot_lcsm.R</code></a></small>
+    
     <div class="hidden name"><code>plot_lcsm.Rd</code></div>
     </div>
 
@@ -120,6 +115,7 @@
   <span class='kw'>lavaan_syntax</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>return_layout_from_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>lcsm</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"univariate"</span>, <span class='st'>"bivariate"</span>),
+  <span class='kw'>lcsm_colours</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>curve_covar</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
   <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>"col"</span>,
   <span class='kw'>whatLabels</span> <span class='kw'>=</span> <span class='st'>"est"</span>,
@@ -163,6 +159,10 @@ If <code>lavaan_syntax</code> is provided a layout matrix will be generated auto
     <tr>
       <th>lcsm</th>
       <td><p>String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.</p></td>
+    </tr>
+    <tr>
+      <th>lcsm_colours</th>
+      <td><p>Logical, if TRUE the following colours will be used to highlight different parts of the model: Observed variables (White); Latent true scores (Green); Latent change scores (Blue) ; Change factors (Yellow).</p></td>
     </tr>
     <tr>
       <th>curve_covar</th>
@@ -261,7 +261,7 @@ If <code>lavaan_syntax</code> is provided a layout matrix will be generated auto
 
       <footer>
       <div class="copyright">
-  <p>Developed by Milan Wiedemann.</p>
+  <p>Developed by Milan Wiedemann, Mental Health Research UK.</p>
 </div>
 
 <div class="pkgdown">
