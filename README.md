@@ -3,7 +3,7 @@
 
 # lcsm: An R Package for Latent Change Score Modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2020--02--11-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+[![last-change](https://img.shields.io/badge/Last%20change-2020--02--17-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
 [![Travis build
 status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
 [![Build
@@ -111,10 +111,10 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 ggpubr::ggarrange(plot_x,
                   plot_y,
                   labels = c("a", "b"))
-#> Warning: Removed 10 rows containing missing values (geom_path).
+#> Warning: Removed 13 rows containing missing values (geom_path).
 #> Warning: Removed 75 rows containing missing values (geom_point).
-#> Warning: Removed 25 rows containing missing values (geom_path).
-#> Warning: Removed 142 rows containing missing values (geom_point).
+#> Warning: Removed 35 rows containing missing values (geom_path).
+#> Warning: Removed 169 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -665,16 +665,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  NA    NA    NA    25.7 28.2 
-#>  2     2  NA    NA    24.9  26.0 NA   
-#>  3     3  NA    20.8  20.6  21.8 21.6 
-#>  4     4  19.2  18.6  17.9  NA   15.8 
-#>  5     5  21.7  22.9  23.7  23.9 25.3 
-#>  6     6  NA    21.7  21.9  22.8 23.6 
-#>  7     7  21.2  NA    NA    20.1 20.6 
-#>  8     8  22.1  NA    20.2  17.7 16.3 
-#>  9     9  21.1  18.4  NA    NA    7.98
-#> 10    10  20.5  19.2  NA    14.6 12.3 
+#>  1     1  20.2  21.8  24.0  26.3  29.0
+#>  2     2  NA    NA    24.3  25.0  26.4
+#>  3     3  21.6  NA    NA    21.2  21.0
+#>  4     4  NA    20.7  17.5  14.3  NA  
+#>  5     5  18.8  19.6  18.9  19.2  NA  
+#>  6     6  18.7  19.5  17.7  NA    NA  
+#>  7     7  19.9  19.2  18.0  17.4  15.2
+#>  8     8  21.0  22.0  25.0  27.4  29.9
+#>  9     9  NA    19.8  20.2  NA    18.3
+#> 10    10  20.1  20.7  NA    24.7  25.3
 #> # … with 990 more rows
 ```
 
