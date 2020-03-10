@@ -9,9 +9,11 @@ plot_trajectories(
   id_var,
   var_list,
   line_colour = "blue",
+  group_var = NULL,
   point_colour = "black",
   line_alpha = 0.2,
   point_alpha = 0.2,
+  point_size = 1,
   smooth = FALSE,
   smooth_method = "loess",
   smooth_se = FALSE,
@@ -33,11 +35,15 @@ plot_trajectories(
 
 \item{line_colour}{String, specifying colour of lines.}
 
+\item{group_var}{String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument.}
+
 \item{point_colour}{String, specifying, colour of points.}
 
 \item{line_alpha}{Numeric, specifying alpha of lines.}
 
 \item{point_alpha}{Numeric, specifying alpha of points.}
+
+\item{point_size}{Numeric, size of  point}
 
 \item{smooth}{Logical, add moothed conditional means using \link[ggplot2]{geom_smooth}.}
 

@@ -4,6 +4,7 @@
 #' @param id_var String, specifying id variable.
 #' @param var_list Vector, specifying variable names to be plotted in sequential order.
 #' @param line_colour String, specifying colour of lines.
+#' @param group_var String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument.
 #' @param point_colour String, specifying, colour of points.
 #' @param line_alpha Numeric, specifying alpha of lines.
 #' @param point_alpha Numeric, specifying alpha of points.
@@ -36,40 +37,63 @@
 #' @return ggplot2 object
 #' @export
 
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", point_colour = "black", line_alpha = .2, point_alpha = .2, point_size = 1, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", group_var = NULL, point_colour = "black", line_alpha = .2, point_alpha = .2, point_size = 1, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   
+  var_names <- names(data)
+  var_names_wide <- var_names[!var_names %in% var_list]
+  
   data_plot <- data %>% 
-    dplyr::select(id_var, var_list) %>%
-    tidyr::gather(variable, value, -id_var) %>% 
+    # dplyr::select(id_var, var_list) %>%
+    tidyr::gather(variable, value, -var_names_wide) %>% 
     dplyr::mutate(variable = factor(variable, var_list))
   
+
+  
+  if (is.null(group_var) == TRUE) {
+    plot <- data_plot %>%
+      ggplot2::ggplot(ggplot2::aes(variable, value)) +
+      ggplot2::labs(x = xlab, y = ylab) +
+      ggplot2::theme_classic() +
+      ggplot2::theme(text = ggplot2::element_text(size = 12))
+    
+    if (connect_missing == TRUE) {
+      plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), 
+                                        colour = line_colour, 
+                                        alpha = line_alpha)
+    } else if (connect_missing == FALSE) {
+      plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), 
+                                        colour = line_colour, 
+                                        alpha = line_alpha)
+    }
+  } else if (is.null(group_var) == FALSE)
   plot <- data_plot %>%
-    ggplot2::ggplot(ggplot2::aes(variable, value)) +
+    ggplot2::ggplot(ggplot2::aes(variable, value, colour = factor(!!rlang::sym(group_var)))) +
     ggplot2::labs(x = xlab, y = ylab) +
     ggplot2::theme_classic() +
-    ggplot2::theme(text = ggplot2::element_text(size = 12))
-  
+    ggplot2::theme(text = ggplot2::element_text(size = 12)) +
+    ggplot2::scale_colour_viridis_d()
+
   if (connect_missing == TRUE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), colour = line_colour, alpha = line_alpha)
+    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), alpha = line_alpha)
   } else if (connect_missing == FALSE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), colour = line_colour, alpha = line_alpha)
+    plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), alpha = line_alpha)
   }
-  
-  
+
+
   plot <- plot + ggplot2::geom_point(colour = point_colour, alpha = point_alpha, size = point_size)
-  
+
   if (title_n == TRUE){
     plot <- plot + ggplot2::ggtitle(paste0("N = ", nrow(data), " (", round(random_sample_frac * 100, 2), "% of the sample)"))
   }
-  
+
   if (scale_x_num == FALSE) {
     plot_x_scale <- plot + ggplot2::scale_x_discrete(labels = var_list)
   } else {
     plot_x_scale <- plot + ggplot2::scale_x_discrete(labels = scale_x_num_start:(length(var_list) + scale_x_num_start - 1))
   }
-  
+
   if (smooth == TRUE) {
     plot_x_scale + ggplot2::geom_smooth(ggplot2::aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
   } else {
