@@ -2,7 +2,7 @@
 % Please edit documentation in R/sim_lcsm_data.R
 \name{sim_bi_lcsm}
 \alias{sim_bi_lcsm}
-\title{Simulate data from a univariate latent change score model}
+\title{Simulate data from bivariate latent change score model parameter estimates}
 \usage{
 sim_bi_lcsm(
   timepoints,
@@ -108,7 +108,7 @@ sim_bi_lcsm(
 tibble
 }
 \description{
-TODO: Describe function
+This function simulate data from bivariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 }
 \examples{
 # Simulate data from bivariate LCS model parameters 

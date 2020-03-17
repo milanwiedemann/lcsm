@@ -1,5 +1,5 @@
-#' Simulate data from a univariate latent change score model
-#' @description TODO: Describe function
+#' Simulate data from univariate latent change score model parameter estimates
+#' @description This function simulate data from univariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 #' @param timepoints See \link[lcsm]{specify_uni_lcsm}
 #' @param var See \link[lcsm]{specify_uni_lcsm}
 #' @param model See \link[lcsm]{specify_uni_lcsm}
@@ -162,8 +162,8 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
   }
 }
 
-#' Simulate data from a univariate latent change score model
-#' @description TODO: Describe function
+#' Simulate data from bivariate latent change score model parameter estimates
+#' @description This function simulate data from bivariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 #' @param timepoints See \link[lcsm]{specify_bi_lcsm}
 #' @param model_x See \link[lcsm]{specify_bi_lcsm}
 #' @param model_x_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':

@@ -1,5 +1,5 @@
 #' Specify lavaan model for univariate latent change score models
-#' @description TODO: Describe function
+#' @description Specify lavaan model for univariate latent change score models
 #' @param timepoints Number if timepoints.
 #' @param model List of model specifications (logical) for the variables specified in \code{variable}.
 #' \itemize{
@@ -176,7 +176,7 @@ specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
 }
 
 #' Specify lavaan model for bivariate latent change score models
-#' @description TODO: Describe function
+#' @description Specify lavaan model for bivariate latent change score models
 #' @param timepoints Number of timepoints.
 #' @param var_x Vector, specifying variables measuring one construct of the model.
 #' @param var_y Vector, specifying variables measuring another construct of the model.

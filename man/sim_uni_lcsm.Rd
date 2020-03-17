@@ -2,7 +2,7 @@
 % Please edit documentation in R/sim_lcsm_data.R
 \name{sim_uni_lcsm}
 \alias{sim_uni_lcsm}
-\title{Simulate data from a univariate latent change score model}
+\title{Simulate data from univariate latent change score model parameter estimates}
 \usage{
 sim_uni_lcsm(
   timepoints,
@@ -57,7 +57,7 @@ To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string
 tibble
 }
 \description{
-TODO: Describe function
+This function simulate data from univariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 }
 \examples{
 # Simulate data from univariate LCS model parameters 

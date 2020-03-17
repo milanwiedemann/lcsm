@@ -117,7 +117,7 @@
   <span class='kw'>lcsm</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"univariate"</span>, <span class='st'>"bivariate"</span>),
   <span class='kw'>lcsm_colours</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>curve_covar</span> <span class='kw'>=</span> <span class='fl'>0.5</span>,
-  <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>"col"</span>,
+  <span class='kw'>what</span> <span class='kw'>=</span> <span class='st'>"path"</span>,
   <span class='kw'>whatLabels</span> <span class='kw'>=</span> <span class='st'>"est"</span>,
   <span class='kw'>edge.width</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>node.width</span> <span class='kw'>=</span> <span class='fl'>1</span>,
@@ -170,11 +170,11 @@ If <code>lavaan_syntax</code> is provided a layout matrix will be generated auto
     </tr>
     <tr>
       <th>what</th>
-      <td><p>See <code>semPlot</code>.</p></td>
+      <td><p>See <code>semPlot</code>. "path" to show unweighted gray edges, "par" to show parameter estimates as weighted (green/red) edges</p></td>
     </tr>
     <tr>
       <th>whatLabels</th>
-      <td><p>See <a href='https://rdrr.io/pkg/semPlot/man/semPaths.html'>semPaths</a>.</p></td>
+      <td><p>See <a href='https://rdrr.io/pkg/semPlot/man/semPaths.html'>semPaths</a>. "label" to show edege names as label, "est" for parameter estimates, "hide" to hide edge labels.</p></td>
     </tr>
     <tr>
       <th>edge.width</th>

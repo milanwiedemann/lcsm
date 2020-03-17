@@ -69,7 +69,7 @@ plot_trajectories(
 ggplot2 object
 }
 \description{
-TODO: Describe function
+Plot individual trajectories
 }
 \examples{
 # Create plot for construct x

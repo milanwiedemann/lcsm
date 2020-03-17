@@ -1,5 +1,5 @@
 #' Plot individual trajectories
-#' @description TODO: Describe function
+#' @description Plot individual trajectories
 #' @param data Dataset in wide format.
 #' @param id_var String, specifying id variable.
 #' @param var_list Vector, specifying variable names to be plotted in sequential order.

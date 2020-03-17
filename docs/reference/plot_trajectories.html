@@ -36,7 +36,7 @@
 
 
 <meta property="og:title" content="Plot individual trajectories — plot_trajectories" />
-<meta property="og:description" content="TODO: Describe function" />
+<meta property="og:description" content="Plot individual trajectories" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,7 +106,7 @@
     </div>
 
     <div class="ref-description">
-    <p>TODO: Describe function</p>
+    <p>Plot individual trajectories</p>
     </div>
 
     <pre class="usage"><span class='fu'>plot_trajectories</span>(
@@ -114,9 +114,11 @@
   <span class='no'>id_var</span>,
   <span class='no'>var_list</span>,
   <span class='kw'>line_colour</span> <span class='kw'>=</span> <span class='st'>"blue"</span>,
+  <span class='kw'>group_var</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>point_colour</span> <span class='kw'>=</span> <span class='st'>"black"</span>,
   <span class='kw'>line_alpha</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
   <span class='kw'>point_alpha</span> <span class='kw'>=</span> <span class='fl'>0.2</span>,
+  <span class='kw'>point_size</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>smooth</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>smooth_method</span> <span class='kw'>=</span> <span class='st'>"loess"</span>,
   <span class='kw'>smooth_se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
@@ -149,6 +151,10 @@
       <td><p>String, specifying colour of lines.</p></td>
     </tr>
     <tr>
+      <th>group_var</th>
+      <td><p>String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument.</p></td>
+    </tr>
+    <tr>
       <th>point_colour</th>
       <td><p>String, specifying, colour of points.</p></td>
     </tr>
@@ -159,6 +165,10 @@
     <tr>
       <th>point_alpha</th>
       <td><p>Numeric, specifying alpha of points.</p></td>
+    </tr>
+    <tr>
+      <th>point_size</th>
+      <td><p>Numeric, size of  point</p></td>
     </tr>
     <tr>
       <th>smooth</th>
@@ -218,7 +228,7 @@
                   <span class='kw'>var_list</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"y1"</span>, <span class='st'>"y2"</span>, <span class='st'>"y3"</span>, <span class='st'>"y4"</span>, <span class='st'>"y5"</span>,
                                <span class='st'>"y6"</span>, <span class='st'>"y7"</span>, <span class='st'>"y8"</span>, <span class='st'>"y9"</span>, <span class='st'>"y10"</span>),
                   <span class='kw'>xlab</span> <span class='kw'>=</span> <span class='st'>"Time"</span>, <span class='kw'>ylab</span> <span class='kw'>=</span> <span class='st'>"Y Score"</span>,
-                  <span class='kw'>connect_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>random_sample_frac</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 54 rows containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 267 rows containing missing values (geom_point).</span></div><div class='img'><img src='plot_trajectories-2.png' alt='' width='700' height='433' /></div><div class='input'>
+                  <span class='kw'>connect_missing</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>random_sample_frac</span> <span class='kw'>=</span> <span class='fl'>0.5</span>)</div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 54 row(s) containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 54 row(s) containing missing values (geom_path).</span></div><div class='output co'>#&gt; <span class='warning'>Warning: Removed 267 rows containing missing values (geom_point).</span></div><div class='img'><img src='plot_trajectories-2.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
