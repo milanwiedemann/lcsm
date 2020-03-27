@@ -64,7 +64,7 @@ specify_bi_lcsm(
 Lavaan model syntax including comments.
 }
 \description{
-TODO: Describe function
+Specify lavaan model for bivariate latent change score models
 }
 \examples{
 # Specify biivariate LCS model

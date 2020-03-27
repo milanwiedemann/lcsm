@@ -27,7 +27,7 @@ specify_uni_lcsm(timepoints, model, var, change_letter = "g")
 Lavaan model syntax including comments.
 }
 \description{
-TODO: Describe function
+Specify lavaan model for univariate latent change score models
 }
 \examples{
 # Specify univariate LCS model
