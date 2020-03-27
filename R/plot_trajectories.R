@@ -4,7 +4,8 @@
 #' @param id_var String, specifying id variable.
 #' @param var_list Vector, specifying variable names to be plotted in sequential order.
 #' @param line_colour String, specifying colour of lines.
-#' @param group_var String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument.
+#' @param group_var String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument. 
+#' Also consider other options to look at trajectories like \link[ggplot2]{facet_wrap} which may be more appropriate.
 #' @param point_colour String, specifying, colour of points.
 #' @param line_alpha Numeric, specifying alpha of lines.
 #' @param point_alpha Numeric, specifying alpha of points.
@@ -53,32 +54,32 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", grou
   
   if (is.null(group_var) == TRUE) {
     plot <- data_plot %>%
-      ggplot2::ggplot(ggplot2::aes(variable, value)) +
+      ggplot2::ggplot(ggplot2::aes(x = variable, y = value, group = !!rlang::sym(id_var))) +
       ggplot2::labs(x = xlab, y = ylab) +
       ggplot2::theme_classic() +
       ggplot2::theme(text = ggplot2::element_text(size = 12))
     
     if (connect_missing == TRUE) {
-      plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), 
+      plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], 
                                         colour = line_colour, 
                                         alpha = line_alpha)
     } else if (connect_missing == FALSE) {
-      plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), 
+      plot <- plot + ggplot2::geom_line(data = data_plot, 
                                         colour = line_colour, 
                                         alpha = line_alpha)
     }
   } else if (is.null(group_var) == FALSE)
   plot <- data_plot %>%
-    ggplot2::ggplot(ggplot2::aes(variable, value, colour = factor(!!rlang::sym(group_var)))) +
+    ggplot2::ggplot(ggplot2::aes(x = variable, y = value, group = !!rlang::sym(id_var), colour = factor(!!rlang::sym(group_var)))) +
     ggplot2::labs(x = xlab, y = ylab) +
     ggplot2::theme_classic() +
     ggplot2::theme(text = ggplot2::element_text(size = 12)) +
     ggplot2::scale_colour_viridis_d()
 
   if (connect_missing == TRUE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], ggplot2::aes(group = !!rlang::sym(id_var)), alpha = line_alpha)
+    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], alpha = line_alpha)
   } else if (connect_missing == FALSE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot, ggplot2::aes(group = !!rlang::sym(id_var)), alpha = line_alpha)
+    plot <- plot + ggplot2::geom_line(data = data_plot, alpha = line_alpha)
   }
 
 
