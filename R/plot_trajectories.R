@@ -76,12 +76,6 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", grou
     ggplot2::theme(text = ggplot2::element_text(size = 12)) +
     ggplot2::scale_colour_viridis_d()
 
-  if (connect_missing == TRUE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot[!is.na(data_plot$value), ], alpha = line_alpha)
-  } else if (connect_missing == FALSE) {
-    plot <- plot + ggplot2::geom_line(data = data_plot, alpha = line_alpha)
-  }
-
 
   plot <- plot + ggplot2::geom_point(colour = point_colour, alpha = point_alpha, size = point_size)
 
