@@ -1,0 +1,27 @@
+---
+title: "Running latent change score models in R - Parameter estimates and fit statistics"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Running latent change score models in R - Parameter estimates and fit statistics}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+# WORK IN PROGRESS
+
+- step by step example here building all the way up to a univariate lcsm
+- select data
+- run univariate models
+- add parameters and compare results using anova and model parameters
+- use grimm 2017 data?

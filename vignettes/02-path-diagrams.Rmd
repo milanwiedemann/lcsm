@@ -1,0 +1,25 @@
+---
+title: "Create path diagrams to visualise model specifications"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create path diagrams to visualise model specifications}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+# WORK IN PROGRESS
+
+- show the diffferent options that are possible
+- path diagrams will also be shown in the other tutorials
+- but here also illustrate whats happening in the code

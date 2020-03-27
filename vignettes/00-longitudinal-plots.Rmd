@@ -1,0 +1,25 @@
+---
+title: "Create longitudinal plots to visualise data"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Create longitudinal plots to visualise data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+# WORK IN PROGRESS
+
+- just show very simple example here
+- exmplain underlying code idea briefly and mention that things can be added using ggplot2 functions
+- also referr to other ways this can be done, ... rainbow plots, violin plots

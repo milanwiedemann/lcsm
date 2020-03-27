@@ -1,0 +1,25 @@
+---
+title: "Generate lavaan syntax for latent change score models"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Generate lavaan syntax for latent change score models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+# WORK IN PROGRESS
+
+- show different examples
+- highlight the comments that explain the different sections of the code 
+- show how this syntax can be adapted and used outside of this package in lavaan

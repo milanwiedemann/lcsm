@@ -1,0 +1,25 @@
+---
+title: "Simulate data to explore the effect of different parameters"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Simulate data to explore the effect of different parameters}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+# WORK IN PROGRESS
+
+- simulate data examples
+- show different scenarios, e.g. all parameter estimates specified, some missing
+- referr to shiny app for interactive example
