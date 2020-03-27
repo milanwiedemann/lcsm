@@ -114,10 +114,9 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
                             connect_missing = FALSE, 
                             random_sample_frac = 0.3)
 
-# Arrange plots next to each other using ggpubr::ggarrange()
-ggpubr::ggarrange(plot_x,
-                  plot_y,
-                  labels = c("a", "b"))
+# Arrange plots next to each other using patchwork
+library(patchwork)
+plot_x + plot_y + plot_annotation(tag_levels = 'A')
 ```
 
 ### Fit LCS models
@@ -494,8 +493,9 @@ uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                                   return_lavaan_syntax_string = TRUE)
 
 # Plot the results
-plot_lcsm(lavaan_object = uni_lavaan_results, 
+plot_lcsm(lavaan_object = uni_lavaan_results,
           lavaan_syntax = uni_lavaan_syntax,
+          edge.label.cex = .9,  
           lcsm_colours = TRUE,
           lcsm = "univariate")
 

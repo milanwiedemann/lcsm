@@ -107,14 +107,13 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
                             connect_missing = FALSE, 
                             random_sample_frac = 0.3)
 
-# Arrange plots next to each other using ggpubr::ggarrange()
-ggpubr::ggarrange(plot_x,
-                  plot_y,
-                  labels = c("a", "b"))
-#> Warning: Removed 13 rows containing missing values (geom_path).
-#> Warning: Removed 75 rows containing missing values (geom_point).
-#> Warning: Removed 35 rows containing missing values (geom_path).
-#> Warning: Removed 169 rows containing missing values (geom_point).
+# Arrange plots next to each other using patchwork
+library(patchwork)
+plot_x + plot_y + plot_annotation(tag_levels = 'A')
+#> Warning: Removed 22 row(s) containing missing values (geom_path).
+#> Warning: Removed 88 rows containing missing values (geom_point).
+#> Warning: Removed 36 row(s) containing missing values (geom_path).
+#> Warning: Removed 149 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -584,8 +583,9 @@ uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                                   return_lavaan_syntax_string = TRUE)
 
 # Plot the results
-plot_lcsm(lavaan_object = uni_lavaan_results, 
+plot_lcsm(lavaan_object = uni_lavaan_results,
           lavaan_syntax = uni_lavaan_syntax,
+          edge.label.cex = .9,  
           lcsm_colours = TRUE,
           lcsm = "univariate")
 #> Registered S3 methods overwritten by 'huge':
@@ -665,16 +665,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  20.2  21.8  24.0  26.3  29.0
-#>  2     2  NA    NA    24.3  25.0  26.4
-#>  3     3  21.6  NA    NA    21.2  21.0
-#>  4     4  NA    20.7  17.5  14.3  NA  
-#>  5     5  18.8  19.6  18.9  19.2  NA  
-#>  6     6  18.7  19.5  17.7  NA    NA  
-#>  7     7  19.9  19.2  18.0  17.4  15.2
-#>  8     8  21.0  22.0  25.0  27.4  29.9
-#>  9     9  NA    19.8  20.2  NA    18.3
-#> 10    10  20.1  20.7  NA    24.7  25.3
+#>  1     1  NA    21.4  NA    24.3  25.0
+#>  2     2  NA    NA    19.9  19.0  NA  
+#>  3     3  20.3  NA    NA    NA    19.0
+#>  4     4  NA    20.3  NA    18.1  NA  
+#>  5     5  19.2  19.1  18.0  16.9  16.7
+#>  6     6  22.3  23.5  NA    29.0  NA  
+#>  7     7  NA    NA    23.1  23.1  NA  
+#>  8     8  21.3  22.5  22.5  23.7  25.0
+#>  9     9  NA    22.6  21.6  21.3  19.1
+#> 10    10  NA    21.8  21.0  22.5  22.0
 #> # … with 990 more rows
 ```
 

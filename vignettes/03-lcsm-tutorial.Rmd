@@ -1,5 +1,5 @@
 ---
-title: "Running latent change score models in R - Parameter estimates and fit statistics"
+title: "Parameter estimates and fit statistics of latent change score models"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Running latent change score models in R - Parameter estimates and fit statistics}

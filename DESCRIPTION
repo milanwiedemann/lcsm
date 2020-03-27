@@ -1,8 +1,8 @@
 Package: lcsm
 Type: Package
 Title: lcsm: An R Package for Latent Change Score Modeling
-Date: 2020-03-10
-Version: 0.0.7
+Date: 2020-03-27
+Version: 0.0.8
 Authors@R: c(
   person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X")),
   person("Anke", "Ehlers", role = c("ths"), comment = c(ORCID = "0000-0002-8742-0192")),

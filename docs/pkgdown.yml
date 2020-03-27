@@ -1,5 +1,10 @@
 pandoc: 2.3.1
 pkgdown: 1.4.1
 pkgdown_sha: ~
-articles: []
+articles:
+  00-longitudinal-plots: 00-longitudinal-plots.html
+  01-lavaan-syntax: 01-lavaan-syntax.html
+  02-path-diagrams: 02-path-diagrams.html
+  03-lcsm-tutorial: 03-lcsm-tutorial.html
+  04-simulate-data: 04-simulate-data.html
 

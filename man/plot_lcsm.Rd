@@ -87,6 +87,29 @@ Plot
 \description{
 Plot simplified path diagram of univariate and bivariate latent change score models
 }
+\examples{
+lavaan_syntax_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
+                                  var = c("x1", "x2", "x3", "x4", "x5"),
+                                  model = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                  return_lavaan_syntax = TRUE,
+                                  return_lavaan_syntax_string = TRUE)
+
+lavaan_object_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
+                                  var = c("x1", "x2", "x3", "x4", "x5"),
+                                  model = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE))
+
+plot_lcsm(lavaan_object = lavaan_object_uni, 
+          what = "cons", whatLabels = "invisible", 
+          lavaan_syntax = lavaan_syntax_uni,
+          lcsm = "univariate")
+
+
+
+}
 \references{
 Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
 \url{https://CRAN.R-project.org/package=semPlot}
