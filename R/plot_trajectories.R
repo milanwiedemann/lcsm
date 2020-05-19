@@ -15,9 +15,11 @@
 #' @param smooth_se Locical, specifying whether to add standard error of average line or not.
 #' @param xlab String for x axis label.
 #' @param ylab String for y axis label.
+
 #' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from 1 as x axis labels, if \code{FALSE} use variable names.
 #' @param scale_x_num_start Numeric, if \code{scale_x_num = TRUE} this is the starting value of the x axis.
 #' @param random_sample_frac The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.
+#' @param seed Set seed for random sample if random_sample_frac argument is used.
 #' @param connect_missing Logical, speciying whether to connect points by \code{id_var} across missing values.
 #' @param title_n Logical, speciying whether to print title with number and percentage of cases used for the plot.
 #' @examples 
@@ -38,7 +40,9 @@
 #' @return ggplot2 object
 #' @export
 
-plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", group_var = NULL, point_colour = "black", line_alpha = .2, point_alpha = .2, point_size = 1, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, title_n = FALSE, connect_missing = TRUE){
+plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", group_var = NULL, point_colour = "black", line_alpha = .2, point_alpha = .2, point_size = 1, smooth = FALSE, smooth_method = "loess", smooth_se = FALSE, xlab = "X", ylab = "Y", scale_x_num = FALSE, scale_x_num_start = 1, random_sample_frac = 1, seed = 1234, title_n = FALSE, connect_missing = TRUE){
+  
+  set.seed(seed = seed)
   
   data <- dplyr::sample_frac(tbl = data, size = random_sample_frac)
   

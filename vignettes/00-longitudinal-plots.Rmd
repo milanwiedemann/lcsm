@@ -1,10 +1,12 @@
 ---
-title: "Create longitudinal plots to visualise data"
+title: "Visualise longitudinal data"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Create longitudinal plots to visualise data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+bibliography: ["references.bib"]
+link-citations: yes
 ---
 
 ```{r, include = FALSE}
@@ -16,10 +18,83 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(lcsm)
+library(ggplot2)
+library(tidyr)
+library(dplyr)
+library(stringr)
 ```
 
-# WORK IN PROGRESS
+It is important to understand the data.
+For longitudinal analyses it can be helpful visualise the indidual trajectories.
+A more detailed overview can be found for example in @Ghisletta2012 and Chapter 2 in @Grimm2017.
+Most basic plots can be done relatively easily using already existing packages and functions in R.
+I will show some examples illustrating how to do basic plots of longitudinal data using the R package `ggplot2` [@R-ggplot2].
 
-- just show very simple example here
-- exmplain underlying code idea briefly and mention that things can be added using ggplot2 functions
-- also referr to other ways this can be done, ... rainbow plots, violin plots
+# Violin plots
+
+
+```{r}
+x_var_list <- c("x1", "x2", "x3", "x4", "x5", "x6")
+# or simply make use of paste function and R
+paste0("x", 1:6)
+```
+
+```{r, fig.width=7}
+# Create long data set
+data_long <- data_bi_lcsm %>% 
+  select("id", x_var_list) %>% 
+  pivot_longer(cols = x_var_list, names_to = "time", values_to = "value") %>% 
+  mutate(time = str_extract(time, "\\d+"),
+         time = as.numeric(time),
+         time = factor(time))
+
+ggplot(data_long, aes(time, value)) +
+  geom_violin() +
+  geom_boxplot(width = 0.1, outlier.colour = "blue") +
+  theme_classic()
+```
+
+
+Similar visualisations that communicate the data in a more open way have been developed for example by @Allen2019 and @vanLangen2020.
+
+
+# Longitudinal plots
+
+## Overlaid individual trajectories
+
+```{r, fig.width=7}
+# Create plot for construct x
+plot_trajectories(data = data_bi_lcsm,
+                  id_var = "id", 
+                  var_list = x_var_list,
+                  xlab = "Time", ylab = "Value",
+                  connect_missing = F, 
+                  random_sample_frac = 0.018, 
+                  title_n = T)
+
+
+```
+
+## Separate individual trajectories
+
+
+
+```{r, fig.height=5, fig.width=7}
+# Create plot for construct x
+plot_trajectories(data = data_bi_lcsm,
+                  id_var = "id", 
+                  var_list = x_var_list,
+                  xlab = "Time", ylab = "Value",
+                  connect_missing = F, 
+                  random_sample_frac = 0.018, 
+                  title_n = T) +
+  facet_wrap(~id)
+
+
+```
+
+Longitudinal data can be visualised using the `plot_trajectories()` function.
+Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
+Only consecutive measures are connected by lines as specified in `connect_missing = FALSE`.
+
+# References
