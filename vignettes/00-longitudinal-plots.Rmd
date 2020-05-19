@@ -16,7 +16,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+```{r setup, message=FALSE}
+# Load packages
 library(lcsm)
 library(ggplot2)
 library(tidyr)
@@ -24,30 +25,57 @@ library(dplyr)
 library(stringr)
 ```
 
-It is important to understand the data.
-For longitudinal analyses it can be helpful visualise the indidual trajectories.
-A more detailed overview can be found for example in @Ghisletta2012 and Chapter 2 in @Grimm2017.
-Most basic plots can be done relatively easily using already existing packages and functions in R.
-I will show some examples illustrating how to do basic plots of longitudinal data using the R package `ggplot2` [@R-ggplot2].
+It's important to understand the data.
+For longitudinal analyses it may be helpful visualise the individual trajectories.
+A more detailed overview of the rational behind this be found in @Ghisletta2012 or Chapter 2 in @Grimm2017.
+Most basic (and advanced) plots can be done relatively easily using already existing packages and functions in R.
+I will show some examples illustrating how to visualise longitudinal data using the R package `ggplot2` [@R-ggplot2].
+The function `plot_trajectories()` of the `lcsm` R package builds on `ggplot2` to make it a little easier to visualise individual trajectories.
 
-# Violin plots
+I'll show how to visualise 6 repeated measurements from the data set `data_bi_lcsm` from this package.
 
+# Prepare data
+
+When working with repeated measures I like to create a vector of the variables so I don't have to always type them out, but this is not necessary.
+The data needs to be in "long" format when using ggplot2 for plotting and this is different to the data structure needed for `lavaan`.
+`lavaan` expects the data to be in wide format.
+This is what made me write a little helper function for plotting so that the same data sets that I throw into for lavaan can be used for plotting without having to transform it.
+
+Here I'll show how to transform the data anyways because the plotting function that is intetrated has limited functionality and other plots may be more appropriate.
+Furtunately in R there is a relatively straightforward way to do this using the function `pivot_longer()` from the `dplyr` package.
+Next, to get the correct order of repeated measures the time variable needs to be ordered in the correct order.
+R know how to order numbers but if you're using variable names that also include letters R might get confused and get the order wrong if you dont tell it what to do.
 
 ```{r}
+# Create a vector of variable names
 x_var_list <- c("x1", "x2", "x3", "x4", "x5", "x6")
-# or simply make use of paste function and R
+
+# Or simply use the paste function and R might work too
 paste0("x", 1:6)
 ```
 
 ```{r, fig.width=7}
 # Create long data set
 data_long <- data_bi_lcsm %>% 
-  select("id", x_var_list) %>% 
-  pivot_longer(cols = x_var_list, names_to = "time", values_to = "value") %>% 
-  mutate(time = str_extract(time, "\\d+"),
-         time = as.numeric(time),
-         time = factor(time))
+  select("id", all_of(x_var_list)) %>% 
+  # Pivot data long
+  pivot_longer(cols = all_of(x_var_list), names_to = "time", values_to = "value") %>% 
+  mutate(
+    # Extract number from time variable
+    time = str_extract(time, "\\d+"),
+    # At the moment the numbers in the time are 'characters'
+    # So here it gets transformed to a numeric value
+    time = as.numeric(time),
+    # And now a factor
+    time = factor(time)
+    )
+```
 
+These data manipulations are neccessary  
+
+# Violin plots
+
+```{r, fig.width=7}
 ggplot(data_long, aes(time, value)) +
   geom_violin() +
   geom_boxplot(width = 0.1, outlier.colour = "blue") +
