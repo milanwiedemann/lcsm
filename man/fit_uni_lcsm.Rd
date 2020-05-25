@@ -17,9 +17,9 @@ fit_uni_lcsm(
 )
 }
 \arguments{
-\item{data}{Wide dataset.}
+\item{data}{A data frame in "wide" format, i.e. one column for each measurement point and one row for each observation.}
 
-\item{var}{List of variables measuring construct of the model.}
+\item{var}{Vector, specifying the variable names of each measurement point sequentially.}
 
 \item{model}{List of model specifications (logical) for variables specified in \code{var}.
 \itemize{

@@ -47,11 +47,11 @@ Also consider other options to look at trajectories like \link[ggplot2]{facet_wr
 
 \item{point_size}{Numeric, size of  point}
 
-\item{smooth}{Logical, add moothed conditional means using \link[ggplot2]{geom_smooth}.}
+\item{smooth}{Logical, add smoothed conditional means using \link[ggplot2]{geom_smooth}.}
 
 \item{smooth_method}{String, specifying method to be used for calculating average line, see \link[ggplot2]{geom_smooth}.}
 
-\item{smooth_se}{Locical, specifying whether to add standard error of average line or not.}
+\item{smooth_se}{Logical, specifying whether to add standard error of average line or not.}
 
 \item{xlab}{String for x axis label.}
 

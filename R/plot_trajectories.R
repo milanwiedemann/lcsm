@@ -10,9 +10,9 @@
 #' @param line_alpha Numeric, specifying alpha of lines.
 #' @param point_alpha Numeric, specifying alpha of points.
 #' @param point_size Numeric, size of  point
-#' @param smooth Logical, add moothed conditional means using \link[ggplot2]{geom_smooth}.
+#' @param smooth Logical, add smoothed conditional means using \link[ggplot2]{geom_smooth}.
 #' @param smooth_method String, specifying method to be used for calculating average line, see \link[ggplot2]{geom_smooth}.
-#' @param smooth_se Locical, specifying whether to add standard error of average line or not.
+#' @param smooth_se Logical, specifying whether to add standard error of average line or not.
 #' @param xlab String for x axis label.
 #' @param ylab String for y axis label.
 

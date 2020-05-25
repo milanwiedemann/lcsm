@@ -1,10 +1,10 @@
-#' Extract labeled parameters of lavaan objects
+#' Extract labelled parameters of lavaan objects
 #'
-#' @param lavaan_object Lavaan object.
+#' @param lavaan_object lavaan object.
 #' @param printp If TRUE convert into easily readable p-values.
 #' At the moment this function is deactivated, a warning message will be returned.
 
-#' @return This function returns a tibble with labeled parameters.
+#' @return This function returns a tibble with labelled parameters.
 #' @export
 #' @references David Robinson and Alex Hayes (2019). broom: Convert Statistical Analysis Objects into Tidy Tibbles. R package version 0.5.2.
 #' \url{https://CRAN.R-project.org/package=broom}
@@ -45,8 +45,9 @@ extract_param <- function(lavaan_object, printp = FALSE){
   }
   
   if (printp == TRUE){
+    
     # This doesnt work at the moment, papaja is not on CRAN 
-    # Find my own way to do this, maybe import printp function from papaja or somewhere else
+    # Find my own way to do this, maybe import printp function from papaja or something similar somewhere else
     # table4 <- dplyr::mutate(table3, p.value = papaja::printp(p.value))
     # return(table4)
     

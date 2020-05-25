@@ -39,12 +39,12 @@ select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only =
 }
 
 #' Select cases based on minimum number of available session scores on two longitudinal measures
-#' @param data Dataset in wide format.
+#' @param data A data frame in "wide" format, i.e. one column for each measurement point and one row for each observation.
 #' @param id_var String, specifying id variable.
 #' @param var_list_x  Vector, specifying variable names of construct X in sequential order.
 #' @param var_list_y  Vector, specifying variable names of construct Y in sequential order.
-#' @param min_count_x  Numeric, specifying minimum number of available scores for construct X
-#' @param min_count_y  Numeric, specifying minimum number of available scores for construct Y
+#' @param min_count_x  Numeric, specifying minimum number of available scores for construct X.
+#' @param min_count_y  Numeric, specifying minimum number of available scores for construct Y.
 #'
 #' @return tibble
 #' @export

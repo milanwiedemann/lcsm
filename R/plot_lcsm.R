@@ -1,10 +1,10 @@
 #' Plot simplified path diagram of univariate and bivariate latent change score models 
 #'
-#' @param lavaan_object Lavaan object of univariate or bivariate LCS model.
+#' @param lavaan_object lavaan object of a univariate or bivariate latent change score model.
 #' @param lavaan_syntax String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
 #' If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.
 #' @param layout Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.
-#' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.
+#' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \link[semPlot]{semPaths} will be returned for inspection of further customisation.
 #' @param lcsm String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.
 #' @param what See \code{semPlot}. "path" to show unweighted gray edges, "par" to show parameter estimates as weighted (green/red) edges 
 #' @param whatLabels See \link[semPlot]{semPaths}. "label" to show edege names as label, "est" for parameter estimates, "hide" to hide edge labels.

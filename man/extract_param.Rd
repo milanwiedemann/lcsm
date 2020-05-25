@@ -2,21 +2,21 @@
 % Please edit documentation in R/extract_param.R
 \name{extract_param}
 \alias{extract_param}
-\title{Extract labeled parameters of lavaan objects}
+\title{Extract labelled parameters of lavaan objects}
 \usage{
 extract_param(lavaan_object, printp = FALSE)
 }
 \arguments{
-\item{lavaan_object}{Lavaan object.}
+\item{lavaan_object}{lavaan object.}
 
 \item{printp}{If TRUE convert into easily readable p-values.
 At the moment this function is deactivated, a warning message will be returned.}
 }
 \value{
-This function returns a tibble with labeled parameters.
+This function returns a tibble with labelled parameters.
 }
 \description{
-Extract labeled parameters of lavaan objects
+Extract labelled parameters of lavaan objects
 }
 \examples{
 # First create a lavaan object

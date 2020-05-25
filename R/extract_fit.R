@@ -38,12 +38,12 @@ extract_fit <- function(..., details = FALSE) {
     fit_return <- dplyr::select(fit_data,
                                 model, chisq, npar, aic, bic, cfi, rmsea, srmr)
   }
-
+  
   if (details == TRUE) {
     fit_return <- dplyr::select(fit_data,
-           model, chisq, npar, dplyr::everything())
+                                model, chisq, npar, dplyr::everything())
   }
-
+  
   return(fit_return)
   
 }

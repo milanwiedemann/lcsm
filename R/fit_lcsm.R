@@ -1,8 +1,8 @@
 #' Fit univariate latent change score models
 #' @description Fit univariate latent change score models.
 #' 
-#' @param data Wide dataset.
-#' @param var List of variables measuring construct of the model.
+#' @param data A data frame in "wide" format, i.e. one column for each measurement point and one row for each observation.
+#' @param var Vector, specifying the variable names of each measurement point sequentially.
 #' @param model List of model specifications (logical) for variables specified in \code{var}.
 #' \itemize{
 #' \item{\code{alpha_constant}}{ (Constant change factor)},

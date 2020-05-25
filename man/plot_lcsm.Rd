@@ -32,14 +32,14 @@ plot_lcsm(
 )
 }
 \arguments{
-\item{lavaan_object}{Lavaan object of univariate or bivariate LCS model.}
+\item{lavaan_object}{lavaan object of a univariate or bivariate latent change score model.}
 
 \item{layout}{Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.}
 
 \item{lavaan_syntax}{String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
 If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.}
 
-\item{return_layout_from_lavaan_syntax}{Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \code{semPlot} will be returned for inspection of further customisation.}
+\item{return_layout_from_lavaan_syntax}{Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \link[semPlot]{semPaths} will be returned for inspection of further customisation.}
 
 \item{lcsm}{String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.}
 
