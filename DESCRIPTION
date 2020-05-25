@@ -34,7 +34,8 @@ Imports:
     broom (>= 0.5.1),
     semPlot (>= 1.1),
     stats (>= 3.5.2),
-    stringr (>= 1.4.0)
+    stringr (>= 1.4.0),
+    purrr (>= 0.3.4)
 RoxygenNote: 7.1.0
 Suggests: 
     testthat (>= 2.1.0),

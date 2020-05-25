@@ -4,10 +4,10 @@
 \alias{extract_fit}
 \title{Extract fit statistics of lavaan objects}
 \usage{
-extract_fit(lavaan_object, details = FALSE)
+extract_fit(..., details = FALSE)
 }
 \arguments{
-\item{lavaan_object}{Vector, lavaan object(s)}
+\item{...}{lavaan object(s)}
 
 \item{details}{Logical, if TRUE return all fit statistics.
 By default this is set to FALSE, a selection (chisq, npar, aic, bic, cfi, rmsea, srmr) of fit statistics is returned.}
