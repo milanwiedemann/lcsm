@@ -4,7 +4,8 @@
 \name{data_bi_lcsm}
 \alias{data_bi_lcsm}
 \title{Longitudinal dataset with repeated measures of two constructs}
-\format{A longitudinal dataset in wide format:
+\format{
+A longitudinal dataset in wide format:
 \itemize{
   \item{id}{: ID variable, unique identifier for each person}
   \item{x1}{: x value at time point 1}
@@ -27,7 +28,8 @@
   \item{y8}{: y value at time point 8}
   \item{y9}{: y value at time point 9}
   \item{y10}{: y value at time point 10}
-}}
+}
+}
 \usage{
 data(data_bi_lcsm)
 }

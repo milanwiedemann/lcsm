@@ -4,7 +4,8 @@
 \name{data_uni_lcsm}
 \alias{data_uni_lcsm}
 \title{Longitudinal dataset with repeated measures of one constructs}
-\format{A longitudinal dataset in wide format:
+\format{
+A longitudinal dataset in wide format:
 \itemize{
   \item{id}{: ID variable, unique identifier for each person}
   \item{x1}{: x value at time point 1}
@@ -17,7 +18,8 @@
   \item{x8}{: x value at time point 8}
   \item{x9}{: x value at time point 9}
   \item{x10}{: x value at time point 10}
-}}
+}
+}
 \usage{
 data(data_uni_lcsm)
 }

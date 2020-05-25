@@ -35,7 +35,7 @@ Imports:
     semPlot (>= 1.1),
     stats (>= 3.5.2),
     stringr (>= 1.4.0)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
     testthat (>= 2.1.0),
     knitr (>= 1.22),

@@ -1,4 +1,4 @@
-pandoc: 2.3.1
+pandoc: 2.7.3
 pkgdown: 1.5.1
 pkgdown_sha: ~
 articles:
@@ -7,5 +7,5 @@ articles:
   02-path-diagrams: 02-path-diagrams.html
   03-lcsm-tutorial: 03-lcsm-tutorial.html
   04-simulate-data: 04-simulate-data.html
-last_built: 2020-05-04T12:50Z
+last_built: 2020-05-25T00:05Z
 

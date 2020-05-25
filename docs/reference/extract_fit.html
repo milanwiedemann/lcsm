@@ -175,7 +175,10 @@ By default this is set to FALSE, a selection (chisq, npar, aic, bic, cfi, rmsea,
                           <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
 
 <span class='co'># Now extract fit statistics                          </span>
-<span class='fu'>extract_fit</span>(<span class='no'>bi_lcsm_01</span>)</div><div class='output co'>#&gt; <span class='error'>Error: </span></div></pre>
+<span class='fu'>extract_fit</span>(<span class='no'>bi_lcsm_01</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
+#&gt;   model_name chisq  npar    aic    bic   cfi rmsea   srmr
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> model_1     192.    22 </span><span style='text-decoration: underline;'>17</span><span>362. </span><span style='text-decoration: underline;'>17</span><span>455.     1     0 0.024</span><span style='text-decoration: underline;'>0</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

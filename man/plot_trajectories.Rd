@@ -22,6 +22,7 @@ plot_trajectories(
   scale_x_num = FALSE,
   scale_x_num_start = 1,
   random_sample_frac = 1,
+  seed = 1234,
   title_n = FALSE,
   connect_missing = TRUE
 )
@@ -61,6 +62,8 @@ Also consider other options to look at trajectories like \link[ggplot2]{facet_wr
 \item{scale_x_num_start}{Numeric, if \code{scale_x_num = TRUE} this is the starting value of the x axis.}
 
 \item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.}
+
+\item{seed}{Set seed for random sample if random_sample_frac argument is used.}
 
 \item{title_n}{Logical, speciying whether to print title with number and percentage of cases used for the plot.}
 

@@ -159,6 +159,7 @@
   <span class='kw'>scale_x_num</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>scale_x_num_start</span> <span class='kw'>=</span> <span class='fl'>1</span>,
   <span class='kw'>random_sample_frac</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>seed</span> <span class='kw'>=</span> <span class='fl'>1234</span>,
   <span class='kw'>title_n</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>connect_missing</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>
 )</pre>
@@ -234,6 +235,10 @@ Also consider other options to look at trajectories like <a href='https://ggplot
     <tr>
       <th>random_sample_frac</th>
       <td><p>The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.</p></td>
+    </tr>
+    <tr>
+      <th>seed</th>
+      <td><p>Set seed for random sample if random_sample_frac argument is used.</p></td>
     </tr>
     <tr>
       <th>title_n</th>
