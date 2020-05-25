@@ -3,12 +3,13 @@
 
 # lcsm: An R Package for Latent Change Score Modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2020--02--17-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+<!-- badges: start -->
+
 [![Travis build
-status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
-[![Build
-status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
-[![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
+status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+<!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
 univariate and bivariate latent change score models (LCSM) using
@@ -17,13 +18,13 @@ univariate and bivariate latent change score models (LCSM) using
 method see for example McArdle
 ([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
 Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
-et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
+et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
-I started working on this project to better understand how latent change
-score modeling works. This package combines the strengths of other R
-packages like [lavaan](http://lavaan.ugent.be/),
+I started working on this project to teach me how latent change score
+modeling works and how it can be done in R. This package combines the
+strengths of other R packages like [lavaan](http://lavaan.ugent.be/),
 [broom](https://broom.tidyverse.org), and
 [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
 generating lavaan syntax that helps these packages work together.
@@ -110,10 +111,10 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 # Arrange plots next to each other using patchwork
 library(patchwork)
 plot_x + plot_y + plot_annotation(tag_levels = 'A')
-#> Warning: Removed 22 row(s) containing missing values (geom_path).
-#> Warning: Removed 88 rows containing missing values (geom_point).
-#> Warning: Removed 36 row(s) containing missing values (geom_path).
-#> Warning: Removed 149 rows containing missing values (geom_point).
+#> Warning: Removed 18 row(s) containing missing values (geom_path).
+#> Warning: Removed 85 rows containing missing values (geom_point).
+#> Warning: Removed 37 row(s) containing missing values (geom_path).
+#> Warning: Removed 172 rows containing missing values (geom_point).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -243,24 +244,23 @@ fit_uni_lcsm(data = data_uni_lcsm,
              model = list(alpha_constant = TRUE, 
                           beta = FALSE, 
                           phi = TRUE))
-#> lavaan 0.6-5 ended normally after 66 iterations
+#> lavaan 0.6-6 ended normally after 66 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of free parameters                         23
 #>   Number of equality constraints                    16
-#>   Row rank of the constraints matrix                16
 #>                                                       
 #>   Number of observations                           500
 #>   Number of missing patterns                       273
 #>                                                       
 #> Model Test User Model:
-#>                                               Standard      Robust
-#>   Test Statistic                                75.389      74.400
-#>   Degrees of freedom                                58          58
-#>   P-value (Chi-square)                           0.062       0.072
-#>   Scaling correction factor                                  1.013
-#>     for the Yuan-Bentler correction (Mplus variant)
+#>                                                Standard      Robust
+#>   Test Statistic                                 75.389      74.400
+#>   Degrees of freedom                                 58          58
+#>   P-value (Chi-square)                            0.062       0.072
+#>   Scaling correction factor                                   1.013
+#>        Yuan-Bentler correction (Mplus variant)
 ```
 
 It is also possible to show the lavaan syntax that was created to fit
@@ -415,8 +415,7 @@ cat(syntax)
 The function `fit_bi_lcsm()` allowes to specify two univariate LCS
 models using the arguments `model_x` and `model_x`. These two constructs
 can then be connected using the `coupling` argument. More details can be
-found in the help files
-`help(fit_bi_lcsm)`.
+found in the help files `help(fit_bi_lcsm)`.
 
 | Coupling specification   | Description                                           |
 | :----------------------- | :---------------------------------------------------- |
@@ -445,24 +444,23 @@ fit_bi_lcsm(data = data_bi_lcsm,
                            phi = TRUE),
             coupling = list(delta_lag_xy = TRUE, 
                             xi_lag_yx = TRUE))
-#> lavaan 0.6-5 ended normally after 118 iterations
+#> lavaan 0.6-6 ended normally after 118 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of free parameters                         87
 #>   Number of equality constraints                    65
-#>   Row rank of the constraints matrix                65
 #>                                                       
 #>   Number of observations                           500
 #>   Number of missing patterns                       210
 #>                                                       
 #> Model Test User Model:
-#>                                               Standard      Robust
-#>   Test Statistic                               191.851     193.021
-#>   Degrees of freedom                               208         208
-#>   P-value (Chi-square)                           0.782       0.764
-#>   Scaling correction factor                                  0.994
-#>     for the Yuan-Bentler correction (Mplus variant)
+#>                                                Standard      Robust
+#>   Test Statistic                                191.851     193.021
+#>   Degrees of freedom                                208         208
+#>   P-value (Chi-square)                            0.782       0.764
+#>   Scaling correction factor                                   0.994
+#>        Yuan-Bentler correction (Mplus variant)
 ```
 
 ### Extract fit statistics and parmeters
@@ -665,16 +663,16 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 x 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  NA    21.4  NA    24.3  25.0
-#>  2     2  NA    NA    19.9  19.0  NA  
-#>  3     3  20.3  NA    NA    NA    19.0
-#>  4     4  NA    20.3  NA    18.1  NA  
-#>  5     5  19.2  19.1  18.0  16.9  16.7
-#>  6     6  22.3  23.5  NA    29.0  NA  
-#>  7     7  NA    NA    23.1  23.1  NA  
-#>  8     8  21.3  22.5  22.5  23.7  25.0
-#>  9     9  NA    22.6  21.6  21.3  19.1
-#> 10    10  NA    21.8  21.0  22.5  22.0
+#>  1     1  21.8  20.4  18.0  15.3  NA  
+#>  2     2  22.5  22.7  NA    19.0  NA  
+#>  3     3  22.3  21.4  20.5  18.8  18.5
+#>  4     4  NA    NA    21.9  25.0  25.9
+#>  5     5  18.8  18.4  18.9  18.8  NA  
+#>  6     6  20.0  19.1  17.1  15.5  13.8
+#>  7     7  20.1  18.6  16.9  NA    NA  
+#>  8     8  22.3  23.2  22.6  23.6  25.3
+#>  9     9  18.7  NA    19.3  19.5  19.8
+#> 10    10  NA    22.3  NA    22.2  22.4
 #> # … with 990 more rows
 ```
 
@@ -888,8 +886,7 @@ simsyntax <- sim_bi_lcsm(timepoints = 5,
 ### Univariate LCS models
 
 Depending on the specified model, the following parameters can be
-estimated for **univariate** LCS
-models:
+estimated for **univariate** LCS models:
 
 | Parameter    | Description                                                    |
 | :----------- | :------------------------------------------------------------- |
@@ -910,8 +907,7 @@ models:
 
 For bivariate LCS models, estimated parameters can be categorised into
 (1) **Construct X**, (2) **Construct Y**, and (3) **Coupling between X
-and
-Y**.
+and Y**.
 
 | Parameter           | Description                                                            |
 | :------------------ | :--------------------------------------------------------------------- |

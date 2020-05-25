@@ -18,10 +18,10 @@ knitr::opts_chunk$set(
 
 # lcsm: An R Package for Latent Change Score Modeling
 
-[![last-change](https://img.shields.io/badge/Last%20change-2020--02--17-brightgreen.svg)](https://github.com/milanwiedemann/lcsm)
-[![Travis build status](https://travis-ci.org/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.org/milanwiedemann/lcsm)
-[![Build status](https://ci.appveyor.com/api/projects/status/swwgfqdufr5xmxf2?svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
-[![lcsm-version](https://img.shields.io/badge/Version-0.0.6-brightgreen.svg)](https://github.com/milanwiedemann/lcsm) 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+<!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
 univariate and bivariate latent change score models (LCSM) using

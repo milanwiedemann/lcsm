@@ -1,1 +1,1 @@
-utils::globalVariables(c("model_name", "chisq", "npar", "aic", "bic", "cfi", "rmsea", "srmr", "id", "plot", "variable", "value", "count", "id", "label", "ngroups", "var", "vars", "x_na_pct", "y_na_pct", "runif", ".", "random_num", "label", "ngroups", "rhs"))
+utils::globalVariables(c("model", "chisq", "npar", "aic", "bic", "cfi", "rmsea", "srmr", "id", "plot", "variable", "value", "count", "id", "label", "ngroups", "var", "vars", "x_na_pct", "y_na_pct", "runif", ".", "random_num", "label", "ngroups", "rhs"))
