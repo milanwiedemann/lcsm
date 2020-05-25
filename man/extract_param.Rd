@@ -21,13 +21,19 @@ Extract labeled parameters of lavaan objects
 \examples{
 # First create a lavaan object
 bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm, 
-                          var_x = names(data_bi_lcsm)[2:11], 
-                          var_y = names(data_bi_lcsm)[12:21],
-                          model_x = list(alpha_constant = TRUE, beta = TRUE, phi = FALSE),
-                          model_y = list(alpha_constant = TRUE, beta = TRUE, phi = TRUE),
-                          coupling = list(delta_lag_xy = TRUE, xi_lag_yx = TRUE))
+                          var_x = names(data_bi_lcsm)[2:4], 
+                          var_y = names(data_bi_lcsm)[12:14],
+                          model_x = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = FALSE),
+                          model_y = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = TRUE),
+                          coupling = list(delta_lag_xy = TRUE, 
+                                          xi_lag_yx = TRUE)
+                                          )
 
-# Now extract parameter estimates                          
+# Now extract parameter estimates              
 extract_param(bi_lcsm_01)
 }
 \references{

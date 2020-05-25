@@ -51,8 +51,11 @@ Fit univariate latent change score models.
 }
 \examples{
 # Fit univariate latent change score model
-fit_uni_lcsm(data = data_uni_lcsm, var = names(data_uni_lcsm)[-1],
-             model = list(alpha_constant = TRUE, beta = FALSE, phi = FALSE))
+fit_uni_lcsm(data = data_uni_lcsm, 
+             var = names(data_uni_lcsm)[2:4],
+             model = list(alpha_constant = TRUE, 
+                          beta = FALSE, 
+                          phi = FALSE))
 }
 \references{
 Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \url{https://doi.org/10.1080/10705511.2012.713275}.
