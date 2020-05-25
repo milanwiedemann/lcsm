@@ -20,6 +20,8 @@ library(lcsm)
 
 # WORK IN PROGRESS
 
+- For now see example in README file on Github or shinyApp "shinychange"
+
 - simulate data examples
 - show different scenarios, e.g. all parameter estimates specified, some missing
 - referr to shiny app for interactive example

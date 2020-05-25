@@ -6,7 +6,6 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
-library(ggpubr)
 library(knitr)
 
 knitr::opts_chunk$set(
@@ -35,15 +34,11 @@ et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
-I started working on this project to better understand how latent change
-score modeling works. This package combines the strengths of other R
-packages like [lavaan](http://lavaan.ugent.be/),
-[broom](https://broom.tidyverse.org), and
-[semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
-generating lavaan syntax that helps these packages work together. 
+I started working on this project to teach me how latent change
+score modeling works and how it can be done in R. 
+This package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by generating lavaan syntax that helps these packages work together. 
 
-An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
-illustrates some functions of this package.
+An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)** illustrates some functions of this package.
 This is work in progress and feedback is very welcome!
 
 ## Installation

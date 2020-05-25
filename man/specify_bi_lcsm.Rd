@@ -67,7 +67,7 @@ Lavaan model syntax including comments.
 Specify lavaan model for bivariate latent change score models
 }
 \examples{
-# Specify biivariate LCS model
+# Specify bivariate LCS model
 lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 10, 
                                      var_x = "x",
                                      model_x = list(alpha_constant = TRUE, 

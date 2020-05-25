@@ -224,7 +224,7 @@ specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 #' \url{http://www.jstatsoft.org/v48/i02/}.
-#' @examples # Specify biivariate LCS model
+#' @examples # Specify bivariate LCS model
 #' lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 10, 
 #'                                      var_x = "x",
 #'                                      model_x = list(alpha_constant = TRUE, 

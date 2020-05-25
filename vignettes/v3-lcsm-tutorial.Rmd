@@ -20,6 +20,8 @@ library(lcsm)
 
 # WORK IN PROGRESS
 
+- For now see example in README file on Github or shinyApp "shinychange"
+
 - step by step example here building all the way up to a univariate lcsm
 - select data
 - run univariate models

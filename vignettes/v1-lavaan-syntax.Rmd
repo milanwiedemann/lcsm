@@ -18,7 +18,52 @@ knitr::opts_chunk$set(
 library(lcsm)
 ```
 
-# WORK IN PROGRESS
+# Univariate LCSM syntax
+
+The example below shows how to specify a generic univariate latent change score model using the function `specify_uni_lcsm()`.
+
+```{r}
+uni_lcsm_syntax <- specify_uni_lcsm(timepoints = 5,
+                                    var = "x",  
+                                    change_letter = "g",
+                                    model = list(alpha_constant = TRUE, 
+                                                 beta = TRUE, 
+                                                 phi = TRUE))
+```
+
+
+```{r}
+# To get a readable output use cat() function
+cat(uni_lcsm_syntax)
+```
+
+# Bivariate LCSM syntax
+
+```{r}
+# Specify bivariate LCS model
+lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 5, 
+                                     var_x = "x",
+                                     model_x = list(alpha_constant = TRUE, 
+                                                    beta = TRUE, 
+                                                    phi = TRUE),
+                                     var_y = "y",  
+                                     model_y = list(alpha_constant = TRUE, 
+                                                    beta = TRUE, 
+                                                    phi = TRUE),  
+                                     coupling = list(delta_lag_xy = TRUE, 
+                                                     delta_lag_yx = TRUE),
+                                     change_letter_x = "g",
+                                     change_letter_y = "j")
+```
+
+
+```{r}
+# To get a readable output use cat() function
+cat(lavaan_bi_lcsm_01)
+```
+
+
+# TODOs
 
 - show different examples
 - highlight the comments that explain the different sections of the code 

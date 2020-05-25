@@ -20,6 +20,8 @@ library(lcsm)
 
 # WORK IN PROGRESS
 
+- For now see example in README file on Github or shinyApp "shinychange"
+
 - show the diffferent options that are possible
 - path diagrams will also be shown in the other tutorials
 - but here also illustrate whats happening in the code
