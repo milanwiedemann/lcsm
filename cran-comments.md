@@ -29,9 +29,5 @@
 * 1 Note
 
 ## Resubmission
-This is a resubmission.
-The title does no longer include the R package name.
-I have added two citations including the doi to the description of this package.
-The typo in the broken URL https://doi.org/10.1146/annurev.psych.60.110707.16361 has been corrected.
-The size of the package has been reduced by ignoring the folder 'tools' when building.
-Further, the quality of the images has been reduced to reduce file size.
+This is a resubmission, in this version I have:
+* Fixed the final broken link I forgot last time, sorry!
