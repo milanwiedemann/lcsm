@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -95,19 +95,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/00-longitudinal-plots.html">Visualise longitudinal data</a>
+      <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
-      <a href="../articles/01-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
+      <a href="../articles/v1-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
     </li>
     <li>
-      <a href="../articles/02-path-diagrams.html">Create path diagrams to visualise model specifications</a>
+      <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/03-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
-      <a href="../articles/04-simulate-data.html">Simulate data to explore the effect of different parameters</a>
+      <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
 </li>
@@ -158,11 +158,11 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>data</th>
-      <td><p>Wide dataset.</p></td>
+      <td><p>A data frame in "wide" format, i.e. one column for each measurement point and one row for each observation.</p></td>
     </tr>
     <tr>
       <th>var</th>
-      <td><p>List of variables measuring construct of the model.</p></td>
+      <td><p>Vector, specifying the variable names of each measurement point sequentially.</p></td>
     </tr>
     <tr>
       <th>model</th>
@@ -208,29 +208,34 @@
 
     <p>Ghisletta, P., &amp; McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. <a href='https://doi.org/10.1080/10705511.2012.713275'>https://doi.org/10.1080/10705511.2012.713275</a>.</p>
 <p>Grimm, K. J., Ram, N., &amp; Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.</p>
-<p>McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <a href='https://doi.org/10.1146/annurev.psych.60.110707.16361'>https://doi.org/10.1146/annurev.psych.60.110707.16361</a>.</p>
+<p>McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <a href='https://doi.org/10.1146/annurev.psych.60.110707.163612'>https://doi.org/10.1146/annurev.psych.60.110707.163612</a>.</p>
 <p>Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 <a href='http://www.jstatsoft.org/v48/i02/'>http://www.jstatsoft.org/v48/i02/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Fit univariate latent change score model</span>
-<span class='fu'>fit_uni_lcsm</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data_uni_lcsm</span>, <span class='kw'>var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_uni_lcsm</span>)[-<span class='fl'>1</span>],
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; lavaan 0.6-6 ended normally after 56 iterations
+<span class='fu'>fit_uni_lcsm</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data_uni_lcsm</span>,
+             <span class='kw'>var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_uni_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>4</span>],
+             <span class='kw'>model</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                          <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+                          <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING: some cases are empty and will be ignored:</span>
+#&gt; <span class='warning'>  179 223 239 258 306 359 430</span></div><div class='output co'>#&gt; lavaan 0.6-6 ended normally after 74 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
-#&gt;   Number of free parameters                         15
-#&gt;   Number of equality constraints                     9
+#&gt;   Number of free parameters                          8
+#&gt;   Number of equality constraints                     2
 #&gt;                                                       
-#&gt;   Number of observations                           500
-#&gt;   Number of missing patterns                       273
-#&gt;                                                       
+#&gt;                                                   Used       Total
+#&gt;   Number of observations                           493         500
+#&gt;   Number of missing patterns                         7            
+#&gt;                                                                   
 #&gt; Model Test User Model:
 #&gt;                                                Standard      Robust
-#&gt;   Test Statistic                                 76.647      75.722
-#&gt;   Degrees of freedom                                 59          59
-#&gt;   P-value (Chi-square)                            0.061       0.070
-#&gt;   Scaling correction factor                                   1.012
+#&gt;   Test Statistic                                  0.703       0.704
+#&gt;   Degrees of freedom                                  3           3
+#&gt;   P-value (Chi-square)                            0.873       0.872
+#&gt;   Scaling correction factor                                   0.998
 #&gt;        Yuan-Bentler correction (Mplus variant)                     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

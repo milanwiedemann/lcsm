@@ -90,7 +90,7 @@ Longitudinal data can be visualised using the `plot_trajectories()` function.
 Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
 Only consecutive measures are connected by lines as specified in `connect_missing = FALSE`.
 
-```{r, fig.width = 6, fig.height = 3.5, dpi = 100}
+```{r, fig.width = 6, fig.height = 3.5}
 # Create plot for construct x
 plot_x <- plot_trajectories(data = data_bi_lcsm,
                             id_var = "id", 
@@ -469,7 +469,7 @@ Further arguments can be passed on to `semPlot::semPaths()`, for example:
 
 #### Univariate LCS model
 
-```{r, fig.width = 6, fig.height = 4, dpi = 320}
+```{r, fig.width = 6, fig.height = 4}
 # Fit bivariate lcsm and save the results 
 uni_lavaan_results <- fit_uni_lcsm(data = data_uni_lcsm, 
                                    var = c("x1", "x2", "x3", "x4", "x5"),
@@ -498,7 +498,7 @@ plot_lcsm(lavaan_object = uni_lavaan_results,
 
 #### Bivariate LCS model
 
-```{r, fig.width = 6, fig.height = 4, dpi = 320}
+```{r, fig.width = 6, fig.height = 4}
 # Fit bivariate lcsm and save the results 
 bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm, 
                                  var_x = c("x1", "x2", "x3", "x4", "x5"),

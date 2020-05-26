@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -95,19 +95,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/00-longitudinal-plots.html">Visualise longitudinal data</a>
+      <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
-      <a href="../articles/01-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
+      <a href="../articles/v1-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
     </li>
     <li>
-      <a href="../articles/02-path-diagrams.html">Create path diagrams to visualise model specifications</a>
+      <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/03-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
-      <a href="../articles/04-simulate-data.html">Simulate data to explore the effect of different parameters</a>
+      <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
 </li>
@@ -244,26 +244,36 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Fit </span>
 <span class='fu'>fit_bi_lcsm</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data_bi_lcsm</span>,
-            <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>11</span>],
-            <span class='kw'>var_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>12</span>:<span class='fl'>21</span>],
-            <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-            <span class='kw'>model_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-            <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))</div><div class='output co'>#&gt; lavaan 0.6-6 ended normally after 118 iterations
+            <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>4</span>],
+            <span class='kw'>var_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>12</span>:<span class='fl'>14</span>],
+            <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                           <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                           <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
+            <span class='kw'>model_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                           <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                           <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+            <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                            <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+                            )</div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING:</span>
+#&gt; <span class='warning'>    The variance-covariance matrix of the estimated parameters (vcov)</span>
+#&gt; <span class='warning'>    does not appear to be positive definite! The smallest eigenvalue</span>
+#&gt; <span class='warning'>    (= 3.695231e-16) is close to zero. This may be a symptom that the</span>
+#&gt; <span class='warning'>    model is not identified.</span></div><div class='output co'>#&gt; lavaan 0.6-6 ended normally after 132 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
-#&gt;   Number of free parameters                         87
-#&gt;   Number of equality constraints                    65
+#&gt;   Number of free parameters                         31
+#&gt;   Number of equality constraints                     9
 #&gt;                                                       
 #&gt;   Number of observations                           500
-#&gt;   Number of missing patterns                       210
+#&gt;   Number of missing patterns                        23
 #&gt;                                                       
 #&gt; Model Test User Model:
 #&gt;                                                Standard      Robust
-#&gt;   Test Statistic                                191.851     193.021
-#&gt;   Degrees of freedom                                208         208
-#&gt;   P-value (Chi-square)                            0.782       0.764
-#&gt;   Scaling correction factor                                   0.994
+#&gt;   Test Statistic                                  6.870       5.971
+#&gt;   Degrees of freedom                                  5           5
+#&gt;   P-value (Chi-square)                            0.230       0.309
+#&gt;   Scaling correction factor                                   1.151
 #&gt;        Yuan-Bentler correction (Mplus variant)                     </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

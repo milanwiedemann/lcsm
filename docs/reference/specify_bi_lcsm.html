@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -95,19 +95,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/00-longitudinal-plots.html">Visualise longitudinal data</a>
+      <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
-      <a href="../articles/01-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
+      <a href="../articles/v1-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
     </li>
     <li>
-      <a href="../articles/02-path-diagrams.html">Create path diagrams to visualise model specifications</a>
+      <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/03-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
-      <a href="../articles/04-simulate-data.html">Simulate data to explore the effect of different parameters</a>
+      <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
 </li>
@@ -221,12 +221,12 @@
 
     <p>Ghisletta, P., &amp; McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. <a href='https://doi.org/10.1080/10705511.2012.713275'>https://doi.org/10.1080/10705511.2012.713275</a>.</p>
 <p>Grimm, K. J., Ram, N., &amp; Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.</p>
-<p>McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <a href='https://doi.org/10.1146/annurev.psych.60.110707.16361'>https://doi.org/10.1146/annurev.psych.60.110707.16361</a>.</p>
+<p>McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <a href='https://doi.org/10.1146/annurev.psych.60.110707.163612'>https://doi.org/10.1146/annurev.psych.60.110707.163612</a>.</p>
 <p>Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 <a href='http://www.jstatsoft.org/v48/i02/'>http://www.jstatsoft.org/v48/i02/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Specify biivariate LCS model</span>
+    <pre class="examples"><div class='input'><span class='co'># Specify bivariate LCS model</span>
 <span class='no'>lavaan_bi_lcsm_01</span> <span class='kw'>&lt;-</span> <span class='fu'>specify_bi_lcsm</span>(<span class='kw'>timepoints</span> <span class='kw'>=</span> <span class='fl'>10</span>,
                                      <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
                                      <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,

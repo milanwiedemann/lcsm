@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.8</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
       </span>
     </div>
 
@@ -95,19 +95,19 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/00-longitudinal-plots.html">Visualise longitudinal data</a>
+      <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
-      <a href="../articles/01-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
+      <a href="../articles/v1-lavaan-syntax.html">Generate lavaan syntax for latent change score models</a>
     </li>
     <li>
-      <a href="../articles/02-path-diagrams.html">Create path diagrams to visualise model specifications</a>
+      <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/03-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
-      <a href="../articles/04-simulate-data.html">Simulate data to explore the effect of different parameters</a>
+      <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
 </li>
@@ -141,14 +141,14 @@
     <p>Extract fit statistics of lavaan objects</p>
     </div>
 
-    <pre class="usage"><span class='fu'>extract_fit</span>(<span class='no'>lavaan_object</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>extract_fit</span>(<span class='no'>...</span>, <span class='kw'>details</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>lavaan_object</th>
-      <td><p>Vector, lavaan object(s)</p></td>
+      <th>...</th>
+      <td><p>lavaan object(s)</p></td>
     </tr>
     <tr>
       <th>details</th>
@@ -168,17 +168,26 @@ By default this is set to FALSE, a selection (chisq, npar, aic, bic, cfi, rmsea,
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># First create a lavaan object</span>
 <span class='no'>bi_lcsm_01</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='fit_bi_lcsm.html'>fit_bi_lcsm</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data_bi_lcsm</span>,
-                          <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>11</span>],
-                          <span class='kw'>var_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>12</span>:<span class='fl'>21</span>],
-                          <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-                          <span class='kw'>model_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-                          <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>))
-
-<span class='co'># Now extract fit statistics                          </span>
+                          <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>4</span>],
+                          <span class='kw'>var_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_bi_lcsm</span>)[<span class='fl'>12</span>:<span class='fl'>14</span>],
+                          <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                         <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                         <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
+                          <span class='kw'>model_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                         <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                         <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
+                          <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+                                          <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+                                          )</div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING:</span>
+#&gt; <span class='warning'>    The variance-covariance matrix of the estimated parameters (vcov)</span>
+#&gt; <span class='warning'>    does not appear to be positive definite! The smallest eigenvalue</span>
+#&gt; <span class='warning'>    (= 3.695231e-16) is close to zero. This may be a symptom that the</span>
+#&gt; <span class='warning'>    model is not identified.</span></div><div class='input'>
+<span class='co'># Now extract fit statistics  </span>
 <span class='fu'>extract_fit</span>(<span class='no'>bi_lcsm_01</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 8</span><span>
-#&gt;   model_name chisq  npar    aic    bic   cfi rmsea   srmr
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> model_1     192.    22 </span><span style='text-decoration: underline;'>17</span><span>362. </span><span style='text-decoration: underline;'>17</span><span>455.     1     0 0.024</span><span style='text-decoration: underline;'>0</span><span></div></span></pre>
+#&gt;   model chisq  npar   aic   bic   cfi  rmsea   srmr
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span> 1      6.87    22 </span><span style='text-decoration: underline;'>5</span><span>992. </span><span style='text-decoration: underline;'>6</span><span>084. 0.999 0.027</span><span style='text-decoration: underline;'>3</span><span> 0.031</span><span style='text-decoration: underline;'>3</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

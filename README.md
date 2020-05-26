@@ -26,8 +26,8 @@ I started working on this project to teach me how latent change score
 modeling works and how it can be done in R. This package combines the
 strengths of other R packages like [lavaan](http://lavaan.ugent.be/),
 [broom](https://broom.tidyverse.org), and
-[semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by
-generating lavaan syntax that helps these packages work together.
+[semPlot](https://CRAN.R-project.org/package=semPlot) by generating
+lavaan syntax that helps these packages work together.
 
 An interactive web application
 **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)**
