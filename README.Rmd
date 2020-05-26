@@ -36,7 +36,7 @@ Grimm, Ram & Estabrook
 
 I started working on this project to teach me how latent change
 score modeling works and how it can be done in R. 
-This package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://cran.r-project.org/web/packages/semPlot/index.html) by generating lavaan syntax that helps these packages work together. 
+This package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://CRAN.R-project.org/package=semPlot) by generating lavaan syntax that helps these packages work together. 
 
 An interactive web application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)** illustrates some functions of this package.
 This is work in progress and feedback is very welcome!
@@ -90,7 +90,7 @@ Longitudinal data can be visualised using the `plot_trajectories()` function.
 Here only 30% of the data is visualised using the argument `random_sample_frac = 0.3`.
 Only consecutive measures are connected by lines as specified in `connect_missing = FALSE`.
 
-```{r, fig.width = 6, fig.height = 3.5, dpi = 300}
+```{r, fig.width = 6, fig.height = 3.5, dpi = 100}
 # Create plot for construct x
 plot_x <- plot_trajectories(data = data_bi_lcsm,
                             id_var = "id", 
