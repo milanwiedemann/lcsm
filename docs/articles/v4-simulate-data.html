@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
       </span>
     </div>
 
@@ -126,16 +126,16 @@
 <span class="co">#&gt; # A tibble: 1,000 x 6</span>
 <span class="co">#&gt;       id    x1    x2    x3    x4    x5</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     1  NA    23.5  NA    25.2  27.0</span>
-<span class="co">#&gt;  2     2  21.1  NA    20.0  NA    18.2</span>
-<span class="co">#&gt;  3     3  19.4  NA    17.2  16.3  16.1</span>
-<span class="co">#&gt;  4     4  19.6  NA    NA    NA    17.2</span>
-<span class="co">#&gt;  5     5  NA    22.0  21.0  NA    20.0</span>
-<span class="co">#&gt;  6     6  20.4  19.3  NA    18.3  17.3</span>
-<span class="co">#&gt;  7     7  21.2  19.5  19.0  NA    15.9</span>
-<span class="co">#&gt;  8     8  21.3  21.9  NA    25.3  26.4</span>
-<span class="co">#&gt;  9     9  21.2  NA    NA    14.7  12.6</span>
-<span class="co">#&gt; 10    10  20.7  NA    22.9  22.6  22.2</span>
+<span class="co">#&gt;  1     1  21.7  22.8  NA   NA    22.0 </span>
+<span class="co">#&gt;  2     2  21.1  20.6  20.1 19.7  NA   </span>
+<span class="co">#&gt;  3     3  NA    20.1  NA   NA    15.0 </span>
+<span class="co">#&gt;  4     4  20.5  21.0  21.1 NA    23.0 </span>
+<span class="co">#&gt;  5     5  22.0  20.2  18.1 15.6  NA   </span>
+<span class="co">#&gt;  6     6  21.1  NA    13.3  9.32  3.87</span>
+<span class="co">#&gt;  7     7  21.3  22.5  23.6 26.2  28.7 </span>
+<span class="co">#&gt;  8     8  19.8  22.1  NA   NA    NA   </span>
+<span class="co">#&gt;  9     9  22.0  22.0  21.8 NA    22.1 </span>
+<span class="co">#&gt; 10    10  21.4  20.5  NA   16.5  NA   </span>
 <span class="co">#&gt; # … with 990 more rows</span></pre></body></html></div>
 <p>It is also possible to return the lavaan syntax instead of simulating data for further manual specifications. The modified object could then be used to simulate data using <code><a href="https://rdrr.io/pkg/lavaan/man/simulateData.html">lavaan::simulateData()</a></code>.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>
