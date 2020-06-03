@@ -18,10 +18,92 @@ knitr::opts_chunk$set(
 library(lcsm)
 ```
 
-# WORK IN PROGRESS
+### Plot simplified path diagrams of LCS models
 
-- For now see example in README file on Github or shinyApp "shinychange"
+This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
+Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package.
+The input arguments for plotting a simplified path dioagram are: 
 
-- show the diffferent options that are possible
-- path diagrams will also be shown in the other tutorials
-- but here also illustrate whats happening in the code
+- the estimated lavaan object `lavaan_object`,
+- the `lavaan_syntax` and ,
+- `lcsm` indicating whether the LCS model is "univariate" or "bivariate"
+
+Optional arguments can be used to change the look of the plot, for example:
+
+- `lcsm_colours` can be used to highlight the different parts of the latent change score model
+  - white: observed scores
+  - green: latent true scores
+  - blue: latent change scores
+  - yellow: latent change scores
+
+Further arguments can be passed on to `semPlot::semPaths()`, for example:
+
+  - `what`, **"path"** to show unweighted gray edges, **"par"** to show parameter estimates as weighted (green/red) edges   
+  - `whatLabels`, **"label"** to show edege names as label or **"est"** for parameter estimates, **"hide"** to hide edge labels
+
+#### Univariate LCS model
+
+```{r, fig.width = 6, fig.height = 4}
+# Fit bivariate lcsm and save the results 
+uni_lavaan_results <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                   var = c("x1", "x2", "x3", "x4", "x5"),
+                                   model = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE)
+                                  )
+
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
+uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm, 
+                                  var = c("x1", "x2", "x3", "x4", "x5"),
+                                  model = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                  return_lavaan_syntax = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = uni_lavaan_results,
+          lavaan_syntax = uni_lavaan_syntax,
+          edge.label.cex = .9,  
+          lcsm_colours = TRUE,
+          lcsm = "univariate")
+
+```
+
+#### Bivariate LCS model
+
+```{r, fig.width = 6, fig.height = 4}
+# Fit bivariate lcsm and save the results 
+bi_lavaan_results <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                 var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                 var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                 model_x = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = FALSE),
+                                 model_y = list(alpha_constant = TRUE, 
+                                                beta = TRUE, 
+                                                phi = TRUE),
+                                 coupling = list(delta_lag_xy = TRUE, 
+                                                 xi_lag_yx = TRUE))
+
+# Save the lavaan syntax that is used to create the layout matrix for semPlot
+bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm, 
+                                var_x = c("x1", "x2", "x3", "x4", "x5"),
+                                var_y = c("y1", "y2", "y3", "y4", "y5"),
+                                model_x = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = FALSE),
+                                model_y = list(alpha_constant = TRUE, 
+                                               beta = TRUE, 
+                                               phi = TRUE),
+                                coupling = list(delta_lag_xy = TRUE, 
+                                                xi_lag_yx = TRUE),
+                                return_lavaan_syntax = TRUE)
+
+# Plot the results
+plot_lcsm(lavaan_object = bi_lavaan_results, 
+          lavaan_syntax = bi_lavaan_syntax,
+          lcsm_colours = TRUE,
+          whatLabels = "hide",
+          lcsm = "bivariate")
+
+```

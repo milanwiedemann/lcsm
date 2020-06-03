@@ -1,0 +1,91 @@
+---
+title: "Parameter estimates and fit statistics of latent change score models"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Parameter estimates and fit statistics of latent change score models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lcsm)
+```
+
+The main underlying functions to extract parameters and fit statistics come from the `broom` package: `broom::tidy()` and `broom::glance()`. 
+The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCS models in R, for example:
+
+-  `extract_param()`: only one row per estimated parameter,
+- `extract_fit()`: fit statistics for multiple `lavaan` objects can be extracted.
+
+## Create univariate models
+
+```{r}
+# First fit some latent change score models
+
+# No change model
+uni_lcsm_01 <- fit_uni_lcsm(data = data_bi_lcsm, 
+                            var = c("x1", "x2", "x3", "x4", "x5"),
+                            model = list(alpha_constant = FALSE, 
+                                         beta = FALSE, 
+                                         phi = FALSE))
+# Constant change only model
+uni_lcsm_02 <- fit_uni_lcsm(data = data_bi_lcsm, 
+                            var = c("x1", "x2", "x3", "x4", "x5"),
+                            model = list(alpha_constant = TRUE, 
+                                         beta = FALSE, 
+                                         phi = FALSE))
+
+# Constant change and proportional change (Dual change model)
+uni_lcsm_03 <- fit_uni_lcsm(data = data_bi_lcsm, 
+                            var = c("x1", "x2", "x3", "x4", "x5"),
+                            model = list(alpha_constant = TRUE, 
+                                         beta = TRUE, 
+                                         phi = FALSE))
+
+```
+
+## Extract fit statistics
+
+This function takes the `lavaan` objects as input and returns some fit statistics.
+More fit statistics can be returned using the argument `details = TRUE`.
+
+```{r}
+# Extract fit statistics
+fit_uni_lcsm <- extract_fit(uni_lcsm_01, uni_lcsm_02, uni_lcsm_03)
+
+# Print table of parameter estimates
+knitr::kable(fit_uni_lcsm, 
+             digits = 3, 
+             caption = "Parameter estimates for bivariate LCSM")
+
+```
+
+## Extract parameters
+
+```{r}
+# Now extract parameter estimates
+param_uni_lcsm_02 <- extract_param(uni_lcsm_03, printp = TRUE)
+
+# Print table of parameter estimates
+knitr::kable(param_uni_lcsm_02, 
+             digits = 3, 
+             caption = "Parameter estimates for bivariate LCSM")
+
+```
+
+
+# TODOs
+
+- For now see example in README file on Github or shinyApp "shinychange"
+- step by step example here building all the way up to a univariate lcsm
+- select data
+- run univariate models
+- add parameters and compare results using anova and model parameters
+- use grimm 2017 data?
