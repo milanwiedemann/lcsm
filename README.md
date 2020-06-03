@@ -266,10 +266,10 @@ fit_uni_lcsm(data = data_uni_lcsm,
 It is also possible to show the lavaan syntax that was created to fit
 the model by the function `specify_uni_lcsm()`. The lavaan syntax
 includes comments describing some parts of the syntax in more detail. To
-save the syntax in an object the argument `return_lavaan_syntax_string`
-has to be set to `TRUE`. This object can be returned in an easy to read
-format using `cat(syntax)`, or as a simple string without the `cat()`
-function.
+save the syntax in an object the argument `return_lavaan_syntax` has to
+be set to `TRUE`. This object looks a bit funny, it’s one very long line
+of text, but can be formatted to look more beautiful and readable using
+`cat(syntax)`.
 
 ``` r
 # Fit univariate latent change score model
@@ -279,8 +279,7 @@ syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                        model = list(alpha_constant = TRUE, 
                                     beta = FALSE, 
                                     phi = TRUE),
-                      return_lavaan_syntax = TRUE,
-                      return_lavaan_syntax_string = TRUE)
+                      return_lavaan_syntax = TRUE)
 
 # Return lavaan syntax in easy to read format
 cat(syntax)
@@ -495,36 +494,36 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
 
 # Now extract parameter estimates
 # Only extract first 7 columns for this example by adding [ , 1:7]
-param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ , 1:7]
+param_bi_lcsm_01 <- extract_param(bi_lcsm_01, printp = TRUE)[ , 1:7]
 
 # Print table of parameter estimates
 kable(param_bi_lcsm_01, digits = 3)
 ```
 
 | label          | estimate | std.error | statistic | p.value | conf.low | conf.high |
-| :------------- | -------: | --------: | --------: | ------: | -------: | --------: |
-| gamma\_lx1     |   21.066 |     0.036 |   588.187 |   0.000 |   20.996 |    21.136 |
-| sigma2\_lx1    |    0.493 |     0.037 |    13.485 |   0.000 |    0.421 |     0.564 |
-| sigma2\_ux     |    0.201 |     0.004 |    45.301 |   0.000 |    0.192 |     0.210 |
-| alpha\_g2      |  \-0.309 |     0.053 |   \-5.834 |   0.000 |  \-0.413 |   \-0.205 |
-| sigma2\_g2     |    0.395 |     0.028 |    14.330 |   0.000 |    0.341 |     0.449 |
-| sigma\_g2lx1   |    0.155 |     0.022 |     7.017 |   0.000 |    0.112 |     0.198 |
-| beta\_x        |  \-0.106 |     0.003 |  \-30.818 |   0.000 |  \-0.113 |   \-0.099 |
-| gamma\_ly1     |    5.025 |     0.029 |   172.786 |   0.000 |    4.968 |     5.082 |
-| sigma2\_ly1    |    0.208 |     0.019 |    10.860 |   0.000 |    0.171 |     0.246 |
-| sigma2\_uy     |    0.193 |     0.005 |    39.698 |   0.000 |    0.183 |     0.202 |
-| alpha\_j2      |  \-0.203 |     0.039 |   \-5.217 |   0.000 |  \-0.279 |   \-0.127 |
-| sigma2\_j2     |    0.093 |     0.008 |    11.766 |   0.000 |    0.077 |     0.108 |
-| sigma\_j2ly1   |    0.017 |     0.008 |     2.156 |   0.031 |    0.002 |     0.032 |
-| beta\_y        |  \-0.197 |     0.005 |  \-39.562 |   0.000 |  \-0.207 |   \-0.187 |
-| phi\_y         |    0.144 |     0.029 |     4.963 |   0.000 |    0.087 |     0.201 |
-| sigma\_su      |    0.009 |     0.003 |     2.581 |   0.010 |    0.002 |     0.015 |
-| sigma\_ly1lx1  |    0.185 |     0.021 |     8.905 |   0.000 |    0.144 |     0.225 |
-| sigma\_g2ly1   |    0.072 |     0.016 |     4.437 |   0.000 |    0.040 |     0.104 |
-| sigma\_j2lx1   |    0.093 |     0.012 |     7.916 |   0.000 |    0.070 |     0.117 |
-| sigma\_j2g2    |    0.005 |     0.012 |     0.463 |   0.643 |  \-0.018 |     0.029 |
-| delta\_lag\_xy |    0.140 |     0.006 |    23.837 |   0.000 |    0.128 |     0.152 |
-| xi\_lag\_yx    |    0.360 |     0.037 |     9.634 |   0.000 |    0.287 |     0.433 |
+| :------------- | -------: | --------: | --------: | :------ | -------: | --------: |
+| gamma\_lx1     |   21.066 |     0.036 |   588.187 | \< .001 |   20.996 |    21.136 |
+| sigma2\_lx1    |    0.493 |     0.037 |    13.485 | \< .001 |    0.421 |     0.564 |
+| sigma2\_ux     |    0.201 |     0.004 |    45.301 | \< .001 |    0.192 |     0.210 |
+| alpha\_g2      |  \-0.309 |     0.053 |   \-5.834 | \< .001 |  \-0.413 |   \-0.205 |
+| sigma2\_g2     |    0.395 |     0.028 |    14.330 | \< .001 |    0.341 |     0.449 |
+| sigma\_g2lx1   |    0.155 |     0.022 |     7.017 | \< .001 |    0.112 |     0.198 |
+| beta\_x        |  \-0.106 |     0.003 |  \-30.818 | \< .001 |  \-0.113 |   \-0.099 |
+| gamma\_ly1     |    5.025 |     0.029 |   172.786 | \< .001 |    4.968 |     5.082 |
+| sigma2\_ly1    |    0.208 |     0.019 |    10.860 | \< .001 |    0.171 |     0.246 |
+| sigma2\_uy     |    0.193 |     0.005 |    39.698 | \< .001 |    0.183 |     0.202 |
+| alpha\_j2      |  \-0.203 |     0.039 |   \-5.217 | \< .001 |  \-0.279 |   \-0.127 |
+| sigma2\_j2     |    0.093 |     0.008 |    11.766 | \< .001 |    0.077 |     0.108 |
+| sigma\_j2ly1   |    0.017 |     0.008 |     2.156 | .031    |    0.002 |     0.032 |
+| beta\_y        |  \-0.197 |     0.005 |  \-39.562 | \< .001 |  \-0.207 |   \-0.187 |
+| phi\_y         |    0.144 |     0.029 |     4.963 | \< .001 |    0.087 |     0.201 |
+| sigma\_su      |    0.009 |     0.003 |     2.581 | .01     |    0.002 |     0.015 |
+| sigma\_ly1lx1  |    0.185 |     0.021 |     8.905 | \< .001 |    0.144 |     0.225 |
+| sigma\_g2ly1   |    0.072 |     0.016 |     4.437 | \< .001 |    0.040 |     0.104 |
+| sigma\_j2lx1   |    0.093 |     0.012 |     7.916 | \< .001 |    0.070 |     0.117 |
+| sigma\_j2g2    |    0.005 |     0.012 |     0.463 | .643    |  \-0.018 |     0.029 |
+| delta\_lag\_xy |    0.140 |     0.006 |    23.837 | \< .001 |    0.128 |     0.152 |
+| xi\_lag\_yx    |    0.360 |     0.037 |     9.634 | \< .001 |    0.287 |     0.433 |
 
 ### Plot simplified path diagrams of LCS models
 
@@ -577,8 +576,7 @@ uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                                   model = list(alpha_constant = TRUE, 
                                                beta = TRUE, 
                                                phi = TRUE),
-                                  return_lavaan_syntax = TRUE, 
-                                  return_lavaan_syntax_string = TRUE)
+                                  return_lavaan_syntax = TRUE)
 
 # Plot the results
 plot_lcsm(lavaan_object = uni_lavaan_results,
@@ -622,8 +620,7 @@ bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm,
                                                phi = TRUE),
                                 coupling = list(delta_lag_xy = TRUE, 
                                                 xi_lag_yx = TRUE),
-                                return_lavaan_syntax = TRUE, 
-                                return_lavaan_syntax_string = TRUE)
+                                return_lavaan_syntax = TRUE)
 
 # Plot the results
 plot_lcsm(lavaan_object = bi_lavaan_results, 

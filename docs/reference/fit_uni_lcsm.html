@@ -104,12 +104,15 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -149,7 +152,6 @@
   <span class='kw'>estimator</span> <span class='kw'>=</span> <span class='st'>"MLR"</span>,
   <span class='kw'>missing</span> <span class='kw'>=</span> <span class='st'>"FIML"</span>,
   <span class='kw'>return_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>return_lavaan_syntax_string</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='no'>...</span>
 )</pre>
 
@@ -189,11 +191,7 @@
     </tr>
     <tr>
       <th>return_lavaan_syntax</th>
-      <td><p>Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using <a href='https://rdrr.io/r/base/cat.html'>cat</a></p></td>
-    </tr>
-    <tr>
-      <th>return_lavaan_syntax_string</th>
-      <td><p>Logical, if return_lavaan_syntax is TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string</p></td>
+      <td><p>Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function <a href='https://rdrr.io/r/base/cat.html'>cat</a>.</p></td>
     </tr>
     <tr>
       <th>...</th>

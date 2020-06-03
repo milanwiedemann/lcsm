@@ -2,7 +2,7 @@
 title: "Visualise longitudinal data"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Create longitudinal plots to visualise data}
+  %\VignetteIndexEntry{Visualise longitudinal data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 bibliography: ["references.bib"]

@@ -63,12 +63,15 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -127,9 +130,9 @@
 </ol>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Create long data set</span>
 <span class="no">data_long</span> <span class="kw">&lt;-</span> <span class="no">data_bi_lcsm</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="st">"id"</span>, <span class="fu">all_of</span>(<span class="no">x_var_list</span>)) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="st">"id"</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">all_of</a></span>(<span class="no">x_var_list</span>)) <span class="kw">%&gt;%</span>
   <span class="co"># Pivot data long</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu">all_of</span>(<span class="no">x_var_list</span>), <span class="kw">names_to</span> <span class="kw">=</span> <span class="st">"time"</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">"value"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">all_of</a></span>(<span class="no">x_var_list</span>), <span class="kw">names_to</span> <span class="kw">=</span> <span class="st">"time"</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">"value"</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
     <span class="co"># Extract number from time variable</span>
     <span class="kw">time</span> <span class="kw">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span>(<span class="no">time</span>, <span class="st">"\\d+"</span>),

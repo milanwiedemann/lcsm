@@ -63,12 +63,15 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -102,23 +105,242 @@
     
     
 <div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lcsm</span>)</pre></body></html></div>
-<div id="work-in-progress" class="section level1">
-<h1 class="hasAnchor">
-<a href="#work-in-progress" class="anchor"></a>WORK IN PROGRESS</h1>
-<ul>
-<li><p>For now see example in README file on Github or shinyApp “shinychange”</p></li>
-<li><p>simulate data examples</p></li>
-<li><p>show different scenarios, e.g. all parameter estimates specified, some missing</p></li>
-<li><p>referr to shiny app for interactive example</p></li>
-</ul>
-</div>
+<p>The functions <code><a href="../reference/sim_uni_lcsm.html">sim_uni_lcsm()</a></code> and <code><a href="../reference/sim_bi_lcsm.html">sim_bi_lcsm()</a></code> simulate data based on some some parameters that can be specified. A full list of parameters that can be specified for the data simulation can be found in the <a href="https://github.com/milanwiedemann/lcsm">README</a> file on GitHub.</p>
+<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Simulate some data </span>
+<span class="fu"><a href="../reference/sim_uni_lcsm.html">sim_uni_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
+             <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
+             <span class="kw">model_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">gamma_lx1</span> <span class="kw">=</span> <span class="fl">21</span>,
+                                <span class="kw">sigma2_lx1</span> <span class="kw">=</span> <span class="fl">1.5</span>,
+                                <span class="kw">sigma2_ux</span> <span class="kw">=</span> <span class="fl">0.2</span>,
+                                <span class="kw">alpha_j2</span> <span class="kw">=</span> -<span class="fl">0.93</span>,
+                                <span class="kw">sigma2_j2</span> <span class="kw">=</span> <span class="fl">0.1</span>,
+                                <span class="kw">sigma_j2lx1</span> <span class="kw">=</span> <span class="fl">0.2</span>,
+                                <span class="kw">phi_x</span> <span class="kw">=</span> <span class="fl">0.3</span>),
+             <span class="kw">sample.nobs</span> <span class="kw">=</span> <span class="fl">1000</span>,
+             <span class="kw">na_pct</span> <span class="kw">=</span> <span class="fl">0.3</span>)
+<span class="co">#&gt; Parameter estimates for the data simulation are taken from the argument 'model_param'.</span>
+<span class="co">#&gt; Warning: The following parameters are specified in LCS model but no parameter estimates have been entered in 'model_param':</span>
+<span class="co">#&gt; -  alpha_g2</span>
+<span class="co">#&gt; -  sigma2_g2</span>
+<span class="co">#&gt; -  sigma_g2lx1</span>
+<span class="co">#&gt; # A tibble: 1,000 x 6</span>
+<span class="co">#&gt;       id    x1    x2    x3    x4    x5</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1     1  NA    23.5  NA    25.2  27.0</span>
+<span class="co">#&gt;  2     2  21.1  NA    20.0  NA    18.2</span>
+<span class="co">#&gt;  3     3  19.4  NA    17.2  16.3  16.1</span>
+<span class="co">#&gt;  4     4  19.6  NA    NA    NA    17.2</span>
+<span class="co">#&gt;  5     5  NA    22.0  21.0  NA    20.0</span>
+<span class="co">#&gt;  6     6  20.4  19.3  NA    18.3  17.3</span>
+<span class="co">#&gt;  7     7  21.2  19.5  19.0  NA    15.9</span>
+<span class="co">#&gt;  8     8  21.3  21.9  NA    25.3  26.4</span>
+<span class="co">#&gt;  9     9  21.2  NA    NA    14.7  12.6</span>
+<span class="co">#&gt; 10    10  20.7  NA    22.9  22.6  22.2</span>
+<span class="co">#&gt; # … with 990 more rows</span></pre></body></html></div>
+<p>It is also possible to return the lavaan syntax instead of simulating data for further manual specifications. The modified object could then be used to simulate data using <code><a href="https://rdrr.io/pkg/lavaan/man/simulateData.html">lavaan::simulateData()</a></code>.</p>
+<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>
+<span class="no">simsyntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/sim_bi_lcsm.html">sim_bi_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
+                         <span class="kw">model_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
+                         <span class="kw">model_x_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">gamma_lx1</span> <span class="kw">=</span> <span class="fl">21</span>,
+                                              <span class="kw">sigma2_lx1</span> <span class="kw">=</span> <span class="fl">.5</span>,
+                                              <span class="kw">sigma2_ux</span> <span class="kw">=</span> <span class="fl">.2</span>,
+                                              <span class="kw">alpha_g2</span> <span class="kw">=</span> -<span class="fl">.4</span>,
+                                              <span class="kw">sigma2_g2</span> <span class="kw">=</span> <span class="fl">.4</span>,
+                                              <span class="kw">sigma_g2lx1</span> <span class="kw">=</span> <span class="fl">.2</span>,
+                                              <span class="kw">beta_x</span> <span class="kw">=</span> -<span class="fl">.1</span>),
+                         <span class="kw">model_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
+                         <span class="kw">model_y_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">gamma_ly1</span> <span class="kw">=</span> <span class="fl">5</span>,
+                                              <span class="kw">sigma2_ly1</span> <span class="kw">=</span> <span class="fl">.2</span>,
+                                              <span class="kw">sigma2_uy</span> <span class="kw">=</span> <span class="fl">.2</span>,
+                                              <span class="kw">alpha_j2</span> <span class="kw">=</span> -<span class="fl">.2</span>,
+                                              <span class="kw">sigma2_j2</span> <span class="kw">=</span> <span class="fl">.1</span>,
+                                              <span class="kw">sigma_j2ly1</span> <span class="kw">=</span> <span class="fl">.02</span>,
+                                              <span class="kw">beta_y</span> <span class="kw">=</span> -<span class="fl">.2</span>,
+                                              <span class="kw">phi_y</span> <span class="kw">=</span> <span class="fl">.1</span>),
+                         <span class="kw">coupling</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">delta_lag_xy</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
+                                         <span class="kw">xi_lag_yx</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
+                         <span class="kw">coupling_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">sigma_su</span> <span class="kw">=</span> <span class="fl">.01</span>,
+                                               <span class="kw">sigma_ly1lx1</span> <span class="kw">=</span> <span class="fl">.2</span>,
+                                               <span class="kw">sigma_g2ly1</span> <span class="kw">=</span> <span class="fl">.1</span>,
+                                               <span class="kw">sigma_j2lx1</span> <span class="kw">=</span> <span class="fl">.1</span>,
+                                               <span class="kw">sigma_j2g2</span> <span class="kw">=</span> <span class="fl">.01</span>,
+                                               <span class="kw">delta_lag_xy</span> <span class="kw">=</span> <span class="fl">.13</span>,
+                                               <span class="kw">xi_lag_yx</span> <span class="kw">=</span> <span class="fl">.4</span>),
+                        <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="co">#&gt; Parameter estimates for the data simulation are taken from the argument 'model_param'.</span>
+<span class="co">#&gt; All parameter estimates for the LCS model have been specified in the argument 'model_param'.</span></pre></body></html></div>
+<p>I’m using the function <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> here to make the output more readable. This has no effect on the information that is returned, it is just another way to format the syntax and <code>lavaan</code> knows how to read either format as long as it’s a string, i.e. surrounded by quotation marks.</p>
+<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="no">simsyntax</span>)
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify parameters for construct x ----</span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify latent true scores </span>
+<span class="co">#&gt; lx1 =~ 1 * x1 </span>
+<span class="co">#&gt; lx2 =~ 1 * x2 </span>
+<span class="co">#&gt; lx3 =~ 1 * x3 </span>
+<span class="co">#&gt; lx4 =~ 1 * x4 </span>
+<span class="co">#&gt; lx5 =~ 1 * x5 </span>
+<span class="co">#&gt; # Specify mean of latent true scores </span>
+<span class="co">#&gt; lx1 ~ 21 * 1 </span>
+<span class="co">#&gt; lx2 ~ 0 * 1 </span>
+<span class="co">#&gt; lx3 ~ 0 * 1 </span>
+<span class="co">#&gt; lx4 ~ 0 * 1 </span>
+<span class="co">#&gt; lx5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify variance of latent true scores </span>
+<span class="co">#&gt; lx1 ~~ 0.5 * lx1 </span>
+<span class="co">#&gt; lx2 ~~ 0 * lx2 </span>
+<span class="co">#&gt; lx3 ~~ 0 * lx3 </span>
+<span class="co">#&gt; lx4 ~~ 0 * lx4 </span>
+<span class="co">#&gt; lx5 ~~ 0 * lx5 </span>
+<span class="co">#&gt; # Specify intercept of obseved scores </span>
+<span class="co">#&gt; x1 ~ 0 * 1 </span>
+<span class="co">#&gt; x2 ~ 0 * 1 </span>
+<span class="co">#&gt; x3 ~ 0 * 1 </span>
+<span class="co">#&gt; x4 ~ 0 * 1 </span>
+<span class="co">#&gt; x5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify variance of observed scores </span>
+<span class="co">#&gt; x1 ~~ 0.2 * x1 </span>
+<span class="co">#&gt; x2 ~~ 0.2 * x2 </span>
+<span class="co">#&gt; x3 ~~ 0.2 * x3 </span>
+<span class="co">#&gt; x4 ~~ 0.2 * x4 </span>
+<span class="co">#&gt; x5 ~~ 0.2 * x5 </span>
+<span class="co">#&gt; # Specify autoregressions of latent variables </span>
+<span class="co">#&gt; lx2 ~ 1 * lx1 </span>
+<span class="co">#&gt; lx3 ~ 1 * lx2 </span>
+<span class="co">#&gt; lx4 ~ 1 * lx3 </span>
+<span class="co">#&gt; lx5 ~ 1 * lx4 </span>
+<span class="co">#&gt; # Specify latent change scores </span>
+<span class="co">#&gt; dx2 =~ 1 * lx2 </span>
+<span class="co">#&gt; dx3 =~ 1 * lx3 </span>
+<span class="co">#&gt; dx4 =~ 1 * lx4 </span>
+<span class="co">#&gt; dx5 =~ 1 * lx5 </span>
+<span class="co">#&gt; # Specify latent change scores means </span>
+<span class="co">#&gt; dx2 ~ 0 * 1 </span>
+<span class="co">#&gt; dx3 ~ 0 * 1 </span>
+<span class="co">#&gt; dx4 ~ 0 * 1 </span>
+<span class="co">#&gt; dx5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify latent change scores variances </span>
+<span class="co">#&gt; dx2 ~~ 0 * dx2 </span>
+<span class="co">#&gt; dx3 ~~ 0 * dx3 </span>
+<span class="co">#&gt; dx4 ~~ 0 * dx4 </span>
+<span class="co">#&gt; dx5 ~~ 0 * dx5 </span>
+<span class="co">#&gt; # Specify constant change factor </span>
+<span class="co">#&gt; g2 =~ 1 * dx2 + 1 * dx3 + 1 * dx4 + 1 * dx5 </span>
+<span class="co">#&gt; # Specify constant change factor mean </span>
+<span class="co">#&gt; g2 ~ -0.4 * 1 </span>
+<span class="co">#&gt; # Specify constant change factor variance </span>
+<span class="co">#&gt; g2 ~~ 0.4 * g2 </span>
+<span class="co">#&gt; # Specify constant change factor covariance with the initial true score </span>
+<span class="co">#&gt; g2 ~~ 0.2 * lx1</span>
+<span class="co">#&gt; # Specify proportional change component </span>
+<span class="co">#&gt; dx2 ~ -0.1 * lx1 </span>
+<span class="co">#&gt; dx3 ~ -0.1 * lx2 </span>
+<span class="co">#&gt; dx4 ~ -0.1 * lx3 </span>
+<span class="co">#&gt; dx5 ~ -0.1 * lx4 </span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify parameters for construct y ----</span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify latent true scores </span>
+<span class="co">#&gt; ly1 =~ 1 * y1 </span>
+<span class="co">#&gt; ly2 =~ 1 * y2 </span>
+<span class="co">#&gt; ly3 =~ 1 * y3 </span>
+<span class="co">#&gt; ly4 =~ 1 * y4 </span>
+<span class="co">#&gt; ly5 =~ 1 * y5 </span>
+<span class="co">#&gt; # Specify mean of latent true scores </span>
+<span class="co">#&gt; ly1 ~ 5 * 1 </span>
+<span class="co">#&gt; ly2 ~ 0 * 1 </span>
+<span class="co">#&gt; ly3 ~ 0 * 1 </span>
+<span class="co">#&gt; ly4 ~ 0 * 1 </span>
+<span class="co">#&gt; ly5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify variance of latent true scores </span>
+<span class="co">#&gt; ly1 ~~ 0.2 * ly1 </span>
+<span class="co">#&gt; ly2 ~~ 0 * ly2 </span>
+<span class="co">#&gt; ly3 ~~ 0 * ly3 </span>
+<span class="co">#&gt; ly4 ~~ 0 * ly4 </span>
+<span class="co">#&gt; ly5 ~~ 0 * ly5 </span>
+<span class="co">#&gt; # Specify intercept of obseved scores </span>
+<span class="co">#&gt; y1 ~ 0 * 1 </span>
+<span class="co">#&gt; y2 ~ 0 * 1 </span>
+<span class="co">#&gt; y3 ~ 0 * 1 </span>
+<span class="co">#&gt; y4 ~ 0 * 1 </span>
+<span class="co">#&gt; y5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify variance of observed scores </span>
+<span class="co">#&gt; y1 ~~ 0.2 * y1 </span>
+<span class="co">#&gt; y2 ~~ 0.2 * y2 </span>
+<span class="co">#&gt; y3 ~~ 0.2 * y3 </span>
+<span class="co">#&gt; y4 ~~ 0.2 * y4 </span>
+<span class="co">#&gt; y5 ~~ 0.2 * y5 </span>
+<span class="co">#&gt; # Specify autoregressions of latent variables </span>
+<span class="co">#&gt; ly2 ~ 1 * ly1 </span>
+<span class="co">#&gt; ly3 ~ 1 * ly2 </span>
+<span class="co">#&gt; ly4 ~ 1 * ly3 </span>
+<span class="co">#&gt; ly5 ~ 1 * ly4 </span>
+<span class="co">#&gt; # Specify latent change scores </span>
+<span class="co">#&gt; dy2 =~ 1 * ly2 </span>
+<span class="co">#&gt; dy3 =~ 1 * ly3 </span>
+<span class="co">#&gt; dy4 =~ 1 * ly4 </span>
+<span class="co">#&gt; dy5 =~ 1 * ly5 </span>
+<span class="co">#&gt; # Specify latent change scores means </span>
+<span class="co">#&gt; dy2 ~ 0 * 1 </span>
+<span class="co">#&gt; dy3 ~ 0 * 1 </span>
+<span class="co">#&gt; dy4 ~ 0 * 1 </span>
+<span class="co">#&gt; dy5 ~ 0 * 1 </span>
+<span class="co">#&gt; # Specify latent change scores variances </span>
+<span class="co">#&gt; dy2 ~~ 0 * dy2 </span>
+<span class="co">#&gt; dy3 ~~ 0 * dy3 </span>
+<span class="co">#&gt; dy4 ~~ 0 * dy4 </span>
+<span class="co">#&gt; dy5 ~~ 0 * dy5 </span>
+<span class="co">#&gt; # Specify constant change factor </span>
+<span class="co">#&gt; j2 =~ 1 * dy2 + 1 * dy3 + 1 * dy4 + 1 * dy5 </span>
+<span class="co">#&gt; # Specify constant change factor mean </span>
+<span class="co">#&gt; j2 ~ -0.2 * 1 </span>
+<span class="co">#&gt; # Specify constant change factor variance </span>
+<span class="co">#&gt; j2 ~~ 0.1 * j2 </span>
+<span class="co">#&gt; # Specify constant change factor covariance with the initial true score </span>
+<span class="co">#&gt; j2 ~~ 0.02 * ly1</span>
+<span class="co">#&gt; # Specify proportional change component </span>
+<span class="co">#&gt; dy2 ~ -0.2 * ly1 </span>
+<span class="co">#&gt; dy3 ~ -0.2 * ly2 </span>
+<span class="co">#&gt; dy4 ~ -0.2 * ly3 </span>
+<span class="co">#&gt; dy5 ~ -0.2 * ly4 </span>
+<span class="co">#&gt; # Specify autoregression of change score </span>
+<span class="co">#&gt; dy3 ~ 0.1 * dy2 </span>
+<span class="co">#&gt; dy4 ~ 0.1 * dy3 </span>
+<span class="co">#&gt; dy5 ~ 0.1 * dy4 </span>
+<span class="co">#&gt; # Specify residual covariances </span>
+<span class="co">#&gt; x1 ~~ 0.01 * y1 </span>
+<span class="co">#&gt; x2 ~~ 0.01 * y2 </span>
+<span class="co">#&gt; x3 ~~ 0.01 * y3 </span>
+<span class="co">#&gt; x4 ~~ 0.01 * y4 </span>
+<span class="co">#&gt; x5 ~~ 0.01 * y5 </span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify covariances betweeen specified change components (alpha) and intercepts (initial latent true scores lx1 and ly1) ----</span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify covariance of intercepts </span>
+<span class="co">#&gt; lx1 ~~ 0.2 * ly1 </span>
+<span class="co">#&gt; # Specify covariance of constant change and intercept between constructs </span>
+<span class="co">#&gt; ly1 ~~ 0.1 * g2 </span>
+<span class="co">#&gt; # Specify covariance of constant change and intercept between constructs </span>
+<span class="co">#&gt; lx1 ~~ 0.1 * j2 </span>
+<span class="co">#&gt; # Specify covariance of constant change factors between constructs </span>
+<span class="co">#&gt; g2 ~~ 0.01 * j2 </span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Specify between-construct coupling parameters ----</span>
+<span class="co">#&gt; # # # # # # # # # # # # # # # # # # # # # # # # # # #</span>
+<span class="co">#&gt; # Change score x (t) is determined by true score y (t-1)  </span>
+<span class="co">#&gt; dx2 ~ 0.13 * ly1 </span>
+<span class="co">#&gt; dx3 ~ 0.13 * ly2 </span>
+<span class="co">#&gt; dx4 ~ 0.13 * ly3 </span>
+<span class="co">#&gt; dx5 ~ 0.13 * ly4 </span>
+<span class="co">#&gt; # Change score y (t) is determined by change score x (t-1)  </span>
+<span class="co">#&gt; dy3 ~ 0.4 * dx2 </span>
+<span class="co">#&gt; dy4 ~ 0.4 * dx3 </span>
+<span class="co">#&gt; dy5 ~ 0.4 * dx4</span></pre></body></html></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
+      </div>
 
 </div>
 

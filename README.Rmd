@@ -415,7 +415,7 @@ The main underlying functions to extract parameters and fit statistics come from
 The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCS models in R, for example:
 
 -  `extract_param()`: only one row per estimated parameter,
-- `extract_fit()`: fit statistics for multiple lavaan objects can be extracted.
+- `extract_fit()`: fit statistics for multiple `lavaan` objects can be extracted.
 
 A table of the description of all parameters that can be estimated is shown [here](#overview-of-estimated-lcs-model-parameters).
 
@@ -437,7 +437,7 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
 
 # Now extract parameter estimates
 # Only extract first 7 columns for this example by adding [ , 1:7]
-param_bi_lcsm_01 <- extract_param(bi_lcsm_01)[ , 1:7]
+param_bi_lcsm_01 <- extract_param(bi_lcsm_01, printp = TRUE)[ , 1:7]
 
 # Print table of parameter estimates
 kable(param_bi_lcsm_01, digits = 3)
@@ -447,7 +447,7 @@ kable(param_bi_lcsm_01, digits = 3)
 
 This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
 Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package.
-The input arguments for plotting a simplified path dioagram are: 
+The input arguments for plotting a simplified path diagram are: 
 
 - the estimated lavaan object `lavaan_object`,
 - the `lavaan_syntax` and ,

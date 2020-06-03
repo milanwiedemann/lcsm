@@ -70,12 +70,15 @@
       <a href="articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="articles/v3-lcsm-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
     </li>
     <li>
       <a href="articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -331,7 +334,7 @@
 <span class="co">#&gt;   P-value (Chi-square)                            0.062       0.072</span>
 <span class="co">#&gt;   Scaling correction factor                                   1.013</span>
 <span class="co">#&gt;        Yuan-Bentler correction (Mplus variant)</span></pre></div>
-<p>It is also possible to show the lavaan syntax that was created to fit the model by the function <code><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm()</a></code>. The lavaan syntax includes comments describing some parts of the syntax in more detail. To save the syntax in an object the argument <code>return_lavaan_syntax_string</code> has to be set to <code>TRUE</code>. This object can be returned in an easy to read format using <code><a href="https://rdrr.io/r/base/cat.html">cat(syntax)</a></code>, or as a simple string without the <code><a href="https://rdrr.io/r/base/cat.html">cat()</a></code> function.</p>
+<p>It is also possible to show the lavaan syntax that was created to fit the model by the function <code><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm()</a></code>. The lavaan syntax includes comments describing some parts of the syntax in more detail. To save the syntax in an object the argument <code>return_lavaan_syntax</code> has to be set to <code>TRUE</code>. This object looks a bit funny, it’s one very long line of text, but can be formatted to look more beautiful and readable using <code><a href="https://rdrr.io/r/base/cat.html">cat(syntax)</a></code>.</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="co"># Fit univariate latent change score model</span>
 <span class="no">syntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
                        <span class="kw">var</span> <span class="kw">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
@@ -339,8 +342,7 @@
                        <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                                     <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
                                     <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                      <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                      <span class="kw">return_lavaan_syntax_string</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+                      <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
 <span class="co"># Return lavaan syntax in easy to read format</span>
 <span class="fu"><a href="https://rdrr.io/r/base/cat.html">cat</a></span>(<span class="no">syntax</span>)</pre></div>
@@ -574,7 +576,7 @@
 
 <span class="co"># Now extract parameter estimates</span>
 <span class="co"># Only extract first 7 columns for this example by adding [ , 1:7]</span>
-<span class="no">param_bi_lcsm_01</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/extract_param.html">extract_param</a></span>(<span class="no">bi_lcsm_01</span>)[ , <span class="fl">1</span>:<span class="fl">7</span>]
+<span class="no">param_bi_lcsm_01</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/extract_param.html">extract_param</a></span>(<span class="no">bi_lcsm_01</span>, <span class="kw">printp</span> <span class="kw">=</span> <span class="fl">TRUE</span>)[ , <span class="fl">1</span>:<span class="fl">7</span>]
 
 <span class="co"># Print table of parameter estimates</span>
 <span class="fu">kable</span>(<span class="no">param_bi_lcsm_01</span>, <span class="kw">digits</span> <span class="kw">=</span> <span class="fl">3</span>)</pre></div>
@@ -584,7 +586,7 @@
 <th align="right">estimate</th>
 <th align="right">std.error</th>
 <th align="right">statistic</th>
-<th align="right">p.value</th>
+<th align="left">p.value</th>
 <th align="right">conf.low</th>
 <th align="right">conf.high</th>
 </tr></thead>
@@ -594,7 +596,7 @@
 <td align="right">21.066</td>
 <td align="right">0.036</td>
 <td align="right">588.187</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">20.996</td>
 <td align="right">21.136</td>
 </tr>
@@ -603,7 +605,7 @@
 <td align="right">0.493</td>
 <td align="right">0.037</td>
 <td align="right">13.485</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.421</td>
 <td align="right">0.564</td>
 </tr>
@@ -612,7 +614,7 @@
 <td align="right">0.201</td>
 <td align="right">0.004</td>
 <td align="right">45.301</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.192</td>
 <td align="right">0.210</td>
 </tr>
@@ -621,7 +623,7 @@
 <td align="right">-0.309</td>
 <td align="right">0.053</td>
 <td align="right">-5.834</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">-0.413</td>
 <td align="right">-0.205</td>
 </tr>
@@ -630,7 +632,7 @@
 <td align="right">0.395</td>
 <td align="right">0.028</td>
 <td align="right">14.330</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.341</td>
 <td align="right">0.449</td>
 </tr>
@@ -639,7 +641,7 @@
 <td align="right">0.155</td>
 <td align="right">0.022</td>
 <td align="right">7.017</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.112</td>
 <td align="right">0.198</td>
 </tr>
@@ -648,7 +650,7 @@
 <td align="right">-0.106</td>
 <td align="right">0.003</td>
 <td align="right">-30.818</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">-0.113</td>
 <td align="right">-0.099</td>
 </tr>
@@ -657,7 +659,7 @@
 <td align="right">5.025</td>
 <td align="right">0.029</td>
 <td align="right">172.786</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">4.968</td>
 <td align="right">5.082</td>
 </tr>
@@ -666,7 +668,7 @@
 <td align="right">0.208</td>
 <td align="right">0.019</td>
 <td align="right">10.860</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.171</td>
 <td align="right">0.246</td>
 </tr>
@@ -675,7 +677,7 @@
 <td align="right">0.193</td>
 <td align="right">0.005</td>
 <td align="right">39.698</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.183</td>
 <td align="right">0.202</td>
 </tr>
@@ -684,7 +686,7 @@
 <td align="right">-0.203</td>
 <td align="right">0.039</td>
 <td align="right">-5.217</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">-0.279</td>
 <td align="right">-0.127</td>
 </tr>
@@ -693,7 +695,7 @@
 <td align="right">0.093</td>
 <td align="right">0.008</td>
 <td align="right">11.766</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.077</td>
 <td align="right">0.108</td>
 </tr>
@@ -702,7 +704,7 @@
 <td align="right">0.017</td>
 <td align="right">0.008</td>
 <td align="right">2.156</td>
-<td align="right">0.031</td>
+<td align="left">.031</td>
 <td align="right">0.002</td>
 <td align="right">0.032</td>
 </tr>
@@ -711,7 +713,7 @@
 <td align="right">-0.197</td>
 <td align="right">0.005</td>
 <td align="right">-39.562</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">-0.207</td>
 <td align="right">-0.187</td>
 </tr>
@@ -720,7 +722,7 @@
 <td align="right">0.144</td>
 <td align="right">0.029</td>
 <td align="right">4.963</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.087</td>
 <td align="right">0.201</td>
 </tr>
@@ -729,7 +731,7 @@
 <td align="right">0.009</td>
 <td align="right">0.003</td>
 <td align="right">2.581</td>
-<td align="right">0.010</td>
+<td align="left">.01</td>
 <td align="right">0.002</td>
 <td align="right">0.015</td>
 </tr>
@@ -738,7 +740,7 @@
 <td align="right">0.185</td>
 <td align="right">0.021</td>
 <td align="right">8.905</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.144</td>
 <td align="right">0.225</td>
 </tr>
@@ -747,7 +749,7 @@
 <td align="right">0.072</td>
 <td align="right">0.016</td>
 <td align="right">4.437</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.040</td>
 <td align="right">0.104</td>
 </tr>
@@ -756,7 +758,7 @@
 <td align="right">0.093</td>
 <td align="right">0.012</td>
 <td align="right">7.916</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.070</td>
 <td align="right">0.117</td>
 </tr>
@@ -765,7 +767,7 @@
 <td align="right">0.005</td>
 <td align="right">0.012</td>
 <td align="right">0.463</td>
-<td align="right">0.643</td>
+<td align="left">.643</td>
 <td align="right">-0.018</td>
 <td align="right">0.029</td>
 </tr>
@@ -774,7 +776,7 @@
 <td align="right">0.140</td>
 <td align="right">0.006</td>
 <td align="right">23.837</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.128</td>
 <td align="right">0.152</td>
 </tr>
@@ -783,7 +785,7 @@
 <td align="right">0.360</td>
 <td align="right">0.037</td>
 <td align="right">9.634</td>
-<td align="right">0.000</td>
+<td align="left">&lt; .001</td>
 <td align="right">0.287</td>
 <td align="right">0.433</td>
 </tr>
@@ -839,8 +841,7 @@
                                   <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                                                <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                                                <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                  <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                  <span class="kw">return_lavaan_syntax_string</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+                                  <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
 <span class="co"># Plot the results</span>
 <span class="fu"><a href="reference/plot_lcsm.html">plot_lcsm</a></span>(<span class="kw">lavaan_object</span> <span class="kw">=</span> <span class="no">uni_lavaan_results</span>,
@@ -882,8 +883,7 @@
                                                <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
                                 <span class="kw">coupling</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">delta_lag_xy</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
                                                 <span class="kw">xi_lag_yx</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                <span class="kw">return_lavaan_syntax_string</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+                                <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
 <span class="co"># Plot the results</span>
 <span class="fu"><a href="reference/plot_lcsm.html">plot_lcsm</a></span>(<span class="kw">lavaan_object</span> <span class="kw">=</span> <span class="no">bi_lavaan_results</span>,
