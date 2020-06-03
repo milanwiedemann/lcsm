@@ -1,8 +1,7 @@
 #' Extract labelled parameters of lavaan objects
 #'
 #' @param lavaan_object lavaan object.
-#' @param printp If TRUE convert into easily readable p-values.
-#' At the moment this function is deactivated, a warning message will be returned.
+#' @param printp If TRUE convert into easily readable p values.
 
 #' @return This function returns a tibble with labelled parameters.
 #' @export
