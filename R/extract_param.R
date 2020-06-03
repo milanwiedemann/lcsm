@@ -45,18 +45,13 @@ extract_param <- function(lavaan_object, printp = FALSE){
   
   if (printp == TRUE){
     
-    # This doesnt work at the moment, papaja is not on CRAN 
-    # Find my own way to do this, maybe import printp function from papaja or something similar somewhere else
-    table4 <- dplyr::mutate(table3, 
+    table3 <- dplyr::mutate(table3, 
                             p.value = ifelse(p.value < .001, "< .001", as.character(round(p.value, digits = 3))),
                             p.value = sub("^0+", "", p.value)
                             )
     
-    return(table4)
+    return(table3)
     
-    # for now also return table 3
-    # message("Sorry, the 'printp' argument is not supported at the moment.\nThis returns the same object as using 'printp = FALSE'.")
-    # return(table3)
   }
   
 

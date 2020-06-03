@@ -236,8 +236,8 @@ fit_uni_lcsm(data = data_uni_lcsm,
 
 It is also possible to show the lavaan syntax that was created to fit the model by the function `specify_uni_lcsm()`.
 The lavaan syntax includes comments describing some parts of the syntax in more detail.
-To save the syntax in an object the argument `return_lavaan_syntax_string` has to be set to `TRUE`.
-This object can be returned in an easy to read format using `cat(syntax)`, or as a simple string without the `cat()` function.
+To save the syntax in an object the argument `return_lavaan_syntax` has to be set to `TRUE`.
+This object looks a bit funny, it's one very long line of text, but can be formatted to look more beautiful and readable using `cat(syntax)`.
 
 ```{r, eval=FALSE}
 # Fit univariate latent change score model
@@ -247,8 +247,7 @@ syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                        model = list(alpha_constant = TRUE, 
                                     beta = FALSE, 
                                     phi = TRUE),
-                      return_lavaan_syntax = TRUE,
-                      return_lavaan_syntax_string = TRUE)
+                      return_lavaan_syntax = TRUE)
 
 # Return lavaan syntax in easy to read format
 cat(syntax)
@@ -484,8 +483,7 @@ uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm,
                                   model = list(alpha_constant = TRUE, 
                                                beta = TRUE, 
                                                phi = TRUE),
-                                  return_lavaan_syntax = TRUE, 
-                                  return_lavaan_syntax_string = TRUE)
+                                  return_lavaan_syntax = TRUE)
 
 # Plot the results
 plot_lcsm(lavaan_object = uni_lavaan_results,
@@ -524,8 +522,7 @@ bi_lavaan_syntax <- fit_bi_lcsm(data = data_bi_lcsm,
                                                phi = TRUE),
                                 coupling = list(delta_lag_xy = TRUE, 
                                                 xi_lag_yx = TRUE),
-                                return_lavaan_syntax = TRUE, 
-                                return_lavaan_syntax_string = TRUE)
+                                return_lavaan_syntax = TRUE)
 
 # Plot the results
 plot_lcsm(lavaan_object = bi_lavaan_results, 
