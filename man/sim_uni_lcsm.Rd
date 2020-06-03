@@ -13,8 +13,7 @@ sim_uni_lcsm(
   sample.nobs = 500,
   na_pct = 0,
   ...,
-  return_lavaan_syntax = FALSE,
-  return_lavaan_syntax_string = FALSE
+  return_lavaan_syntax = FALSE
 )
 }
 \arguments{
@@ -47,11 +46,7 @@ sim_uni_lcsm(
 
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
-\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}. 
-Note that this output cant be saved as an object.
-To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string' has to be set to TRUE.}
-
-\item{return_lavaan_syntax_string}{Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.}
 }
 \value{
 tibble
@@ -70,7 +65,6 @@ sim_uni_lcsm(timepoints = 10,
                                 sigma2_j2 = .1,
                                 sigma_j2lx1 = .2),
              return_lavaan_syntax = FALSE, 
-             return_lavaan_syntax_string = FALSE,
              sample.nobs = 1000,
              na_pct = .3)
 

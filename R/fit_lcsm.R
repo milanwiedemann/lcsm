@@ -12,8 +12,7 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
-#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
-#' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax is TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See \link[lavaan]{lavaan}.
 #' @param estimator See \link[lavaan]{lavaan}.
 #' @param missing See \link[lavaan]{lavaan}.
@@ -42,7 +41,6 @@ fit_uni_lcsm <- function(data,
                          estimator = "MLR",
                          missing = "FIML",
                          return_lavaan_syntax = FALSE,
-                         return_lavaan_syntax_string = FALSE,
                          ...
                          ){
    
@@ -93,14 +91,9 @@ fit_uni_lcsm <- function(data,
     
   } else if (return_lavaan_syntax == TRUE)  {
     
-    if (return_lavaan_syntax_string == TRUE){
-      # Return lavaan syntax string
+    # Return model
       return(model_uni)
       
-    } else if (return_lavaan_syntax_string == FALSE){
-      # Return lavaan syntax 
-      return(base::cat(model_uni))
-    }
   }
 }
 
@@ -137,8 +130,7 @@ fit_uni_lcsm <- function(data,
 #' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
-#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
-#' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See \link[lavaan]{lavaan}.
 #' @param estimator See \link[lavaan]{lavaan}.
 #' @param missing See \link[lavaan]{lavaan}.
@@ -177,7 +169,6 @@ fit_bi_lcsm <- function(data,
                         estimator = "MLR",
                         missing = "FIML",
                         return_lavaan_syntax = FALSE,
-                        return_lavaan_syntax_string = FALSE,
                         ...){
   
   # Count timepoints ----
@@ -224,14 +215,8 @@ fit_bi_lcsm <- function(data,
     return(fit_lcsm_bi)
     
   } else if (return_lavaan_syntax == TRUE)  {
-    
-    if (return_lavaan_syntax_string == TRUE){
-      # Return lavaan syntax string
+
       return(model_bi)
       
-    } else if (return_lavaan_syntax_string == FALSE){
-      # Return lavaan syntax 
-      return(base::cat(model_bi))
-    }
   }
 }

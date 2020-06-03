@@ -20,8 +20,7 @@ sim_bi_lcsm(
   var_y = "y",
   change_letter_x = "g",
   change_letter_y = "j",
-  return_lavaan_syntax = FALSE,
-  return_lavaan_syntax_string = FALSE
+  return_lavaan_syntax = FALSE
 )
 }
 \arguments{
@@ -100,9 +99,7 @@ sim_bi_lcsm(
 
 \item{change_letter_y}{See \link[lcsm]{specify_bi_lcsm}}
 
-\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
-
-\item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.}
 }
 \value{
 tibble

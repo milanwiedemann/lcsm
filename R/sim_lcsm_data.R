@@ -21,10 +21,7 @@
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
-#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}. 
-#' Note that this output cant be saved as an object.
-#' To save the lavaan syntax as an object the argument 'return_lavaan_syntax_string' has to be set to TRUE.
-#' @param return_lavaan_syntax_string Logical, if 'return_lavaan_syntax' = TRUE and 'return_lavaan_syntax_string' = TRUE return the lavaan syntax as one ugly string
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @return tibble
 #' @export
 #' @examples # Simulate data from univariate LCS model parameters 
@@ -37,11 +34,10 @@
 #'                                 sigma2_j2 = .1,
 #'                                 sigma_j2lx1 = .2),
 #'              return_lavaan_syntax = FALSE, 
-#'              return_lavaan_syntax_string = FALSE,
 #'              sample.nobs = 1000,
 #'              na_pct = .3)
 #' 
-sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "g", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
+sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "g", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
@@ -153,12 +149,9 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
     return(sim_data_model_ids_nas)
   } else if (return_lavaan_syntax == TRUE){
     
-    if (return_lavaan_syntax_string == TRUE){
+
       return(model_estimates)
-    } else if (return_lavaan_syntax_string == FALSE){
-      # Return lavaan syntax used to simulate datq
-      return(base::cat(model_estimates))
-    }
+
   }
 }
 
@@ -224,8 +217,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' @param var_y See \link[lcsm]{specify_bi_lcsm}
 #' @param change_letter_x See \link[lcsm]{specify_bi_lcsm}
 #' @param change_letter_y See \link[lcsm]{specify_bi_lcsm}
-#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}
-#' @param return_lavaan_syntax_string Logical, if return_lavaan_syntax == TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string
+#' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @return tibble
 #' @export
 #' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \url{https://doi.org/10.1080/10705511.2012.713275}.
@@ -276,7 +268,8 @@ sim_bi_lcsm <- function(timepoints,
                         coupling, coupling_param = NULL,
                         sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, ...,
                         var_x = "x", var_y = "y", change_letter_x = "g", change_letter_y = "j", 
-                        return_lavaan_syntax = FALSE, return_lavaan_syntax_string = FALSE){
+                        return_lavaan_syntax = FALSE
+                        ){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
@@ -426,12 +419,8 @@ sim_bi_lcsm <- function(timepoints,
     # Return simulated data
     return(sim_data_xy_model_ids_nas)
   } else if (return_lavaan_syntax == TRUE){
-    
-    if (return_lavaan_syntax_string == TRUE){
+
       return(model_estimates)
-    } else if (return_lavaan_syntax_string == FALSE){
-      # Return lavaan syntax used to simulate datq
-      return(base::cat(model_estimates))
-    }
+
   }
 }

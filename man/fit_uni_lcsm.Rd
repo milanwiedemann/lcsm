@@ -12,7 +12,6 @@ fit_uni_lcsm(
   estimator = "MLR",
   missing = "FIML",
   return_lavaan_syntax = FALSE,
-  return_lavaan_syntax_string = FALSE,
   ...
 )
 }
@@ -37,9 +36,7 @@ fit_uni_lcsm(
 
 \item{missing}{See \link[lavaan]{lavaan}.}
 
-\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data, looking beautiful using \link[base]{cat}}
-
-\item{return_lavaan_syntax_string}{Logical, if return_lavaan_syntax is TRUE and return_lavaan_syntax_string == TRUE return the lavaan syntax as one ugly string}
+\item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.}
 
 \item{...}{Additional arguments to be passed to \link[lavaan]{lavaan}.}
 }
