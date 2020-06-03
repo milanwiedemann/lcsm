@@ -30,4 +30,4 @@
 
 ## Resubmission
 This is a resubmission, in this version I have:
-* Fixed the final broken link I forgot last time, sorry!
+* I have removed all information messages to the console that could not be easily suppressed.
