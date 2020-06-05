@@ -1,10 +1,10 @@
-#' Rename variables for univariate and bivariate latent change score odels
+#' Rename variables for univariate and bivariate latent change score models
 #'
-#' @param data Dataframe in wide format
+#' @param data Dataset in wide format
 #' @param var_x List of variables measuring first construct
 #' @param var_y List of variables measuring second construct
 #'
-#' @return Dataframe in wide format with renamed variables
+#' @return Dataset in wide format with renamed variables
 #' @export
 
 rename_lcsm_vars <- function(data, var_x, var_y){

@@ -63,11 +63,11 @@ Also consider other options to look at trajectories like \link[ggplot2]{facet_wr
 
 \item{random_sample_frac}{The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.}
 
-\item{seed}{Set seed for random sample if random_sample_frac argument is used.}
+\item{seed}{Set seed for random sample if \code{random_sample_frac} argument is used.}
 
-\item{title_n}{Logical, speciying whether to print title with number and percentage of cases used for the plot.}
+\item{title_n}{Logical, specifying whether to print title with number and percentage of cases used for the plot.}
 
-\item{connect_missing}{Logical, speciying whether to connect points by \code{id_var} across missing values.}
+\item{connect_missing}{Logical, specifying whether to connect points by \code{id_var} across missing values.}
 }
 \value{
 ggplot2 object

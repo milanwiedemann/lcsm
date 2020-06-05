@@ -47,9 +47,9 @@ If \code{lavaan_syntax} is provided a layout matrix will be generated automatica
 
 \item{curve_covar}{See \link[semPlot]{semPaths}.}
 
-\item{what}{See \code{semPlot}. "path" to show unweighted gray edges, "par" to show parameter estimates as weighted (green/red) edges}
+\item{what}{See \code{semPlot}. "path" to show unweighted grey edges, "par" to show parameter estimates as weighted (green/red) edges}
 
-\item{whatLabels}{See \link[semPlot]{semPaths}. "label" to show edege names as label, "est" for parameter estimates, "hide" to hide edge labels.}
+\item{whatLabels}{See \link[semPlot]{semPaths}. "label" to show edge names as label, "est" for parameter estimates, "hide" to hide edge labels.}
 
 \item{edge.width}{See \link[semPlot]{semPaths}.}
 

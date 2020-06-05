@@ -19,9 +19,9 @@
 #' @param scale_x_num Logical, if \code{TRUE} print sequential numbers starting from 1 as x axis labels, if \code{FALSE} use variable names.
 #' @param scale_x_num_start Numeric, if \code{scale_x_num = TRUE} this is the starting value of the x axis.
 #' @param random_sample_frac The fraction of rows to select (from wide dataset), default is set to 1 (100 percent) of the sample.
-#' @param seed Set seed for random sample if random_sample_frac argument is used.
-#' @param connect_missing Logical, speciying whether to connect points by \code{id_var} across missing values.
-#' @param title_n Logical, speciying whether to print title with number and percentage of cases used for the plot.
+#' @param seed Set seed for random sample if \code{random_sample_frac} argument is used.
+#' @param connect_missing Logical, specifying whether to connect points by \code{id_var} across missing values.
+#' @param title_n Logical, specifying whether to print title with number and percentage of cases used for the plot.
 #' @examples 
 #' # Create plot for construct x
 #' plot_trajectories(data = data_bi_lcsm,

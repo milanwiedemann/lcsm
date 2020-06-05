@@ -2,20 +2,20 @@
 % Please edit documentation in R/rename_vars.R
 \name{rename_lcsm_vars}
 \alias{rename_lcsm_vars}
-\title{Rename variables for univariate and bivariate latent change score odels}
+\title{Rename variables for univariate and bivariate latent change score models}
 \usage{
 rename_lcsm_vars(data, var_x, var_y)
 }
 \arguments{
-\item{data}{Dataframe in wide format}
+\item{data}{Dataset in wide format}
 
 \item{var_x}{List of variables measuring first construct}
 
 \item{var_y}{List of variables measuring second construct}
 }
 \value{
-Dataframe in wide format with renamed variables
+Dataset in wide format with renamed variables
 }
 \description{
-Rename variables for univariate and bivariate latent change score odels
+Rename variables for univariate and bivariate latent change score models
 }
