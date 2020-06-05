@@ -132,16 +132,16 @@
 <span class="co">#&gt; # A tibble: 1,000 x 6</span>
 <span class="co">#&gt;       id    x1    x2    x3    x4    x5</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     1  22.9  23.3  22.6  22.2 21.9 </span>
-<span class="co">#&gt;  2     2  22.3  21.3  NA    NA   21.0 </span>
-<span class="co">#&gt;  3     3  21.0  19.0  16.5  14.3 NA   </span>
-<span class="co">#&gt;  4     4  21.1  NA    NA    NA   28.0 </span>
-<span class="co">#&gt;  5     5  NA    NA    NA    23.5 22.6 </span>
-<span class="co">#&gt;  6     6  21.0  NA    26.0  28.2 30.6 </span>
-<span class="co">#&gt;  7     7  NA    23.0  22.4  22.0 22.7 </span>
-<span class="co">#&gt;  8     8  21.6  20.6  NA    18.9 17.7 </span>
-<span class="co">#&gt;  9     9  18.9  16.7  14.4  11.7  8.24</span>
-<span class="co">#&gt; 10    10  18.9  18.2  16.2  15.1 13.6 </span>
+<span class="co">#&gt;  1     1  NA    20.3  NA    17.9  16.6</span>
+<span class="co">#&gt;  2     2  21.8  24.5  26.1  27.9  30.2</span>
+<span class="co">#&gt;  3     3  21.0  21.4  21.3  NA    20.3</span>
+<span class="co">#&gt;  4     4  NA    NA    NA    17.1  17.0</span>
+<span class="co">#&gt;  5     5  NA    NA    23.1  NA    23.9</span>
+<span class="co">#&gt;  6     6  20.3  22.4  25.2  27.2  NA  </span>
+<span class="co">#&gt;  7     7  20.7  21.3  22.1  21.3  20.6</span>
+<span class="co">#&gt;  8     8  NA    22.1  20.1  NA    18.3</span>
+<span class="co">#&gt;  9     9  20.9  20.6  NA    21.4  22.9</span>
+<span class="co">#&gt; 10    10  21.8  21.5  21.7  NA    21.0</span>
 <span class="co">#&gt; # … with 990 more rows</span></pre></body></html></div>
 <p>It is also possible to return the lavaan syntax instead of simulating data for further manual specifications. The modified object could then be used to simulate data using <code><a href="https://rdrr.io/pkg/lavaan/man/simulateData.html">lavaan::simulateData()</a></code>.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>
