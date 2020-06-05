@@ -1,1 +1,41 @@
 destination: docs
+template:
+  params:
+    ganalytics: UA-113145816-4
+
+reference:
+- title: "Generate lavaan syntax for different model specifications"
+  contents:
+  - specify_uni_lcsm
+  - specify_bi_lcsm
+  
+- title: "Fit models using lavaan"
+  contents:
+  - fit_uni_lcsm
+  - fit_bi_lcsm
+  
+- title: "Extract results from models using broom"
+  contents:
+  - extract_fit
+  - extract_param
+
+- title: "Simulate data using lavaan"
+  contents:
+  - sim_uni_lcsm
+  - sim_bi_lcsm
+  
+- title: "Visualise data and simplified path models"
+  contents:
+  - plot_lcsm
+  - plot_trajectories
+  
+- title: "Helper functions"
+  contents:
+  - select_uni_cases
+  - select_bi_cases
+  - rename_lcsm_vars
+
+- title: "Datasets"
+  contents:
+  - data_uni_lcsm
+  - data_bi_lcsm

@@ -16,7 +16,13 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-113145816-4"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113145816-4');
+</script>
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
@@ -126,16 +132,16 @@
 <span class="co">#&gt; # A tibble: 1,000 x 6</span>
 <span class="co">#&gt;       id    x1    x2    x3    x4    x5</span>
 <span class="co">#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1     1  21.7  22.8  NA   NA    22.0 </span>
-<span class="co">#&gt;  2     2  21.1  20.6  20.1 19.7  NA   </span>
-<span class="co">#&gt;  3     3  NA    20.1  NA   NA    15.0 </span>
-<span class="co">#&gt;  4     4  20.5  21.0  21.1 NA    23.0 </span>
-<span class="co">#&gt;  5     5  22.0  20.2  18.1 15.6  NA   </span>
-<span class="co">#&gt;  6     6  21.1  NA    13.3  9.32  3.87</span>
-<span class="co">#&gt;  7     7  21.3  22.5  23.6 26.2  28.7 </span>
-<span class="co">#&gt;  8     8  19.8  22.1  NA   NA    NA   </span>
-<span class="co">#&gt;  9     9  22.0  22.0  21.8 NA    22.1 </span>
-<span class="co">#&gt; 10    10  21.4  20.5  NA   16.5  NA   </span>
+<span class="co">#&gt;  1     1  22.9  23.3  22.6  22.2 21.9 </span>
+<span class="co">#&gt;  2     2  22.3  21.3  NA    NA   21.0 </span>
+<span class="co">#&gt;  3     3  21.0  19.0  16.5  14.3 NA   </span>
+<span class="co">#&gt;  4     4  21.1  NA    NA    NA   28.0 </span>
+<span class="co">#&gt;  5     5  NA    NA    NA    23.5 22.6 </span>
+<span class="co">#&gt;  6     6  21.0  NA    26.0  28.2 30.6 </span>
+<span class="co">#&gt;  7     7  NA    23.0  22.4  22.0 22.7 </span>
+<span class="co">#&gt;  8     8  21.6  20.6  NA    18.9 17.7 </span>
+<span class="co">#&gt;  9     9  18.9  16.7  14.4  11.7  8.24</span>
+<span class="co">#&gt; 10    10  18.9  18.2  16.2  15.1 13.6 </span>
 <span class="co">#&gt; # … with 990 more rows</span></pre></body></html></div>
 <p>It is also possible to return the lavaan syntax instead of simulating data for further manual specifications. The modified object could then be used to simulate data using <code><a href="https://rdrr.io/pkg/lavaan/man/simulateData.html">lavaan::simulateData()</a></code>.</p>
 <div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>

@@ -23,7 +23,13 @@
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<![endif]--><!-- Global site tag (gtag.js) - Google Analytics --><script async src="https://www.googletagmanager.com/gtag/js?id=UA-113145816-4"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113145816-4');
+</script>
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-home">
@@ -111,8 +117,10 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the development version from <a href="https://github.com/milanwiedemann/lcsm">GitHub</a> with:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="co"># install.packages("devtools")</span>
+<p>You can install the released version of suddengains from <a href="https://CRAN.R-project.org/package=lcsm">CRAN</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"suddengains"</span>)</pre></div>
+<p>The development version can be installed from <a href="https://github.com/milanwiedemann/lcsm">GitHub</a> using:</p>
+<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># install.packages("devtools")</span>
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"milanwiedemann/lcsm"</span>)</pre></div>
 </div>
 <div id="overview-of-the-functions" class="section level2">
@@ -170,13 +178,13 @@
 <a href="#how-to-use-lcsm" class="anchor"></a>How to use <code>lcsm</code>
 </h2>
 <p>Here are a few examples how to use the <code>lcsm</code> package.</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># Load the package</span>
+<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># Load the package</span>
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lcsm</span>)</pre></div>
 <div id="visualise-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#visualise-data" class="anchor"></a>Visualise data</h3>
 <p>Longitudinal data can be visualised using the <code><a href="reference/plot_trajectories.html">plot_trajectories()</a></code> function. Here only 30% of the data is visualised using the argument <code>random_sample_frac = 0.3</code>. Only consecutive measures are connected by lines as specified in <code>connect_missing = FALSE</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="co"># Create plot for construct x</span>
+<div class="sourceCode" id="cb4"><pre class="r"><span class="co"># Create plot for construct x</span>
 <span class="no">plot_x</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/plot_trajectories.html">plot_trajectories</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
                             <span class="kw">id_var</span> <span class="kw">=</span> <span class="st">"id"</span>,
                             <span class="kw">var_list</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
@@ -232,7 +240,7 @@
 </tbody>
 </table>
 <p>The example below shows how to specify a generic univariate latent change score model using the function <code><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm()</a></code>. A table of the description of all parameters that can be estimated is shown <a href="#overview-of-estimated-lcs-model-parameters">here</a>.</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
+<div class="sourceCode" id="cb5"><pre class="r"><span class="fu"><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
                  <span class="kw">var</span> <span class="kw">=</span> <span class="st">"x"</span>,
                  <span class="kw">change_letter</span> <span class="kw">=</span> <span class="st">"g"</span>,
                  <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
@@ -241,76 +249,76 @@
 <details><p><summary>Click here to see the <code>lavaan</code> syntax specified above.</summary></p>
 <p>
 </p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co"># Specify latent true scores </span></span>
-<span id="cb5-2"><a href="#cb5-2"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb5-3"><a href="#cb5-3"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb5-4"><a href="#cb5-4"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb5-5"><a href="#cb5-5"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb5-6"><a href="#cb5-6"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co"># Specify mean of latent true scores </span></span>
-<span id="cb5-8"><a href="#cb5-8"></a>lx1 <span class="op">~</span><span class="st"> </span>gamma_lx1 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-9"><a href="#cb5-9"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-10"><a href="#cb5-10"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-11"><a href="#cb5-11"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-12"><a href="#cb5-12"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-13"><a href="#cb5-13"></a><span class="co"># Specify variance of latent true scores </span></span>
-<span id="cb5-14"><a href="#cb5-14"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_lx1 <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb5-15"><a href="#cb5-15"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb5-16"><a href="#cb5-16"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb5-17"><a href="#cb5-17"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb5-18"><a href="#cb5-18"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb5-19"><a href="#cb5-19"></a><span class="co"># Specify intercept of obseved scores </span></span>
-<span id="cb5-20"><a href="#cb5-20"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-21"><a href="#cb5-21"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-22"><a href="#cb5-22"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-23"><a href="#cb5-23"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-24"><a href="#cb5-24"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-25"><a href="#cb5-25"></a><span class="co"># Specify variance of observed scores </span></span>
-<span id="cb5-26"><a href="#cb5-26"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb5-27"><a href="#cb5-27"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb5-28"><a href="#cb5-28"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb5-29"><a href="#cb5-29"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb5-30"><a href="#cb5-30"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb5-31"><a href="#cb5-31"></a><span class="co"># Specify autoregressions of latent variables </span></span>
-<span id="cb5-32"><a href="#cb5-32"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb5-33"><a href="#cb5-33"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb5-34"><a href="#cb5-34"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb5-35"><a href="#cb5-35"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb5-36"><a href="#cb5-36"></a><span class="co"># Specify latent change scores </span></span>
-<span id="cb5-37"><a href="#cb5-37"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb5-38"><a href="#cb5-38"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb5-39"><a href="#cb5-39"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb5-40"><a href="#cb5-40"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb5-41"><a href="#cb5-41"></a><span class="co"># Specify latent change scores means </span></span>
-<span id="cb5-42"><a href="#cb5-42"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-43"><a href="#cb5-43"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-44"><a href="#cb5-44"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-45"><a href="#cb5-45"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-46"><a href="#cb5-46"></a><span class="co"># Specify latent change scores variances </span></span>
-<span id="cb5-47"><a href="#cb5-47"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb5-48"><a href="#cb5-48"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb5-49"><a href="#cb5-49"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
-<span id="cb5-50"><a href="#cb5-50"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb5-51"><a href="#cb5-51"></a><span class="co"># Specify constant change factor </span></span>
-<span id="cb5-52"><a href="#cb5-52"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb5-53"><a href="#cb5-53"></a><span class="co"># Specify constant change factor mean </span></span>
-<span id="cb5-54"><a href="#cb5-54"></a>g2 <span class="op">~</span><span class="st"> </span>alpha_g2 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb5-55"><a href="#cb5-55"></a><span class="co"># Specify constant change factor variance </span></span>
-<span id="cb5-56"><a href="#cb5-56"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_g2 <span class="op">*</span><span class="st"> </span>g2 </span>
-<span id="cb5-57"><a href="#cb5-57"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
-<span id="cb5-58"><a href="#cb5-58"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma_g2lx1 <span class="op">*</span><span class="st"> </span>lx1</span>
-<span id="cb5-59"><a href="#cb5-59"></a><span class="co"># Specify proportional change component </span></span>
-<span id="cb5-60"><a href="#cb5-60"></a>dx2 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb5-61"><a href="#cb5-61"></a>dx3 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb5-62"><a href="#cb5-62"></a>dx4 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb5-63"><a href="#cb5-63"></a>dx5 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb5-64"><a href="#cb5-64"></a><span class="co"># Specify autoregression of change score </span></span>
-<span id="cb5-65"><a href="#cb5-65"></a>dx3 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb5-66"><a href="#cb5-66"></a>dx4 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb5-67"><a href="#cb5-67"></a>dx5 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx4 </span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co"># Specify latent true scores </span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb6-3"><a href="#cb6-3"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb6-4"><a href="#cb6-4"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb6-5"><a href="#cb6-5"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb6-6"><a href="#cb6-6"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co"># Specify mean of latent true scores </span></span>
+<span id="cb6-8"><a href="#cb6-8"></a>lx1 <span class="op">~</span><span class="st"> </span>gamma_lx1 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-9"><a href="#cb6-9"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-10"><a href="#cb6-10"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-11"><a href="#cb6-11"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-12"><a href="#cb6-12"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co"># Specify variance of latent true scores </span></span>
+<span id="cb6-14"><a href="#cb6-14"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_lx1 <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb6-15"><a href="#cb6-15"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb6-16"><a href="#cb6-16"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb6-17"><a href="#cb6-17"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb6-18"><a href="#cb6-18"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb6-19"><a href="#cb6-19"></a><span class="co"># Specify intercept of obseved scores </span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-21"><a href="#cb6-21"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-22"><a href="#cb6-22"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-23"><a href="#cb6-23"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-24"><a href="#cb6-24"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-25"><a href="#cb6-25"></a><span class="co"># Specify variance of observed scores </span></span>
+<span id="cb6-26"><a href="#cb6-26"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb6-27"><a href="#cb6-27"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb6-28"><a href="#cb6-28"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb6-29"><a href="#cb6-29"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb6-30"><a href="#cb6-30"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb6-31"><a href="#cb6-31"></a><span class="co"># Specify autoregressions of latent variables </span></span>
+<span id="cb6-32"><a href="#cb6-32"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb6-33"><a href="#cb6-33"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb6-34"><a href="#cb6-34"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb6-35"><a href="#cb6-35"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb6-36"><a href="#cb6-36"></a><span class="co"># Specify latent change scores </span></span>
+<span id="cb6-37"><a href="#cb6-37"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb6-38"><a href="#cb6-38"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb6-39"><a href="#cb6-39"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb6-40"><a href="#cb6-40"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb6-41"><a href="#cb6-41"></a><span class="co"># Specify latent change scores means </span></span>
+<span id="cb6-42"><a href="#cb6-42"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-43"><a href="#cb6-43"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-44"><a href="#cb6-44"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-45"><a href="#cb6-45"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-46"><a href="#cb6-46"></a><span class="co"># Specify latent change scores variances </span></span>
+<span id="cb6-47"><a href="#cb6-47"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb6-48"><a href="#cb6-48"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb6-49"><a href="#cb6-49"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
+<span id="cb6-50"><a href="#cb6-50"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb6-51"><a href="#cb6-51"></a><span class="co"># Specify constant change factor </span></span>
+<span id="cb6-52"><a href="#cb6-52"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb6-53"><a href="#cb6-53"></a><span class="co"># Specify constant change factor mean </span></span>
+<span id="cb6-54"><a href="#cb6-54"></a>g2 <span class="op">~</span><span class="st"> </span>alpha_g2 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb6-55"><a href="#cb6-55"></a><span class="co"># Specify constant change factor variance </span></span>
+<span id="cb6-56"><a href="#cb6-56"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_g2 <span class="op">*</span><span class="st"> </span>g2 </span>
+<span id="cb6-57"><a href="#cb6-57"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
+<span id="cb6-58"><a href="#cb6-58"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma_g2lx1 <span class="op">*</span><span class="st"> </span>lx1</span>
+<span id="cb6-59"><a href="#cb6-59"></a><span class="co"># Specify proportional change component </span></span>
+<span id="cb6-60"><a href="#cb6-60"></a>dx2 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb6-61"><a href="#cb6-61"></a>dx3 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb6-62"><a href="#cb6-62"></a>dx4 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb6-63"><a href="#cb6-63"></a>dx5 <span class="op">~</span><span class="st"> </span>beta_x <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb6-64"><a href="#cb6-64"></a><span class="co"># Specify autoregression of change score </span></span>
+<span id="cb6-65"><a href="#cb6-65"></a>dx3 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb6-66"><a href="#cb6-66"></a>dx4 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb6-67"><a href="#cb6-67"></a>dx5 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx4 </span></code></pre></div>
 
 </details><p>The function <code><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm()</a></code> can be used to fit a univariate LCS model using the sample data set <code>data_uni_lcsm</code>. This functions first writes the lavaan syntax specified in the <code>model</code> argument and passes it on to <code>lavaaan::lavaan()</code>.</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="co"># Fit univariate latent change score model</span>
+<div class="sourceCode" id="cb7"><pre class="r"><span class="co"># Fit univariate latent change score model</span>
 <span class="fu"><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
              <span class="kw">var</span> <span class="kw">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
                       <span class="st">"x6"</span>, <span class="st">"x7"</span>, <span class="st">"x8"</span>, <span class="st">"x9"</span>, <span class="st">"x10"</span>),
@@ -335,7 +343,7 @@
 <span class="co">#&gt;   Scaling correction factor                                   1.013</span>
 <span class="co">#&gt;        Yuan-Bentler correction (Mplus variant)</span></pre></div>
 <p>It is also possible to show the lavaan syntax that was created to fit the model by the function <code><a href="reference/specify_uni_lcsm.html">specify_uni_lcsm()</a></code>. The lavaan syntax includes comments describing some parts of the syntax in more detail. To save the syntax in an object the argument <code>return_lavaan_syntax</code> has to be set to <code>TRUE</code>. This object looks a bit funny, it’s one very long line of text, but can be formatted to look more beautiful and readable using <code><a href="https://rdrr.io/r/base/cat.html">cat(syntax)</a></code>.</p>
-<div class="sourceCode" id="cb7"><pre class="r"><span class="co"># Fit univariate latent change score model</span>
+<div class="sourceCode" id="cb8"><pre class="r"><span class="co"># Fit univariate latent change score model</span>
 <span class="no">syntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
                        <span class="kw">var</span> <span class="kw">=</span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
                                 <span class="st">"x6"</span>, <span class="st">"x7"</span>, <span class="st">"x8"</span>, <span class="st">"x9"</span>, <span class="st">"x10"</span>),
@@ -349,118 +357,118 @@
 <details><p><summary>Click here to see the lavaan syntax specified in <code>syntax</code>.</summary></p>
 <p>
 </p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a><span class="co"># Specify latent true scores </span></span>
-<span id="cb8-2"><a href="#cb8-2"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb8-3"><a href="#cb8-3"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb8-4"><a href="#cb8-4"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb8-5"><a href="#cb8-5"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb8-6"><a href="#cb8-6"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb8-7"><a href="#cb8-7"></a>lx6 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x6 </span>
-<span id="cb8-8"><a href="#cb8-8"></a>lx7 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x7 </span>
-<span id="cb8-9"><a href="#cb8-9"></a>lx8 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x8 </span>
-<span id="cb8-10"><a href="#cb8-10"></a>lx9 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x9 </span>
-<span id="cb8-11"><a href="#cb8-11"></a>lx10 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x10 </span>
-<span id="cb8-12"><a href="#cb8-12"></a><span class="co"># Specify mean of latent true scores </span></span>
-<span id="cb8-13"><a href="#cb8-13"></a>lx1 <span class="op">~</span><span class="st"> </span>gamma_lx1 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-14"><a href="#cb8-14"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-15"><a href="#cb8-15"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-16"><a href="#cb8-16"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-17"><a href="#cb8-17"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-18"><a href="#cb8-18"></a>lx6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-19"><a href="#cb8-19"></a>lx7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-20"><a href="#cb8-20"></a>lx8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-21"><a href="#cb8-21"></a>lx9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-22"><a href="#cb8-22"></a>lx10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-23"><a href="#cb8-23"></a><span class="co"># Specify variance of latent true scores </span></span>
-<span id="cb8-24"><a href="#cb8-24"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_lx1 <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb8-25"><a href="#cb8-25"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb8-26"><a href="#cb8-26"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb8-27"><a href="#cb8-27"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb8-28"><a href="#cb8-28"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb8-29"><a href="#cb8-29"></a>lx6 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
-<span id="cb8-30"><a href="#cb8-30"></a>lx7 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
-<span id="cb8-31"><a href="#cb8-31"></a>lx8 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
-<span id="cb8-32"><a href="#cb8-32"></a>lx9 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
-<span id="cb8-33"><a href="#cb8-33"></a>lx10 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx10 </span>
-<span id="cb8-34"><a href="#cb8-34"></a><span class="co"># Specify intercept of obseved scores </span></span>
-<span id="cb8-35"><a href="#cb8-35"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-36"><a href="#cb8-36"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-37"><a href="#cb8-37"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-38"><a href="#cb8-38"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-39"><a href="#cb8-39"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-40"><a href="#cb8-40"></a>x6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-41"><a href="#cb8-41"></a>x7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-42"><a href="#cb8-42"></a>x8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-43"><a href="#cb8-43"></a>x9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-44"><a href="#cb8-44"></a>x10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-45"><a href="#cb8-45"></a><span class="co"># Specify variance of observed scores </span></span>
-<span id="cb8-46"><a href="#cb8-46"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb8-47"><a href="#cb8-47"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb8-48"><a href="#cb8-48"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb8-49"><a href="#cb8-49"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb8-50"><a href="#cb8-50"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb8-51"><a href="#cb8-51"></a>x6 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x6 </span>
-<span id="cb8-52"><a href="#cb8-52"></a>x7 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x7 </span>
-<span id="cb8-53"><a href="#cb8-53"></a>x8 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x8 </span>
-<span id="cb8-54"><a href="#cb8-54"></a>x9 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x9 </span>
-<span id="cb8-55"><a href="#cb8-55"></a>x10 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x10 </span>
-<span id="cb8-56"><a href="#cb8-56"></a><span class="co"># Specify autoregressions of latent variables </span></span>
-<span id="cb8-57"><a href="#cb8-57"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb8-58"><a href="#cb8-58"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb8-59"><a href="#cb8-59"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb8-60"><a href="#cb8-60"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb8-61"><a href="#cb8-61"></a>lx6 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb8-62"><a href="#cb8-62"></a>lx7 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
-<span id="cb8-63"><a href="#cb8-63"></a>lx8 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
-<span id="cb8-64"><a href="#cb8-64"></a>lx9 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
-<span id="cb8-65"><a href="#cb8-65"></a>lx10 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
-<span id="cb8-66"><a href="#cb8-66"></a><span class="co"># Specify latent change scores </span></span>
-<span id="cb8-67"><a href="#cb8-67"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb8-68"><a href="#cb8-68"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb8-69"><a href="#cb8-69"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb8-70"><a href="#cb8-70"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb8-71"><a href="#cb8-71"></a>dx6 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
-<span id="cb8-72"><a href="#cb8-72"></a>dx7 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
-<span id="cb8-73"><a href="#cb8-73"></a>dx8 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
-<span id="cb8-74"><a href="#cb8-74"></a>dx9 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
-<span id="cb8-75"><a href="#cb8-75"></a>dx10 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx10 </span>
-<span id="cb8-76"><a href="#cb8-76"></a><span class="co"># Specify latent change scores means </span></span>
-<span id="cb8-77"><a href="#cb8-77"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-78"><a href="#cb8-78"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-79"><a href="#cb8-79"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-80"><a href="#cb8-80"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-81"><a href="#cb8-81"></a>dx6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-82"><a href="#cb8-82"></a>dx7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-83"><a href="#cb8-83"></a>dx8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-84"><a href="#cb8-84"></a>dx9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-85"><a href="#cb8-85"></a>dx10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-86"><a href="#cb8-86"></a><span class="co"># Specify latent change scores variances </span></span>
-<span id="cb8-87"><a href="#cb8-87"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb8-88"><a href="#cb8-88"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb8-89"><a href="#cb8-89"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
-<span id="cb8-90"><a href="#cb8-90"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb8-91"><a href="#cb8-91"></a>dx6 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx6 </span>
-<span id="cb8-92"><a href="#cb8-92"></a>dx7 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx7 </span>
-<span id="cb8-93"><a href="#cb8-93"></a>dx8 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx8 </span>
-<span id="cb8-94"><a href="#cb8-94"></a>dx9 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx9 </span>
-<span id="cb8-95"><a href="#cb8-95"></a>dx10 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx10 </span>
-<span id="cb8-96"><a href="#cb8-96"></a><span class="co"># Specify constant change factor </span></span>
-<span id="cb8-97"><a href="#cb8-97"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx6 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx7 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx8 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx9 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx10 </span>
-<span id="cb8-98"><a href="#cb8-98"></a><span class="co"># Specify constant change factor mean </span></span>
-<span id="cb8-99"><a href="#cb8-99"></a>g2 <span class="op">~</span><span class="st"> </span>alpha_g2 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb8-100"><a href="#cb8-100"></a><span class="co"># Specify constant change factor variance </span></span>
-<span id="cb8-101"><a href="#cb8-101"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_g2 <span class="op">*</span><span class="st"> </span>g2 </span>
-<span id="cb8-102"><a href="#cb8-102"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
-<span id="cb8-103"><a href="#cb8-103"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma_g2lx1 <span class="op">*</span><span class="st"> </span>lx1</span>
-<span id="cb8-104"><a href="#cb8-104"></a><span class="co"># Specify autoregression of change score </span></span>
-<span id="cb8-105"><a href="#cb8-105"></a>dx3 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb8-106"><a href="#cb8-106"></a>dx4 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb8-107"><a href="#cb8-107"></a>dx5 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx4 </span>
-<span id="cb8-108"><a href="#cb8-108"></a>dx6 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb8-109"><a href="#cb8-109"></a>dx7 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx6 </span>
-<span id="cb8-110"><a href="#cb8-110"></a>dx8 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx7 </span>
-<span id="cb8-111"><a href="#cb8-111"></a>dx9 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx8 </span>
-<span id="cb8-112"><a href="#cb8-112"></a>dx10 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx9 </span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># Specify latent true scores </span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb9-3"><a href="#cb9-3"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb9-4"><a href="#cb9-4"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb9-5"><a href="#cb9-5"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb9-6"><a href="#cb9-6"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb9-7"><a href="#cb9-7"></a>lx6 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x6 </span>
+<span id="cb9-8"><a href="#cb9-8"></a>lx7 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x7 </span>
+<span id="cb9-9"><a href="#cb9-9"></a>lx8 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x8 </span>
+<span id="cb9-10"><a href="#cb9-10"></a>lx9 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x9 </span>
+<span id="cb9-11"><a href="#cb9-11"></a>lx10 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x10 </span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co"># Specify mean of latent true scores </span></span>
+<span id="cb9-13"><a href="#cb9-13"></a>lx1 <span class="op">~</span><span class="st"> </span>gamma_lx1 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-14"><a href="#cb9-14"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-15"><a href="#cb9-15"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-16"><a href="#cb9-16"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-17"><a href="#cb9-17"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-18"><a href="#cb9-18"></a>lx6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-19"><a href="#cb9-19"></a>lx7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-20"><a href="#cb9-20"></a>lx8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-21"><a href="#cb9-21"></a>lx9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-22"><a href="#cb9-22"></a>lx10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="co"># Specify variance of latent true scores </span></span>
+<span id="cb9-24"><a href="#cb9-24"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_lx1 <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb9-25"><a href="#cb9-25"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb9-26"><a href="#cb9-26"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb9-27"><a href="#cb9-27"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb9-28"><a href="#cb9-28"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb9-29"><a href="#cb9-29"></a>lx6 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
+<span id="cb9-30"><a href="#cb9-30"></a>lx7 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
+<span id="cb9-31"><a href="#cb9-31"></a>lx8 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
+<span id="cb9-32"><a href="#cb9-32"></a>lx9 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
+<span id="cb9-33"><a href="#cb9-33"></a>lx10 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx10 </span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="co"># Specify intercept of obseved scores </span></span>
+<span id="cb9-35"><a href="#cb9-35"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-36"><a href="#cb9-36"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-37"><a href="#cb9-37"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-38"><a href="#cb9-38"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-39"><a href="#cb9-39"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-40"><a href="#cb9-40"></a>x6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-41"><a href="#cb9-41"></a>x7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-42"><a href="#cb9-42"></a>x8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-43"><a href="#cb9-43"></a>x9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-44"><a href="#cb9-44"></a>x10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-45"><a href="#cb9-45"></a><span class="co"># Specify variance of observed scores </span></span>
+<span id="cb9-46"><a href="#cb9-46"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb9-47"><a href="#cb9-47"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb9-48"><a href="#cb9-48"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb9-49"><a href="#cb9-49"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb9-50"><a href="#cb9-50"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb9-51"><a href="#cb9-51"></a>x6 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x6 </span>
+<span id="cb9-52"><a href="#cb9-52"></a>x7 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x7 </span>
+<span id="cb9-53"><a href="#cb9-53"></a>x8 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x8 </span>
+<span id="cb9-54"><a href="#cb9-54"></a>x9 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x9 </span>
+<span id="cb9-55"><a href="#cb9-55"></a>x10 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_ux <span class="op">*</span><span class="st"> </span>x10 </span>
+<span id="cb9-56"><a href="#cb9-56"></a><span class="co"># Specify autoregressions of latent variables </span></span>
+<span id="cb9-57"><a href="#cb9-57"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb9-58"><a href="#cb9-58"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb9-59"><a href="#cb9-59"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb9-60"><a href="#cb9-60"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb9-61"><a href="#cb9-61"></a>lx6 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb9-62"><a href="#cb9-62"></a>lx7 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
+<span id="cb9-63"><a href="#cb9-63"></a>lx8 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
+<span id="cb9-64"><a href="#cb9-64"></a>lx9 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
+<span id="cb9-65"><a href="#cb9-65"></a>lx10 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
+<span id="cb9-66"><a href="#cb9-66"></a><span class="co"># Specify latent change scores </span></span>
+<span id="cb9-67"><a href="#cb9-67"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb9-68"><a href="#cb9-68"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb9-69"><a href="#cb9-69"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb9-70"><a href="#cb9-70"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb9-71"><a href="#cb9-71"></a>dx6 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx6 </span>
+<span id="cb9-72"><a href="#cb9-72"></a>dx7 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx7 </span>
+<span id="cb9-73"><a href="#cb9-73"></a>dx8 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx8 </span>
+<span id="cb9-74"><a href="#cb9-74"></a>dx9 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx9 </span>
+<span id="cb9-75"><a href="#cb9-75"></a>dx10 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx10 </span>
+<span id="cb9-76"><a href="#cb9-76"></a><span class="co"># Specify latent change scores means </span></span>
+<span id="cb9-77"><a href="#cb9-77"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-78"><a href="#cb9-78"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-79"><a href="#cb9-79"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-80"><a href="#cb9-80"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-81"><a href="#cb9-81"></a>dx6 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-82"><a href="#cb9-82"></a>dx7 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-83"><a href="#cb9-83"></a>dx8 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-84"><a href="#cb9-84"></a>dx9 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-85"><a href="#cb9-85"></a>dx10 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-86"><a href="#cb9-86"></a><span class="co"># Specify latent change scores variances </span></span>
+<span id="cb9-87"><a href="#cb9-87"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb9-88"><a href="#cb9-88"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb9-89"><a href="#cb9-89"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
+<span id="cb9-90"><a href="#cb9-90"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb9-91"><a href="#cb9-91"></a>dx6 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx6 </span>
+<span id="cb9-92"><a href="#cb9-92"></a>dx7 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx7 </span>
+<span id="cb9-93"><a href="#cb9-93"></a>dx8 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx8 </span>
+<span id="cb9-94"><a href="#cb9-94"></a>dx9 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx9 </span>
+<span id="cb9-95"><a href="#cb9-95"></a>dx10 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx10 </span>
+<span id="cb9-96"><a href="#cb9-96"></a><span class="co"># Specify constant change factor </span></span>
+<span id="cb9-97"><a href="#cb9-97"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx6 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx7 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx8 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx9 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx10 </span>
+<span id="cb9-98"><a href="#cb9-98"></a><span class="co"># Specify constant change factor mean </span></span>
+<span id="cb9-99"><a href="#cb9-99"></a>g2 <span class="op">~</span><span class="st"> </span>alpha_g2 <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb9-100"><a href="#cb9-100"></a><span class="co"># Specify constant change factor variance </span></span>
+<span id="cb9-101"><a href="#cb9-101"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma2_g2 <span class="op">*</span><span class="st"> </span>g2 </span>
+<span id="cb9-102"><a href="#cb9-102"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
+<span id="cb9-103"><a href="#cb9-103"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span>sigma_g2lx1 <span class="op">*</span><span class="st"> </span>lx1</span>
+<span id="cb9-104"><a href="#cb9-104"></a><span class="co"># Specify autoregression of change score </span></span>
+<span id="cb9-105"><a href="#cb9-105"></a>dx3 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb9-106"><a href="#cb9-106"></a>dx4 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb9-107"><a href="#cb9-107"></a>dx5 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx4 </span>
+<span id="cb9-108"><a href="#cb9-108"></a>dx6 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb9-109"><a href="#cb9-109"></a>dx7 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx6 </span>
+<span id="cb9-110"><a href="#cb9-110"></a>dx8 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx7 </span>
+<span id="cb9-111"><a href="#cb9-111"></a>dx9 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx8 </span>
+<span id="cb9-112"><a href="#cb9-112"></a>dx10 <span class="op">~</span><span class="st"> </span>phi_x <span class="op">*</span><span class="st"> </span>dx9 </span></code></pre></div>
 
 </details>
 </div>
@@ -516,7 +524,7 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb9"><pre class="r"><span class="fu"><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
+<div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
             <span class="kw">var_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
                       <span class="st">"x6"</span>, <span class="st">"x7"</span>, <span class="st">"x8"</span>, <span class="st">"x9"</span>, <span class="st">"x10"</span>),
             <span class="kw">var_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span>,
@@ -556,10 +564,10 @@
 <li>
 <code><a href="reference/extract_param.html">extract_param()</a></code>: only one row per estimated parameter,</li>
 <li>
-<code><a href="reference/extract_fit.html">extract_fit()</a></code>: fit statistics for multiple lavaan objects can be extracted.</li>
+<code><a href="reference/extract_fit.html">extract_fit()</a></code>: fit statistics for multiple <code>lavaan</code> objects can be extracted.</li>
 </ul>
 <p>A table of the description of all parameters that can be estimated is shown <a href="#overview-of-estimated-lcs-model-parameters">here</a>.</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="co"># First create a lavaan object</span>
+<div class="sourceCode" id="cb11"><pre class="r"><span class="co"># First create a lavaan object</span>
 <span class="no">bi_lcsm_01</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
                           <span class="kw">var_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>,
                                     <span class="st">"x6"</span>, <span class="st">"x7"</span>, <span class="st">"x8"</span>, <span class="st">"x9"</span>, <span class="st">"x10"</span>),
@@ -795,7 +803,7 @@
 <div id="plot-simplified-path-diagrams-of-lcs-models" class="section level3">
 <h3 class="hasAnchor">
 <a href="#plot-simplified-path-diagrams-of-lcs-models" class="anchor"></a>Plot simplified path diagrams of LCS models</h3>
-<p>This function is work in progress and can only plot univariate and bivariate LCS models that were specified with <code><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm()</a></code> or <code><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm()</a></code>. Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package. The input arguments for plotting a simplified path dioagram are:</p>
+<p>This function is work in progress and can only plot univariate and bivariate LCS models that were specified with <code><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm()</a></code> or <code><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm()</a></code>. Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package. The input arguments for plotting a simplified path diagram are:</p>
 <ul>
 <li>the estimated lavaan object <code>lavaan_object</code>,</li>
 <li>the <code>lavaan_syntax</code> and ,</li>
@@ -825,7 +833,7 @@
 <div id="univariate-lcs-model" class="section level4">
 <h4 class="hasAnchor">
 <a href="#univariate-lcs-model" class="anchor"></a>Univariate LCS model</h4>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
+<div class="sourceCode" id="cb12"><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
 <span class="no">uni_lavaan_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
                                    <span class="kw">var</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
                                    <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
@@ -858,7 +866,7 @@
 <div id="bivariate-lcs-model" class="section level4">
 <h4 class="hasAnchor">
 <a href="#bivariate-lcs-model" class="anchor"></a>Bivariate LCS model</h4>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
+<div class="sourceCode" id="cb13"><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
 <span class="no">bi_lavaan_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
                                  <span class="kw">var_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
                                  <span class="kw">var_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span>),
@@ -898,7 +906,7 @@
 <h3 class="hasAnchor">
 <a href="#simulate-data" class="anchor"></a>Simulate data</h3>
 <p>The functions <code><a href="reference/sim_uni_lcsm.html">sim_uni_lcsm()</a></code> and <code><a href="reference/sim_bi_lcsm.html">sim_bi_lcsm()</a></code> simulate data based on some some parameters that can be specified. See the tables <a href="#overview-of-estimated-lcs-model-parameters">here</a> for a full list of parameters that can be specified for the data simulation.</p>
-<div class="sourceCode" id="cb13"><pre class="r"><span class="co"># Simulate some data </span>
+<div class="sourceCode" id="cb14"><pre class="r"><span class="co"># Simulate some data </span>
 <span class="fu"><a href="reference/sim_uni_lcsm.html">sim_uni_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
              <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">FALSE</span>, <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
              <span class="kw">model_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">gamma_lx1</span> <span class="kw">=</span> <span class="fl">21</span>,
@@ -930,7 +938,7 @@
 <span class="co">#&gt; 10    10  NA    22.3  NA    22.2  22.4</span>
 <span class="co">#&gt; # … with 990 more rows</span></pre></div>
 <p>It is also possible to return the lavaan syntax instead of simulating data for further manual specifications. The modified object could then be used to simulate data using <code><a href="https://rdrr.io/pkg/lavaan/man/simulateData.html">lavaan::simulateData()</a></code>.</p>
-<div class="sourceCode" id="cb14"><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>
+<div class="sourceCode" id="cb15"><pre class="r"><span class="co"># Return lavaan syntax based on the following argument specifications</span>
 <span class="no">simsyntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/sim_bi_lcsm.html">sim_bi_lcsm</a></span>(<span class="kw">timepoints</span> <span class="kw">=</span> <span class="fl">5</span>,
                          <span class="kw">model_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>, <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
                          <span class="kw">model_x_param</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">gamma_lx1</span> <span class="kw">=</span> <span class="fl">21</span>,
@@ -962,163 +970,163 @@
 <details><p><summary>Click here to see the lavaan syntax specified in <code>simsyntax</code>.</summary></p>
 <p>
 </p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="co"># Specify parameters for construct x ----</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="co"># Specify latent true scores </span></span>
-<span id="cb15-3"><a href="#cb15-3"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb15-4"><a href="#cb15-4"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb15-5"><a href="#cb15-5"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb15-6"><a href="#cb15-6"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb15-7"><a href="#cb15-7"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb15-8"><a href="#cb15-8"></a><span class="co"># Specify mean of latent true scores </span></span>
-<span id="cb15-9"><a href="#cb15-9"></a>lx1 <span class="op">~</span><span class="st"> </span><span class="dv">21</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-10"><a href="#cb15-10"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-11"><a href="#cb15-11"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-12"><a href="#cb15-12"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-13"><a href="#cb15-13"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-14"><a href="#cb15-14"></a><span class="co"># Specify variance of latent true scores </span></span>
-<span id="cb15-15"><a href="#cb15-15"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb15-16"><a href="#cb15-16"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb15-17"><a href="#cb15-17"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb15-18"><a href="#cb15-18"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb15-19"><a href="#cb15-19"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb15-20"><a href="#cb15-20"></a><span class="co"># Specify intercept of obseved scores </span></span>
-<span id="cb15-21"><a href="#cb15-21"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-22"><a href="#cb15-22"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-23"><a href="#cb15-23"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-24"><a href="#cb15-24"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-25"><a href="#cb15-25"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-26"><a href="#cb15-26"></a><span class="co"># Specify variance of observed scores </span></span>
-<span id="cb15-27"><a href="#cb15-27"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x1 </span>
-<span id="cb15-28"><a href="#cb15-28"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x2 </span>
-<span id="cb15-29"><a href="#cb15-29"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x3 </span>
-<span id="cb15-30"><a href="#cb15-30"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x4 </span>
-<span id="cb15-31"><a href="#cb15-31"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x5 </span>
-<span id="cb15-32"><a href="#cb15-32"></a><span class="co"># Specify autoregressions of latent variables </span></span>
-<span id="cb15-33"><a href="#cb15-33"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb15-34"><a href="#cb15-34"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb15-35"><a href="#cb15-35"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb15-36"><a href="#cb15-36"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb15-37"><a href="#cb15-37"></a><span class="co"># Specify latent change scores </span></span>
-<span id="cb15-38"><a href="#cb15-38"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb15-39"><a href="#cb15-39"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb15-40"><a href="#cb15-40"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb15-41"><a href="#cb15-41"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
-<span id="cb15-42"><a href="#cb15-42"></a><span class="co"># Specify latent change scores means </span></span>
-<span id="cb15-43"><a href="#cb15-43"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-44"><a href="#cb15-44"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-45"><a href="#cb15-45"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-46"><a href="#cb15-46"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-47"><a href="#cb15-47"></a><span class="co"># Specify latent change scores variances </span></span>
-<span id="cb15-48"><a href="#cb15-48"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb15-49"><a href="#cb15-49"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb15-50"><a href="#cb15-50"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
-<span id="cb15-51"><a href="#cb15-51"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb15-52"><a href="#cb15-52"></a><span class="co"># Specify constant change factor </span></span>
-<span id="cb15-53"><a href="#cb15-53"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
-<span id="cb15-54"><a href="#cb15-54"></a><span class="co"># Specify constant change factor mean </span></span>
-<span id="cb15-55"><a href="#cb15-55"></a>g2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.4</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-56"><a href="#cb15-56"></a><span class="co"># Specify constant change factor variance </span></span>
-<span id="cb15-57"><a href="#cb15-57"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>g2 </span>
-<span id="cb15-58"><a href="#cb15-58"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
-<span id="cb15-59"><a href="#cb15-59"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>lx1</span>
-<span id="cb15-60"><a href="#cb15-60"></a><span class="co"># Specify proportional change component </span></span>
-<span id="cb15-61"><a href="#cb15-61"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
-<span id="cb15-62"><a href="#cb15-62"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
-<span id="cb15-63"><a href="#cb15-63"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
-<span id="cb15-64"><a href="#cb15-64"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
-<span id="cb15-65"><a href="#cb15-65"></a><span class="co"># Specify parameters for construct y ----</span></span>
-<span id="cb15-66"><a href="#cb15-66"></a><span class="co"># Specify latent true scores </span></span>
-<span id="cb15-67"><a href="#cb15-67"></a>ly1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y1 </span>
-<span id="cb15-68"><a href="#cb15-68"></a>ly2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y2 </span>
-<span id="cb15-69"><a href="#cb15-69"></a>ly3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y3 </span>
-<span id="cb15-70"><a href="#cb15-70"></a>ly4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y4 </span>
-<span id="cb15-71"><a href="#cb15-71"></a>ly5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y5 </span>
-<span id="cb15-72"><a href="#cb15-72"></a><span class="co"># Specify mean of latent true scores </span></span>
-<span id="cb15-73"><a href="#cb15-73"></a>ly1 <span class="op">~</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-74"><a href="#cb15-74"></a>ly2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-75"><a href="#cb15-75"></a>ly3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-76"><a href="#cb15-76"></a>ly4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-77"><a href="#cb15-77"></a>ly5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-78"><a href="#cb15-78"></a><span class="co"># Specify variance of latent true scores </span></span>
-<span id="cb15-79"><a href="#cb15-79"></a>ly1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
-<span id="cb15-80"><a href="#cb15-80"></a>ly2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
-<span id="cb15-81"><a href="#cb15-81"></a>ly3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
-<span id="cb15-82"><a href="#cb15-82"></a>ly4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
-<span id="cb15-83"><a href="#cb15-83"></a>ly5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly5 </span>
-<span id="cb15-84"><a href="#cb15-84"></a><span class="co"># Specify intercept of obseved scores </span></span>
-<span id="cb15-85"><a href="#cb15-85"></a>y1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-86"><a href="#cb15-86"></a>y2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-87"><a href="#cb15-87"></a>y3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-88"><a href="#cb15-88"></a>y4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-89"><a href="#cb15-89"></a>y5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-90"><a href="#cb15-90"></a><span class="co"># Specify variance of observed scores </span></span>
-<span id="cb15-91"><a href="#cb15-91"></a>y1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y1 </span>
-<span id="cb15-92"><a href="#cb15-92"></a>y2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y2 </span>
-<span id="cb15-93"><a href="#cb15-93"></a>y3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y3 </span>
-<span id="cb15-94"><a href="#cb15-94"></a>y4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y4 </span>
-<span id="cb15-95"><a href="#cb15-95"></a>y5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y5 </span>
-<span id="cb15-96"><a href="#cb15-96"></a><span class="co"># Specify autoregressions of latent variables </span></span>
-<span id="cb15-97"><a href="#cb15-97"></a>ly2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
-<span id="cb15-98"><a href="#cb15-98"></a>ly3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
-<span id="cb15-99"><a href="#cb15-99"></a>ly4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
-<span id="cb15-100"><a href="#cb15-100"></a>ly5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
-<span id="cb15-101"><a href="#cb15-101"></a><span class="co"># Specify latent change scores </span></span>
-<span id="cb15-102"><a href="#cb15-102"></a>dy2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
-<span id="cb15-103"><a href="#cb15-103"></a>dy3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
-<span id="cb15-104"><a href="#cb15-104"></a>dy4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
-<span id="cb15-105"><a href="#cb15-105"></a>dy5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly5 </span>
-<span id="cb15-106"><a href="#cb15-106"></a><span class="co"># Specify latent change scores means </span></span>
-<span id="cb15-107"><a href="#cb15-107"></a>dy2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-108"><a href="#cb15-108"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-109"><a href="#cb15-109"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-110"><a href="#cb15-110"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-111"><a href="#cb15-111"></a><span class="co"># Specify latent change scores variances </span></span>
-<span id="cb15-112"><a href="#cb15-112"></a>dy2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy2 </span>
-<span id="cb15-113"><a href="#cb15-113"></a>dy3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy3 </span>
-<span id="cb15-114"><a href="#cb15-114"></a>dy4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy4 </span>
-<span id="cb15-115"><a href="#cb15-115"></a>dy5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy5 </span>
-<span id="cb15-116"><a href="#cb15-116"></a><span class="co"># Specify constant change factor </span></span>
-<span id="cb15-117"><a href="#cb15-117"></a>j2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy5 </span>
-<span id="cb15-118"><a href="#cb15-118"></a><span class="co"># Specify constant change factor mean </span></span>
-<span id="cb15-119"><a href="#cb15-119"></a>j2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
-<span id="cb15-120"><a href="#cb15-120"></a><span class="co"># Specify constant change factor variance </span></span>
-<span id="cb15-121"><a href="#cb15-121"></a>j2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>j2 </span>
-<span id="cb15-122"><a href="#cb15-122"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
-<span id="cb15-123"><a href="#cb15-123"></a>j2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.02</span> <span class="op">*</span><span class="st"> </span>ly1</span>
-<span id="cb15-124"><a href="#cb15-124"></a><span class="co"># Specify proportional change component </span></span>
-<span id="cb15-125"><a href="#cb15-125"></a>dy2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
-<span id="cb15-126"><a href="#cb15-126"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
-<span id="cb15-127"><a href="#cb15-127"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
-<span id="cb15-128"><a href="#cb15-128"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
-<span id="cb15-129"><a href="#cb15-129"></a><span class="co"># Specify autoregression of change score </span></span>
-<span id="cb15-130"><a href="#cb15-130"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy2 </span>
-<span id="cb15-131"><a href="#cb15-131"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy3 </span>
-<span id="cb15-132"><a href="#cb15-132"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy4 </span>
-<span id="cb15-133"><a href="#cb15-133"></a><span class="co"># Specify residual covariances </span></span>
-<span id="cb15-134"><a href="#cb15-134"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y1 </span>
-<span id="cb15-135"><a href="#cb15-135"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y2 </span>
-<span id="cb15-136"><a href="#cb15-136"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y3 </span>
-<span id="cb15-137"><a href="#cb15-137"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y4 </span>
-<span id="cb15-138"><a href="#cb15-138"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y5 </span>
-<span id="cb15-139"><a href="#cb15-139"></a><span class="co"># Specify covariances betweeen specified change components (alpha) and intercepts (initial latent true scores lx1 and ly1) ----</span></span>
-<span id="cb15-140"><a href="#cb15-140"></a><span class="co"># Specify covariance of intercepts </span></span>
-<span id="cb15-141"><a href="#cb15-141"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
-<span id="cb15-142"><a href="#cb15-142"></a><span class="co"># Specify covariance of constant change and intercept within the same construct </span></span>
-<span id="cb15-143"><a href="#cb15-143"></a>ly1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>g2 </span>
-<span id="cb15-144"><a href="#cb15-144"></a><span class="co"># Specify covariance of constant change and intercept within the same construct </span></span>
-<span id="cb15-145"><a href="#cb15-145"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>j2 </span>
-<span id="cb15-146"><a href="#cb15-146"></a><span class="co"># Specify covariance of constant change factors between constructs </span></span>
-<span id="cb15-147"><a href="#cb15-147"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>j2 </span>
-<span id="cb15-148"><a href="#cb15-148"></a><span class="co"># Specify between-construct coupling parameters ----</span></span>
-<span id="cb15-149"><a href="#cb15-149"></a><span class="co"># Change score x (t) is determined by true score y (t-1)  </span></span>
-<span id="cb15-150"><a href="#cb15-150"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
-<span id="cb15-151"><a href="#cb15-151"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
-<span id="cb15-152"><a href="#cb15-152"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
-<span id="cb15-153"><a href="#cb15-153"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
-<span id="cb15-154"><a href="#cb15-154"></a><span class="co"># Change score y (t) is determined by change score x (t-1)  </span></span>
-<span id="cb15-155"><a href="#cb15-155"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
-<span id="cb15-156"><a href="#cb15-156"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
-<span id="cb15-157"><a href="#cb15-157"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx4 </span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Specify parameters for construct x ----</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="co"># Specify latent true scores </span></span>
+<span id="cb16-3"><a href="#cb16-3"></a>lx1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb16-4"><a href="#cb16-4"></a>lx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb16-5"><a href="#cb16-5"></a>lx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb16-6"><a href="#cb16-6"></a>lx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb16-7"><a href="#cb16-7"></a>lx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb16-8"><a href="#cb16-8"></a><span class="co"># Specify mean of latent true scores </span></span>
+<span id="cb16-9"><a href="#cb16-9"></a>lx1 <span class="op">~</span><span class="st"> </span><span class="dv">21</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-10"><a href="#cb16-10"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-11"><a href="#cb16-11"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-12"><a href="#cb16-12"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-13"><a href="#cb16-13"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-14"><a href="#cb16-14"></a><span class="co"># Specify variance of latent true scores </span></span>
+<span id="cb16-15"><a href="#cb16-15"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.5</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb16-16"><a href="#cb16-16"></a>lx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb16-17"><a href="#cb16-17"></a>lx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb16-18"><a href="#cb16-18"></a>lx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb16-19"><a href="#cb16-19"></a>lx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb16-20"><a href="#cb16-20"></a><span class="co"># Specify intercept of obseved scores </span></span>
+<span id="cb16-21"><a href="#cb16-21"></a>x1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-22"><a href="#cb16-22"></a>x2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-23"><a href="#cb16-23"></a>x3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-24"><a href="#cb16-24"></a>x4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-25"><a href="#cb16-25"></a>x5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-26"><a href="#cb16-26"></a><span class="co"># Specify variance of observed scores </span></span>
+<span id="cb16-27"><a href="#cb16-27"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x1 </span>
+<span id="cb16-28"><a href="#cb16-28"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x2 </span>
+<span id="cb16-29"><a href="#cb16-29"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x3 </span>
+<span id="cb16-30"><a href="#cb16-30"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x4 </span>
+<span id="cb16-31"><a href="#cb16-31"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>x5 </span>
+<span id="cb16-32"><a href="#cb16-32"></a><span class="co"># Specify autoregressions of latent variables </span></span>
+<span id="cb16-33"><a href="#cb16-33"></a>lx2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb16-34"><a href="#cb16-34"></a>lx3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb16-35"><a href="#cb16-35"></a>lx4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb16-36"><a href="#cb16-36"></a>lx5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb16-37"><a href="#cb16-37"></a><span class="co"># Specify latent change scores </span></span>
+<span id="cb16-38"><a href="#cb16-38"></a>dx2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb16-39"><a href="#cb16-39"></a>dx3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb16-40"><a href="#cb16-40"></a>dx4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb16-41"><a href="#cb16-41"></a>dx5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>lx5 </span>
+<span id="cb16-42"><a href="#cb16-42"></a><span class="co"># Specify latent change scores means </span></span>
+<span id="cb16-43"><a href="#cb16-43"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-44"><a href="#cb16-44"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-45"><a href="#cb16-45"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-46"><a href="#cb16-46"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-47"><a href="#cb16-47"></a><span class="co"># Specify latent change scores variances </span></span>
+<span id="cb16-48"><a href="#cb16-48"></a>dx2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb16-49"><a href="#cb16-49"></a>dx3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb16-50"><a href="#cb16-50"></a>dx4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx4 </span>
+<span id="cb16-51"><a href="#cb16-51"></a>dx5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb16-52"><a href="#cb16-52"></a><span class="co"># Specify constant change factor </span></span>
+<span id="cb16-53"><a href="#cb16-53"></a>g2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dx5 </span>
+<span id="cb16-54"><a href="#cb16-54"></a><span class="co"># Specify constant change factor mean </span></span>
+<span id="cb16-55"><a href="#cb16-55"></a>g2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.4</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-56"><a href="#cb16-56"></a><span class="co"># Specify constant change factor variance </span></span>
+<span id="cb16-57"><a href="#cb16-57"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>g2 </span>
+<span id="cb16-58"><a href="#cb16-58"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
+<span id="cb16-59"><a href="#cb16-59"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>lx1</span>
+<span id="cb16-60"><a href="#cb16-60"></a><span class="co"># Specify proportional change component </span></span>
+<span id="cb16-61"><a href="#cb16-61"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx1 </span>
+<span id="cb16-62"><a href="#cb16-62"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx2 </span>
+<span id="cb16-63"><a href="#cb16-63"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx3 </span>
+<span id="cb16-64"><a href="#cb16-64"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="fl">-0.1</span> <span class="op">*</span><span class="st"> </span>lx4 </span>
+<span id="cb16-65"><a href="#cb16-65"></a><span class="co"># Specify parameters for construct y ----</span></span>
+<span id="cb16-66"><a href="#cb16-66"></a><span class="co"># Specify latent true scores </span></span>
+<span id="cb16-67"><a href="#cb16-67"></a>ly1 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y1 </span>
+<span id="cb16-68"><a href="#cb16-68"></a>ly2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y2 </span>
+<span id="cb16-69"><a href="#cb16-69"></a>ly3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y3 </span>
+<span id="cb16-70"><a href="#cb16-70"></a>ly4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y4 </span>
+<span id="cb16-71"><a href="#cb16-71"></a>ly5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>y5 </span>
+<span id="cb16-72"><a href="#cb16-72"></a><span class="co"># Specify mean of latent true scores </span></span>
+<span id="cb16-73"><a href="#cb16-73"></a>ly1 <span class="op">~</span><span class="st"> </span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-74"><a href="#cb16-74"></a>ly2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-75"><a href="#cb16-75"></a>ly3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-76"><a href="#cb16-76"></a>ly4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-77"><a href="#cb16-77"></a>ly5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-78"><a href="#cb16-78"></a><span class="co"># Specify variance of latent true scores </span></span>
+<span id="cb16-79"><a href="#cb16-79"></a>ly1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
+<span id="cb16-80"><a href="#cb16-80"></a>ly2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
+<span id="cb16-81"><a href="#cb16-81"></a>ly3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
+<span id="cb16-82"><a href="#cb16-82"></a>ly4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
+<span id="cb16-83"><a href="#cb16-83"></a>ly5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>ly5 </span>
+<span id="cb16-84"><a href="#cb16-84"></a><span class="co"># Specify intercept of obseved scores </span></span>
+<span id="cb16-85"><a href="#cb16-85"></a>y1 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-86"><a href="#cb16-86"></a>y2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-87"><a href="#cb16-87"></a>y3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-88"><a href="#cb16-88"></a>y4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-89"><a href="#cb16-89"></a>y5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-90"><a href="#cb16-90"></a><span class="co"># Specify variance of observed scores </span></span>
+<span id="cb16-91"><a href="#cb16-91"></a>y1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y1 </span>
+<span id="cb16-92"><a href="#cb16-92"></a>y2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y2 </span>
+<span id="cb16-93"><a href="#cb16-93"></a>y3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y3 </span>
+<span id="cb16-94"><a href="#cb16-94"></a>y4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y4 </span>
+<span id="cb16-95"><a href="#cb16-95"></a>y5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>y5 </span>
+<span id="cb16-96"><a href="#cb16-96"></a><span class="co"># Specify autoregressions of latent variables </span></span>
+<span id="cb16-97"><a href="#cb16-97"></a>ly2 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
+<span id="cb16-98"><a href="#cb16-98"></a>ly3 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
+<span id="cb16-99"><a href="#cb16-99"></a>ly4 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
+<span id="cb16-100"><a href="#cb16-100"></a>ly5 <span class="op">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
+<span id="cb16-101"><a href="#cb16-101"></a><span class="co"># Specify latent change scores </span></span>
+<span id="cb16-102"><a href="#cb16-102"></a>dy2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
+<span id="cb16-103"><a href="#cb16-103"></a>dy3 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
+<span id="cb16-104"><a href="#cb16-104"></a>dy4 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
+<span id="cb16-105"><a href="#cb16-105"></a>dy5 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>ly5 </span>
+<span id="cb16-106"><a href="#cb16-106"></a><span class="co"># Specify latent change scores means </span></span>
+<span id="cb16-107"><a href="#cb16-107"></a>dy2 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-108"><a href="#cb16-108"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-109"><a href="#cb16-109"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-110"><a href="#cb16-110"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-111"><a href="#cb16-111"></a><span class="co"># Specify latent change scores variances </span></span>
+<span id="cb16-112"><a href="#cb16-112"></a>dy2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy2 </span>
+<span id="cb16-113"><a href="#cb16-113"></a>dy3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy3 </span>
+<span id="cb16-114"><a href="#cb16-114"></a>dy4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy4 </span>
+<span id="cb16-115"><a href="#cb16-115"></a>dy5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="dv">0</span> <span class="op">*</span><span class="st"> </span>dy5 </span>
+<span id="cb16-116"><a href="#cb16-116"></a><span class="co"># Specify constant change factor </span></span>
+<span id="cb16-117"><a href="#cb16-117"></a>j2 =<span class="er">~</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy2 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy3 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy4 <span class="op">+</span><span class="st"> </span><span class="dv">1</span> <span class="op">*</span><span class="st"> </span>dy5 </span>
+<span id="cb16-118"><a href="#cb16-118"></a><span class="co"># Specify constant change factor mean </span></span>
+<span id="cb16-119"><a href="#cb16-119"></a>j2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span><span class="dv">1</span> </span>
+<span id="cb16-120"><a href="#cb16-120"></a><span class="co"># Specify constant change factor variance </span></span>
+<span id="cb16-121"><a href="#cb16-121"></a>j2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>j2 </span>
+<span id="cb16-122"><a href="#cb16-122"></a><span class="co"># Specify constant change factor covariance with the initial true score </span></span>
+<span id="cb16-123"><a href="#cb16-123"></a>j2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.02</span> <span class="op">*</span><span class="st"> </span>ly1</span>
+<span id="cb16-124"><a href="#cb16-124"></a><span class="co"># Specify proportional change component </span></span>
+<span id="cb16-125"><a href="#cb16-125"></a>dy2 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
+<span id="cb16-126"><a href="#cb16-126"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
+<span id="cb16-127"><a href="#cb16-127"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
+<span id="cb16-128"><a href="#cb16-128"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">-0.2</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
+<span id="cb16-129"><a href="#cb16-129"></a><span class="co"># Specify autoregression of change score </span></span>
+<span id="cb16-130"><a href="#cb16-130"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy2 </span>
+<span id="cb16-131"><a href="#cb16-131"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy3 </span>
+<span id="cb16-132"><a href="#cb16-132"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>dy4 </span>
+<span id="cb16-133"><a href="#cb16-133"></a><span class="co"># Specify residual covariances </span></span>
+<span id="cb16-134"><a href="#cb16-134"></a>x1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y1 </span>
+<span id="cb16-135"><a href="#cb16-135"></a>x2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y2 </span>
+<span id="cb16-136"><a href="#cb16-136"></a>x3 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y3 </span>
+<span id="cb16-137"><a href="#cb16-137"></a>x4 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y4 </span>
+<span id="cb16-138"><a href="#cb16-138"></a>x5 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>y5 </span>
+<span id="cb16-139"><a href="#cb16-139"></a><span class="co"># Specify covariances betweeen specified change components (alpha) and intercepts (initial latent true scores lx1 and ly1) ----</span></span>
+<span id="cb16-140"><a href="#cb16-140"></a><span class="co"># Specify covariance of intercepts </span></span>
+<span id="cb16-141"><a href="#cb16-141"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.2</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
+<span id="cb16-142"><a href="#cb16-142"></a><span class="co"># Specify covariance of constant change and intercept within the same construct </span></span>
+<span id="cb16-143"><a href="#cb16-143"></a>ly1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>g2 </span>
+<span id="cb16-144"><a href="#cb16-144"></a><span class="co"># Specify covariance of constant change and intercept within the same construct </span></span>
+<span id="cb16-145"><a href="#cb16-145"></a>lx1 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.1</span> <span class="op">*</span><span class="st"> </span>j2 </span>
+<span id="cb16-146"><a href="#cb16-146"></a><span class="co"># Specify covariance of constant change factors between constructs </span></span>
+<span id="cb16-147"><a href="#cb16-147"></a>g2 <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="fl">0.01</span> <span class="op">*</span><span class="st"> </span>j2 </span>
+<span id="cb16-148"><a href="#cb16-148"></a><span class="co"># Specify between-construct coupling parameters ----</span></span>
+<span id="cb16-149"><a href="#cb16-149"></a><span class="co"># Change score x (t) is determined by true score y (t-1)  </span></span>
+<span id="cb16-150"><a href="#cb16-150"></a>dx2 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly1 </span>
+<span id="cb16-151"><a href="#cb16-151"></a>dx3 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly2 </span>
+<span id="cb16-152"><a href="#cb16-152"></a>dx4 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly3 </span>
+<span id="cb16-153"><a href="#cb16-153"></a>dx5 <span class="op">~</span><span class="st"> </span><span class="fl">0.13</span> <span class="op">*</span><span class="st"> </span>ly4 </span>
+<span id="cb16-154"><a href="#cb16-154"></a><span class="co"># Change score y (t) is determined by change score x (t-1)  </span></span>
+<span id="cb16-155"><a href="#cb16-155"></a>dy3 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx2 </span>
+<span id="cb16-156"><a href="#cb16-156"></a>dy4 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx3 </span>
+<span id="cb16-157"><a href="#cb16-157"></a>dy5 <span class="op">~</span><span class="st"> </span><span class="fl">0.4</span> <span class="op">*</span><span class="st"> </span>dx4 </span></code></pre></div>
 
 </details>
 </div>
@@ -1393,6 +1401,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=lcsm">https://​cloud.r-project.org/​package=lcsm</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/milanwiedemann/lcsm/">https://​github.com/​milanwiedemann/​lcsm/​</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/milanwiedemann/lcsm/issues">https://​github.com/​milanwiedemann/​lcsm/​issues</a>
@@ -1425,6 +1435,9 @@
 <ul class="list-unstyled">
 <li><a href="https://travis-ci.com/milanwiedemann/lcsm"><img src="https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master" alt="Travis build status"></a></li>
 <li><a href="https://ci.appveyor.com/project/milanwiedemann/lcsm"><img src="https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&amp;svg=true" alt="AppVeyor build status"></a></li>
+<li><a href="https://choosealicense.com/licenses/gpl-3.0/"><img src="https://img.shields.io/badge/Licence-GPL--3-brightgreen.svg" alt="licence"></a></li>
+<li><a href="https://cran.r-project.org/package=lcsm"><img src="https://www.r-pkg.org/badges/version/lcsm" alt="CRANstatus"></a></li>
+<li><a href="https://cran.r-project.org/package=lcsm"><img src="https://cranlogs.r-pkg.org/badges/grand-total/lcsm"></a></li>
 </ul>
 </div>
 </div>

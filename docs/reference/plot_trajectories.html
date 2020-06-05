@@ -55,6 +55,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113145816-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113145816-4');
+</script>
+
 
   </head>
 
@@ -241,15 +251,15 @@ Also consider other options to look at trajectories like <a href='https://ggplot
     </tr>
     <tr>
       <th>seed</th>
-      <td><p>Set seed for random sample if random_sample_frac argument is used.</p></td>
+      <td><p>Set seed for random sample if <code>random_sample_frac</code> argument is used.</p></td>
     </tr>
     <tr>
       <th>title_n</th>
-      <td><p>Logical, speciying whether to print title with number and percentage of cases used for the plot.</p></td>
+      <td><p>Logical, specifying whether to print title with number and percentage of cases used for the plot.</p></td>
     </tr>
     <tr>
       <th>connect_missing</th>
-      <td><p>Logical, speciying whether to connect points by <code>id_var</code> across missing values.</p></td>
+      <td><p>Logical, specifying whether to connect points by <code>id_var</code> across missing values.</p></td>
     </tr>
     </table>
 

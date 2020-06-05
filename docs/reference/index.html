@@ -54,6 +54,16 @@
 <![endif]-->
 
 
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-113145816-4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-113145816-4');
+</script>
+
 
   </head>
 
@@ -148,7 +158,7 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-generate-lavaan-syntax-for-different-model-specifications" class="hasAnchor"><a href="#section-generate-lavaan-syntax-for-different-model-specifications" class="anchor"></a>Generate lavaan syntax for different model specifications</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
@@ -160,16 +170,54 @@
       <tr>
         
         <td>
-          <p><code><a href="data_bi_lcsm.html">data_bi_lcsm</a></code> </p>
+          <p><code><a href="specify_uni_lcsm.html">specify_uni_lcsm()</a></code> </p>
         </td>
-        <td><p>Longitudinal dataset with repeated measures of two constructs</p></td>
+        <td><p>Specify lavaan model for univariate latent change score models</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="data_uni_lcsm.html">data_uni_lcsm</a></code> </p>
+          <p><code><a href="specify_bi_lcsm.html">specify_bi_lcsm()</a></code> </p>
         </td>
-        <td><p>Longitudinal dataset with repeated measures of one constructs</p></td>
+        <td><p>Specify lavaan model for bivariate latent change score models</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-fit-models-using-lavaan" class="hasAnchor"><a href="#section-fit-models-using-lavaan" class="anchor"></a>Fit models using lavaan</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="fit_uni_lcsm.html">fit_uni_lcsm()</a></code> </p>
+        </td>
+        <td><p>Fit univariate latent change score models</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="fit_bi_lcsm.html">fit_bi_lcsm()</a></code> </p>
+        </td>
+        <td><p>Fit bivariate latent change score models</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-extract-results-from-models-using-broom" class="hasAnchor"><a href="#section-extract-results-from-models-using-broom" class="anchor"></a>Extract results from models using broom</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="extract_fit.html">extract_fit()</a></code> </p>
@@ -181,19 +229,45 @@
           <p><code><a href="extract_param.html">extract_param()</a></code> </p>
         </td>
         <td><p>Extract labelled parameters of lavaan objects</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-simulate-data-using-lavaan" class="hasAnchor"><a href="#section-simulate-data-using-lavaan" class="anchor"></a>Simulate data using lavaan</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="sim_uni_lcsm.html">sim_uni_lcsm()</a></code> </p>
+        </td>
+        <td><p>Simulate data from univariate latent change score model parameter estimates</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="fit_bi_lcsm.html">fit_bi_lcsm()</a></code> </p>
+          <p><code><a href="sim_bi_lcsm.html">sim_bi_lcsm()</a></code> </p>
         </td>
-        <td><p>Fit bivariate latent change score models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="fit_uni_lcsm.html">fit_uni_lcsm()</a></code> </p>
-        </td>
-        <td><p>Fit univariate latent change score models</p></td>
-      </tr><tr>
+        <td><p>Simulate data from bivariate latent change score model parameter estimates</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualise-data-and-simplified-path-models" class="hasAnchor"><a href="#section-visualise-data-and-simplified-path-models" class="anchor"></a>Visualise data and simplified path models</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="plot_lcsm.html">plot_lcsm()</a></code> </p>
@@ -205,12 +279,25 @@
           <p><code><a href="plot_trajectories.html">plot_trajectories()</a></code> </p>
         </td>
         <td><p>Plot individual trajectories</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
-          <p><code><a href="rename_lcsm_vars.html">rename_lcsm_vars()</a></code> </p>
+          <p><code><a href="select_uni_cases.html">select_uni_cases()</a></code> </p>
         </td>
-        <td><p>Rename variables for univariate and bivariate latent change score odels</p></td>
+        <td><p>Select cases based on minimum number of available session scores on one longitudinal measure</p></td>
       </tr><tr>
         
         <td>
@@ -220,33 +307,34 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="select_uni_cases.html">select_uni_cases()</a></code> </p>
+          <p><code><a href="rename_lcsm_vars.html">rename_lcsm_vars()</a></code> </p>
         </td>
-        <td><p>Select cases based on minimum number of available session scores on one longitudinal measure</p></td>
+        <td><p>Rename variables for univariate and bivariate latent change score models</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-datasets" class="hasAnchor"><a href="#section-datasets" class="anchor"></a>Datasets</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="data_uni_lcsm.html">data_uni_lcsm</a></code> </p>
+        </td>
+        <td><p>Longitudinal dataset with repeated measures of one constructs</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="sim_bi_lcsm.html">sim_bi_lcsm()</a></code> </p>
+          <p><code><a href="data_bi_lcsm.html">data_bi_lcsm</a></code> </p>
         </td>
-        <td><p>Simulate data from bivariate latent change score model parameter estimates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sim_uni_lcsm.html">sim_uni_lcsm()</a></code> </p>
-        </td>
-        <td><p>Simulate data from univariate latent change score model parameter estimates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="specify_bi_lcsm.html">specify_bi_lcsm()</a></code> </p>
-        </td>
-        <td><p>Specify lavaan model for bivariate latent change score models</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="specify_uni_lcsm.html">specify_uni_lcsm()</a></code> </p>
-        </td>
-        <td><p>Specify lavaan model for univariate latent change score models</p></td>
+        <td><p>Longitudinal dataset with repeated measures of two constructs</p></td>
       </tr>
     </tbody>
     </table>
