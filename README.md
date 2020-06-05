@@ -9,6 +9,9 @@
 status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+[![licence](https://img.shields.io/badge/Licence-GPL--3-brightgreen.svg)](https://choosealicense.com/licenses/gpl-3.0/)
+[![CRANstatus](https://www.r-pkg.org/badges/version/lcsm)](https://cran.r-project.org/package=lcsm)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm)
 <!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
@@ -36,8 +39,15 @@ feedback is very welcome\!
 
 ## Installation
 
-You can install the development version from
-[GitHub](https://github.com/milanwiedemann/lcsm) with:
+You can install the released version of suddengains from
+[CRAN](https://CRAN.R-project.org/package=lcsm) with:
+
+``` r
+install.packages("suddengains")
+```
+
+The development version can be installed from
+[GitHub](https://github.com/milanwiedemann/lcsm) using:
 
 ``` r
 # install.packages("devtools")
@@ -470,7 +480,7 @@ The functions `extract_param()` and `extract_fit()` offer some tools
 that I find helpful when running LCS models in R, for example:
 
   - `extract_param()`: only one row per estimated parameter,
-  - `extract_fit()`: fit statistics for multiple lavaan objects can be
+  - `extract_fit()`: fit statistics for multiple `lavaan` objects can be
     extracted.
 
 A table of the description of all parameters that can be estimated is
@@ -532,7 +542,7 @@ bivariate LCS models that were specified with `fit_uni_lcsm()` or
 `fit_bi_lcsm()`. Modified LCS models will probably return errors as the
 layout matrix that gets created by this plot function only supports the
 specifications that can be modelled with this package. The input
-arguments for plotting a simplified path dioagram are:
+arguments for plotting a simplified path diagram are:
 
   - the estimated lavaan object `lavaan_object`,
   - the `lavaan_syntax` and ,

@@ -21,6 +21,9 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 [![Travis build status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
 [![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+[![licence](https://img.shields.io/badge/Licence-GPL--3-brightgreen.svg)](https://choosealicense.com/licenses/gpl-3.0/)
+[![CRANstatus](https://www.r-pkg.org/badges/version/lcsm)](https://cran.r-project.org/package=lcsm)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm)
 <!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
@@ -43,7 +46,13 @@ This is work in progress and feedback is very welcome!
 
 ## Installation
 
-You can install the development version from [GitHub](https://github.com/milanwiedemann/lcsm) with:
+You can install the released version of suddengains from [CRAN](https://CRAN.R-project.org/package=lcsm) with:
+
+``` r
+install.packages("suddengains")
+```
+
+The development version can be installed from [GitHub](https://github.com/milanwiedemann/lcsm) using:
 
 ``` r
 # install.packages("devtools")
