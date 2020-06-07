@@ -40,7 +40,7 @@ feedback is very welcome\!
 
 ## Installation
 
-You can install the released version of suddengains from
+You can install the released version of `lcsm` from
 [CRAN](https://CRAN.R-project.org/package=lcsm) with:
 
 ``` r
