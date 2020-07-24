@@ -1,6 +1,6 @@
 # Test environments
 ## local 
-* macOS Mojave 10.15.4
+* macOS Mojave 10.15.5
 * R version 4.0.0 (2020-04-24) -- "Arbor Day"
 
 ## R CMD check results
