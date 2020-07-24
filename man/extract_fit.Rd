@@ -20,6 +20,7 @@ Extract fit statistics of lavaan objects
 }
 \examples{
 # First create a lavaan object
+\dontrun{
 bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm, 
                           var_x = names(data_bi_lcsm)[2:4], 
                           var_y = names(data_bi_lcsm)[12:14],
@@ -34,7 +35,9 @@ bi_lcsm_01 <- fit_bi_lcsm(data = data_bi_lcsm,
                                           )
 
 # Now extract fit statistics  
+
 extract_fit(bi_lcsm_01)
+}
 }
 \references{
 David Robinson and Alex Hayes (2019). broom: Convert Statistical Analysis Objects into Tidy Tibbles. R package version 0.5.2.

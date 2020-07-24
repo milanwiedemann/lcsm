@@ -41,8 +41,5 @@ Suggests:
     testthat (>= 2.1.0),
     knitr (>= 1.22),
     rmarkdown (>= 1.12),
-    shiny (>= 1.4.0),
-    data.table,
-    utf8
-    
+    shiny (>= 1.4.0)
 VignetteBuilder: knitr

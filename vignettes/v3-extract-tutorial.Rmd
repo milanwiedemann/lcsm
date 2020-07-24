@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 
 ```{r setup}
 library(lcsm)
+library(lavaan)
 ```
 
 The main underlying functions to extract parameters and fit statistics come from the `broom` package: `broom::tidy()` and `broom::glance()`. 
@@ -59,7 +60,7 @@ More fit statistics can be returned using the argument `details = TRUE`.
 ```{r}
 # Extract fit statistics
 fit_uni_lcsm <- extract_fit(uni_lcsm_01, uni_lcsm_02, uni_lcsm_03)
-broom::glance(uni_lcsm_01)
+
 # Print table of parameter estimates
 knitr::kable(fit_uni_lcsm, 
              digits = 3, 
