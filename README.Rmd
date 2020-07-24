@@ -46,7 +46,7 @@ This is work in progress and feedback is very welcome!
 
 ## Installation
 
-You can install the released version of suddengains from [CRAN](https://CRAN.R-project.org/package=lcsm) with:
+You can install the released version of `lcsm` from [CRAN](https://CRAN.R-project.org/package=lcsm) with:
 
 ``` r
 install.packages("lcsm")

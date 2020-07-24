@@ -31,6 +31,8 @@ extract_fit <- function(..., details = FALSE) {
   
   fit_data <- purrr::map_df(.x = lavaan_objects, .f = broom::glance, .id = "model")
   
+  fit_data <- dplyr::rename_all(.tbl = fit_data, tolower)
+  
   # Figure out a way to name these things
   # fit_return$model <- paste0("m", 1:length(lavaan_objects))
   

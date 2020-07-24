@@ -27,7 +27,3 @@
 * using R version 4.0.0 (2020-04-24)
 * using platform: x86_64-w64-mingw32 (64-bit)
 * 1 Note
-
-## Resubmission
-This is a resubmission, in this version I have:
-* I have removed all information messages to the console that could not be easily suppressed.

@@ -30,20 +30,20 @@ The functions `extract_param()` and `extract_fit()` offer some tools that I find
 # First fit some latent change score models
 
 # No change model
-uni_lcsm_01 <- fit_uni_lcsm(data = data_bi_lcsm, 
+uni_lcsm_01 <- fit_uni_lcsm(data = data_uni_lcsm, 
                             var = c("x1", "x2", "x3", "x4", "x5"),
                             model = list(alpha_constant = FALSE, 
                                          beta = FALSE, 
                                          phi = FALSE))
 # Constant change only model
-uni_lcsm_02 <- fit_uni_lcsm(data = data_bi_lcsm, 
+uni_lcsm_02 <- fit_uni_lcsm(data = data_uni_lcsm, 
                             var = c("x1", "x2", "x3", "x4", "x5"),
                             model = list(alpha_constant = TRUE, 
                                          beta = FALSE, 
                                          phi = FALSE))
 
 # Constant change and proportional change (Dual change model)
-uni_lcsm_03 <- fit_uni_lcsm(data = data_bi_lcsm, 
+uni_lcsm_03 <- fit_uni_lcsm(data = data_uni_lcsm, 
                             var = c("x1", "x2", "x3", "x4", "x5"),
                             model = list(alpha_constant = TRUE, 
                                          beta = TRUE, 
@@ -59,7 +59,7 @@ More fit statistics can be returned using the argument `details = TRUE`.
 ```{r}
 # Extract fit statistics
 fit_uni_lcsm <- extract_fit(uni_lcsm_01, uni_lcsm_02, uni_lcsm_03)
-
+broom::glance(uni_lcsm_01)
 # Print table of parameter estimates
 knitr::kable(fit_uni_lcsm, 
              digits = 3, 
