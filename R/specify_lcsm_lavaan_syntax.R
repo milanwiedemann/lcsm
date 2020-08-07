@@ -12,6 +12,7 @@
 #' }
 #' @param var String, specifying letter to be used for of variables (Usually x or y).
 #' @param change_letter String, specifying letter to be used for change factor (Usually g or j).
+#' @param add String, lavaan syntax to be added to the model
 #' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \url{https://doi.org/10.1080/10705511.2012.713275}.
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
@@ -37,7 +38,7 @@
 #' cat(lavaan_uni_lcsm_01)
 #' 
 
-specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
+specify_uni_lcsm <- function(timepoints, var, model, add = NULL, change_letter = "g") {
   
   # Code parameters in model that are not defined as FALSE
   
@@ -172,7 +173,23 @@ specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
     
     lavaan_uni_model <- paste0(lavaan_uni_model, specify_lcs_autoreg(timepoints = timepoints, variable = var))
   }
-  return(lavaan_uni_model)
+  
+  
+  
+  if (is.null(add) == TRUE) {
+    add_lavaan_syntax <- ""
+  }
+  
+  if (is.null(add) == FALSE) {
+    add_lavaan_syntax <-
+      paste0("# # # # # # # # # # # # # # # # # # # # # # #\n# ---- Additaional Model Specifications ----\n# # # # # # # # # # # # # # # # # # # # # # #\n", add)
+    
+  }
+  
+  lavaan_uni_model_return <- paste0(lavaan_uni_model, add_lavaan_syntax)
+  
+  
+  return(lavaan_uni_model_return)
 }
 
 #' Specify lavaan model for bivariate latent change score models
@@ -211,6 +228,7 @@ specify_uni_lcsm <- function(timepoints, model, var, change_letter = "g") {
 #' \item{\code{xi_con_yx}}{ (Change score x predicting concurrent change score y)},
 #' \item{\code{xi_lag_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
+#' @param add String, lavaan syntax to be added to the model
 #' @param change_letter_x String, specifying letter to be used as change factor for construct x in lavaan syntax.
 #' @param change_letter_y String, specifying letter to be used as change factor for construct y in lavaan syntax.
 #'
@@ -251,6 +269,7 @@ specify_bi_lcsm <- function(timepoints,
                                     var_y,
                                     model_y,
                                     coupling,
+                                    add = NULL,
                                     change_letter_x = "g",
                                     change_letter_y = "j"
 ) {
@@ -476,8 +495,23 @@ specify_bi_lcsm <- function(timepoints,
     }
   }
   
+
+  
+  
+  if (is.null(add) == TRUE) {
+    add_lavaan_syntax <- ""
+  }
+  
+  if (is.null(add) == FALSE) {
+    add_lavaan_syntax <-
+      paste0("# # # # # # # # # # # # # # # # # # # # # # #\n# ---- Additaional Model Specifications ----\n# # # # # # # # # # # # # # # # # # # # # # #\n", add)
+    
+  }
+  
+  
   # Combine univariate and bivariate models
-  lavaan_bi_model <- paste0(model_x_uni_lavaan, model_y_uni_lavaan, resid_covar, lavaan_bi_change, lavaan_bi_coupling)
+  lavaan_bi_model <- paste0(model_x_uni_lavaan, model_y_uni_lavaan, resid_covar, lavaan_bi_change, lavaan_bi_coupling, add_lavaan_syntax)
+  
   
   return(lavaan_bi_model)
 }

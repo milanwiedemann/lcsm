@@ -4,10 +4,12 @@
 \alias{specify_uni_lcsm}
 \title{Specify lavaan model for univariate latent change score models}
 \usage{
-specify_uni_lcsm(timepoints, model, var, change_letter = "g")
+specify_uni_lcsm(timepoints, var, model, add = NULL, change_letter = "g")
 }
 \arguments{
 \item{timepoints}{Number if timepoints.}
+
+\item{var}{String, specifying letter to be used for of variables (Usually x or y).}
 
 \item{model}{List of model specifications (logical) for the variables specified in \code{variable}.
 \itemize{
@@ -19,7 +21,7 @@ specify_uni_lcsm(timepoints, model, var, change_letter = "g")
 \item{\code{phi}: Autoregression of change scores}.
 }}
 
-\item{var}{String, specifying letter to be used for of variables (Usually x or y).}
+\item{add}{String, lavaan syntax to be added to the model}
 
 \item{change_letter}{String, specifying letter to be used for change factor (Usually g or j).}
 }

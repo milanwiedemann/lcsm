@@ -8,6 +8,7 @@ fit_uni_lcsm(
   data,
   var,
   model,
+  add = NULL,
   mimic = "Mplus",
   estimator = "MLR",
   missing = "FIML",
@@ -29,6 +30,8 @@ fit_uni_lcsm(
 \item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
 }}
+
+\item{add}{String, lavaan syntax to be added to the model}
 
 \item{mimic}{See \link[lavaan]{lavaan}.}
 

@@ -12,6 +12,7 @@
 #' \item{\code{beta}}{ (Proportional change factor)},
 #' \item{\code{phi}}{ (Autoregression of change scores)}.
 #' }
+#' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See \link[lavaan]{lavaan}.
 #' @param estimator See \link[lavaan]{lavaan}.
@@ -37,6 +38,7 @@
 fit_uni_lcsm <- function(data,
                          var,
                          model, 
+                         add = NULL,
                          mimic = "Mplus",
                          estimator = "MLR",
                          missing = "FIML",
@@ -61,7 +63,8 @@ fit_uni_lcsm <- function(data,
     model_uni <- specify_uni_lcsm(timepoints = timepoints,
                                   var = "x",
                                   model = model,
-                                  change_letter = "g"
+                                  change_letter = "g",
+                                  add = add
     )
     
   } else if (is.character(model) == TRUE) {
@@ -130,6 +133,7 @@ fit_uni_lcsm <- function(data,
 #' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 #' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 #' }
+#' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See \link[lavaan]{lavaan}.
 #' @param estimator See \link[lavaan]{lavaan}.
@@ -165,6 +169,7 @@ fit_bi_lcsm <- function(data,
                         model_x, 
                         model_y,
                         coupling,
+                        add = NULL,
                         mimic = "Mplus",
                         estimator = "MLR",
                         missing = "FIML",
@@ -189,11 +194,12 @@ fit_bi_lcsm <- function(data,
   # PROBABLY ADD ONE MORE ARGUMENT TO FUNCTION TO ADD STRING HERe
   
   model_bi <- specify_bi_lcsm(timepoints = timepoints,
-                                      var_x = "x",
-                                      model_x = model_x,
-                                      var_y = "y",
-                                      model_y = model_y,  
-                                      coupling = coupling)
+                              var_x = "x",
+                              model_x = model_x,
+                              var_y = "y",
+                              model_y = model_y,  
+                              coupling = coupling,
+                              add = add)
   
   # Return ----
   if (return_lavaan_syntax == FALSE) {

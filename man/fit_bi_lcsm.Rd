@@ -11,6 +11,7 @@ fit_bi_lcsm(
   model_x,
   model_y,
   coupling,
+  add = NULL,
   mimic = "Mplus",
   estimator = "MLR",
   missing = "FIML",
@@ -54,6 +55,8 @@ fit_bi_lcsm(
 \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
 \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
+
+\item{add}{String, lavaan syntax to be added to the model}
 
 \item{mimic}{See \link[lavaan]{lavaan}.}
 

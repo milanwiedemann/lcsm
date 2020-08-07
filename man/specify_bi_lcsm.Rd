@@ -11,6 +11,7 @@ specify_bi_lcsm(
   var_y,
   model_y,
   coupling,
+  add = NULL,
   change_letter_x = "g",
   change_letter_y = "j"
 )
@@ -55,6 +56,8 @@ specify_bi_lcsm(
 \item{\code{xi_con_yx}}{ (Change score x predicting concurrent change score y)},
 \item{\code{xi_lag_yx}}{ (Change score x predicting subsequent change score y)}.
 }}
+
+\item{add}{String, lavaan syntax to be added to the model}
 
 \item{change_letter_x}{String, specifying letter to be used as change factor for construct x in lavaan syntax.}
 
