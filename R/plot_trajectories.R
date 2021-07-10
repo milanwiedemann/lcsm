@@ -94,7 +94,7 @@ plot_trajectories <- function(data, id_var, var_list, line_colour = "blue", grou
   }
 
   if (smooth == TRUE) {
-    plot_x_scale + ggplot2::geom_smooth(ggplot2::aes(group = 1), size = 1, method = smooth_method, se = smooth_se)
+    plot_x_scale + ggplot2::geom_smooth(ggplot2::aes(group = 1), size = 1.5, colour = line_colour, method = smooth_method, se = smooth_se)
   } else {
     plot_x_scale
   }
