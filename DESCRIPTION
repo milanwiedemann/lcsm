@@ -2,9 +2,11 @@ Package: lcsm
 Type: Package
 Title: Univariate and Bivariate Latent Change Score Modeling
 Date: 2020-08-07
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: c(
   person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X")),
+  person("Graham M", "Thew", role = "ctb", comment = c(ORCID = "0000-0003-2851-1315")),
+  person("Urška", "Košir", role = "ctb", comment = c(ORCID = "0000-0003-2132-4090")),
   person("Anke", "Ehlers", role = c("ths"), comment = c(ORCID = "0000-0002-8742-0192")),
   person("Mental Health Research UK", role = c("fnd"))
   )
@@ -18,7 +20,7 @@ Description: Helper functions to implement univariate and bivariate latent chang
   This package combines the strengths of other R packages like 'lavaan', 'broom', and 'semPlot' by generating 'lavaan' syntax that helps these packages work together.
 Depends: 
     R (>= 3.5.0)
-License: GPL-3
+License: MIT + file LICENSE
 Encoding: UTF-8
 URL: https://milanwiedemann.github.io/lcsm/
 BugReports: https://github.com/milanwiedemann/lcsm/issues
