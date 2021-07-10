@@ -9,7 +9,7 @@
 status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
 [![AppVeyor build
 status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
-[![licence](https://img.shields.io/badge/Licence-GPL--3-brightgreen.svg)](https://choosealicense.com/licenses/gpl-3.0/)
+[![licence](https://img.shields.io/badge/Licence-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm)
 [![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm)
