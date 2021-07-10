@@ -18,15 +18,15 @@ knitr::opts_chunk$set(
 library(lcsm)
 ```
 
-### Plot simplified path diagrams of LCS models
+### Plot simplified path diagrams of LCSMs
 
-This function is work in progress and can only plot univariate and bivariate LCS models that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
-Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package.
+This function is work in progress and can only plot univariate and bivariate LCSMs that were specified with `fit_uni_lcsm()` or `fit_bi_lcsm()`.
+Modified LCSMs will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package.
 The input arguments for plotting a simplified path dioagram are: 
 
 - the estimated lavaan object `lavaan_object`,
 - the `lavaan_syntax` and ,
-- `lcsm` indicating whether the LCS model is "univariate" or "bivariate"
+- `lcsm` indicating whether the LCSM is "univariate" or "bivariate"
 
 Optional arguments can be used to change the look of the plot, for example:
 
@@ -41,7 +41,7 @@ Further arguments can be passed on to `semPlot::semPaths()`, for example:
   - `what`, **"path"** to show unweighted gray edges, **"par"** to show parameter estimates as weighted (green/red) edges   
   - `whatLabels`, **"label"** to show edege names as label or **"est"** for parameter estimates, **"hide"** to hide edge labels
 
-#### Univariate LCS model
+#### Univariate LCSM
 
 ```{r, fig.width = 6, fig.height = 4}
 # Fit bivariate lcsm and save the results 
@@ -69,7 +69,7 @@ plot_lcsm(lavaan_object = uni_lavaan_results,
 
 ```
 
-#### Bivariate LCS model
+#### Bivariate LCSM
 
 ```{r, fig.width = 6, fig.height = 4}
 # Fit bivariate lcsm and save the results 

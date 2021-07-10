@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -45,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -60,6 +60,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/lcsm-parameters.html">LCSM Parameters</a>
+    </li>
+    <li>
       <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
@@ -69,7 +72,7 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of LCSMs</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
@@ -83,7 +86,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/milanwiedemann/lcsm/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -97,7 +100,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="v2-path-diagrams_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Create path diagrams to visualise model specifications</h1>
@@ -110,16 +113,17 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lcsm</span>)</pre></body></html></div>
-<div id="plot-simplified-path-diagrams-of-lcs-models" class="section level3">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://milanwiedemann.github.io/lcsm/">lcsm</a></span><span class="op">)</span></code></pre></div>
+<div id="plot-simplified-path-diagrams-of-lcsms" class="section level3">
 <h3 class="hasAnchor">
-<a href="#plot-simplified-path-diagrams-of-lcs-models" class="anchor"></a>Plot simplified path diagrams of LCS models</h3>
-<p>This function is work in progress and can only plot univariate and bivariate LCS models that were specified with <code><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm()</a></code> or <code><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm()</a></code>. Modified LCS models will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package. The input arguments for plotting a simplified path dioagram are:</p>
+<a href="#plot-simplified-path-diagrams-of-lcsms" class="anchor"></a>Plot simplified path diagrams of LCSMs</h3>
+<p>This function is work in progress and can only plot univariate and bivariate LCSMs that were specified with <code><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm()</a></code> or <code><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm()</a></code>. Modified LCSMs will probably return errors as the layout matrix that gets created by this plot function only supports the specifications that can be modelled with this package. The input arguments for plotting a simplified path dioagram are:</p>
 <ul>
 <li>the estimated lavaan object <code>lavaan_object</code>,</li>
 <li>the <code>lavaan_syntax</code> and ,</li>
 <li>
-<code>lcsm</code> indicating whether the LCS model is “univariate” or “bivariate”</li>
+<code>lcsm</code> indicating whether the LCSM is “univariate” or “bivariate”</li>
 </ul>
 <p>Optional arguments can be used to change the look of the plot, for example:</p>
 <ul>
@@ -141,75 +145,73 @@
 <li>
 <code>whatLabels</code>, <strong>“label”</strong> to show edege names as label or <strong>“est”</strong> for parameter estimates, <strong>“hide”</strong> to hide edge labels</li>
 </ul>
-<div id="univariate-lcs-model" class="section level4">
+<div id="univariate-lcsm" class="section level4">
 <h4 class="hasAnchor">
-<a href="#univariate-lcs-model" class="anchor"></a>Univariate LCS model</h4>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
-<span class="no">uni_lavaan_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
-                                   <span class="kw">var</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
-                                   <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-                                  )
+<a href="#univariate-lcsm" class="anchor"></a>Univariate LCSM</h4>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Fit bivariate lcsm and save the results </span>
+<span class="va">uni_lavaan_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_uni_lcsm</span>, 
+                                   var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span><span class="op">)</span>,
+                                   model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                beta <span class="op">=</span> <span class="cn">FALSE</span>, 
+                                                phi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+                                  <span class="op">)</span>
 <span class="co">#&gt; Warning in lav_data_full(data = data, group = group, cluster = cluster, : lavaan WARNING: some cases are empty and will be ignored:</span>
 <span class="co">#&gt;   239</span>
 
 <span class="co"># Save the lavaan syntax that is used to create the layout matrix for semPlot</span>
-<span class="no">uni_lavaan_syntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_uni_lcsm</span>,
-                                  <span class="kw">var</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
-                                  <span class="kw">model</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                  <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="va">uni_lavaan_syntax</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_uni_lcsm.html">fit_uni_lcsm</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_uni_lcsm</span>, 
+                                  var <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span><span class="op">)</span>,
+                                  model <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                               beta <span class="op">=</span> <span class="cn">FALSE</span>, 
+                                               phi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+                                  return_lavaan_syntax <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># Plot the results</span>
-<span class="fu"><a href="../reference/plot_lcsm.html">plot_lcsm</a></span>(<span class="kw">lavaan_object</span> <span class="kw">=</span> <span class="no">uni_lavaan_results</span>,
-          <span class="kw">lavaan_syntax</span> <span class="kw">=</span> <span class="no">uni_lavaan_syntax</span>,
-          <span class="kw">edge.label.cex</span> <span class="kw">=</span> <span class="fl">.9</span>,
-          <span class="kw">lcsm_colours</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-          <span class="kw">lcsm</span> <span class="kw">=</span> <span class="st">"univariate"</span>)
-<span class="co">#&gt; Registered S3 methods overwritten by 'huge':</span>
-<span class="co">#&gt;   method    from   </span>
-<span class="co">#&gt;   plot.sim  BDgraph</span>
-<span class="co">#&gt;   print.sim BDgraph</span></pre></body></html></div>
+<span class="fu"><a href="../reference/plot_lcsm.html">plot_lcsm</a></span><span class="op">(</span>lavaan_object <span class="op">=</span> <span class="va">uni_lavaan_results</span>,
+          lavaan_syntax <span class="op">=</span> <span class="va">uni_lavaan_syntax</span>,
+          edge.label.cex <span class="op">=</span> <span class="fl">.9</span>,  
+          lcsm_colours <span class="op">=</span> <span class="cn">TRUE</span>,
+          lcsm <span class="op">=</span> <span class="st">"univariate"</span><span class="op">)</span></code></pre></div>
 <p><img src="v2-path-diagrams_files/figure-html/unnamed-chunk-2-1.png" width="576"></p>
 </div>
-<div id="bivariate-lcs-model" class="section level4">
+<div id="bivariate-lcsm" class="section level4">
 <h4 class="hasAnchor">
-<a href="#bivariate-lcs-model" class="anchor"></a>Bivariate LCS model</h4>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Fit bivariate lcsm and save the results </span>
-<span class="no">bi_lavaan_results</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
-                                 <span class="kw">var_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
-                                 <span class="kw">var_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span>),
-                                 <span class="kw">model_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
-                                 <span class="kw">model_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                 <span class="kw">coupling</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">delta_lag_xy</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                 <span class="kw">xi_lag_yx</span> <span class="kw">=</span> <span class="fl">TRUE</span>))
+<a href="#bivariate-lcsm" class="anchor"></a>Bivariate LCSM</h4>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Fit bivariate lcsm and save the results </span>
+<span class="va">bi_lavaan_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_bi_lcsm</span>, 
+                                 var_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span><span class="op">)</span>,
+                                 var_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span><span class="op">)</span>,
+                                 model_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                beta <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                phi <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+                                 model_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                beta <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                phi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+                                 coupling <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>delta_lag_xy <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                 xi_lag_yx <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span>
 
 <span class="co"># Save the lavaan syntax that is used to create the layout matrix for semPlot</span>
-<span class="no">bi_lavaan_syntax</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
-                                <span class="kw">var_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>),
-                                <span class="kw">var_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span>),
-                                <span class="kw">model_x</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">FALSE</span>),
-                                <span class="kw">model_y</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">alpha_constant</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">beta</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                               <span class="kw">phi</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                <span class="kw">coupling</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">delta_lag_xy</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-                                                <span class="kw">xi_lag_yx</span> <span class="kw">=</span> <span class="fl">TRUE</span>),
-                                <span class="kw">return_lavaan_syntax</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="va">bi_lavaan_syntax</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/fit_bi_lcsm.html">fit_bi_lcsm</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_bi_lcsm</span>, 
+                                var_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span><span class="op">)</span>,
+                                var_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"y1"</span>, <span class="st">"y2"</span>, <span class="st">"y3"</span>, <span class="st">"y4"</span>, <span class="st">"y5"</span><span class="op">)</span>,
+                                model_x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                               beta <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                               phi <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>,
+                                model_y <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>alpha_constant <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                               beta <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                               phi <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+                                coupling <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span><span class="op">(</span>delta_lag_xy <span class="op">=</span> <span class="cn">TRUE</span>, 
+                                                xi_lag_yx <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+                                return_lavaan_syntax <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="co"># Plot the results</span>
-<span class="fu"><a href="../reference/plot_lcsm.html">plot_lcsm</a></span>(<span class="kw">lavaan_object</span> <span class="kw">=</span> <span class="no">bi_lavaan_results</span>,
-          <span class="kw">lavaan_syntax</span> <span class="kw">=</span> <span class="no">bi_lavaan_syntax</span>,
-          <span class="kw">lcsm_colours</span> <span class="kw">=</span> <span class="fl">TRUE</span>,
-          <span class="kw">whatLabels</span> <span class="kw">=</span> <span class="st">"hide"</span>,
-          <span class="kw">lcsm</span> <span class="kw">=</span> <span class="st">"bivariate"</span>)</pre></body></html></div>
+<span class="fu"><a href="../reference/plot_lcsm.html">plot_lcsm</a></span><span class="op">(</span>lavaan_object <span class="op">=</span> <span class="va">bi_lavaan_results</span>, 
+          lavaan_syntax <span class="op">=</span> <span class="va">bi_lavaan_syntax</span>,
+          lcsm_colours <span class="op">=</span> <span class="cn">TRUE</span>,
+          whatLabels <span class="op">=</span> <span class="st">"hide"</span>,
+          lcsm <span class="op">=</span> <span class="st">"bivariate"</span><span class="op">)</span></code></pre></div>
 <p><img src="v2-path-diagrams_files/figure-html/unnamed-chunk-3-1.png" width="576"></p>
 </div>
 </div>
@@ -228,7 +230,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

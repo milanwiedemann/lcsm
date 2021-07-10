@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -105,6 +105,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/lcsm-parameters.html">LCSM Parameters</a>
+    </li>
+    <li>
       <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
@@ -114,7 +117,7 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of LCSMs</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
@@ -128,7 +131,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/milanwiedemann/lcsm/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -154,16 +157,17 @@
     <p>Fit univariate latent change score models.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>fit_uni_lcsm</span>(
-  <span class='no'>data</span>,
-  <span class='no'>var</span>,
-  <span class='no'>model</span>,
-  <span class='kw'>mimic</span> <span class='kw'>=</span> <span class='st'>"Mplus"</span>,
-  <span class='kw'>estimator</span> <span class='kw'>=</span> <span class='st'>"MLR"</span>,
-  <span class='kw'>missing</span> <span class='kw'>=</span> <span class='st'>"FIML"</span>,
-  <span class='kw'>return_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='no'>...</span>
-)</pre>
+    <pre class="usage"><span class='fu'>fit_uni_lcsm</span><span class='op'>(</span>
+  <span class='va'>data</span>,
+  <span class='va'>var</span>,
+  <span class='va'>model</span>,
+  add <span class='op'>=</span> <span class='cn'>NULL</span>,
+  mimic <span class='op'>=</span> <span class='st'>"Mplus"</span>,
+  estimator <span class='op'>=</span> <span class='st'>"MLR"</span>,
+  missing <span class='op'>=</span> <span class='st'>"FIML"</span>,
+  return_lavaan_syntax <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -186,6 +190,10 @@
 <li><p><code>beta</code> (Proportional change factor),</p></li>
 <li><p><code>phi</code> (Autoregression of change scores).</p></li>
 </ul></td>
+    </tr>
+    <tr>
+      <th>add</th>
+      <td><p>String, lavaan syntax to be added to the model</p></td>
     </tr>
     <tr>
       <th>mimic</th>
@@ -222,16 +230,17 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Fit univariate latent change score model</span>
-<span class='fu'>fit_uni_lcsm</span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>data_uni_lcsm</span>,
-             <span class='kw'>var</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span>(<span class='no'>data_uni_lcsm</span>)[<span class='fl'>2</span>:<span class='fl'>4</span>],
-             <span class='kw'>model</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                          <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-                          <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>))</div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING: some cases are empty and will be ignored:</span>
-#&gt; <span class='warning'>  179 223 239 258 306 359 430</span></div><div class='output co'>#&gt; lavaan 0.6-6 ended normally after 74 iterations
+<span class='fu'>fit_uni_lcsm</span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>data_uni_lcsm</span>, 
+             var <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>data_uni_lcsm</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>:</span><span class='fl'>4</span><span class='op'>]</span>,
+             model <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>alpha_constant <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+                          beta <span class='op'>=</span> <span class='cn'>FALSE</span>, 
+                          phi <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='warning'>Warning: lavaan WARNING: some cases are empty and will be ignored:</span>
+#&gt; <span class='warning'>  179 223 239 258 306 359 430</span></div><div class='output co'>#&gt; lavaan 0.6-8 ended normally after 74 iterations
 #&gt; 
 #&gt;   Estimator                                         ML
 #&gt;   Optimization method                           NLMINB
-#&gt;   Number of free parameters                          8
+#&gt;   Number of model parameters                         8
 #&gt;   Number of equality constraints                     2
 #&gt;                                                       
 #&gt;                                                   Used       Total
@@ -260,7 +269,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

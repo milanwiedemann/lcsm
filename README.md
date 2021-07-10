@@ -29,7 +29,7 @@ Grimm, Ram & Estabrook
 The `lcsm` package combines the strengths of other R packages like
 [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org),
 and [semPlot](https://CRAN.R-project.org/package=semPlot) by generating
-`lavaan` syntax that helps these packages work together. This is work in
+lavaan syntax that helps these packages work together. This is work in
 progress and feedback is very welcome!
 
 ## Installation
@@ -474,7 +474,7 @@ The functions `extract_param()` and `extract_fit()` offer some tools
 that I find helpful when running LCSMs in R, for example:
 
 -   `extract_param()`: only one row per estimated parameter,
--   `extract_fit()`: fit statistics for multiple `lavaan` objects can be
+-   `extract_fit()`: fit statistics for multiple lavaan objects can be
     extracted.
 
 A table of the description of all parameters that can be estimated is

@@ -1,8 +1,8 @@
 ---
-title: "Parameter estimates and fit statistics of latent change score models"
+title: "Parameter estimates and fit statistics of LCSMs"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Parameter estimates and fit statistics of latent change score models}
+  %\VignetteIndexEntry{Parameter estimates and fit statistics of LCSMs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -20,7 +20,7 @@ library(lavaan)
 ```
 
 The main underlying functions to extract parameters and fit statistics come from the `broom` package: `broom::tidy()` and `broom::glance()`. 
-The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCS models in R, for example:
+The functions `extract_param()` and `extract_fit()` offer some tools that I find helpful when running LCSMs in R, for example:
 
 -  `extract_param()`: only one row per estimated parameter,
 - `extract_fit()`: fit statistics for multiple `lavaan` objects can be extracted.

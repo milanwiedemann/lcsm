@@ -60,7 +60,7 @@ cat(uni_lcsm_syntax_add)
 ## True Score to Change Score
 
 ```{r}
-# Specify bivariate LCS model
+# Specify bivariate LCSM
 lavaan_bi_lcsm_delta_01 <- specify_bi_lcsm(timepoints = 5, 
                                            var_x = "x",
                                            model_x = list(alpha_constant = TRUE, 
@@ -86,7 +86,7 @@ cat(lavaan_bi_lcsm_delta_01)
 ## Change Score to Change Score
 
 ```{r}
-# Specify bivariate LCS model
+# Specify bivariate LCSM
 lavaan_bi_lcsm_xi_01 <- specify_bi_lcsm(timepoints = 5, 
                                         var_x = "x",
                                         model_x = list(alpha_constant = TRUE, 
@@ -111,7 +111,7 @@ cat(lavaan_bi_lcsm_xi_01)
 ## Add model specifications to lavaan code
 
 ```{r}
-# Specify bivariate LCS model
+# Specify bivariate LCSM
 lavaan_bi_lcsm_xi_add <- specify_bi_lcsm(timepoints = 3, 
                                         var_x = "x",
                                         model_x = list(alpha_constant = TRUE, 

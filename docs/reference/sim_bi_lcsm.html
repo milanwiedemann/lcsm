@@ -82,7 +82,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -90,7 +90,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -105,6 +105,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/lcsm-parameters.html">LCSM Parameters</a>
+    </li>
+    <li>
       <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
@@ -114,7 +117,7 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of LCSMs</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
@@ -128,7 +131,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/milanwiedemann/lcsm/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -154,24 +157,24 @@
     <p>This function simulate data from bivariate latent change score model parameter estimates using <a href='https://rdrr.io/pkg/lavaan/man/simulateData.html'>simulateData</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>sim_bi_lcsm</span>(
-  <span class='no'>timepoints</span>,
-  <span class='no'>model_x</span>,
-  <span class='kw'>model_x_param</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>model_y</span>,
-  <span class='kw'>model_y_param</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>coupling</span>,
-  <span class='kw'>coupling_param</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>sample.nobs</span> <span class='kw'>=</span> <span class='fl'>500</span>,
-  <span class='kw'>na_x_pct</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>na_y_pct</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='no'>...</span>,
-  <span class='kw'>var_x</span> <span class='kw'>=</span> <span class='st'>"x"</span>,
-  <span class='kw'>var_y</span> <span class='kw'>=</span> <span class='st'>"y"</span>,
-  <span class='kw'>change_letter_x</span> <span class='kw'>=</span> <span class='st'>"g"</span>,
-  <span class='kw'>change_letter_y</span> <span class='kw'>=</span> <span class='st'>"j"</span>,
-  <span class='kw'>return_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>
-)</pre>
+    <pre class="usage"><span class='fu'>sim_bi_lcsm</span><span class='op'>(</span>
+  <span class='va'>timepoints</span>,
+  <span class='va'>model_x</span>,
+  model_x_param <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>model_y</span>,
+  model_y_param <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>coupling</span>,
+  coupling_param <span class='op'>=</span> <span class='cn'>NULL</span>,
+  sample.nobs <span class='op'>=</span> <span class='fl'>500</span>,
+  na_x_pct <span class='op'>=</span> <span class='fl'>0</span>,
+  na_y_pct <span class='op'>=</span> <span class='fl'>0</span>,
+  <span class='va'>...</span>,
+  var_x <span class='op'>=</span> <span class='st'>"x"</span>,
+  var_y <span class='op'>=</span> <span class='st'>"y"</span>,
+  change_letter_x <span class='op'>=</span> <span class='st'>"g"</span>,
+  change_letter_y <span class='op'>=</span> <span class='st'>"j"</span>,
+  return_lavaan_syntax <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -298,51 +301,52 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># Simulate data from bivariate LCS model parameters </span>
-<span class='fu'>sim_bi_lcsm</span>(<span class='kw'>timepoints</span> <span class='kw'>=</span> <span class='fl'>12</span>,
-            <span class='kw'>na_x_pct</span> <span class='kw'>=</span> <span class='fl'>.05</span>,
-            <span class='kw'>na_y_pct</span> <span class='kw'>=</span> <span class='fl'>.1</span>,
-            <span class='kw'>model_x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>),
-            <span class='kw'>model_x_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>gamma_lx1</span> <span class='kw'>=</span> <span class='fl'>21</span>,
-                                 <span class='kw'>sigma2_lx1</span> <span class='kw'>=</span> <span class='fl'>.5</span>,
-                                 <span class='kw'>sigma2_ux</span> <span class='kw'>=</span> <span class='fl'>.2</span>,
-                                 <span class='kw'>alpha_g2</span> <span class='kw'>=</span> -<span class='fl'>.4</span>,
-                                 <span class='kw'>sigma2_g2</span> <span class='kw'>=</span> <span class='fl'>.4</span>,
-                                 <span class='kw'>sigma_g2lx1</span> <span class='kw'>=</span> <span class='fl'>.2</span>,
-                                 <span class='kw'>beta_x</span> <span class='kw'>=</span> -<span class='fl'>.1</span>),
-            <span class='kw'>model_y</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha_constant</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>beta</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>phi</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-            <span class='kw'>model_y_param</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>gamma_ly1</span> <span class='kw'>=</span> <span class='fl'>5</span>,
-                                 <span class='kw'>sigma2_ly1</span> <span class='kw'>=</span> <span class='fl'>.2</span>,
-                                 <span class='kw'>sigma2_uy</span> <span class='kw'>=</span> <span class='fl'>.2</span>,
-                                 <span class='kw'>alpha_j2</span> <span class='kw'>=</span> -<span class='fl'>.2</span>,
-                                 <span class='kw'>sigma2_j2</span> <span class='kw'>=</span> <span class='fl'>.1</span>,
-                                 <span class='kw'>sigma_j2ly1</span> <span class='kw'>=</span> <span class='fl'>.02</span>,
-                                 <span class='kw'>beta_y</span> <span class='kw'>=</span> -<span class='fl'>.2</span>,
-                                 <span class='kw'>phi_y</span> <span class='kw'>=</span> <span class='fl'>.1</span>),
-            <span class='kw'>coupling</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-                            <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>),
-            <span class='kw'>coupling_param</span> <span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>sigma_su</span> <span class='kw'>=</span> <span class='fl'>.01</span>,
-                                 <span class='kw'>sigma_ly1lx1</span> <span class='kw'>=</span> <span class='fl'>.2</span>,
-                                 <span class='kw'>sigma_g2ly1</span> <span class='kw'>=</span> <span class='fl'>.1</span>,
-                                 <span class='kw'>sigma_j2lx1</span> <span class='kw'>=</span> <span class='fl'>.1</span>,
-                                 <span class='kw'>sigma_j2g2</span> <span class='kw'>=</span> <span class='fl'>.01</span>,
-                                 <span class='kw'>delta_lag_xy</span> <span class='kw'>=</span> <span class='fl'>.13</span>,
-                                 <span class='kw'>xi_lag_yx</span> <span class='kw'>=</span> <span class='fl'>.4</span>),
-            <span class='kw'>return_lavaan_syntax</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; <span class='message'>Parameter estimates for the data simulation are taken from the argument 'model_param'.</span></div><div class='output co'>#&gt; <span class='message'>All parameter estimates for the LCS model have been specified in the argument 'model_param'.</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 500 x 25</span><span>
+<span class='fu'>sim_bi_lcsm</span><span class='op'>(</span>timepoints <span class='op'>=</span> <span class='fl'>12</span>, 
+            na_x_pct <span class='op'>=</span> <span class='fl'>.05</span>,
+            na_y_pct <span class='op'>=</span> <span class='fl'>.1</span>,
+            model_x <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>alpha_constant <span class='op'>=</span> <span class='cn'>TRUE</span>, beta <span class='op'>=</span> <span class='cn'>TRUE</span>, phi <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>,
+            model_x_param <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>gamma_lx1 <span class='op'>=</span> <span class='fl'>21</span>,
+                                 sigma2_lx1 <span class='op'>=</span> <span class='fl'>.5</span>,
+                                 sigma2_ux <span class='op'>=</span> <span class='fl'>.2</span>,
+                                 alpha_g2 <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.4</span>,
+                                 sigma2_g2 <span class='op'>=</span> <span class='fl'>.4</span>,
+                                 sigma_g2lx1 <span class='op'>=</span> <span class='fl'>.2</span>,
+                                 beta_x <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.1</span><span class='op'>)</span>,
+            model_y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>alpha_constant <span class='op'>=</span> <span class='cn'>TRUE</span>, beta <span class='op'>=</span> <span class='cn'>TRUE</span>, phi <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+            model_y_param <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>gamma_ly1 <span class='op'>=</span> <span class='fl'>5</span>,
+                                 sigma2_ly1 <span class='op'>=</span> <span class='fl'>.2</span>,
+                                 sigma2_uy <span class='op'>=</span> <span class='fl'>.2</span>,
+                                 alpha_j2 <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.2</span>,
+                                 sigma2_j2 <span class='op'>=</span> <span class='fl'>.1</span>,
+                                 sigma_j2ly1 <span class='op'>=</span> <span class='fl'>.02</span>,
+                                 beta_y <span class='op'>=</span> <span class='op'>-</span><span class='fl'>.2</span>,
+                                 phi_y <span class='op'>=</span> <span class='fl'>.1</span><span class='op'>)</span>,
+            coupling <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>delta_lag_xy <span class='op'>=</span> <span class='cn'>TRUE</span>, 
+                            xi_lag_yx <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>,
+            coupling_param <span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>sigma_su <span class='op'>=</span> <span class='fl'>.01</span>,
+                                 sigma_ly1lx1 <span class='op'>=</span> <span class='fl'>.2</span>,
+                                 sigma_g2ly1 <span class='op'>=</span> <span class='fl'>.1</span>,
+                                 sigma_j2lx1 <span class='op'>=</span> <span class='fl'>.1</span>,
+                                 sigma_j2g2 <span class='op'>=</span> <span class='fl'>.01</span>,
+                                 delta_lag_xy <span class='op'>=</span> <span class='fl'>.13</span>,
+                                 xi_lag_yx <span class='op'>=</span> <span class='fl'>.4</span><span class='op'>)</span>,
+            return_lavaan_syntax <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>Parameter estimates for the data simulation are taken from the argument 'model_param'.</span></div><div class='output co'>#&gt; <span class='message'>All parameter estimates for the LCS model have been specified in the argument 'model_param'.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 500 x 25</span><span>
 #&gt;       id    x1    x2    x3    x4    x5    x6    x7       x8     x9    x10    x11
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>     1  21.5  18.4  15.9  12.5  9.88  7.28  4.92  2.51     0.636 -</span><span style='color: #BB0000;'>1.61</span><span>  -</span><span style='color: #BB0000;'>3.31</span><span> 
-#&gt; </span><span style='color: #555555;'> 2</span><span>     2  19.9  16.7  13.6  11.1  9.01  5.72  3.06 -</span><span style='color: #BB0000;'>0.003</span><span style='color: #BB0000;text-decoration: underline;'>65</span><span> -</span><span style='color: #BB0000;'>1.78</span><span>  -</span><span style='color: #BB0000;'>4.50</span><span>  -</span><span style='color: #BB0000;'>5.39</span><span> 
-#&gt; </span><span style='color: #555555;'> 3</span><span>     3  20.2  18.2  15.6  14.1 11.5   9.20  6.70  5.55     2.97   0.422 -</span><span style='color: #BB0000;'>0.393</span><span>
-#&gt; </span><span style='color: #555555;'> 4</span><span>     4  21.2  18.0  16.9  14.2 13.3  11.0   9.44  7.71     5.61   4.41   2.73 
-#&gt; </span><span style='color: #555555;'> 5</span><span>     5  20.5  18.1  17.0  14.0 12.3  11.1   8.30  5.92     4.76   1.67   1.11 
-#&gt; </span><span style='color: #555555;'> 6</span><span>     6  20.7  18.4  17.1  14.9 13.0  11.7   9.10  8.56     5.33   4.89   3.60 
-#&gt; </span><span style='color: #555555;'> 7</span><span>     7  20.3  19.5  18.0  16.1 14.8  13.3  </span><span style='color: #BB0000;'>NA</span><span>     9.89     9.57   7.86   6.40 
-#&gt; </span><span style='color: #555555;'> 8</span><span>     8  22.9  22.4  22.5  22.3 21.0  20.3  20.3  18.9     17.8   16.9   16.9  
-#&gt; </span><span style='color: #555555;'> 9</span><span>     9  21.6  21.0  19.3  17.3 15.7  14.8  12.7  12.0      9.70   8.64   7.29 
-#&gt; </span><span style='color: #555555;'>10</span><span>    10  20.6  19.2  17.3  16.2 14.1  11.9  10.7   8.51    </span><span style='color: #BB0000;'>NA</span><span>      5.06   4.07 
-#&gt; </span><span style='color: #555555;'># … with 490 more rows, and 13 more variables: x12 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y1 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y2 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   y3 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y4 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y5 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y6 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y7 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y8 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y9 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   y10 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y11 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span style='color: #555555;'>, y12 </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span></div><div class='input'>
+#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1  21.5  18.4  15.9  12.5  9.88  7.28  4.92  2.51     0.636 -</span><span style='color: #BB0000;'>1.61</span><span>  -</span><span style='color: #BB0000;'>3.31</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     2  19.9  16.7  13.6  11.1  9.01  5.72  3.06 -</span><span style='color: #BB0000;'>0.003</span><span style='color: #BB0000;text-decoration: underline;'>65</span><span> -</span><span style='color: #BB0000;'>1.78</span><span>  -</span><span style='color: #BB0000;'>4.50</span><span>  -</span><span style='color: #BB0000;'>5.39</span><span> 
+#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     3  20.2  18.2  15.6  14.1 11.5   9.20  6.70  5.55     2.97   0.422 -</span><span style='color: #BB0000;'>0.393</span><span>
+#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     4  21.2  18.0  16.9  14.2 13.3  11.0   9.44  7.71     5.61   4.41   2.73 
+#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     5  20.5  18.1  17.0  14.0 12.3  11.1   8.30  5.92     4.76   1.67   1.11 
+#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     6  20.7  18.4  17.1  14.9 13.0  11.7   9.10  8.56     5.33   4.89   3.60 
+#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     7  20.3  19.5  18.0  16.1 14.8  13.3  </span><span style='color: #BB0000;'>NA</span><span>     9.89     9.57   7.86   6.40 
+#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     8  22.9  22.4  22.5  22.3 21.0  20.3  20.3  18.9     17.8   16.9   16.9  
+#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     9  21.6  21.0  19.3  17.3 15.7  14.8  12.7  12.0      9.70   8.64   7.29 
+#&gt; </span><span style='color: #BCBCBC;'>10</span><span>    10  20.6  19.2  17.3  16.2 14.1  11.9  10.7   8.51    </span><span style='color: #BB0000;'>NA</span><span>      5.06   4.07 
+#&gt; </span><span style='color: #949494;'># … with 490 more rows, and 13 more variables: x12 &lt;dbl&gt;, y1 &lt;dbl&gt;, y2 &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   y3 &lt;dbl&gt;, y4 &lt;dbl&gt;, y5 &lt;dbl&gt;, y6 &lt;dbl&gt;, y7 &lt;dbl&gt;, y8 &lt;dbl&gt;, y9 &lt;dbl&gt;,</span><span>
+#&gt; </span><span style='color: #949494;'>#   y10 &lt;dbl&gt;, y11 &lt;dbl&gt;, y12 &lt;dbl&gt;</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -359,7 +363,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

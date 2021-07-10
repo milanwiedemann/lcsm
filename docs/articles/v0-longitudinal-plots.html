@@ -37,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">lcsm</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -45,7 +45,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -60,6 +60,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/lcsm-parameters.html">LCSM Parameters</a>
+    </li>
+    <li>
       <a href="../articles/v0-longitudinal-plots.html">Visualise longitudinal data</a>
     </li>
     <li>
@@ -69,7 +72,7 @@
       <a href="../articles/v2-path-diagrams.html">Create path diagrams to visualise model specifications</a>
     </li>
     <li>
-      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of latent change score models</a>
+      <a href="../articles/v3-extract-tutorial.html">Parameter estimates and fit statistics of LCSMs</a>
     </li>
     <li>
       <a href="../articles/v4-simulate-data.html">Simulate data to explore the effect of different parameters</a>
@@ -83,7 +86,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/milanwiedemann/lcsm/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -97,7 +100,7 @@
 
       
 
-      </header><div class="row">
+      </header><script src="v0-longitudinal-plots_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Visualise longitudinal data</h1>
@@ -110,57 +113,61 @@
 
     
     
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="co"># Load packages</span>
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">lcsm</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">stringr</span>)</pre></body></html></div>
-<p>It’s important to understand the data. For longitudinal analyses it may be helpful visualise the individual trajectories. A more detailed overview of the rational behind this be found in <span class="citation">Ghisletta and McArdle (<a href="#ref-Ghisletta2012" role="doc-biblioref">2012</a>)</span> or Chapter 2 in <span class="citation">Grimm, Ram, and Estabrook (<a href="#ref-Grimm2017" role="doc-biblioref">2017</a>)</span>. Most basic (and advanced) plots can be done relatively easily using already existing R packages. THe plotting functions of the <code>lcsm</code> package actually build on function from other packages. I’ll show some examples illustrating how to visualise longitudinal data using the R package <code>ggplot2</code> <span class="citation">(Wickham <a href="#ref-R-ggplot2" role="doc-biblioref">2016</a>)</span>. The function <code><a href="../reference/plot_trajectories.html">plot_trajectories()</a></code> of the <code>lcsm</code> R package builds on <code>ggplot2</code> to make it a little easier to visualize individual trajectories.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Load packages</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://milanwiedemann.github.io/lcsm/">lcsm</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org">tidyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></code></pre></div>
+<p>It’s important to understand the data. For longitudinal analyses it may be helpful visualise the individual trajectories. A more detailed overview of the rational behind this be found in <span class="citation"><a href="#ref-Ghisletta2012" role="doc-biblioref">Ghisletta and McArdle</a> (<a href="#ref-Ghisletta2012" role="doc-biblioref">2012</a>)</span> or Chapter 2 in <span class="citation"><a href="#ref-Grimm2017" role="doc-biblioref">Grimm, Ram, and Estabrook</a> (<a href="#ref-Grimm2017" role="doc-biblioref">2017</a>)</span>. Most basic (and advanced) plots can be done relatively easily using already existing R packages. THe plotting functions of the <code>lcsm</code> package actually build on function from other packages. I’ll show some examples illustrating how to visualise longitudinal data using the R package <code>ggplot2</code> <span class="citation">(<a href="#ref-R-ggplot2" role="doc-biblioref">Wickham 2016</a>)</span>. The function <code><a href="../reference/plot_trajectories.html">plot_trajectories()</a></code> of the <code>lcsm</code> R package builds on <code>ggplot2</code> to make it a little easier to visualize individual trajectories.</p>
 <p>I’ll show how to visualise 6 repeated measurements from the data set <code>data_bi_lcsm</code> from this package.</p>
 <div id="prepare-data" class="section level1">
 <h1 class="hasAnchor">
 <a href="#prepare-data" class="anchor"></a>Prepare data</h1>
 <p>When working with repeated measures I like to create a vector of the variables so I don’t have to type the names again and again, but this really needed and everything would also work without doing this.</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="co"># Create a vector of variable names</span>
-<span class="no">x_var_list</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>, <span class="st">"x6"</span>)
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create a vector of variable names</span>
+<span class="va">x_var_list</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"x1"</span>, <span class="st">"x2"</span>, <span class="st">"x3"</span>, <span class="st">"x4"</span>, <span class="st">"x5"</span>, <span class="st">"x6"</span><span class="op">)</span>
 
 <span class="co"># Or simply use the paste function and R might work too</span>
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"x"</span>, <span class="fl">1</span>:<span class="fl">6</span>)
-<span class="co">#&gt; [1] "x1" "x2" "x3" "x4" "x5" "x6"</span></pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span><span class="op">(</span><span class="st">"x"</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">6</span><span class="op">)</span>
+<span class="co">#&gt; [1] "x1" "x2" "x3" "x4" "x5" "x6"</span></code></pre></div>
 <p>The repeated measurements need to be in “long” format when using <code>ggplot2</code> for plotting. Note that this is different to the data structure needed for <code>lavaan</code>, so the same data can’t just be used for plotting without restructuring - <code>lavaan</code> expects the data to be in “wide” format.</p>
 <p>I’ll show how to transform the data anyway because the plotting function <code><a href="../reference/plot_trajectories.html">plot_trajectories()</a></code> is limited and other plots may be more appropriate. Fortunately, this is a relatively straightforward to do, my favourite function to do this is <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> from the <code>tidyr</code> package. Next, to get the correct order of repeated measures the time variable needs to be ordered in the correct order. R know how to order numbers but only if the variable is actually numeric. If you’re using variable names that also include letters R might get confused and get the order wrong. Imagine you have four repeated measurements, week 1 to 3 and week 10 and the following variable names: <code>w1</code>, <code>w2</code>, <code>w3</code>, <code>w10</code>. R will get this order wrong and thinks that <code>w1</code> is followed by <code>w10</code> and then <code>w2</code> and <code>w3</code>. To avoid this there are a couple options, I usually do one of the two:</p>
 <ol style="list-style-type: decimal">
 <li>Create a factor with the original variable names using the in build <code><a href="https://rdrr.io/r/base/factor.html">factor()</a></code> function from base R</li>
 <li>Extracting the number from the string and then creating a factor (see example below)</li>
 </ol>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="co"># Create long data set</span>
-<span class="no">data_long</span> <span class="kw">&lt;-</span> <span class="no">data_bi_lcsm</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="st">"id"</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">all_of</a></span>(<span class="no">x_var_list</span>)) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create long data set</span>
+<span class="va">data_long</span> <span class="op">&lt;-</span> <span class="va">data_bi_lcsm</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="st">"id"</span>, <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">x_var_list</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span> 
   <span class="co"># Pivot data long</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span>(<span class="kw">cols</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">all_of</a></span>(<span class="no">x_var_list</span>), <span class="kw">names_to</span> <span class="kw">=</span> <span class="st">"time"</span>, <span class="kw">values_to</span> <span class="kw">=</span> <span class="st">"value"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>cols <span class="op">=</span> <span class="fu"><a href="https://tidyselect.r-lib.org/reference/all_of.html">all_of</a></span><span class="op">(</span><span class="va">x_var_list</span><span class="op">)</span>, names_to <span class="op">=</span> <span class="st">"time"</span>, values_to <span class="op">=</span> <span class="st">"value"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
     <span class="co"># Extract number from time variable</span>
-    <span class="kw">time</span> <span class="kw">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span>(<span class="no">time</span>, <span class="st">"\\d+"</span>),
+    time <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_extract.html">str_extract</a></span><span class="op">(</span><span class="va">time</span>, <span class="st">"\\d+"</span><span class="op">)</span>,
     <span class="co"># At the moment the numbers in the time are 'characters'</span>
     <span class="co"># So here it gets transformed to a numeric value</span>
-    <span class="kw">time</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span>(<span class="no">time</span>))
-    )</pre></body></html></div>
+    time <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="va">time</span><span class="op">)</span><span class="op">)</span>
+    <span class="op">)</span></code></pre></div>
 <p>These data manipulations are necessary for plotting longitudinal data in R and the <code><a href="../reference/plot_trajectories.html">plot_trajectories()</a></code> function from this package is doing this transformation automatically in the background.</p>
 </div>
 <div id="violin-plots" class="section level1">
 <h1 class="hasAnchor">
 <a href="#violin-plots" class="anchor"></a>Violin plots</h1>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="co"># Create violin plot  with outliers in colour blue</span>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create violin plot  with outliers in colour blue</span>
 <span class="co"># Also add boxplot</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">data_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">time</span>, <span class="no">value</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span>(<span class="kw">width</span> <span class="kw">=</span> <span class="fl">0.1</span>, <span class="kw">outlier.colour</span> <span class="kw">=</span> <span class="st">"blue"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span>()
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">data_long</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">time</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.1</span>, outlier.colour <span class="op">=</span> <span class="st">"blue"</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span>
 <span class="co">#&gt; Warning: Removed 154 rows containing non-finite values (stat_ydensity).</span>
-<span class="co">#&gt; Warning: Removed 154 rows containing non-finite values (stat_boxplot).</span></pre></body></html></div>
+<span class="co">#&gt; Warning: Removed 154 rows containing non-finite values (stat_boxplot).</span></code></pre></div>
 <p><img src="v0-longitudinal-plots_files/figure-html/unnamed-chunk-4-1.png" width="672"></p>
-<p>Similar visualisations that communicate the data in a more open way have been developed for example by <span class="citation">Allen et al. (<a href="#ref-Allen2019" role="doc-biblioref">2019</a>)</span> and <span class="citation">Langen (<a href="#ref-vanLangen2020" role="doc-biblioref">2020</a>)</span>.</p>
+<p>Similar visualisations that communicate the data in a more open way have been developed for example by <span class="citation"><a href="#ref-Allen2019" role="doc-biblioref">Allen et al.</a> (<a href="#ref-Allen2019" role="doc-biblioref">2019</a>)</span> and <span class="citation"><a href="#ref-vanLangen2020" role="doc-biblioref">Langen</a> (<a href="#ref-vanLangen2020" role="doc-biblioref">2020</a>)</span>.</p>
 </div>
 <div id="longitudinal-plots" class="section level1">
 <h1 class="hasAnchor">
@@ -169,55 +176,57 @@
 <div id="overlaid-individual-trajectories" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overlaid-individual-trajectories" class="anchor"></a>Overlaid individual trajectories</h2>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="co"># Create longitudinal plot for construct x</span>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create longitudinal plot for construct x</span>
 <span class="co"># Select ransom 1.8% of the sample</span>
-<span class="fu"><a href="../reference/plot_trajectories.html">plot_trajectories</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
-                  <span class="kw">id_var</span> <span class="kw">=</span> <span class="st">"id"</span>,
-                  <span class="kw">var_list</span> <span class="kw">=</span> <span class="no">x_var_list</span>,
-                  <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Time"</span>, <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Value"</span>,
-                  <span class="kw">connect_missing</span> <span class="kw">=</span> <span class="fl">FALSE</span>,
-                  <span class="kw">random_sample_frac</span> <span class="kw">=</span> <span class="fl">0.018</span>,
-                  <span class="kw">title_n</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="fu"><a href="../reference/plot_trajectories.html">plot_trajectories</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_bi_lcsm</span>,
+                  id_var <span class="op">=</span> <span class="st">"id"</span>, 
+                  var_list <span class="op">=</span> <span class="va">x_var_list</span>,
+                  xlab <span class="op">=</span> <span class="st">"Time"</span>, ylab <span class="op">=</span> <span class="st">"Value"</span>,
+                  connect_missing <span class="op">=</span> <span class="cn">FALSE</span>, 
+                  random_sample_frac <span class="op">=</span> <span class="fl">0.018</span>, 
+                  title_n <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="co">#&gt; Warning: Removed 1 row(s) containing missing values (geom_path).</span>
-<span class="co">#&gt; Warning: Removed 4 rows containing missing values (geom_point).</span></pre></body></html></div>
+<span class="co">#&gt; Warning: Removed 4 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="v0-longitudinal-plots_files/figure-html/unnamed-chunk-5-1.png" width="672"></p>
 </div>
 <div id="separate-individual-trajectories" class="section level2">
 <h2 class="hasAnchor">
 <a href="#separate-individual-trajectories" class="anchor"></a>Separate individual trajectories</h2>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="co"># Create plot for construct x</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># Create plot for construct x</span>
 <span class="co"># Add facet_wrap() function from ggplot2</span>
-<span class="fu"><a href="../reference/plot_trajectories.html">plot_trajectories</a></span>(<span class="kw">data</span> <span class="kw">=</span> <span class="no">data_bi_lcsm</span>,
-                  <span class="kw">id_var</span> <span class="kw">=</span> <span class="st">"id"</span>,
-                  <span class="kw">var_list</span> <span class="kw">=</span> <span class="no">x_var_list</span>,
-                  <span class="kw">xlab</span> <span class="kw">=</span> <span class="st">"Time"</span>, <span class="kw">ylab</span> <span class="kw">=</span> <span class="st">"Value"</span>,
-                  <span class="kw">connect_missing</span> <span class="kw">=</span> <span class="no">F</span>,
-                  <span class="kw">random_sample_frac</span> <span class="kw">=</span> <span class="fl">0.018</span>,
-                  <span class="kw">title_n</span> <span class="kw">=</span> <span class="no">T</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(~<span class="no">id</span>)
+<span class="fu"><a href="../reference/plot_trajectories.html">plot_trajectories</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">data_bi_lcsm</span>,
+                  id_var <span class="op">=</span> <span class="st">"id"</span>, 
+                  var_list <span class="op">=</span> <span class="va">x_var_list</span>,
+                  xlab <span class="op">=</span> <span class="st">"Time"</span>, ylab <span class="op">=</span> <span class="st">"Value"</span>,
+                  connect_missing <span class="op">=</span> <span class="cn">F</span>, 
+                  random_sample_frac <span class="op">=</span> <span class="fl">0.018</span>, 
+                  title_n <span class="op">=</span> <span class="cn">T</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">id</span><span class="op">)</span>
 <span class="co">#&gt; Warning: Removed 1 row(s) containing missing values (geom_path).</span>
-<span class="co">#&gt; Warning: Removed 4 rows containing missing values (geom_point).</span></pre></body></html></div>
+<span class="co">#&gt; Warning: Removed 4 rows containing missing values (geom_point).</span></code></pre></div>
 <p><img src="v0-longitudinal-plots_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 </div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="hasAnchor">
 <a href="#references" class="anchor"></a>References</h1>
-<div id="refs" class="references">
-<div id="ref-Allen2019">
-<p>Allen, Micah, Davide Poggiali, Kirstie Whitaker, Tom Rhys Marshall, and Rogier A. Kievit. 2019. “Raincloud Plots: A Multi-Platform Tool for Robust Data Visualization.” <em>Wellcome Open Research</em> 4 (April): 63. <a href="https://doi.org/10.12688/wellcomeopenres.15191.1">https://doi.org/10.12688/wellcomeopenres.15191.1</a>.</p>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Allen2019" class="csl-entry">
+Allen, Micah, Davide Poggiali, Kirstie Whitaker, Tom Rhys Marshall, and Rogier A. Kievit. 2019. <span>“Raincloud Plots: A Multi-Platform Tool for Robust Data Visualization.”</span> <em>Wellcome Open Research</em> 4 (April): 63. <a href="https://doi.org/10.12688/wellcomeopenres.15191.1">https://doi.org/10.12688/wellcomeopenres.15191.1</a>.
 </div>
-<div id="ref-Ghisletta2012">
-<p>Ghisletta, Paolo, and John J. McArdle. 2012. “Latent Curve Models and Latent Change Score Models Estimated in R.” <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 19 (4): 651–82. <a href="https://doi.org/10.1080/10705511.2012.713275">https://doi.org/10.1080/10705511.2012.713275</a>.</p>
+<div id="ref-Ghisletta2012" class="csl-entry">
+Ghisletta, Paolo, and John J. McArdle. 2012. <span>“Latent <span>Curve Models</span> and <span>Latent Change Score Models Estimated</span> in <span>R</span>.”</span> <em>Structural Equation Modeling: A Multidisciplinary Journal</em> 19 (4): 651–82. <a href="https://doi.org/10.1080/10705511.2012.713275">https://doi.org/10.1080/10705511.2012.713275</a>.
 </div>
-<div id="ref-Grimm2017">
-<p>Grimm, Kevin J., Nilam Ram, and Ryne Estabrook. 2017. <em>Growth Modeling - Structural Equation and Multilevel Modeling Approaches</em>. New York: The Guilford Press.</p>
+<div id="ref-Grimm2017" class="csl-entry">
+Grimm, Kevin J., Nilam Ram, and Ryne Estabrook. 2017. <em>Growth <span>Modeling</span> - <span>Structural Equation</span> and <span>Multilevel Modeling Approaches</span></em>. <span>New York</span>: <span>The Guilford Press</span>.
 </div>
-<div id="ref-vanLangen2020">
-<p>Langen, J. van. 2020. <em>Open-Visualizations in R and Python</em>. <a href="https://doi.org/http://doi.org/10.5281/zenodo.3715576">https://doi.org/http://doi.org/10.5281/zenodo.3715576</a>.</p>
+<div id="ref-vanLangen2020" class="csl-entry">
+Langen, J. van. 2020. <em>Open-Visualizations in <span>R</span> and <span>Python</span></em>. https://doi.org/<a href="http://doi.org/10.5281/zenodo.3715576">http://doi.org/10.5281/zenodo.3715576</a>.
 </div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.</p>
+<div id="ref-R-ggplot2" class="csl-entry">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
 </div>
 </div>
 </div>
@@ -238,7 +247,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
