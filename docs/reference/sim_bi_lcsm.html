@@ -189,7 +189,7 @@
     </tr>
     <tr>
       <th>model_x_param</th>
-      <td><p>List, specifying parameter estimates for the LCS model that has been specified in the argument '<code>model_x</code>':</p><ul>
+      <td><p>List, specifying parameter estimates for the LCSM that has been specified in the argument '<code>model_x</code>':</p><ul>
 <li><p><strong><code>gamma_lx1</code></strong>: Mean of latent true scores x (Intercept),</p></li>
 <li><p><strong><code>sigma2_lx1</code></strong>: Variance of latent true scores x,</p></li>
 <li><p><strong><code>sigma2_ux</code></strong>: Variance of observed scores x,</p></li>
@@ -209,7 +209,7 @@
     </tr>
     <tr>
       <th>model_y_param</th>
-      <td><p>List, specifying parameter estimates for the LCS model that has been specified in the argument '<code>model_y</code>':</p><ul>
+      <td><p>List, specifying parameter estimates for the LCSM that has been specified in the argument '<code>model_y</code>':</p><ul>
 <li><p><strong><code>gamma_ly1</code></strong>: Mean of latent true scores y (Intercept),</p></li>
 <li><p><strong><code>sigma2_ly1</code></strong>: Variance of latent true scores y,</p></li>
 <li><p><strong><code>sigma2_uy</code></strong>: Variance of observed scores y,</p></li>
@@ -300,7 +300,7 @@
 <a href='http://www.jstatsoft.org/v48/i02/'>http://www.jstatsoft.org/v48/i02/</a>.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Simulate data from bivariate LCS model parameters </span>
+    <pre class="examples"><div class='input'><span class='co'># Simulate data from bivariate LCSM parameters </span>
 <span class='fu'>sim_bi_lcsm</span><span class='op'>(</span>timepoints <span class='op'>=</span> <span class='fl'>12</span>, 
             na_x_pct <span class='op'>=</span> <span class='fl'>.05</span>,
             na_y_pct <span class='op'>=</span> <span class='fl'>.1</span>,
@@ -331,23 +331,23 @@
                                  delta_lag_xy <span class='op'>=</span> <span class='fl'>.13</span>,
                                  xi_lag_yx <span class='op'>=</span> <span class='fl'>.4</span><span class='op'>)</span>,
             return_lavaan_syntax <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>Parameter estimates for the data simulation are taken from the argument 'model_param'.</span></div><div class='output co'>#&gt; <span class='message'>All parameter estimates for the LCS model have been specified in the argument 'model_param'.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 500 x 25</span><span>
+</div><div class='output co'>#&gt; <span class='message'>Parameter estimates for the data simulation are taken from the argument 'model_param'.</span></div><div class='output co'>#&gt; <span class='message'>All parameter estimates for the LCSM have been specified in the argument 'model_param'.</span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 500 x 25</span>
 #&gt;       id    x1    x2    x3    x4    x5    x6    x7       x8     x9    x10    x11
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>  </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span>     1  21.5  18.4  15.9  12.5  9.88  7.28  4.92  2.51     0.636 -</span><span style='color: #BB0000;'>1.61</span><span>  -</span><span style='color: #BB0000;'>3.31</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span>     2  19.9  16.7  13.6  11.1  9.01  5.72  3.06 -</span><span style='color: #BB0000;'>0.003</span><span style='color: #BB0000;text-decoration: underline;'>65</span><span> -</span><span style='color: #BB0000;'>1.78</span><span>  -</span><span style='color: #BB0000;'>4.50</span><span>  -</span><span style='color: #BB0000;'>5.39</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span>     3  20.2  18.2  15.6  14.1 11.5   9.20  6.70  5.55     2.97   0.422 -</span><span style='color: #BB0000;'>0.393</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span>     4  21.2  18.0  16.9  14.2 13.3  11.0   9.44  7.71     5.61   4.41   2.73 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span>     5  20.5  18.1  17.0  14.0 12.3  11.1   8.30  5.92     4.76   1.67   1.11 
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span>     6  20.7  18.4  17.1  14.9 13.0  11.7   9.10  8.56     5.33   4.89   3.60 
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span>     7  20.3  19.5  18.0  16.1 14.8  13.3  </span><span style='color: #BB0000;'>NA</span><span>     9.89     9.57   7.86   6.40 
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span>     8  22.9  22.4  22.5  22.3 21.0  20.3  20.3  18.9     17.8   16.9   16.9  
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span>     9  21.6  21.0  19.3  17.3 15.7  14.8  12.7  12.0      9.70   8.64   7.29 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span>    10  20.6  19.2  17.3  16.2 14.1  11.9  10.7   8.51    </span><span style='color: #BB0000;'>NA</span><span>      5.06   4.07 
-#&gt; </span><span style='color: #949494;'># … with 490 more rows, and 13 more variables: x12 &lt;dbl&gt;, y1 &lt;dbl&gt;, y2 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   y3 &lt;dbl&gt;, y4 &lt;dbl&gt;, y5 &lt;dbl&gt;, y6 &lt;dbl&gt;, y7 &lt;dbl&gt;, y8 &lt;dbl&gt;, y9 &lt;dbl&gt;,</span><span>
-#&gt; </span><span style='color: #949494;'>#   y10 &lt;dbl&gt;, y11 &lt;dbl&gt;, y12 &lt;dbl&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>  <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span>     1  21.5  18.4  15.9  12.5  9.88  7.28  4.92  2.51     0.636 -<span style='color: #BB0000;'>1.61</span>  -<span style='color: #BB0000;'>3.31</span> 
+#&gt; <span style='color: #BCBCBC;'> 2</span>     2  19.9  16.7  13.6  11.1  9.01  5.72  3.06 -<span style='color: #BB0000;'>0.003</span><span style='color: #BB0000; text-decoration: underline;'>65</span> -<span style='color: #BB0000;'>1.78</span>  -<span style='color: #BB0000;'>4.50</span>  -<span style='color: #BB0000;'>5.39</span> 
+#&gt; <span style='color: #BCBCBC;'> 3</span>     3  20.2  18.2  15.6  14.1 11.5   9.20  6.70  5.55     2.97   0.422 -<span style='color: #BB0000;'>0.393</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span>     4  21.2  18.0  16.9  14.2 13.3  11.0   9.44  7.71     5.61   4.41   2.73 
+#&gt; <span style='color: #BCBCBC;'> 5</span>     5  20.5  18.1  17.0  14.0 12.3  11.1   8.30  5.92     4.76   1.67   1.11 
+#&gt; <span style='color: #BCBCBC;'> 6</span>     6  20.7  18.4  17.1  14.9 13.0  11.7   9.10  8.56     5.33   4.89   3.60 
+#&gt; <span style='color: #BCBCBC;'> 7</span>     7  20.3  19.5  18.0  16.1 14.8  13.3  <span style='color: #BB0000;'>NA</span>     9.89     9.57   7.86   6.40 
+#&gt; <span style='color: #BCBCBC;'> 8</span>     8  22.9  22.4  22.5  22.3 21.0  20.3  20.3  18.9     17.8   16.9   16.9  
+#&gt; <span style='color: #BCBCBC;'> 9</span>     9  21.6  21.0  19.3  17.3 15.7  14.8  12.7  12.0      9.70   8.64   7.29 
+#&gt; <span style='color: #BCBCBC;'>10</span>    10  20.6  19.2  17.3  16.2 14.1  11.9  10.7   8.51    <span style='color: #BB0000;'>NA</span>      5.06   4.07 
+#&gt; <span style='color: #949494;'># … with 490 more rows, and 13 more variables: x12 &lt;dbl&gt;, y1 &lt;dbl&gt;, y2 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   y3 &lt;dbl&gt;, y4 &lt;dbl&gt;, y5 &lt;dbl&gt;, y6 &lt;dbl&gt;, y7 &lt;dbl&gt;, y8 &lt;dbl&gt;, y9 &lt;dbl&gt;,</span>
+#&gt; <span style='color: #949494;'>#   y10 &lt;dbl&gt;, y11 &lt;dbl&gt;, y12 &lt;dbl&gt;</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

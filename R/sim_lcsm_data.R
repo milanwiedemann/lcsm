@@ -6,7 +6,7 @@
 #' @param change_letter See \link[lcsm]{specify_uni_lcsm}
 #' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
 #' @param na_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
-#' @param model_param List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
+#' @param model_param List, specifying parameter estimates for the LCSM that has been specified in the argument 'model'
 #' \itemize{
 #' \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
 #' \item{\strong{\code{sigma2_lx1}}}: Variance of latent true scores x,
@@ -24,15 +24,16 @@
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @return tibble
 #' @export
-#' @examples # Simulate data from univariate LCS model parameters 
+#' @examples # Simulate data from univariate LCSM parameters 
 #' sim_uni_lcsm(timepoints = 10, 
 #'              model = list(alpha_constant = TRUE, beta = FALSE, phi = TRUE), 
 #'              model_param = list(gamma_lx1 = 21, 
 #'                                 sigma2_lx1 = 1.5,
 #'                                 sigma2_ux = .2, 
-#'                                 alpha_j2 = -.93,
-#'                                 sigma2_j2 = .1,
-#'                                 sigma_j2lx1 = .2),
+#'                                 alpha_g2 = -.93,
+#'                                 sigma2_g2 = .1,
+#'                                 sigma_g2lx1 = .2,
+#'                                 phi_x = .2),
 #'              return_lavaan_syntax = FALSE, 
 #'              sample.nobs = 1000,
 #'              na_pct = .3)
@@ -75,7 +76,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
     
     # Test if all labels have been specified
     if (base::all(check_labels) == TRUE){
-      base::message("All parameter estimates for the LCS model have been specified in the argument 'model_param'.")
+      base::message("All parameter estimates for the LCSM have been specified in the argument 'model_param'.")
     } else if (base::all(check_labels) == FALSE){
       
       missing_labels <- labels[base::which(!check_labels)]
@@ -84,7 +85,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
       
       missing_labels_02 <- stringr::str_c(missing_labels_01, sep = "", collapse = "\n")
       
-      base::warning(paste0("The following parameters are specified in LCS model but no parameter estimates have been entered in 'model_param':\n", missing_labels_02), call. = FALSE)
+      base::warning(paste0("The following parameters are specified in the LCSM but no parameter estimates have been entered in 'model_param':\n", missing_labels_02), call. = FALSE)
     }
     
     estimates <- model_param
@@ -147,9 +148,9 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
   if (return_lavaan_syntax == FALSE){
     # Return simulated data
     return(sim_data_model_ids_nas)
+    
   } else if (return_lavaan_syntax == TRUE){
     
-
       return(model_estimates)
 
   }
@@ -159,7 +160,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' @description This function simulate data from bivariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 #' @param timepoints See \link[lcsm]{specify_bi_lcsm}
 #' @param model_x See \link[lcsm]{specify_bi_lcsm}
-#' @param model_x_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':
+#' @param model_x_param List, specifying parameter estimates for the LCSM that has been specified in the argument '\code{model_x}':
 #' \itemize{
 #' \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
 #' \item{\strong{\code{sigma2_lx1}}}: Variance of latent true scores x,
@@ -174,7 +175,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
 #' @param model_y See \link[lcsm]{specify_bi_lcsm}
-#' @param model_y_param List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_y}':
+#' @param model_y_param List, specifying parameter estimates for the LCSM that has been specified in the argument '\code{model_y}':
 #' \itemize{
 #' \item{\strong{\code{gamma_ly1}}}: Mean of latent true scores y (Intercept),
 #' \item{\strong{\code{sigma2_ly1}}}: Variance of latent true scores y,
@@ -230,7 +231,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 #' \url{http://www.jstatsoft.org/v48/i02/}.
-#' @examples # Simulate data from bivariate LCS model parameters 
+#' @examples # Simulate data from bivariate LCSM parameters 
 #' sim_bi_lcsm(timepoints = 12, 
 #'             na_x_pct = .05,
 #'             na_y_pct = .1,
@@ -317,7 +318,7 @@ sim_bi_lcsm <- function(timepoints,
     
     # Test if all labels have been specified
     if (base::all(check_labels) == TRUE){
-      base::message("All parameter estimates for the LCS model have been specified in the argument 'model_param'.")
+      base::message("All parameter estimates for the LCSM have been specified in the argument 'model_param'.")
     } else if (base::all(check_labels) == FALSE){
       
       missing_labels <- labels[base::which(!check_labels)]
@@ -326,7 +327,7 @@ sim_bi_lcsm <- function(timepoints,
       
       missing_labels_02 <- stringr::str_c(missing_labels_01, sep = "", collapse = "\n")
       
-      base::warning(paste0("The following parameters are specified in LCS model but no parameter estimates have been entered in 'model_param':\n", missing_labels_02), call. = FALSE)
+      base::warning(paste0("The following parameters are specified in the LCSM but no parameter estimates have been entered in 'model_param':\n", missing_labels_02), call. = FALSE)
     }
     
     estimates <- model_param
@@ -418,6 +419,7 @@ sim_bi_lcsm <- function(timepoints,
   if (return_lavaan_syntax == FALSE){
     # Return simulated data
     return(sim_data_xy_model_ids_nas)
+    
   } else if (return_lavaan_syntax == TRUE){
 
       return(model_estimates)

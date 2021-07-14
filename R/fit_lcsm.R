@@ -14,10 +14,10 @@
 #' }
 #' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
-#' @param mimic See \link[lavaan]{lavaan}.
-#' @param estimator See \link[lavaan]{lavaan}.
-#' @param missing See \link[lavaan]{lavaan}.
-#' @param ... Additional arguments to be passed to \link[lavaan]{lavaan}.
+#' @param mimic See `mimic` argument in \link[lavaan]{lavOptions}.
+#' @param estimator See `estimator` argument in \link[lavaan]{lavOptions}.
+#' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
+#' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
 #' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \url{https://doi.org/10.1080/10705511.2012.713275}.
 #' 
@@ -135,10 +135,10 @@ fit_uni_lcsm <- function(data,
 #' }
 #' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
-#' @param mimic See \link[lavaan]{lavaan}.
-#' @param estimator See \link[lavaan]{lavaan}.
-#' @param missing See \link[lavaan]{lavaan}.
-#' @param ... Additional arguments to be passed to \link[lavaan]{lavaan}.
+#' @param mimic See `mimic` argument in \link[lavaan]{lavOptions}.
+#' @param estimator See `estimator` argument in \link[lavaan]{lavOptions}.
+#' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
+#' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
 #' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \url{https://doi.org/10.1080/10705511.2012.713275}.
 #' 

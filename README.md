@@ -88,6 +88,10 @@ Here are a few examples how to use the `lcsm` package.
 ``` r
 # Load the package
 library(lcsm)
+#> 
+#> ── This is lcsm 0.1.4 ──────────────────────────────────────────────────────────
+#> ℹ Please report any issues or ideas at:
+#> ℹ https://github.com/milanwiedemann/lcsm/issues
 ```
 
 ### Visualise data

@@ -33,15 +33,15 @@ fit_uni_lcsm(
 
 \item{add}{String, lavaan syntax to be added to the model}
 
-\item{mimic}{See \link[lavaan]{lavaan}.}
+\item{mimic}{See `mimic` argument in \link[lavaan]{lavOptions}.}
 
-\item{estimator}{See \link[lavaan]{lavaan}.}
+\item{estimator}{See `estimator` argument in \link[lavaan]{lavOptions}.}
 
-\item{missing}{See \link[lavaan]{lavaan}.}
+\item{missing}{See `missing` argument in \link[lavaan]{lavOptions}.}
 
 \item{return_lavaan_syntax}{Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.}
 
-\item{...}{Additional arguments to be passed to \link[lavaan]{lavaan}.}
+\item{...}{Additional arguments to be passed to \link[lavaan]{lavOptions}.}
 }
 \value{
 This function returns a lavaan class object.

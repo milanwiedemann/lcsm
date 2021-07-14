@@ -21,7 +21,7 @@ sim_uni_lcsm(
 
 \item{model}{See \link[lcsm]{specify_uni_lcsm}}
 
-\item{model_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument 'model'
+\item{model_param}{List, specifying parameter estimates for the LCSM that has been specified in the argument 'model'
 \itemize{
 \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
 \item{\strong{\code{sigma2_lx1}}}: Variance of latent true scores x,
@@ -55,15 +55,16 @@ tibble
 This function simulate data from univariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 }
 \examples{
-# Simulate data from univariate LCS model parameters 
+# Simulate data from univariate LCSM parameters 
 sim_uni_lcsm(timepoints = 10, 
              model = list(alpha_constant = TRUE, beta = FALSE, phi = TRUE), 
              model_param = list(gamma_lx1 = 21, 
                                 sigma2_lx1 = 1.5,
                                 sigma2_ux = .2, 
-                                alpha_j2 = -.93,
-                                sigma2_j2 = .1,
-                                sigma_j2lx1 = .2),
+                                alpha_g2 = -.93,
+                                sigma2_g2 = .1,
+                                sigma_g2lx1 = .2,
+                                phi_x = .2),
              return_lavaan_syntax = FALSE, 
              sample.nobs = 1000,
              na_pct = .3)

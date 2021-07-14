@@ -32,7 +32,7 @@ Lavaan model syntax including comments.
 Specify lavaan model for univariate latent change score models
 }
 \examples{
-# Specify univariate LCS model
+# Specify univariate LCSM
 lavaan_uni_lcsm_01 <- specify_uni_lcsm(timepoints = 10, 
                                        model = list(alpha_constant = TRUE, 
                                                     beta = TRUE, 

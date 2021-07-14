@@ -23,7 +23,7 @@
 #' \url{http://www.jstatsoft.org/v48/i02/}.
 #' @return Lavaan model syntax including comments.
 #' @export 
-#' @examples # Specify univariate LCS model
+#' @examples # Specify univariate LCSM
 #' lavaan_uni_lcsm_01 <- specify_uni_lcsm(timepoints = 10, 
 #'                                        model = list(alpha_constant = TRUE, 
 #'                                                     beta = TRUE, 
@@ -242,7 +242,7 @@ specify_uni_lcsm <- function(timepoints, var, model, add = NULL, change_letter =
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
 #' \url{http://www.jstatsoft.org/v48/i02/}.
-#' @examples # Specify bivariate LCS model
+#' @examples # Specify bivariate LCSM
 #' lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 10, 
 #'                                      var_x = "x",
 #'                                      model_x = list(alpha_constant = TRUE, 

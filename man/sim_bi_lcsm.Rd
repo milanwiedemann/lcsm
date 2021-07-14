@@ -28,7 +28,7 @@ sim_bi_lcsm(
 
 \item{model_x}{See \link[lcsm]{specify_bi_lcsm}}
 
-\item{model_x_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_x}':
+\item{model_x_param}{List, specifying parameter estimates for the LCSM that has been specified in the argument '\code{model_x}':
 \itemize{
 \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
 \item{\strong{\code{sigma2_lx1}}}: Variance of latent true scores x,
@@ -45,7 +45,7 @@ sim_bi_lcsm(
 
 \item{model_y}{See \link[lcsm]{specify_bi_lcsm}}
 
-\item{model_y_param}{List, specifying parameter estimates for the LCS model that has been specified in the argument '\code{model_y}':
+\item{model_y_param}{List, specifying parameter estimates for the LCSM that has been specified in the argument '\code{model_y}':
 \itemize{
 \item{\strong{\code{gamma_ly1}}}: Mean of latent true scores y (Intercept),
 \item{\strong{\code{sigma2_ly1}}}: Variance of latent true scores y,
@@ -108,7 +108,7 @@ tibble
 This function simulate data from bivariate latent change score model parameter estimates using \link[lavaan]{simulateData}.
 }
 \examples{
-# Simulate data from bivariate LCS model parameters 
+# Simulate data from bivariate LCSM parameters 
 sim_bi_lcsm(timepoints = 12, 
             na_x_pct = .05,
             na_y_pct = .1,
