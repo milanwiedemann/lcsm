@@ -1,7 +1,4 @@
 destination: docs
-template:
-  params:
-    ganalytics: UA-113145816-4
 
 reference:
 - title: "Generate lavaan syntax for different model specifications"
