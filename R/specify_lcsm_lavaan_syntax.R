@@ -20,7 +20,7 @@
 #' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#' \url{http://www.jstatsoft.org/v48/i02/}.
+#' <doi:10.18637/jss.v048.i02>.
 #' @return Lavaan model syntax including comments.
 #' @export 
 #' @examples # Specify univariate LCSM
@@ -241,7 +241,7 @@ specify_uni_lcsm <- function(timepoints, var, model, add = NULL, change_letter =
 #' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#' \url{http://www.jstatsoft.org/v48/i02/}.
+#' <doi:10.18637/jss.v048.i02>.
 #' @examples # Specify bivariate LCSM
 #' lavaan_bi_lcsm_01 <- specify_bi_lcsm(timepoints = 10, 
 #'                                      var_x = "x",

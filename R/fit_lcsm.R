@@ -26,7 +26,7 @@
 #' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#' \url{http://www.jstatsoft.org/v48/i02/}.
+#'<doi:10.18637/jss.v048.i02>.
 #' @export
 #' @examples # Fit univariate latent change score model
 #' fit_uni_lcsm(data = data_uni_lcsm, 
@@ -147,7 +147,7 @@ fit_uni_lcsm <- function(data,
 #' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#' \url{http://www.jstatsoft.org/v48/i02/}.
+#' <doi:10.18637/jss.v048.i02>.
 #' @export
 #' @examples # Fit 
 #' fit_bi_lcsm(data = data_bi_lcsm, 
