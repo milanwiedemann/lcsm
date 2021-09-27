@@ -1,9 +1,10 @@
 utils::citEntry(
-  "manual"
-  , "Wiedemann, M. (2021). lcsm: An R package for latent change score modeling. R package version 0.1.4. Retrieved from https://github.com/milanwiedemann/lcsm."
-  , author = c("Milan Wiedemann")
-  , title = "{lcsm}: {An} {R} package latent change score modeling"
+  "misc"
+  , "Wiedemann, M., Thew, G. R., Košir, U., & Ehlers, A. (2021). lcsm: An R package and tutorial on latent change score modelling. https://doi.org/10.31234/osf.io/atjpu"
+  , author = c("Milan Wiedemann and Graham R Thew and Urška Košir and Anke Ehlers")
+  , title = "{lcsm}: {An} {R} package latent change score modelling"
+  , journal = "PsyArXiv"
   , year = "2021"
-  , note = "R package version 0.1.4"
+  , doi = "10.31234/osf.io/atjpu"
   , url = "https://github.com/milanwiedemann/lcsm"
 )
