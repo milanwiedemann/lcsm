@@ -12,6 +12,7 @@ sim_uni_lcsm(
   change_letter = "g",
   sample.nobs = 500,
   na_pct = 0,
+  seed = NULL,
   ...,
   return_lavaan_syntax = FALSE
 )
@@ -43,6 +44,8 @@ sim_uni_lcsm(
 \item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}}
 
 \item{na_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
+
+\item{seed}{Set seed for data simulation, see \link[lavaan]{simulateData}}
 
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
