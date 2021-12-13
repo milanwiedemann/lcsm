@@ -20,6 +20,7 @@
 #' \item{\strong{\code{sigma_g2g3}}}: Covariance of change factors (g2 and g2),
 #' \item{\strong{\code{phi_x}}}: Autoregression of change scores x.
 #' }
+#' @param seed Set seed for data simulation, see \link[lavaan]{simulateData}
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @return tibble
@@ -38,7 +39,7 @@
 #'              sample.nobs = 1000,
 #'              na_pct = .3)
 #' 
-sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "g", sample.nobs = 500, na_pct = 0, ..., return_lavaan_syntax = FALSE){
+sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", change_letter = "g", sample.nobs = 500, na_pct = 0, seed = NULL, ..., return_lavaan_syntax = FALSE){
   
   # 1. Create lavaan syntax  ----
   # String including labels for parameters
@@ -118,7 +119,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
                                          group.label = paste("G", 1:ngroups, sep = ""), 
                                          skewness = 0, 
                                          kurtosis = 0, 
-                                         seed = NULL, 
+                                         seed = seed,
                                          empirical = FALSE, 
                                          return.type = "data.frame",
                                          return.fit = FALSE,
@@ -213,6 +214,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
 #' @param na_x_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
 #' @param na_y_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
+#' @param seed Set seed for data simulation, see \link[lavaan]{simulateData}
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
 #' @param var_x See \link[lcsm]{specify_bi_lcsm}
 #' @param var_y See \link[lcsm]{specify_bi_lcsm}
@@ -267,7 +269,8 @@ sim_bi_lcsm <- function(timepoints,
                         model_x, model_x_param = NULL, 
                         model_y, model_y_param = NULL, 
                         coupling, coupling_param = NULL,
-                        sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, ...,
+                        sample.nobs = 500, na_x_pct = 0, na_y_pct = 0, seed = NULL,
+                        ...,
                         var_x = "x", var_y = "y", change_letter_x = "g", change_letter_y = "j", 
                         return_lavaan_syntax = FALSE
                         ){
@@ -363,7 +366,7 @@ sim_bi_lcsm <- function(timepoints,
                                          group.label = paste("G", 1:ngroups, sep = ""), 
                                          skewness = 0, 
                                          kurtosis = 0, 
-                                         seed = NULL, 
+                                         seed = seed,
                                          empirical = FALSE, 
                                          return.type = "data.frame",
                                          return.fit = FALSE,

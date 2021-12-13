@@ -15,6 +15,7 @@ sim_bi_lcsm(
   sample.nobs = 500,
   na_x_pct = 0,
   na_y_pct = 0,
+  seed = NULL,
   ...,
   var_x = "x",
   var_y = "y",
@@ -88,6 +89,8 @@ sim_bi_lcsm(
 \item{na_x_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
 
 \item{na_y_pct}{Numeric, percentage of random missing values in the simulated dataset [0,1]}
+
+\item{seed}{Set seed for data simulation, see \link[lavaan]{simulateData}}
 
 \item{...}{Arguments to be passed on to \link[lavaan]{simulateData}}
 
