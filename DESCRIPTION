@@ -41,8 +41,9 @@ Imports:
     cli
 RoxygenNote: 7.1.2
 Suggests: 
-    testthat (>= 2.1.0),
+    testthat (>= 3.0.0),
     knitr (>= 1.22),
     rmarkdown (>= 1.12),
     shiny (>= 1.4.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
