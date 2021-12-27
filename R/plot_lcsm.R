@@ -27,7 +27,7 @@
 #' @param ... Other arguments passed on to \link[semPlot]{semPaths}.
 #' @importFrom lavaan lavInspect
 #' @references Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
-#' \url{https://CRAN.R-project.org/package=semPlot}
+#' \url{https://CRAN.R-project.org/package=semPlot/}
 #' @examples 
 #' lavaan_syntax_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
 #'                                   var = c("x1", "x2", "x3", "x4", "x5"),

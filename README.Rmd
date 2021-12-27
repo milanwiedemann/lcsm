@@ -19,36 +19,36 @@ knitr::opts_chunk$set(
 # lcsm: An R Package for Latent Change Score Modeling
 
 <!-- badges: start -->
-[![Travis build status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm)
+[![Travis build status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm/)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm/)
 [![licence](https://img.shields.io/badge/Licence-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
-[![CRAN status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm)
+[![CRAN status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm/)
+[![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm/)
 <!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
 univariate and bivariate latent change score models (LCSM) using
-[lavaan](http://lavaan.ugent.be/) (Rosseel,
-[2012](http://www.jstatsoft.org/v48/i02/)).
+[lavaan](https://lavaan.ugent.be/) (Rosseel,
+[2012](https://www.jstatsoft.org/v48/i02/)).
 For details about this method see for example McArdle
-([2009](http://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612)),
-Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275)), Grimm
-et al. ([2012](https://doi.org/10.1080/10705511.2012.659627)), and
+([2009](https://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612/)),
+Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275/)), Grimm
+et al. ([2012](https://doi.org/10.1080/10705511.2012.659627/)), and
 Grimm, Ram & Estabrook
-([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
+([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062/)).
 
-The `lcsm` package combines the strengths of other R packages like [lavaan](http://lavaan.ugent.be/), [broom](https://broom.tidyverse.org), and [semPlot](https://CRAN.R-project.org/package=semPlot) by generating lavaan syntax that helps these packages work together. 
+The `lcsm` package combines the strengths of other R packages like [lavaan](https://lavaan.ugent.be/), [broom](https://broom.tidyverse.org/), and [semPlot](https://CRAN.R-project.org/package=semPlot/) by generating lavaan syntax that helps these packages work together. 
 This is work in progress and feedback is very welcome!
 
 ## Installation
 
-You can install the released version of `lcsm` from [CRAN](https://CRAN.R-project.org/package=lcsm) with:
+You can install the released version of `lcsm` from [CRAN](https://CRAN.R-project.org/package=lcsm/) with:
 
 ``` r
 install.packages("lcsm")
 ```
 
-The development version can be installed from [GitHub](https://github.com/milanwiedemann/lcsm) using:
+The development version can be installed from [GitHub](https://github.com/milanwiedemann/lcsm/) using:
 
 ``` r
 # install.packages("devtools")
@@ -58,13 +58,13 @@ devtools::install_github("milanwiedemann/lcsm")
 
 The `lcsm` package contains the functions listed below.
 A more detailed description of these functions is available in this README or vignettes. 
-The interactive online application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange)** also illustrates some functions of this package.
+The interactive online application **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange/)** also illustrates some functions of this package.
 
-- Functions to generate [lavaan](http://lavaan.ugent.be/) syntax for different model specifications:
+- Functions to generate [lavaan](https://lavaan.ugent.be/) syntax for different model specifications:
   - `specify_uni_lcsm()`: Generate syntax for univariate LCSM
   - `specify_bi_lcsm()`: Generate syntax for bivariate LCSM
   
-- Functions to fit models using [lavaan](http://lavaan.ugent.be/):
+- Functions to fit models using [lavaan](https://lavaan.ugent.be/):
   - `fit_uni_lcsm()`: Fit univariate LCSM
   - `fit_bi_lcsm()`: Fit bivariate LCSM
   
@@ -72,12 +72,12 @@ The interactive online application **[`shinychange`](https://milanwiedemann.shin
   - `extract_fit()`: Extract fit statistics
   - `extract_param()`: Extract estimated parameters
   
-- Simulate data using [lavaan](http://lavaan.ugent.be/):
+- Simulate data using [lavaan](https://lavaan.ugent.be/):
   - `sim_uni_lcsm()`: Simulate data by specifying parameters for a univariate LCSM
   - `sim_bi_lcsm()`: Simulate data by specifying parameters for a bivariate LCSM
   
 - Helper functions:
-  - `plot_lcsm()`: Visualise LCSM using [semPlot](http://sachaepskamp.com/semPlot)
+  - `plot_lcsm()`: Visualise LCSM using [semPlot](https://github.com/SachaEpskamp/semPlot/)
   - `select_uni_cases()`: Select cases for analysis based on available scores on one construct
   - `select_bi_cases()`: Select cases for analysis based on available scores on two construct
 

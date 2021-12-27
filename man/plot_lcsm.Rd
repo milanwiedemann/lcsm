@@ -112,5 +112,5 @@ plot_lcsm(lavaan_object = lavaan_object_uni,
 }
 \references{
 Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
-\url{https://CRAN.R-project.org/package=semPlot}
+\url{https://CRAN.R-project.org/package=semPlot/}
 }

@@ -19,7 +19,7 @@ library(lcsm)
 ```
 
 The functions `sim_uni_lcsm()` and `sim_bi_lcsm()` simulate data based on some some parameters that can be specified.
-A full list of parameters that can be specified for the data simulation can be found in the [README](https://github.com/milanwiedemann/lcsm) file on GitHub.
+A full list of parameters that can be specified for the data simulation can be found in the [README](https://github.com/milanwiedemann/lcsm/) file on GitHub.
 
 ```{r sim-uni-data}
 # Simulate some data 
