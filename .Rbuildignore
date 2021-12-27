@@ -13,3 +13,4 @@
 ^Meta$
 ^LICENSE\.md$
 .vscode
+^data-raw$
