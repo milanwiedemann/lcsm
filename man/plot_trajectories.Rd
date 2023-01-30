@@ -36,7 +36,7 @@ plot_trajectories(
 
 \item{line_colour}{String, specifying colour of lines.}
 
-\item{group_var}{String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument. 
+\item{group_var}{String, specifying variable name of group, each group will get individual colour lines. This overwrites the line_colour argument.
 Also consider other options to look at trajectories like \link[ggplot2]{facet_wrap} which may be more appropriate.}
 
 \item{point_colour}{String, specifying, colour of points.}

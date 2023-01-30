@@ -85,29 +85,94 @@ If \code{lavaan_syntax} is provided a layout matrix will be generated automatica
 Plot
 }
 \description{
-Plot simplified path diagram of univariate and bivariate latent change score models
+Note that the following three arguments are needed to create a plot (see below for more details):
+\itemize{
+\item \code{lavaan_object}: the lavaan fit object needs to be specified together with a
+\item \code{lcsm}: a string indicating whether the latent change score model is "univariate" or "bivariate", and
+\item \code{lavaan_syntax}: a separate object with the lavaan syntax as a string
+}
 }
 \examples{
-lavaan_syntax_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
-                                  var = c("x1", "x2", "x3", "x4", "x5"),
-                                  model = list(alpha_constant = TRUE, 
-                                               beta = TRUE, 
-                                               phi = TRUE),
-                                  return_lavaan_syntax = TRUE,
-                                  return_lavaan_syntax_string = TRUE)
+# Simplified plot of univariate lcsm
+lavaan_syntax_uni <- fit_uni_lcsm(
+  data = data_bi_lcsm,
+  var = c("x1", "x2", "x3", "x4", "x5"),
+  model = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  ),
+  return_lavaan_syntax = TRUE,
+  return_lavaan_syntax_string = TRUE
+)
 
-lavaan_object_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
-                                  var = c("x1", "x2", "x3", "x4", "x5"),
-                                  model = list(alpha_constant = TRUE, 
-                                               beta = TRUE, 
-                                               phi = TRUE))
+lavaan_object_uni <- fit_uni_lcsm(
+  data = data_bi_lcsm,
+  var = c("x1", "x2", "x3", "x4", "x5"),
+  model = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  )
+)
 
-plot_lcsm(lavaan_object = lavaan_object_uni, 
-          what = "cons", whatLabels = "invisible", 
-          lavaan_syntax = lavaan_syntax_uni,
-          lcsm = "univariate")
+plot_lcsm(
+  lavaan_object = lavaan_object_uni,
+  what = "cons", whatLabels = "invisible",
+  lavaan_syntax = lavaan_syntax_uni,
+  lcsm = "univariate"
+)
+\dontrun{
+# Simplified plot of bivariate lcsm
+lavaan_syntax_bi <- fit_bi_lcsm(
+  data = data_bi_lcsm,
+  var_x = c("x1", "x2", "x3", "x4", "x5"),
+  var_y = c("y1", "y2", "y3", "y4", "y5"),
+  model_x = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  ),
+  model_y = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  ),
+  coupling = list(
+    delta_lag_xy = TRUE,
+    delta_lag_yx = TRUE
+  ),
+  return_lavaan_syntax = TRUE,
+  return_lavaan_syntax_string = TRUE
+)
 
+lavaan_object_bi <- fit_bi_lcsm(
+  data = data_bi_lcsm,
+  var_x = c("x1", "x2", "x3", "x4", "x5"),
+  var_y = c("y1", "y2", "y3", "y4", "y5"),
+  model_x = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  ),
+  model_y = list(
+    alpha_constant = TRUE,
+    beta = TRUE,
+    phi = TRUE
+  ),
+  coupling = list(
+    delta_lag_xy = TRUE,
+    delta_lag_yx = TRUE
+  )
+)
 
+plot_lcsm(
+  lavaan_object = lavaan_object_bi,
+  what = "cons", whatLabels = "invisible",
+  lavaan_syntax = lavaan_syntax_bi,
+  lcsm = "bivariate"
+)
+}
 
 }
 \references{
