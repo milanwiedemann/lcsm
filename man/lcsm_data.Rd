@@ -7,17 +7,17 @@
 \format{
 A longitudinal dataset in wide format:
 \itemize{
-  \item{id}{: ID variable, unique identifier for each person}
-  \item{x1}{: x value at time point 1}
-  \item{x2}{: x value at time point 2}
-  \item{x3}{: x value at time point 3}
-  \item{x4}{: x value at time point 4}
-  \item{x5}{: x value at time point 5}
-  \item{y1}{: y value at time point 1}
-  \item{y2}{: y value at time point 2}
-  \item{y3}{: y value at time point 3}
-  \item{y4}{: y value at time point 4}
-  \item{y5}{: y value at time point 5}
+\item{id}{: ID variable, unique identifier for each person}
+\item{x1}{: x value at time point 1}
+\item{x2}{: x value at time point 2}
+\item{x3}{: x value at time point 3}
+\item{x4}{: x value at time point 4}
+\item{x5}{: x value at time point 5}
+\item{y1}{: y value at time point 1}
+\item{y2}{: y value at time point 2}
+\item{y3}{: y value at time point 3}
+\item{y4}{: y value at time point 4}
+\item{y5}{: y value at time point 5}
 }
 }
 \usage{

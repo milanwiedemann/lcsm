@@ -1,4 +1,9 @@
-#' Plot simplified path diagram of univariate and bivariate latent change score models 
+#' Plot simplified path diagram of univariate and bivariate latent change score models
+#' 
+#' @description Note that the following three arguments are needed to create a plot (see below for more details):
+#' - `lavaan_object`: the lavaan fit object needs to be specified together with a
+#' - `lcsm`: a string indicating whether the latent change score model is "univariate" or "bivariate", and
+#' - `lavaan_syntax`: a separate object with the lavaan syntax as a string
 #'
 #' @param lavaan_object lavaan object of a univariate or bivariate latent change score model.
 #' @param lavaan_syntax String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
@@ -6,7 +11,7 @@
 #' @param layout Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.
 #' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \link[semPlot]{semPaths} will be returned for inspection of further customisation.
 #' @param lcsm String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.
-#' @param what See \code{semPlot}. "path" to show unweighted grey edges, "par" to show parameter estimates as weighted (green/red) edges 
+#' @param what See \code{semPlot}. "path" to show unweighted grey edges, "par" to show parameter estimates as weighted (green/red) edges
 #' @param whatLabels See \link[semPlot]{semPaths}. "label" to show edge names as label, "est" for parameter estimates, "hide" to hide edge labels.
 #' @param lcsm_colours Logical, if TRUE the following colours will be used to highlight different parts of the model: Observed variables (White); Latent true scores (Green); Latent change scores (Blue) ; Change factors (Yellow).
 #' @param edge.width See \link[semPlot]{semPaths}.
@@ -28,30 +33,89 @@
 #' @importFrom lavaan lavInspect
 #' @references Sacha Epskamp (2019). semPlot: Path Diagrams and Visual Analysis of Various SEM Packages' Output. R package version 1.1.1.
 #' \url{https://CRAN.R-project.org/package=semPlot/}
-#' @examples 
-#' lavaan_syntax_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
-#'                                   var = c("x1", "x2", "x3", "x4", "x5"),
-#'                                   model = list(alpha_constant = TRUE, 
-#'                                                beta = TRUE, 
-#'                                                phi = TRUE),
-#'                                   return_lavaan_syntax = TRUE,
-#'                                   return_lavaan_syntax_string = TRUE)
-#' 
-#' lavaan_object_uni <- fit_uni_lcsm(data = data_bi_lcsm, 
-#'                                   var = c("x1", "x2", "x3", "x4", "x5"),
-#'                                   model = list(alpha_constant = TRUE, 
-#'                                                beta = TRUE, 
-#'                                                phi = TRUE))
-#' 
-#' plot_lcsm(lavaan_object = lavaan_object_uni, 
-#'           what = "cons", whatLabels = "invisible", 
-#'           lavaan_syntax = lavaan_syntax_uni,
-#'           lcsm = "univariate")
-#' 
-#' 
-#' 
+#' @examples
+#' # Simplified plot of univariate lcsm
+#' lavaan_syntax_uni <- fit_uni_lcsm(
+#'   data = data_bi_lcsm,
+#'   var = c("x1", "x2", "x3", "x4", "x5"),
+#'   model = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   ),
+#'   return_lavaan_syntax = TRUE,
+#'   return_lavaan_syntax_string = TRUE
+#' )
+#'
+#' lavaan_object_uni <- fit_uni_lcsm(
+#'   data = data_bi_lcsm,
+#'   var = c("x1", "x2", "x3", "x4", "x5"),
+#'   model = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   )
+#' )
+#'
+#' plot_lcsm(
+#'   lavaan_object = lavaan_object_uni,
+#'   what = "cons", whatLabels = "invisible",
+#'   lavaan_syntax = lavaan_syntax_uni,
+#'   lcsm = "univariate"
+#' )
+#'
+#' # Simplified plot of bivariate lcsm
+#' lavaan_syntax_bi <- fit_bi_lcsm(
+#'   data = data_bi_lcsm,
+#'   var_x = c("x1", "x2", "x3", "x4", "x5"),
+#'   var_y = c("y1", "y2", "y3", "y4", "y5"),
+#'   model_x = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   ),
+#'   model_y = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   ),
+#'   coupling = list(
+#'     delta_lag_xy = TRUE,
+#'     delta_lag_yx = TRUE
+#'   ),
+#'   return_lavaan_syntax = TRUE,
+#'   return_lavaan_syntax_string = TRUE
+#' )
+#'
+#' lavaan_object_bi <- fit_bi_lcsm(
+#'   data = data_bi_lcsm,
+#'   var_x = c("x1", "x2", "x3", "x4", "x5"),
+#'   var_y = c("y1", "y2", "y3", "y4", "y5"),
+#'   model_x = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   ),
+#'   model_y = list(
+#'     alpha_constant = TRUE,
+#'     beta = TRUE,
+#'     phi = TRUE
+#'   ),
+#'   coupling = list(
+#'     delta_lag_xy = TRUE,
+#'     delta_lag_yx = TRUE
+#'   )
+#' )
+#'
+#' plot_lcsm(
+#'   lavaan_object = lavaan_object_uni,
+#'   what = "cons", whatLabels = "invisible",
+#'   lavaan_syntax = lavaan_syntax_uni,
+#'   lcsm = "bivariate"
+#' )
+#'
 #' @return Plot
-#' @export 
+#' @export
 #'
 
 plot_lcsm <- function(lavaan_object,
@@ -79,145 +143,143 @@ plot_lcsm <- function(lavaan_object,
                       edge.label.cex = 0.5,
                       # DoNotPlot = TRUE,
                       ...) {
-  
   if (is.null(layout) == TRUE) {
-    
-    # Extract info for layout matrix from lavaan 
-    
+    # Extract info for layout matrix from lavaan
+
     # Construct x
-    
+
     row_x_mani_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^x\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^x\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
+
     timepoints_x <- base::length(row_x_mani_vars_lavaanify)
-    
-    row_x_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^lx\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_x_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^lx\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
-    row_x_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^dx\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_x_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^dx\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
-    row_x_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^g\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_x_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^g\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
+
     change_factors_x_num <- length(row_x_change_factors_lavaanify)
-    
+
     # Construct Y
-    
+
     row_y_mani_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^y\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^y\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
+
     timepoints_y <- base::length(row_y_mani_vars_lavaanify)
-    
-    row_y_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^ly\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_y_latent_vars_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^ly\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
-    row_y_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^dy\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_y_change_scores_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^dy\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
-    row_y_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>% 
-      dplyr::as_tibble() %>% 
-      dplyr::filter(stringr::str_detect(rhs, "^j\\d")) %>% 
-      dplyr::select(rhs) %>% 
-      dplyr::distinct() %>% 
+
+    row_y_change_factors_lavaanify <- lavaan::lavaanify(lavaan_syntax) %>%
+      dplyr::as_tibble() %>%
+      dplyr::filter(stringr::str_detect(rhs, "^j\\d")) %>%
+      dplyr::select(rhs) %>%
+      dplyr::distinct() %>%
       dplyr::pull()
-    
+
     change_factors_y_num <- length(row_y_change_factors_lavaanify)
-    
-    # Create layout matrix 
-    
-    if  (lcsm == "univariate") {
+
+    # Create layout matrix
+
+    if (lcsm == "univariate") {
       # Create univariate layoiut matrix
-      
+
       row_x_mani_vars_layout <- row_x_mani_vars_lavaanify
       row_x_latent_vars_layout <- row_x_latent_vars_lavaanify
       row_x_change_scores_layout <- c(NA, row_x_change_scores_lavaanify)
       row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints_x - 1 - change_factors_x_num))
-      
-      layout_from_lavaan_syntax <- base::matrix(c(row_x_change_factors_layout, 
-                                                  row_x_change_scores_layout,
-                                                  row_x_latent_vars_layout,
-                                                  row_x_mani_vars_layout),
-                                                ncol = timepoints_x,
-                                                nrow = 4,
-                                                byrow = TRUE)
-      
-      
+
+      layout_from_lavaan_syntax <- base::matrix(
+        c(
+          row_x_change_factors_layout,
+          row_x_change_scores_layout,
+          row_x_latent_vars_layout,
+          row_x_mani_vars_layout
+        ),
+        ncol = timepoints_x,
+        nrow = 4,
+        byrow = TRUE
+      )
+
+
       if (lcsm_colours == TRUE) {
-        
         lcsm_colour_matrix <- c(
           rep("white", timepoints_x), # bottom 1
           rep("#56C667FF", timepoints_x), # bottom 2
           rep("#2D718EFF", timepoints_x - 1), # bottom 3
           rep("#FDE725FF", 1) # bottom 4
         )
-        
       } else if (lcsm_colours == FALSE) {
-        lcsm_colour_matrix <-  "white"
+        lcsm_colour_matrix <- "white"
       }
-      
-      
-
-      
-      
     } else if (lcsm == "bivariate") {
       # Create bivariate layoiut matrix
-      
+
       # Create bivariate layout matrix
       row_x_mani_vars_layout <- c(NA, NA, row_x_mani_vars_lavaanify)
       row_x_latent_vars_layout <- c(NA, NA, row_x_latent_vars_lavaanify)
       row_x_change_scores_layout <- c(NA, NA, NA, row_x_change_scores_lavaanify)
       row_x_change_factors_layout <- c(NA, row_x_change_factors_lavaanify, rep(NA, timepoints_x + 1 - change_factors_x_num))
-      
-      
+
+
       row_y_mani_vars_layout <- c(NA, NA, row_y_mani_vars_lavaanify)
       row_y_latent_vars_layout <- c(NA, NA, row_y_latent_vars_lavaanify)
       row_y_change_scores_layout <- c(NA, NA, NA, row_y_change_scores_lavaanify)
       row_y_change_factors_layout <- c(NA, row_y_change_factors_lavaanify, rep(NA, timepoints_y + 1 - change_factors_y_num))
-      
-      layout_from_lavaan_syntax <- base::matrix(c(row_y_mani_vars_layout, 
-                                                  row_y_latent_vars_layout,
-                                                  row_y_change_scores_layout,
-                                                  row_y_change_factors_layout,
-                                                  row_x_change_factors_layout, 
-                                                  row_x_change_scores_layout,
-                                                  row_x_latent_vars_layout,
-                                                  row_x_mani_vars_layout),
-                                                ncol = timepoints_x + 2,
-                                                nrow = 8,
-                                                byrow = TRUE)
-      
-      
+
+      layout_from_lavaan_syntax <- base::matrix(
+        c(
+          row_y_mani_vars_layout,
+          row_y_latent_vars_layout,
+          row_y_change_scores_layout,
+          row_y_change_factors_layout,
+          row_x_change_factors_layout,
+          row_x_change_scores_layout,
+          row_x_latent_vars_layout,
+          row_x_mani_vars_layout
+        ),
+        ncol = timepoints_x + 2,
+        nrow = 8,
+        byrow = TRUE
+      )
+
+
       if (lcsm_colours == TRUE) {
-        
         lcsm_colour_matrix <- c(
           rep("white", timepoints_x), # bottom 1
           rep("white", timepoints_x), # top 1
@@ -226,18 +288,14 @@ plot_lcsm <- function(lavaan_object,
           rep("#FDE725FF", 1), # bottom 4
           rep("#56C667FF", timepoints_x), # top 2
           rep("#2D718EFF", timepoints_x - 1), # top 3
-          rep("#FDE725FF", 1)  # top 4
+          rep("#FDE725FF", 1) # top 4
         )
-        
       } else if (lcsm_colours == FALSE) {
-        lcsm_colour_matrix <-  "white"
+        lcsm_colour_matrix <- "white"
       }
-      
-
-      
     }
-    
-    if (return_layout_from_lavaan_syntax == TRUE){
+
+    if (return_layout_from_lavaan_syntax == TRUE) {
       return(layout_from_lavaan_syntax)
     } else if (return_layout_from_lavaan_syntax == FALSE) {
       graph <- semPlot::semPaths(
@@ -261,11 +319,10 @@ plot_lcsm <- function(lavaan_object,
         nCharEdges = 0,
         edge.label.cex = edge.label.cex,
         DoNotPlot = TRUE,
-        ...)
+        ...
+      )
     }
-    
   } else if (is.null(layout) == FALSE) {
-    
     graph <- semPlot::semPaths(
       object = lavaan_object,
       layout = layout,
@@ -287,15 +344,14 @@ plot_lcsm <- function(lavaan_object,
       nCharEdges = 0,
       edge.label.cex = edge.label.cex,
       DoNotPlot = TRUE,
-      ...)
+      ...
+    )
   }
-  
-  
+
+
   # aww where did I get this from, must have googled it
   graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, curve_covar, 0)
-  
+
   # Create plot
   plot(graph)
-  
 }
-
