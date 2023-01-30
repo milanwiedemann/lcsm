@@ -392,7 +392,7 @@ sim_bi_lcsm <- function(timepoints,
   
   # X
   sim_data_x_model_ids <- sim_data_model_ids %>%
-    dplyr::select(id, var_names_x)
+    dplyr::select(id, dplyr::all_of(var_names_x))
   
   sim_data_x_model_ids_nas <- sim_data_x_model_ids %>%
     tidyr::gather(vars, value, -id) %>%
@@ -404,7 +404,7 @@ sim_bi_lcsm <- function(timepoints,
   
   # Y
   sim_data_y_model_ids <- sim_data_model_ids %>%
-    dplyr::select(id, var_names_y)
+    dplyr::select(id, dplyr::all_of(var_names_y))
   
   sim_data_y_model_ids_nas <- sim_data_y_model_ids %>%
     tidyr::gather(vars, value, -id) %>%

@@ -1,7 +1,6 @@
 test_that("uni (3x) null model", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -33,23 +32,26 @@ dx3 ~ 0 * 1
 # Specify latent change scores variances 
 dx2 ~~ 0 * dx2 
 dx3 ~~ 0 * dx3 
-")
+"
+  )
 
-lavaan_syntax_test <- specify_uni_lcsm(timepoints = 3,
-                                       var = "x",  
-                                       change_letter = "g",
-                                       model = list(alpha_constant = FALSE, 
-                                                    beta = FALSE, 
-                                                    phi = FALSE))
-  
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = FALSE,
+      beta = FALSE,
+      phi = FALSE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 test_that("uni (3x) alpha", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -89,23 +91,26 @@ g2 ~ alpha_g2 * 1
 g2 ~~ sigma2_g2 * g2 
 # Specify constant change factor covariance with the initial true score 
 g2 ~~ sigma_g2lx1 * lx1
-")
-  
-  lavaan_syntax_test <- specify_uni_lcsm(timepoints = 3,
-                     var = "x",
-                     change_letter = "g",
-                     model = list(alpha_constant = TRUE,
-                                  beta = FALSE,
-                                  phi = FALSE))
-  
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = TRUE,
+      beta = FALSE,
+      phi = FALSE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 test_that("uni (3x) beta", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -140,23 +145,26 @@ dx3 ~~ 0 * dx3
 # Specify proportional change component 
 dx2 ~ beta_x * lx1 
 dx3 ~ beta_x * lx2 
-")
-  
-  lavaan_syntax_test <- specify_uni_lcsm(timepoints = 3,
-                                         var = "x",
-                                         change_letter = "g",
-                                         model = list(alpha_constant = FALSE,
-                                                      beta = TRUE,
-                                                      phi = FALSE))
-  
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = FALSE,
+      beta = TRUE,
+      phi = FALSE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 test_that("uni (3x) phi", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -190,23 +198,26 @@ dx2 ~~ 0 * dx2
 dx3 ~~ 0 * dx3 
 # Specify autoregression of change score 
 dx3 ~ phi_x * dx2 
-")
-  
-  lavaan_syntax_test <- specify_uni_lcsm(timepoints = 3,
-                                         var = "x",
-                                         change_letter = "g",
-                                         model = list(alpha_constant = FALSE,
-                                                      beta = FALSE,
-                                                      phi = TRUE))
-  
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = FALSE,
+      beta = FALSE,
+      phi = TRUE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 test_that("uni (3x) alpha beta", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -249,23 +260,26 @@ g2 ~~ sigma_g2lx1 * lx1
 # Specify proportional change component 
 dx2 ~ beta_x * lx1 
 dx3 ~ beta_x * lx2 
-")
-  
-  lavaan_syntax_test <-  specify_uni_lcsm(timepoints = 3,
-                                          var = "x",
-                                          change_letter = "g",
-                                          model = list(alpha_constant = TRUE,
-                                                       beta = TRUE,
-                                                       phi = FALSE))
-    
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = TRUE,
+      beta = TRUE,
+      phi = FALSE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 test_that("uni (4x) alpha beta phi", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 lx1 =~ 1 * x1 
 lx2 =~ 1 * x2 
 lx3 =~ 1 * x3 
@@ -321,24 +335,27 @@ dx4 ~ beta_x * lx3
 # Specify autoregression of change score 
 dx3 ~ phi_x * dx2 
 dx4 ~ phi_x * dx3 
-")
-  
-  lavaan_syntax_test <- specify_uni_lcsm(timepoints = 4,
-                     var = "x",
-                     change_letter = "g",
-                     model = list(alpha_constant = TRUE,
-                                  beta = TRUE,
-                                  phi = TRUE))
-  
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 4,
+    var = "x",
+    change_letter = "g",
+    model = list(
+      alpha_constant = TRUE,
+      beta = TRUE,
+      phi = TRUE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
 
 
 test_that("uni (3y) alpha beta phi", {
-  
-lavaan_syntax_expect <- c(
-"# Specify latent true scores 
+  lavaan_syntax_expect <- c(
+    "# Specify latent true scores 
 ly1 =~ 1 * y1 
 ly2 =~ 1 * y2 
 ly3 =~ 1 * y3 
@@ -383,15 +400,19 @@ dy2 ~ beta_y * ly1
 dy3 ~ beta_y * ly2 
 # Specify autoregression of change score 
 dy3 ~ phi_y * dy2 
-")
-  
-  lavaan_syntax_test <- specify_uni_lcsm(timepoints = 3,
-                                         var = "y",
-                                         change_letter = "j",
-                                         model = list(alpha_constant = TRUE,
-                                                      beta = TRUE,
-                                                      phi = TRUE))
-  
+"
+  )
+
+  lavaan_syntax_test <- specify_uni_lcsm(
+    timepoints = 3,
+    var = "y",
+    change_letter = "j",
+    model = list(
+      alpha_constant = TRUE,
+      beta = TRUE,
+      phi = TRUE
+    )
+  )
+
   expect_equal(lavaan_syntax_test, lavaan_syntax_expect)
-  
 })
