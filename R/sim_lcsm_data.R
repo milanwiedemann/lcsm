@@ -5,7 +5,7 @@
 #' @param model See \link[lcsm]{specify_uni_lcsm}
 #' @param change_letter See \link[lcsm]{specify_uni_lcsm}
 #' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
-#' @param na_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
+#' @param na_pct Numeric, percentage of random missing values in the simulated dataset (0 to 1)
 #' @param model_param List, specifying parameter estimates for the LCSM that has been specified in the argument 'model'
 #' \itemize{
 #' \item{\strong{\code{gamma_lx1}}}: Mean of latent true scores x (Intercept),
@@ -212,8 +212,8 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' \item{\strong{\code{xi_lag_yx}}}: Change score y (t) determined by change score x (t-1)
 #' }
 #' @param sample.nobs Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}
-#' @param na_x_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
-#' @param na_y_pct Numeric, percentage of random missing values in the simulated dataset [0,1]
+#' @param na_x_pct Numeric, percentage of random missing values in the simulated dataset (0 to 1)
+#' @param na_y_pct Numeric, percentage of random missing values in the simulated dataset (0 to 1)
 #' @param seed Set seed for data simulation, see \link[lavaan]{simulateData}
 #' @param ... Arguments to be passed on to \link[lavaan]{simulateData}
 #' @param var_x See \link[lcsm]{specify_bi_lcsm}

@@ -122,7 +122,7 @@ plot_lcsm(
   lavaan_syntax = lavaan_syntax_uni,
   lcsm = "univariate"
 )
-
+\dontrun{
 # Simplified plot of bivariate lcsm
 lavaan_syntax_bi <- fit_bi_lcsm(
   data = data_bi_lcsm,
@@ -167,11 +167,12 @@ lavaan_object_bi <- fit_bi_lcsm(
 )
 
 plot_lcsm(
-  lavaan_object = lavaan_object_uni,
+  lavaan_object = lavaan_object_bi,
   what = "cons", whatLabels = "invisible",
-  lavaan_syntax = lavaan_syntax_uni,
+  lavaan_syntax = lavaan_syntax_bi,
   lcsm = "bivariate"
 )
+}
 
 }
 \references{

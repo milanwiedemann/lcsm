@@ -86,9 +86,9 @@ sim_bi_lcsm(
 
 \item{sample.nobs}{Numeric, number of cases to be simulated, see \link[lcsm]{specify_uni_lcsm}}
 
-\item{na_x_pct}{Numeric, percentage of random missing values in the simulated dataset \link{0,1}}
+\item{na_x_pct}{Numeric, percentage of random missing values in the simulated dataset (0 to 1)}
 
-\item{na_y_pct}{Numeric, percentage of random missing values in the simulated dataset \link{0,1}}
+\item{na_y_pct}{Numeric, percentage of random missing values in the simulated dataset (0 to 1)}
 
 \item{seed}{Set seed for data simulation, see \link[lavaan]{simulateData}}
 
