@@ -5,10 +5,6 @@
 
 <!-- badges: start -->
 
-[![Travis build
-status](https://travis-ci.com/milanwiedemann/lcsm.svg?branch=master)](https://travis-ci.com/milanwiedemann/lcsm/)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/milanwiedemann/lcsm?branch=master&svg=true)](https://ci.appveyor.com/project/milanwiedemann/lcsm/)
 [![licence](https://img.shields.io/badge/Licence-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm/)
@@ -20,15 +16,15 @@ univariate and bivariate latent change score models (LCSM) using
 [lavaan](https://lavaan.ugent.be/) (Rosseel,
 [2012](https://www.jstatsoft.org/v48/i02/)). For details about this
 method see for example McArdle
-([2009](https://www.annualreviews.org/doi/10.1146/annurev.psych.60.110707.163612/)),
-Ghisletta ([2012](https://doi.org/10.1080/10705511.2012.713275/)), Grimm
-et al. ([2012](https://doi.org/10.1080/10705511.2012.659627/)), and
+([2009](https://pubmed.ncbi.nlm.nih.gov/18817479/)), Ghisletta
+([2012](https://pubmed.ncbi.nlm.nih.gov/25505366/)), Grimm et
+al. ([2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3638891/)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062/)).
 
 The `lcsm` package combines the strengths of other R packages like
 [lavaan](https://lavaan.ugent.be/),
-[broom](https://broom.tidyverse.org/), and
+[broom](https://github.com/tidymodels/broom//), and
 [semPlot](https://CRAN.R-project.org/package=semPlot/) by generating
 lavaan syntax that helps these packages work together. This is work in
 progress and feedback is very welcome!
@@ -58,29 +54,29 @@ The interactive online application
 **[`shinychange`](https://milanwiedemann.shinyapps.io/shinychange/)**
 also illustrates some functions of this package.
 
--   Functions to generate [lavaan](https://lavaan.ugent.be/) syntax for
-    different model specifications:
-    -   `specify_uni_lcsm()`: Generate syntax for univariate LCSM
-    -   `specify_bi_lcsm()`: Generate syntax for bivariate LCSM
--   Functions to fit models using [lavaan](https://lavaan.ugent.be/):
-    -   `fit_uni_lcsm()`: Fit univariate LCSM
-    -   `fit_bi_lcsm()`: Fit bivariate LCSM
--   Functions to extract results from models using
-    [broom](https://broom.tidyverse.org/):
-    -   `extract_fit()`: Extract fit statistics
-    -   `extract_param()`: Extract estimated parameters
--   Simulate data using [lavaan](https://lavaan.ugent.be/):
-    -   `sim_uni_lcsm()`: Simulate data by specifying parameters for a
-        univariate LCSM
-    -   `sim_bi_lcsm()`: Simulate data by specifying parameters for a
-        bivariate LCSM
--   Helper functions:
-    -   `plot_lcsm()`: Visualise LCSM using
-        [semPlot](https://github.com/SachaEpskamp/semPlot/)
-    -   `select_uni_cases()`: Select cases for analysis based on
-        available scores on one construct
-    -   `select_bi_cases()`: Select cases for analysis based on
-        available scores on two construct
+- Functions to generate [lavaan](https://lavaan.ugent.be/) syntax for
+  different model specifications:
+  - `specify_uni_lcsm()`: Generate syntax for univariate LCSM
+  - `specify_bi_lcsm()`: Generate syntax for bivariate LCSM
+- Functions to fit models using [lavaan](https://lavaan.ugent.be/):
+  - `fit_uni_lcsm()`: Fit univariate LCSM
+  - `fit_bi_lcsm()`: Fit bivariate LCSM
+- Functions to extract results from models using
+  [broom](https://broom.tidyverse.org/):
+  - `extract_fit()`: Extract fit statistics
+  - `extract_param()`: Extract estimated parameters
+- Simulate data using [lavaan](https://lavaan.ugent.be/):
+  - `sim_uni_lcsm()`: Simulate data by specifying parameters for a
+    univariate LCSM
+  - `sim_bi_lcsm()`: Simulate data by specifying parameters for a
+    bivariate LCSM
+- Helper functions:
+  - `plot_lcsm()`: Visualise LCSM using
+    [semPlot](https://github.com/SachaEpskamp/semPlot/)
+  - `select_uni_cases()`: Select cases for analysis based on available
+    scores on one construct
+  - `select_bi_cases()`: Select cases for analysis based on available
+    scores on two construct
 
 ## How to use `lcsm`
 
@@ -90,9 +86,9 @@ Here are a few examples how to use the `lcsm` package.
 # Load the package
 library(lcsm)
 #> 
-#> ── This is lcsm 0.1.6 ──────────────────────────────────────────────────────────
+#> ── This is lcsm 0.2.1 ──────────────────────────────────────────────────────────
 #> ℹ Please report any issues or ideas at:
-#> ℹ https://github.com/milanwiedemann/lcsm/issues
+#> ℹ https://github.com/milanwiedemann/lcsm/issues/
 ```
 
 ### Visualise data
@@ -124,10 +120,10 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 # Arrange plots next to each other using patchwork
 library(patchwork)
 plot_x + plot_y + plot_annotation(tag_levels = 'A')
-#> Warning: Removed 18 row(s) containing missing values (geom_path).
-#> Warning: Removed 85 rows containing missing values (geom_point).
-#> Warning: Removed 37 row(s) containing missing values (geom_path).
-#> Warning: Removed 172 rows containing missing values (geom_point).
+#> Warning: Removed 18 rows containing missing values (`geom_line()`).
+#> Warning: Removed 85 rows containing missing values (`geom_point()`).
+#> Warning: Removed 37 rows containing missing values (`geom_line()`).
+#> Warning: Removed 172 rows containing missing values (`geom_point()`).
 ```
 
 <img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
@@ -255,23 +251,23 @@ fit_uni_lcsm(data = data_uni_lcsm,
              model = list(alpha_constant = TRUE, 
                           beta = FALSE, 
                           phi = TRUE))
-#> lavaan 0.6-9 ended normally after 66 iterations
+#> lavaan 0.6.13 ended normally after 67 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of model parameters                        23
 #>   Number of equality constraints                    16
-#>                                                       
+#> 
 #>   Number of observations                           500
 #>   Number of missing patterns                       273
-#>                                                       
+#> 
 #> Model Test User Model:
-#>                                                Standard      Robust
-#>   Test Statistic                                 75.389      74.400
-#>   Degrees of freedom                                 58          58
-#>   P-value (Chi-square)                            0.062       0.072
-#>   Scaling correction factor                                   1.013
-#>        Yuan-Bentler correction (Mplus variant)
+#>                                               Standard      Scaled
+#>   Test Statistic                                75.389      74.400
+#>   Degrees of freedom                                58          58
+#>   P-value (Chi-square)                           0.062       0.072
+#>   Scaling correction factor                                  1.013
+#>     Yuan-Bentler correction (Mplus variant)
 ```
 
 It is also possible to show the lavaan syntax that was created to fit
@@ -452,23 +448,23 @@ fit_bi_lcsm(data = data_bi_lcsm,
                            phi = TRUE),
             coupling = list(delta_lag_xy = TRUE, 
                             xi_lag_yx = TRUE))
-#> lavaan 0.6-9 ended normally after 116 iterations
+#> lavaan 0.6.13 ended normally after 114 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
 #>   Number of model parameters                        87
 #>   Number of equality constraints                    65
-#>                                                       
+#> 
 #>   Number of observations                           500
 #>   Number of missing patterns                       210
-#>                                                       
+#> 
 #> Model Test User Model:
-#>                                                Standard      Robust
-#>   Test Statistic                                191.851     193.021
-#>   Degrees of freedom                                208         208
-#>   P-value (Chi-square)                            0.782       0.764
-#>   Scaling correction factor                                   0.994
-#>        Yuan-Bentler correction (Mplus variant)
+#>                                               Standard      Scaled
+#>   Test Statistic                               191.851     193.021
+#>   Degrees of freedom                               208         208
+#>   P-value (Chi-square)                           0.782       0.764
+#>   Scaling correction factor                                  0.994
+#>     Yuan-Bentler correction (Mplus variant)
 ```
 
 ### Extract fit statistics and parmeters
@@ -478,9 +474,9 @@ come from the `broom` package: `broom::tidy()` and `broom::glance()`.
 The functions `extract_param()` and `extract_fit()` offer some tools
 that I find helpful when running LCSMs in R, for example:
 
--   `extract_param()`: only one row per estimated parameter,
--   `extract_fit()`: fit statistics for multiple lavaan objects can be
-    extracted.
+- `extract_param()`: only one row per estimated parameter,
+- `extract_fit()`: fit statistics for multiple lavaan objects can be
+  extracted.
 
 A table of the description of all parameters that can be estimated is
 shown [here](#overview-of-estimated-lcs-model-parameters).
@@ -543,27 +539,27 @@ layout matrix that gets created by this plot function only supports the
 specifications that can be modelled with this package. The input
 arguments for plotting a simplified path diagram are:
 
--   the estimated lavaan object `lavaan_object`,
--   the `lavaan_syntax` and ,
--   `lcsm` indicating whether the LCSMs is “univariate” or “bivariate”
+- the estimated lavaan object `lavaan_object`,
+- the `lavaan_syntax` and ,
+- `lcsm` indicating whether the LCSMs is “univariate” or “bivariate”
 
 Optional arguments can be used to change the look of the plot, for
 example:
 
--   `lcsm_colours` can be used to highlight the different parts of the
-    latent change score model
-    -   white: observed scores
-    -   green: latent true scores
-    -   blue: latent change scores
-    -   yellow: latent change scores
+- `lcsm_colours` can be used to highlight the different parts of the
+  latent change score model
+  - white: observed scores
+  - green: latent true scores
+  - blue: latent change scores
+  - yellow: latent change scores
 
 Further arguments can be passed on to `semPlot::semPaths()`, for
 example:
 
--   `what`, **“path”** to show unweighted gray edges, **“par”** to show
-    parameter estimates as weighted (green/red) edges  
--   `whatLabels`, **“label”** to show edege names as label or **“est”**
-    for parameter estimates, **“hide”** to hide edge labels
+- `what`, **“path”** to show unweighted gray edges, **“par”** to show
+  parameter estimates as weighted (green/red) edges  
+- `whatLabels`, **“label”** to show edege names as label or **“est”**
+  for parameter estimates, **“hide”** to hide edge labels
 
 #### Univariate LCSM
 
