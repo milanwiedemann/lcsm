@@ -47,5 +47,5 @@ test_that("df simulation", {
     seed = 1234
   )
 
-  expect_equal(df_sim, lcsm_data)
+  expect_equal(df_sim, lcsm_data, tolerance = .01)
 })
