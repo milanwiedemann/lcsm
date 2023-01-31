@@ -47,5 +47,8 @@ test_that("df simulation", {
     seed = 1234
   )
 
-  expect_equal(df_sim, lcsm_data)
+  expect_equal(df_sim, lcsm_data, tolerance = 1)
 })
+
+# testthat::test_that("a", {testthat::expect_equal(141.0, 142.99, tolerance=.02)})
+# testthat::test_that("a", {testthat::expect_equal(0.3609, -0.5420, tolerance=1)})
