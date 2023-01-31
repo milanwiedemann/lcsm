@@ -8,7 +8,6 @@
 [![licence](https://img.shields.io/badge/Licence-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm/)
-[![](https://cranlogs.r-pkg.org/badges/grand-total/lcsm)](https://cran.r-project.org/package=lcsm/)
 <!-- badges: end -->
 
 This package offers some helper functions to specify and analyse
