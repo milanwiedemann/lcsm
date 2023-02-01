@@ -1,3 +1,7 @@
+url: ~
+template:
+  bootstrap: 5
+
 destination: docs
 
 reference:
@@ -36,3 +40,4 @@ reference:
   contents:
   - data_uni_lcsm
   - data_bi_lcsm
+  - lcsm_data
