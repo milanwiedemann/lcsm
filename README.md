@@ -19,7 +19,7 @@ method see for example McArdle
 ([2012](https://pubmed.ncbi.nlm.nih.gov/25505366/)), Grimm et
 al. ([2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3638891/)), and
 Grimm, Ram & Estabrook
-([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062/)).
+([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
 The `lcsm` package combines the strengths of other R packages like
 [lavaan](https://lavaan.ugent.be/),
@@ -85,9 +85,10 @@ Here are a few examples how to use the `lcsm` package.
 # Load the package
 library(lcsm)
 #> 
-#> ── This is lcsm 0.3.0 ──────────────────────────────────────────────────────────
+#> ── This is lcsm 0.3.1 ──────────────────────────────────────────────────────────
 #> ℹ Please report any issues or ideas at:
-#> ℹ https://github.com/milanwiedemann/lcsm/issues/
+#> ℹ https://github.com/milanwiedemann/lcsm/issues
+#> 
 ```
 
 ### Visualise data
