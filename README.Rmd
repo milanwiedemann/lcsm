@@ -31,9 +31,9 @@ For details about this method see for example McArdle
 Ghisletta ([2012](https://pubmed.ncbi.nlm.nih.gov/25505366/)), Grimm
 et al. ([2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3638891/)), and
 Grimm, Ram & Estabrook
-([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062/)).
+([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
-The `lcsm` package combines the strengths of other R packages like [lavaan](https://lavaan.ugent.be/), [broom](https://github.com/tidymodels/broom//), and [semPlot](https://CRAN.R-project.org/package=semPlot/) by generating lavaan syntax that helps these packages work together. 
+The `lcsm` package combines the strengths of other R packages like [lavaan](https://lavaan.ugent.be/), [broom](https://github.com/tidymodels/broom/), and [semPlot](https://CRAN.R-project.org/package=semPlot/) by generating lavaan syntax that helps these packages work together. 
 This is work in progress and feedback is very welcome!
 
 ## Installation
@@ -64,7 +64,7 @@ The interactive online application **[`shinychange`](https://milanwiedemann.shin
   - `fit_uni_lcsm()`: Fit univariate LCSM
   - `fit_bi_lcsm()`: Fit bivariate LCSM
   
-- Functions to extract results from models using [broom](https://broom.tidyverse.org/):
+- Functions to extract results from models using [broom](https://broom.tidymodels.org/):
   - `extract_fit()`: Extract fit statistics
   - `extract_param()`: Extract estimated parameters
   

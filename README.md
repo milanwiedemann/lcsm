@@ -23,7 +23,7 @@ Grimm, Ram & Estabrook
 
 The `lcsm` package combines the strengths of other R packages like
 [lavaan](https://lavaan.ugent.be/),
-[broom](https://github.com/tidymodels/broom//), and
+[broom](https://github.com/tidymodels/broom/), and
 [semPlot](https://CRAN.R-project.org/package=semPlot/) by generating
 lavaan syntax that helps these packages work together. This is work in
 progress and feedback is very welcome!
@@ -61,7 +61,7 @@ also illustrates some functions of this package.
   - `fit_uni_lcsm()`: Fit univariate LCSM
   - `fit_bi_lcsm()`: Fit bivariate LCSM
 - Functions to extract results from models using
-  [broom](https://broom.tidyverse.org/):
+  [broom](https://broom.tidymodels.org/):
   - `extract_fit()`: Extract fit statistics
   - `extract_param()`: Extract estimated parameters
 - Simulate data using [lavaan](https://lavaan.ugent.be/):
@@ -85,7 +85,7 @@ Here are a few examples how to use the `lcsm` package.
 # Load the package
 library(lcsm)
 #> 
-#> ── This is lcsm 0.2.1 ──────────────────────────────────────────────────────────
+#> ── This is lcsm 0.3.0 ──────────────────────────────────────────────────────────
 #> ℹ Please report any issues or ideas at:
 #> ℹ https://github.com/milanwiedemann/lcsm/issues/
 ```

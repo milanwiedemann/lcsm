@@ -19,14 +19,14 @@
 #' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
-#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. <doi:10.1080/10705511.2012.713275>.
+#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1080/10705511.2012.713275.}
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 #' 
-#' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
+#' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. \doi{10.1146/annurev.psych.60.110707.163612}.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#'<doi:10.18637/jss.v048.i02>.
+#'\doi{10.18637/jss.v048.i02}.
 #' @export
 #' @examples # Fit univariate latent change score model
 #' fit_uni_lcsm(data = data_uni_lcsm, 
@@ -140,14 +140,14 @@ fit_uni_lcsm <- function(data,
 #' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
-#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. <doi:10.1146/annurev.psych.60.110707.163612>.
+#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1146/annurev.psych.60.110707.163612}.
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 #' 
-#' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. <doi:10.1146/annurev.psych.60.110707.163612>.
+#' McArdle, J. J. (2009). Latent variable modeling of differences and changes with longitudinal data. Annual Review of Psychology, 60(1), 577–605. \doi{10.1146/annurev.psych.60.110707.163612}.
 #' 
 #' Yves Rosseel (2012). lavaan: An R Package for Structural Equation Modeling. Journal of Statistical Software, 48(2), 1-36.
-#' <doi:10.18637/jss.v048.i02>.
+#' \doi{10.18637/jss.v048.i02}.
 #' @export
 #' @examples # Fit 
 #' fit_bi_lcsm(data = data_bi_lcsm, 
