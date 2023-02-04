@@ -18,7 +18,7 @@ select_uni_cases <- function(data, id_var, var_list, min_count, return_id_only =
   var_count <- base::length(var_list)
 
   # Move id variable to beginning of dataset
-  data_select <- dplyr::select(data, c(id_var, var_list))
+  data_select <- dplyr::select(data, dplyr::all_of(id_var), dplyr::all_of(var_list))
 
   # Count available datapoints
   data_select$count <- base::apply(data_select[, 2:(var_count + 1)], 1, function(x) sum(!is.na(x)))
