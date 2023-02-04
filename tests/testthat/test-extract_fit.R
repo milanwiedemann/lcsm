@@ -1,4 +1,4 @@
-df_test <- fit_bi_lcsm(
+model_test <- fit_bi_lcsm(
   data = data_bi_lcsm,
   var_x = names(data_bi_lcsm)[2:4],
   var_y = names(data_bi_lcsm)[12:14],
@@ -15,7 +15,7 @@ df_test <- fit_bi_lcsm(
 
 
 test_that("Extract fit details names works", {
-  df_test_fit_details <- extract_fit(df_test, details = TRUE)
+  df_test_fit_details <- extract_fit(model_test, details = TRUE)
   names_extract_fit_details <- names(df_test_fit_details)
   names_extract_fit_details_expect <- c(
     "model", "chisq", "npar", "agfi", "aic", "bic",
@@ -28,7 +28,7 @@ test_that("Extract fit details names works", {
 
 
 test_that("Extract fit works", {
-  df_test_fit <- extract_fit(df_test, details = FALSE)
+  df_test_fit <- extract_fit(model_test, details = FALSE)
 
   expect_equal(df_test_fit$model, "1")
   expect_equal(df_test_fit$chisq, 14.4, tolerance = .01)
