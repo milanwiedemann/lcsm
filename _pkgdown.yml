@@ -1,43 +1,8 @@
-url: ~
+url: https://milanwiedemann.github.io/lcsm/
 template:
   bootstrap: 5
+  bslib:
+    primary: "#0054AD"
+    border-radius: 0.5rem
+    btn-border-radius: 0.25rem
 
-destination: docs
-
-reference:
-- title: "Generate lavaan syntax for different model specifications"
-  contents:
-  - specify_uni_lcsm
-  - specify_bi_lcsm
-  
-- title: "Fit models using lavaan"
-  contents:
-  - fit_uni_lcsm
-  - fit_bi_lcsm
-  
-- title: "Extract results from models using broom"
-  contents:
-  - extract_fit
-  - extract_param
-
-- title: "Simulate data using lavaan"
-  contents:
-  - sim_uni_lcsm
-  - sim_bi_lcsm
-  
-- title: "Visualise data and simplified path models"
-  contents:
-  - plot_lcsm
-  - plot_trajectories
-  
-- title: "Helper functions"
-  contents:
-  - select_uni_cases
-  - select_bi_cases
-  - rename_lcsm_vars
-
-- title: "Datasets"
-  contents:
-  - data_uni_lcsm
-  - data_bi_lcsm
-  - lcsm_data

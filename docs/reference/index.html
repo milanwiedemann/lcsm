@@ -55,7 +55,7 @@
     </div>
 
     <div class="section level2">
-      <h2 id="generate-lavaan-syntax-for-different-model-specifications">Generate lavaan syntax for different model specifications<a class="anchor" aria-label="anchor" href="#generate-lavaan-syntax-for-different-model-specifications"></a></h2>
+      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
       
       
 
@@ -67,47 +67,15 @@
 
       <dl><dt>
           
-          <code><a href="specify_uni_lcsm.html">specify_uni_lcsm()</a></code> 
+          <code><a href="data_bi_lcsm.html">data_bi_lcsm</a></code> 
         </dt>
-        <dd>Specify lavaan model for univariate latent change score models</dd>
+        <dd>Longitudinal dataset with repeated measures of two constructs</dd>
       </dl><dl><dt>
           
-          <code><a href="specify_bi_lcsm.html">specify_bi_lcsm()</a></code> 
+          <code><a href="data_uni_lcsm.html">data_uni_lcsm</a></code> 
         </dt>
-        <dd>Specify lavaan model for bivariate latent change score models</dd>
-      </dl></div><div class="section level2">
-      <h2 id="fit-models-using-lavaan">Fit models using lavaan<a class="anchor" aria-label="anchor" href="#fit-models-using-lavaan"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="fit_uni_lcsm.html">fit_uni_lcsm()</a></code> 
-        </dt>
-        <dd>Fit univariate latent change score models</dd>
+        <dd>Longitudinal dataset with repeated measures of one constructs</dd>
       </dl><dl><dt>
-          
-          <code><a href="fit_bi_lcsm.html">fit_bi_lcsm()</a></code> 
-        </dt>
-        <dd>Fit bivariate latent change score models</dd>
-      </dl></div><div class="section level2">
-      <h2 id="extract-results-from-models-using-broom">Extract results from models using broom<a class="anchor" aria-label="anchor" href="#extract-results-from-models-using-broom"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
           
           <code><a href="extract_fit.html">extract_fit()</a></code> 
         </dt>
@@ -117,39 +85,22 @@
           <code><a href="extract_param.html">extract_param()</a></code> 
         </dt>
         <dd>Extract labelled parameters of lavaan objects</dd>
-      </dl></div><div class="section level2">
-      <h2 id="simulate-data-using-lavaan">Simulate data using lavaan<a class="anchor" aria-label="anchor" href="#simulate-data-using-lavaan"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="sim_uni_lcsm.html">sim_uni_lcsm()</a></code> 
-        </dt>
-        <dd>Simulate data from univariate latent change score model parameter estimates</dd>
       </dl><dl><dt>
           
-          <code><a href="sim_bi_lcsm.html">sim_bi_lcsm()</a></code> 
+          <code><a href="fit_bi_lcsm.html">fit_bi_lcsm()</a></code> 
         </dt>
-        <dd>Simulate data from bivariate latent change score model parameter estimates</dd>
-      </dl></div><div class="section level2">
-      <h2 id="visualise-data-and-simplified-path-models">Visualise data and simplified path models<a class="anchor" aria-label="anchor" href="#visualise-data-and-simplified-path-models"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
+        <dd>Fit bivariate latent change score models</dd>
+      </dl><dl><dt>
+          
+          <code><a href="fit_uni_lcsm.html">fit_uni_lcsm()</a></code> 
+        </dt>
+        <dd>Fit univariate latent change score models</dd>
+      </dl><dl><dt>
+          
+          <code><a href="lcsm_data.html">lcsm_data</a></code> 
+        </dt>
+        <dd>Longitudinal dataset with repeated measures of two constructs</dd>
+      </dl><dl><dt>
           
           <code><a href="plot_lcsm.html">plot_lcsm()</a></code> 
         </dt>
@@ -159,22 +110,11 @@
           <code><a href="plot_trajectories.html">plot_trajectories()</a></code> 
         </dt>
         <dd>Plot individual trajectories</dd>
-      </dl></div><div class="section level2">
-      <h2 id="helper-functions">Helper functions<a class="anchor" aria-label="anchor" href="#helper-functions"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
+      </dl><dl><dt>
           
-          <code><a href="select_uni_cases.html">select_uni_cases()</a></code> 
+          <code><a href="rename_lcsm_vars.html">rename_lcsm_vars()</a></code> 
         </dt>
-        <dd>Select cases based on minimum number of available session scores on one longitudinal measure</dd>
+        <dd>Rename variables for univariate and bivariate latent change score models</dd>
       </dl><dl><dt>
           
           <code><a href="select_bi_cases.html">select_bi_cases()</a></code> 
@@ -182,38 +122,31 @@
         <dd>Select cases based on minimum number of available session scores on two longitudinal measures</dd>
       </dl><dl><dt>
           
-          <code><a href="rename_lcsm_vars.html">rename_lcsm_vars()</a></code> 
+          <code><a href="select_uni_cases.html">select_uni_cases()</a></code> 
         </dt>
-        <dd>Rename variables for univariate and bivariate latent change score models</dd>
-      </dl></div><div class="section level2">
-      <h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a></h2>
-      
-      
-
-      
-    </div><div id="" class="section level2">
-      
-      
-      
-
-      <dl><dt>
-          
-          <code><a href="data_uni_lcsm.html">data_uni_lcsm</a></code> 
-        </dt>
-        <dd>Longitudinal dataset with repeated measures of one constructs</dd>
+        <dd>Select cases based on minimum number of available session scores on one longitudinal measure</dd>
       </dl><dl><dt>
           
-          <code><a href="data_bi_lcsm.html">data_bi_lcsm</a></code> 
+          <code><a href="sim_bi_lcsm.html">sim_bi_lcsm()</a></code> 
         </dt>
-        <dd>Longitudinal dataset with repeated measures of two constructs</dd>
+        <dd>Simulate data from bivariate latent change score model parameter estimates</dd>
       </dl><dl><dt>
           
-          <code><a href="lcsm_data.html">lcsm_data</a></code> 
+          <code><a href="sim_uni_lcsm.html">sim_uni_lcsm()</a></code> 
         </dt>
-        <dd>Longitudinal dataset with repeated measures of two constructs</dd>
+        <dd>Simulate data from univariate latent change score model parameter estimates</dd>
+      </dl><dl><dt>
+          
+          <code><a href="specify_bi_lcsm.html">specify_bi_lcsm()</a></code> 
+        </dt>
+        <dd>Specify lavaan model for bivariate latent change score models</dd>
+      </dl><dl><dt>
+          
+          <code><a href="specify_uni_lcsm.html">specify_uni_lcsm()</a></code> 
+        </dt>
+        <dd>Specify lavaan model for univariate latent change score models</dd>
       </dl></div>
-  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
-    </nav></aside></div>
+  </main></div>
 
 
     <footer><div class="pkgdown-footer-left">

@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 ```
 
 # lcsm: An R Package for Latent Change Score Modeling
+
 <!-- badges: start -->
 [![licence](https://img.shields.io/badge/Licence-MIT-brightgreen.svg)](https://choosealicense.com/licenses/mit/)
 [![CRAN status](https://www.r-pkg.org/badges/version/lcsm)](https://CRAN.R-project.org/package=lcsm/)

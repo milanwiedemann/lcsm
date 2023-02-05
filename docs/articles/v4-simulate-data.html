@@ -86,7 +86,7 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://milanwiedemann.github.io/lcsm/" class="external-link">lcsm</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://milanwiedemann.github.io/lcsm/">lcsm</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">This is lcsm 0.3.1</span> <span style="color: #00BBBB;">──────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please report any issues or ideas at:</span></span>
@@ -118,16 +118,16 @@ GitHub.</p>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 1,000 × 6</span></span></span>
 <span><span class="co">#&gt;       id    x1    x2    x3    x4    x5</span></span>
 <span><span class="co">#&gt;    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1  <span style="color: #BB0000;">NA</span>    21.5  23.3  25.6  28.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2  22.5  23.4  24.6  24.9  <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3  22.8  22.6  22.0  <span style="color: #BB0000;">NA</span>    21.3</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4  <span style="color: #BB0000;">NA</span>    18.4  <span style="color: #BB0000;">NA</span>    17.4  <span style="color: #BB0000;">NA</span>  </span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5  19.8  19.6  18.1  <span style="color: #BB0000;">NA</span>    14.9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6  19.9  20.5  19.5  <span style="color: #BB0000;">NA</span>    19.7</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7  20.7  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    20.9</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8  20.5  21.2  19.7  18.9  19.0</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9  20.3  <span style="color: #BB0000;">NA</span>    17.2  <span style="color: #BB0000;">NA</span>    13.4</span></span>
-<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10  21.7  22.4  21.3  22.0  <span style="color: #BB0000;">NA</span>  </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 1</span>     1  19.5  21.8  <span style="color: #BB0000;">NA</span>    26.8 29.4 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 2</span>     2  <span style="color: #BB0000;">NA</span>    17.5  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    9.53</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 3</span>     3  22.1  <span style="color: #BB0000;">NA</span>    20.2  <span style="color: #BB0000;">NA</span>   18.1 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 4</span>     4  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>    19.2 19.0 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 5</span>     5  21.9  23.1  <span style="color: #BB0000;">NA</span>    24.0 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 6</span>     6  <span style="color: #BB0000;">NA</span>    18.6  19.3  20.1 20.7 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 7</span>     7  21.8  21.2  19.9  19.0 16.6 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 8</span>     8  20.1  <span style="color: #BB0000;">NA</span>    17.8  16.1 14.3 </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;"> 9</span>     9  <span style="color: #BB0000;">NA</span>    22.3  <span style="color: #BB0000;">NA</span>    25.3 <span style="color: #BB0000;">NA</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">10</span>    10  <span style="color: #BB0000;">NA</span>    20.9  <span style="color: #BB0000;">NA</span>    <span style="color: #BB0000;">NA</span>   26.6 </span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># … with 990 more rows</span></span></span></code></pre></div>
 <p>It is also possible to return the lavaan syntax instead of simulating
 data for further manual specifications. The modified object could then
