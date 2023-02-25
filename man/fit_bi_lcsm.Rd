@@ -30,7 +30,8 @@ fit_bi_lcsm(
 \itemize{
 \item{\code{alpha_constant}}{ (Constant change factor)},
 \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors.
+In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
 \item{\code{alpha_linear}}{ (Linear change factor)},
 \item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.
@@ -40,7 +41,8 @@ fit_bi_lcsm(
 \itemize{
 \item{\code{alpha_constant}}{ (Constant change factor)},
 \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
+\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors.
+In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
 \item{\code{alpha_linear}}{ (Linear change factor)},
 \item{\code{beta}}{ (Proportional change factor)},
 \item{\code{phi}}{ (Autoregression of change scores)}.

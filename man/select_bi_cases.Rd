@@ -26,11 +26,12 @@ tibble
 Select cases based on minimum number of available session scores on two longitudinal measures
 }
 \examples{
-select_bi_cases(data_bi_lcsm, 
-                id_var = "id", 
-                var_list_x = names(data_bi_lcsm)[2:11],
-                var_list_y = names(data_bi_lcsm)[12:21],
-                min_count_x = 7,
-                min_count_y = 7)
+select_bi_cases(data_bi_lcsm,
+  id_var = "id",
+  var_list_x = names(data_bi_lcsm)[2:11],
+  var_list_y = names(data_bi_lcsm)[12:21],
+  min_count_x = 7,
+  min_count_y = 7
+)
 
 }
