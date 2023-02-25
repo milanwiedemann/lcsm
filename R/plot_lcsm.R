@@ -9,6 +9,7 @@
 #' @param lavaan_syntax String, lavaan syntax of the lavaan object specified in \code{lavaan_object}.
 #' If \code{lavaan_syntax} is provided a layout matrix will be generated automatically.
 #' @param layout Matrix, specifying number and location of manifest and latent variables of LCS model specified in  \code{lavaan_object}.
+#' @param return_plot_object Logical, if TRUE return the plotting object (list) that is used to create the plot.
 #' @param return_layout_from_lavaan_syntax Logical, if TRUE and \code{lavaan_syntax} is provided, the layout matrix generated for \link[semPlot]{semPaths} will be returned for inspection of further customisation.
 #' @param lcsm String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.
 #' @param what See \code{semPlot}. "path" to show unweighted grey edges, "par" to show parameter estimates as weighted (green/red) edges
@@ -125,6 +126,7 @@ plot_lcsm <- function(lavaan_object,
                       return_layout_from_lavaan_syntax = FALSE,
                       lcsm = c("univariate", "bivariate"),
                       lcsm_colours = FALSE,
+                      return_plot_object = FALSE,
                       curve_covar = .5,
                       what = "path",
                       whatLabels = "est",
@@ -354,5 +356,10 @@ plot_lcsm <- function(lavaan_object,
   graph$graphAttributes$Edges$curve <- ifelse(graph$Edgelist$bidir, curve_covar, 0)
 
   # Create plot
-  plot(graph)
+  if (return_plot_object) {
+    return(graph)
+  } else {
+    plot(graph)
+  }
+  
 }

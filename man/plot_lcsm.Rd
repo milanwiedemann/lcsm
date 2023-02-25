@@ -11,6 +11,7 @@ plot_lcsm(
   return_layout_from_lavaan_syntax = FALSE,
   lcsm = c("univariate", "bivariate"),
   lcsm_colours = FALSE,
+  return_plot_object = FALSE,
   curve_covar = 0.5,
   what = "path",
   whatLabels = "est",
@@ -44,6 +45,8 @@ If \code{lavaan_syntax} is provided a layout matrix will be generated automatica
 \item{lcsm}{String, specifying whether lavaan_object represent a "univariate" or "bivariate" LCS model.}
 
 \item{lcsm_colours}{Logical, if TRUE the following colours will be used to highlight different parts of the model: Observed variables (White); Latent true scores (Green); Latent change scores (Blue) ; Change factors (Yellow).}
+
+\item{return_plot_object}{Logical, if TRUE return the plotting object (list) that is used to create the plot.}
 
 \item{curve_covar}{See \link[semPlot]{semPaths}.}
 
