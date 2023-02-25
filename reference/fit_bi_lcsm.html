@@ -10,7 +10,7 @@
     
     <a class="navbar-brand me-2" href="../index.html">lcsm</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.2</small>
 
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -95,7 +95,8 @@
 <dt>model_x</dt>
 <dd><p>List of model specifications (logical) for variables specified in <code>var_x</code>.</p><ul><li><p><code>alpha_constant</code> (Constant change factor),</p></li>
 <li><p><code>alpha_piecewise</code> (Piecewise constant change factors),</p></li>
-<li><p><code>alpha_piecewise_num</code> (Changepoint of piecewise constant change factors),</p></li>
+<li><p><code>alpha_piecewise_num</code> (Changepoint of piecewise constant change factors.
+In an example with 10 repeated measurements, setting <code>alpha_piecewise_num</code> to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).,</p></li>
 <li><p><code>alpha_linear</code> (Linear change factor),</p></li>
 <li><p><code>beta</code> (Proportional change factor),</p></li>
 <li><p><code>phi</code> (Autoregression of change scores).</p></li>
@@ -105,7 +106,8 @@
 <dt>model_y</dt>
 <dd><p>List of model specifications for variables specified in <code>var_y</code>.</p><ul><li><p><code>alpha_constant</code> (Constant change factor),</p></li>
 <li><p><code>alpha_piecewise</code> (Piecewise constant change factors),</p></li>
-<li><p><code>alpha_piecewise_num</code> (Changepoint of piecewise constant change factors),</p></li>
+<li><p><code>alpha_piecewise_num</code> (Changepoint of piecewise constant change factors.
+In an example with 10 repeated measurements, setting <code>alpha_piecewise_num</code> to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).,</p></li>
 <li><p><code>alpha_linear</code> (Linear change factor),</p></li>
 <li><p><code>beta</code> (Proportional change factor),</p></li>
 <li><p><code>phi</code> (Autoregression of change scores).</p></li>
@@ -184,7 +186,7 @@
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>     does not appear to be positive definite! The smallest eigenvalue</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>     (= 1.264160e-15) is close to zero. This may be a symptom that the</span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span>     model is not identified.</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> lavaan 0.6.13 ended normally after 137 iterations</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> lavaan 0.6.14 ended normally after 137 iterations</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Estimator                                         ML</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   Optimization method                           NLMINB</span>
