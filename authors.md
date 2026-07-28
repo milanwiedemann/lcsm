@@ -19,7 +19,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/milanwiedemann/lcsm/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/milanwiedemann/lcsm/blob/v0.3.3/inst/CITATION)
 
 Wiedemann, M., Thew, G. R., Košir, U., & Ehlers, A. (2022). lcsm: An R
 package and tutorial on latent change score modelling. Wellcome Open
