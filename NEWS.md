@@ -1,3 +1,7 @@
+# lcsm 0.3.3
+
+* Fixed a bug where `sim_uni_lcsm()` and `sim_bi_lcsm()` gave different simulated numbers depending on which version of lavaan was installed. Thanks to Yves Rosseel for reporting this and suggesting the fix.
+
 # lcsm 0.1.2
 
 * Minor changes to address new variable names from broom package
