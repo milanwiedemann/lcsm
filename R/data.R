@@ -4,19 +4,17 @@
 #' @docType data
 #' @usage data(data_uni_lcsm)
 #' @format A longitudinal dataset in wide format:
-#' \itemize{
-#'   \item{id}{: ID variable, unique identifier for each person}
-#'   \item{x1}{: x value at time point 1}
-#'   \item{x2}{: x value at time point 2}
-#'   \item{x3}{: x value at time point 3}
-#'   \item{x4}{: x value at time point 4}
-#'   \item{x5}{: x value at time point 5}
-#'   \item{x6}{: x value at time point 6}
-#'   \item{x7}{: x value at time point 7}
-#'   \item{x8}{: x value at time point 8}
-#'   \item{x9}{: x value at time point 9}
-#'   \item{x10}{: x value at time point 10}
-#' }
+#' - `id`: ID variable, unique identifier for each person
+#' - `x1`: x value at time point 1
+#' - `x2`: x value at time point 2
+#' - `x3`: x value at time point 3
+#' - `x4`: x value at time point 4
+#' - `x5`: x value at time point 5
+#' - `x6`: x value at time point 6
+#' - `x7`: x value at time point 7
+#' - `x8`: x value at time point 8
+#' - `x9`: x value at time point 9
+#' - `x10`: x value at time point 10
 #' @keywords dataset
 #' @examples
 #' # Load data into global environment
@@ -29,29 +27,27 @@
 #' @docType data
 #' @usage data(data_bi_lcsm)
 #' @format A longitudinal dataset in wide format:
-#' \itemize{
-#'   \item{id}{: ID variable, unique identifier for each person}
-#'   \item{x1}{: x value at time point 1}
-#'   \item{x2}{: x value at time point 2}
-#'   \item{x3}{: x value at time point 3}
-#'   \item{x4}{: x value at time point 4}
-#'   \item{x5}{: x value at time point 5}
-#'   \item{x6}{: x value at time point 6}
-#'   \item{x7}{: x value at time point 7}
-#'   \item{x8}{: x value at time point 8}
-#'   \item{x9}{: x value at time point 9}
-#'   \item{x10}{: x value at time point 10}
-#'   \item{y1}{: y value at time point 1}
-#'   \item{y2}{: y value at time point 2}
-#'   \item{y3}{: y value at time point 3}
-#'   \item{y4}{: y value at time point 4}
-#'   \item{y5}{: y value at time point 5}
-#'   \item{y6}{: y value at time point 6}
-#'   \item{y7}{: y value at time point 7}
-#'   \item{y8}{: y value at time point 8}
-#'   \item{y9}{: y value at time point 9}
-#'   \item{y10}{: y value at time point 10}
-#' }
+#' - `id`: ID variable, unique identifier for each person
+#' - `x1`: x value at time point 1
+#' - `x2`: x value at time point 2
+#' - `x3`: x value at time point 3
+#' - `x4`: x value at time point 4
+#' - `x5`: x value at time point 5
+#' - `x6`: x value at time point 6
+#' - `x7`: x value at time point 7
+#' - `x8`: x value at time point 8
+#' - `x9`: x value at time point 9
+#' - `x10`: x value at time point 10
+#' - `y1`: y value at time point 1
+#' - `y2`: y value at time point 2
+#' - `y3`: y value at time point 3
+#' - `y4`: y value at time point 4
+#' - `y5`: y value at time point 5
+#' - `y6`: y value at time point 6
+#' - `y7`: y value at time point 7
+#' - `y8`: y value at time point 8
+#' - `y9`: y value at time point 9
+#' - `y10`: y value at time point 10
 #' @keywords dataset
 #' @examples
 #' # Load data into global environment
@@ -65,19 +61,17 @@
 #' @docType data
 #' @usage data(lcsm_data)
 #' @format A longitudinal dataset in wide format:
-#' \itemize{
-#'   \item{id}{: ID variable, unique identifier for each person}
-#'   \item{x1}{: x value at time point 1}
-#'   \item{x2}{: x value at time point 2}
-#'   \item{x3}{: x value at time point 3}
-#'   \item{x4}{: x value at time point 4}
-#'   \item{x5}{: x value at time point 5}
-#'   \item{y1}{: y value at time point 1}
-#'   \item{y2}{: y value at time point 2}
-#'   \item{y3}{: y value at time point 3}
-#'   \item{y4}{: y value at time point 4}
-#'   \item{y5}{: y value at time point 5}
-#' }
+#' - `id`: ID variable, unique identifier for each person
+#' - `x1`: x value at time point 1
+#' - `x2`: x value at time point 2
+#' - `x3`: x value at time point 3
+#' - `x4`: x value at time point 4
+#' - `x5`: x value at time point 5
+#' - `y1`: y value at time point 1
+#' - `y2`: y value at time point 2
+#' - `y3`: y value at time point 3
+#' - `y4`: y value at time point 4
+#' - `y5`: y value at time point 5
 #' @keywords dataset
 #' @examples
 #' # Load data into global environment

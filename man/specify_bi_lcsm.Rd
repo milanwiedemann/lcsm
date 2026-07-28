@@ -23,38 +23,38 @@ specify_bi_lcsm(
 
 \item{model_x}{List, specifying model specifications (logical) for variables specified in \code{var_x}.
 \itemize{
-\item{\code{alpha_constant}}{ (Constant change factor)},
-\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
-\item{\code{alpha_linear}}{ (Linear change factor)},
-\item{\code{beta}}{ (Proportional change factor)},
-\item{\code{phi}}{ (Autoregression of change scores)}.
+\item \code{alpha_constant}: Constant change factor
+\item \code{alpha_piecewise}: Piecewise constant change factors
+\item \code{alpha_piecewise_num}: Changepoint of piecewise constant change factors
+\item \code{alpha_linear}: Linear change factor
+\item \code{beta}: Proportional change factor
+\item \code{phi}: Autoregression of change scores
 }}
 
 \item{var_y}{Vector, specifying variables measuring another construct of the model.}
 
 \item{model_y}{List, specifying model specifications (logical) for variables specified in \code{var_y}.
 \itemize{
-\item{\code{alpha_constant}}{ (Constant change factor)},
-\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors)},
-\item{\code{alpha_linear}}{ (Linear change factor)},
-\item{\code{beta}}{ (Proportional change factor)},
-\item{\code{phi}}{ (Autoregression of change scores)}.
+\item \code{alpha_constant}: Constant change factor
+\item \code{alpha_piecewise}: Piecewise constant change factors
+\item \code{alpha_piecewise_num}: Changepoint of piecewise constant change factors
+\item \code{alpha_linear}: Linear change factor
+\item \code{beta}: Proportional change factor
+\item \code{phi}: Autoregression of change scores
 }}
 
 \item{coupling}{List, specifying coupling parameters.
 \itemize{
-\item{\code{coupling_piecewise}}{ (Piecewise coupling parameters)},
-\item{\code{coupling_piecewise_num}}{ (Changepoint of piecewise coupling parameters)},
-\item{\code{delta_con_xy}}{ (True score y predicting concurrent change score x)},
-\item{\code{delta_lag_xy}}{ (True score y predicting subsequent change score x)},
-\item{\code{delta_con_yx}}{ (True score x predicting concurrent change score y)},
-\item{\code{delta_lag_yx}}{ (True score x predicting subsequent change score y)},
-\item{\code{xi_con_xy}}{ (Change score y predicting concurrent change score x)},
-\item{\code{xi_lag_xy}}{ (Change score y predicting subsequent change score x)},
-\item{\code{xi_con_yx}}{ (Change score x predicting concurrent change score y)},
-\item{\code{xi_lag_yx}}{ (Change score x predicting subsequent change score y)}.
+\item \code{coupling_piecewise}: Piecewise coupling parameters
+\item \code{coupling_piecewise_num}: Changepoint of piecewise coupling parameters
+\item \code{delta_con_xy}: True score y predicting concurrent change score x
+\item \code{delta_lag_xy}: True score y predicting subsequent change score x
+\item \code{delta_con_yx}: True score x predicting concurrent change score y
+\item \code{delta_lag_yx}: True score x predicting subsequent change score y
+\item \code{xi_con_xy}: Change score y predicting concurrent change score x
+\item \code{xi_lag_xy}: Change score y predicting subsequent change score x
+\item \code{xi_con_yx}: Change score x predicting concurrent change score y
+\item \code{xi_lag_yx}: Change score x predicting subsequent change score y
 }}
 
 \item{add}{String, lavaan syntax to be added to the model}
