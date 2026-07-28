@@ -17,7 +17,7 @@
 #' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
-#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1080/10705511.2012.713275.}
+#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651-682. 10.1080/10705511.2012.713275.
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 #' 

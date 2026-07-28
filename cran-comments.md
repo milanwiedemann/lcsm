@@ -4,12 +4,7 @@
 * R version 4.6.1 (2026-06-24)
 
 ## R CMD check results
-0 errors | 0 warnings | 1 note
-
-* checking CRAN incoming feasibility ... NOTE
-  Found the following (possibly) invalid DOIs:
-    DOI: 10.1080/10705511.2012.713275
-  This DOI is valid and resolves correctly (https://doi.org/10.1080/10705511.2012.713275).
+0 errors | 0 warnings | 0 note
 
 ## Reverse dependencies
 There are no reverse dependencies.
