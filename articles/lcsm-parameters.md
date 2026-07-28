@@ -1,0 +1,85 @@
+# LCSM Parameters
+
+``` r
+
+library(lcsm)
+#> This is lcsm 0.3.3
+#> Please report any issues or ideas at:
+#> https://github.com/milanwiedemann/lcsm/issues
+#> 
+```
+
+## Overview of estimated LCSM parameters
+
+### Univariate LCSM
+
+Depending on the specified model, the following parameters can be
+estimated for **univariate** LCSMs:
+
+| Parameter | Description |
+|:---|:---|
+| gamma_lx1 | Mean of latent true scores x (Intercept) |
+| sigma2_lx1 | Variance of latent true scores x |
+| sigma2_ux | Variance of observed scores x |
+| alpha_g2 | Mean of change factor (g2) |
+| alpha_g3 | Mean of change factor (g3) |
+| sigma2_g2 | Variance of change factor (g2) |
+| sigma2_g3 | Variance of change factor (g3) |
+| sigma_g2lx1 | Covariance of change factor (g2) with the initial true score x |
+| sigma_g3lx1 | Covariance of change factor (g3) with the initial true score x |
+| sigma_g2g3 | Covariance of change factors within construct x |
+| beta_x | Proportional change x |
+| phi_x | Autoregression of change scores x |
+
+### Bivariate LCSMs
+
+For bivariate LCSMs, estimated parameters can be categorised into (1)
+**Construct X**, (2) **Construct Y**, and (3) **Coupling between X and
+Y**.
+
+| Parameter | Description |
+|:---|:---|
+| **Construct X** |  |
+| gamma_lx1 | Mean of latent true scores x (Intercept) |
+| sigma2_lx1 | Variance of latent true scores x |
+| sigma2_ux | Variance of observed scores x |
+| alpha_g2 | Mean of change factor (g2) |
+| alpha_g3 | Mean of change factor (g3) |
+| sigma2_g2 | Variance of change factor (g2) |
+| sigma2_g3 | Variance of change factor (g3) |
+| beta_x | Proportional change x |
+| sigma_g2lx1 | Covariance of change factor (g2) with the initial true score x (lx1) |
+| sigma_g3lx1 | Covariance of change factor (g3) with the initial true score x (lx1) |
+| sigma_g2g3 | Covariance of change factors within construct x |
+| phi_x | Autoregression of change scores x |
+| **Construct Y** |  |
+| gamma_ly1 | Mean of latent true scores y (Intercept) |
+| sigma2_ly1 | Variance of latent true scores y |
+| sigma2_uy | Variance of observed scores y |
+| alpha_j2 | Mean of change factor (j2) |
+| alpha_j3 | Mean of change factor (j3) |
+| sigma2_j2 | Variance of change factor (j2) |
+| sigma2_j3 | Variance of change factor (j3) |
+| beta_y | Proportional change y |
+| sigma_j2ly1 | Covariance of change factor (j2) with the initial true score y (ly1) |
+| sigma_j3ly1 | Covariance of change factor (j3) with the initial true score y (ly1) |
+| sigma_j2j3 | Covariance of change factors within construct y |
+| phi_y | Autoregression of change scores y |
+| **Coupeling X & Y** |  |
+| sigma_su | Covariance of residuals x and y |
+| sigma_ly1lx1 | Covariance of intercepts x and y |
+| sigma_g2ly1 | Covariance of change factor x (g2) with the initial true score y (ly1) |
+| sigma_g3ly1 | Covariance of change factor x (g3) with the initial true score y (ly1) |
+| sigma_j2lx1 | Covariance of change factor y (j2) with the initial true score x (lx1) |
+| sigma_j3lx1 | Covariance of change factor y (j3) with the initial true score x (lx1) |
+| sigma_j2g2 | Covariance of change factors y (j2) and x (g2) |
+| sigma_j2g3 | Covariance of change factors y (j2) and x (g3) |
+| sigma_j3g2 | Covariance of change factors y (j3) and x (g2) |
+| delta_con_xy | Change score x (t) determined by true score y (t) |
+| delta_con_yx | Change score y (t) determined by true score x (t) |
+| delta_lag_xy | Change score x (t) determined by true score y (t-1) |
+| delta_lag_yx | Change score y (t) determined by true score x (t-1) |
+| xi_con_xy | Change score x (t) determined by change score y (t) |
+| xi_con_yx | Change score y (t) determined by change score x (t) |
+| xi_lag_xy | Change score x (t) determined by change score y (t-1) |
+| xi_lag_yx | Change score y (t) determined by change score x (t-1) |
