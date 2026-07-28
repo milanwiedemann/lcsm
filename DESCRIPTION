@@ -1,8 +1,8 @@
 Package: lcsm
 Type: Package
 Title: Univariate and Bivariate Latent Change Score Modelling
-Date: 2023-02-25
-Version: 0.3.2
+Date: 2026-07-28
+Version: 0.3.3
 Authors@R: c(
   person("Milan", "Wiedemann", email = "milan.wiedemann@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0003-1991-282X")),
   person("Graham M", "Thew", role = "ctb", comment = c(ORCID = "0000-0003-2851-1315")),
@@ -37,14 +37,13 @@ Imports:
     semPlot (>= 1.1),
     stats (>= 3.5.2),
     stringr (>= 1.4.0),
-    purrr (>= 0.3.4),
-    cli
+    purrr (>= 0.3.4)
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
-Suggests: 
+Suggests:
     testthat (>= 3.0.0),
     knitr (>= 1.22),
     rmarkdown (>= 1.12),
     shiny (>= 1.4.0)
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+Config/roxygen2/version: 8.0.0

@@ -23,13 +23,12 @@ fit_uni_lcsm(
 
 \item{model}{List of model specifications (logical) for variables specified in \code{var}.
 \itemize{
-\item{\code{alpha_constant}}{ (Constant change factor)}
-\item{\code{alpha_piecewise}}{ (Piecewise constant change factors)}
-\item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors.
-In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
-\item{\code{alpha_linear}}{ (Linear change factor)}
-\item{\code{beta}}{ (Proportional change factor)}
-\item{\code{phi}}{ (Autoregression of change scores)}
+\item \code{alpha_constant}: Constant change factor
+\item \code{alpha_piecewise}: Piecewise constant change factors
+\item \code{alpha_piecewise_num}: Changepoint of piecewise constant change factors. In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).
+\item \code{alpha_linear}: Linear change factor
+\item \code{beta}: Proportional change factor
+\item \code{phi}: Autoregression of change scores
 }}
 
 \item{add}{String, lavaan syntax to be added to the model}
@@ -59,7 +58,7 @@ fit_uni_lcsm(data = data_uni_lcsm,
                           phi = FALSE))
 }
 \references{
-Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1080/10705511.2012.713275.}
+Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651-682. 10.1080/10705511.2012.713275.
 
 Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 

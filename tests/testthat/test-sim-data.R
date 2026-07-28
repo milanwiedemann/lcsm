@@ -47,5 +47,9 @@ df_sim <- sim_bi_lcsm(
 test_that("df simulation", {
   # Simulate data from bivariate LCSM parameters
   # this is the same data as df_sim in the tutorial paper
+  # tolerance is kept loose here on purpose: the old MASS::mvrnorm() method
+  # (used again via mass = TRUE for lavaan >= 0.7-1) can give slightly
+  # different numbers on different platforms, so a strict check here can
+  # fail on CRAN even when nothing is actually wrong
   expect_equal(df_sim, lcsm_data, tolerance = 1)
 })

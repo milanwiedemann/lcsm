@@ -7,27 +7,27 @@
 \format{
 A longitudinal dataset in wide format:
 \itemize{
-\item{id}{: ID variable, unique identifier for each person}
-\item{x1}{: x value at time point 1}
-\item{x2}{: x value at time point 2}
-\item{x3}{: x value at time point 3}
-\item{x4}{: x value at time point 4}
-\item{x5}{: x value at time point 5}
-\item{x6}{: x value at time point 6}
-\item{x7}{: x value at time point 7}
-\item{x8}{: x value at time point 8}
-\item{x9}{: x value at time point 9}
-\item{x10}{: x value at time point 10}
-\item{y1}{: y value at time point 1}
-\item{y2}{: y value at time point 2}
-\item{y3}{: y value at time point 3}
-\item{y4}{: y value at time point 4}
-\item{y5}{: y value at time point 5}
-\item{y6}{: y value at time point 6}
-\item{y7}{: y value at time point 7}
-\item{y8}{: y value at time point 8}
-\item{y9}{: y value at time point 9}
-\item{y10}{: y value at time point 10}
+\item \code{id}: ID variable, unique identifier for each person
+\item \code{x1}: x value at time point 1
+\item \code{x2}: x value at time point 2
+\item \code{x3}: x value at time point 3
+\item \code{x4}: x value at time point 4
+\item \code{x5}: x value at time point 5
+\item \code{x6}: x value at time point 6
+\item \code{x7}: x value at time point 7
+\item \code{x8}: x value at time point 8
+\item \code{x9}: x value at time point 9
+\item \code{x10}: x value at time point 10
+\item \code{y1}: y value at time point 1
+\item \code{y2}: y value at time point 2
+\item \code{y3}: y value at time point 3
+\item \code{y4}: y value at time point 4
+\item \code{y5}: y value at time point 5
+\item \code{y6}: y value at time point 6
+\item \code{y7}: y value at time point 7
+\item \code{y8}: y value at time point 8
+\item \code{y9}: y value at time point 9
+\item \code{y10}: y value at time point 10
 }
 }
 \usage{

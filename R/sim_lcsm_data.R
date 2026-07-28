@@ -100,32 +100,67 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
   }
   
   # 5. Simulate data using lavaan::simulateData() ----
-  sim_data_model <- lavaan::simulateData(model = model_estimates, 
-                                         model.type = "sem", 
-                                         meanstructure = 'default', 
-                                         int.ov.free = TRUE, 
-                                         int.lv.free = FALSE, 
-                                         conditional.x = TRUE,
-                                         fixed.x = FALSE, 
-                                         orthogonal = FALSE, 
-                                         std.lv = TRUE, 
-                                         auto.fix.first = FALSE, 
-                                         auto.fix.single = FALSE, 
-                                         auto.var = TRUE, 
-                                         auto.cov.lv.x = TRUE, 
-                                         auto.cov.y = TRUE, 
-                                         sample.nobs = sample.nobs, 
-                                         ov.var = NULL, 
-                                         group.label = paste("G", 1:ngroups, sep = ""), 
-                                         skewness = 0, 
-                                         kurtosis = 0, 
-                                         seed = seed,
-                                         empirical = FALSE, 
-                                         return.type = "data.frame",
-                                         return.fit = FALSE,
-                                         debug = FALSE, 
-                                         standardized = FALSE,
-                                         ...)
+  # Newer lavaan versions (0.7-1 and up) create random data in a different
+  # way, so the numbers here would no longer match older lavaan versions.
+  # mass = TRUE tells lavaan to use its old method again, so results stay
+  # the same no matter which lavaan version is installed.
+  # Skip this if the user already set their own mass argument via ...
+  if (utils::packageVersion("lavaan") >= "0.7-1" && !("mass" %in% names(list(...)))) {
+    sim_data_model <- lavaan::simulateData(model = model_estimates, 
+                                           model.type = "sem", 
+                                           meanstructure = 'default', 
+                                           int.ov.free = TRUE, 
+                                           int.lv.free = FALSE, 
+                                           conditional.x = TRUE,
+                                           fixed.x = FALSE, 
+                                           orthogonal = FALSE, 
+                                           std.lv = TRUE, 
+                                           auto.fix.first = FALSE, 
+                                           auto.fix.single = FALSE, 
+                                           auto.var = TRUE, 
+                                           auto.cov.lv.x = TRUE, 
+                                           auto.cov.y = TRUE, 
+                                           sample.nobs = sample.nobs, 
+                                           ov.var = NULL, 
+                                           group.label = paste("G", 1:ngroups, sep = ""), 
+                                           skewness = 0, 
+                                           kurtosis = 0, 
+                                           seed = seed,
+                                           empirical = FALSE, 
+                                           mass = TRUE,
+                                           return.type = "data.frame",
+                                           return.fit = FALSE,
+                                           debug = FALSE, 
+                                           standardized = FALSE,
+                                           ...)
+  } else {
+    sim_data_model <- lavaan::simulateData(model = model_estimates, 
+                                           model.type = "sem", 
+                                           meanstructure = 'default', 
+                                           int.ov.free = TRUE, 
+                                           int.lv.free = FALSE, 
+                                           conditional.x = TRUE,
+                                           fixed.x = FALSE, 
+                                           orthogonal = FALSE, 
+                                           std.lv = TRUE, 
+                                           auto.fix.first = FALSE, 
+                                           auto.fix.single = FALSE, 
+                                           auto.var = TRUE, 
+                                           auto.cov.lv.x = TRUE, 
+                                           auto.cov.y = TRUE, 
+                                           sample.nobs = sample.nobs, 
+                                           ov.var = NULL, 
+                                           group.label = paste("G", 1:ngroups, sep = ""), 
+                                           skewness = 0, 
+                                           kurtosis = 0, 
+                                           seed = seed,
+                                           empirical = FALSE, 
+                                           return.type = "data.frame",
+                                           return.fit = FALSE,
+                                           debug = FALSE, 
+                                           standardized = FALSE,
+                                           ...)
+  }
   
   # 6. Restructure data ----
   # Add id variable
@@ -223,7 +258,7 @@ sim_uni_lcsm <- function(timepoints, model, model_param = NULL, var = "x", chang
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @return tibble
 #' @export
-#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1080/10705511.2012.713275}.
+#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651-682. 10.1080/10705511.2012.713275.
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 #' 
@@ -347,32 +382,67 @@ sim_bi_lcsm <- function(timepoints,
   }
   
   # 5. Simulate data using lavaan::simulateData() ----
-  sim_data_model <- lavaan::simulateData(model = model_estimates, 
-                                         model.type = "sem", 
-                                         meanstructure = 'default', 
-                                         int.ov.free = TRUE, 
-                                         int.lv.free = FALSE, 
-                                         conditional.x = TRUE,
-                                         fixed.x = FALSE, 
-                                         orthogonal = FALSE, 
-                                         std.lv = TRUE, 
-                                         auto.fix.first = FALSE, 
-                                         auto.fix.single = FALSE, 
-                                         auto.var = TRUE, 
-                                         auto.cov.lv.x = TRUE, 
-                                         auto.cov.y = TRUE, 
-                                         sample.nobs = sample.nobs, 
-                                         ov.var = NULL, 
-                                         group.label = paste("G", 1:ngroups, sep = ""), 
-                                         skewness = 0, 
-                                         kurtosis = 0, 
-                                         seed = seed,
-                                         empirical = FALSE, 
-                                         return.type = "data.frame",
-                                         return.fit = FALSE,
-                                         debug = FALSE, 
-                                         standardized = FALSE,
-                                         ...)
+  # Newer lavaan versions (0.7-1 and up) create random data in a different
+  # way, so the numbers here would no longer match older lavaan versions.
+  # mass = TRUE tells lavaan to use its old method again, so results stay
+  # the same no matter which lavaan version is installed.
+  # Skip this if the user already set their own mass argument via ...
+  if (utils::packageVersion("lavaan") >= "0.7-1" && !("mass" %in% names(list(...)))) {
+    sim_data_model <- lavaan::simulateData(model = model_estimates, 
+                                           model.type = "sem", 
+                                           meanstructure = 'default', 
+                                           int.ov.free = TRUE, 
+                                           int.lv.free = FALSE, 
+                                           conditional.x = TRUE,
+                                           fixed.x = FALSE, 
+                                           orthogonal = FALSE, 
+                                           std.lv = TRUE, 
+                                           auto.fix.first = FALSE, 
+                                           auto.fix.single = FALSE, 
+                                           auto.var = TRUE, 
+                                           auto.cov.lv.x = TRUE, 
+                                           auto.cov.y = TRUE, 
+                                           sample.nobs = sample.nobs, 
+                                           ov.var = NULL, 
+                                           group.label = paste("G", 1:ngroups, sep = ""), 
+                                           skewness = 0, 
+                                           kurtosis = 0, 
+                                           seed = seed,
+                                           empirical = FALSE, 
+                                           mass = TRUE,
+                                           return.type = "data.frame",
+                                           return.fit = FALSE,
+                                           debug = FALSE, 
+                                           standardized = FALSE,
+                                           ...)
+  } else {
+    sim_data_model <- lavaan::simulateData(model = model_estimates, 
+                                           model.type = "sem", 
+                                           meanstructure = 'default', 
+                                           int.ov.free = TRUE, 
+                                           int.lv.free = FALSE, 
+                                           conditional.x = TRUE,
+                                           fixed.x = FALSE, 
+                                           orthogonal = FALSE, 
+                                           std.lv = TRUE, 
+                                           auto.fix.first = FALSE, 
+                                           auto.fix.single = FALSE, 
+                                           auto.var = TRUE, 
+                                           auto.cov.lv.x = TRUE, 
+                                           auto.cov.y = TRUE, 
+                                           sample.nobs = sample.nobs, 
+                                           ov.var = NULL, 
+                                           group.label = paste("G", 1:ngroups, sep = ""), 
+                                           skewness = 0, 
+                                           kurtosis = 0, 
+                                           seed = seed,
+                                           empirical = FALSE, 
+                                           return.type = "data.frame",
+                                           return.fit = FALSE,
+                                           debug = FALSE, 
+                                           standardized = FALSE,
+                                           ...)
+  }
   
   # 6. Restructure data ----
   # Add id variable

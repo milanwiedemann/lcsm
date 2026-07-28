@@ -4,15 +4,12 @@
 #' @param data A data frame in "wide" format, i.e. one column for each measurement point and one row for each observation.
 #' @param var Vector, specifying the variable names of each measurement point sequentially.
 #' @param model List of model specifications (logical) for variables specified in \code{var}.
-#' \itemize{
-#' \item{\code{alpha_constant}}{ (Constant change factor)}
-#' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)}
-#' \item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors. 
-#' In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
-#' \item{\code{alpha_linear}}{ (Linear change factor)}
-#' \item{\code{beta}}{ (Proportional change factor)}
-#' \item{\code{phi}}{ (Autoregression of change scores)}
-#' }
+#' - `alpha_constant`: Constant change factor
+#' - `alpha_piecewise`: Piecewise constant change factors
+#' - `alpha_piecewise_num`: Changepoint of piecewise constant change factors. In an example with 10 repeated measurements, setting `alpha_piecewise_num` to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).
+#' - `alpha_linear`: Linear change factor
+#' - `beta`: Proportional change factor
+#' - `phi`: Autoregression of change scores
 #' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See `mimic` argument in \link[lavaan]{lavOptions}.
@@ -20,7 +17,7 @@
 #' @param missing See `missing` argument in \link[lavaan]{lavOptions}.
 #' @param ... Additional arguments to be passed to \link[lavaan]{lavOptions}.
 #' @return This function returns a lavaan class object.
-#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651–682. \doi{10.1080/10705511.2012.713275.}
+#' @references Ghisletta, P., & McArdle, J. J. (2012). Latent Curve Models and Latent Change Score Models Estimated in R. Structural Equation Modeling: A Multidisciplinary Journal, 19(4), 651-682. 10.1080/10705511.2012.713275.
 #' 
 #' Grimm, K. J., Ram, N., & Estabrook, R. (2017). Growth Modeling—Structural Equation and Multilevel Modeling Approaches. New York: The Guilford Press.
 #' 
@@ -108,34 +105,26 @@ fit_uni_lcsm <- function(data,
 #' @param var_x List of variables measuring one construct of the model.
 #' @param var_y List of variables measuring another construct of the model.
 #' @param model_x List of model specifications (logical) for variables specified in \code{var_x}.
-#' \itemize{
-#' \item{\code{alpha_constant}}{ (Constant change factor)},
-#' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-#' \item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors. 
-#' In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
-#' \item{\code{alpha_linear}}{ (Linear change factor)},
-#' \item{\code{beta}}{ (Proportional change factor)},
-#' \item{\code{phi}}{ (Autoregression of change scores)}.
-#' }
+#' - `alpha_constant`: Constant change factor
+#' - `alpha_piecewise`: Piecewise constant change factors
+#' - `alpha_piecewise_num`: Changepoint of piecewise constant change factors. In an example with 10 repeated measurements, setting `alpha_piecewise_num` to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).
+#' - `alpha_linear`: Linear change factor
+#' - `beta`: Proportional change factor
+#' - `phi`: Autoregression of change scores
 #' @param model_y List of model specifications for variables specified in \code{var_y}.
-#' \itemize{
-#' \item{\code{alpha_constant}}{ (Constant change factor)},
-#' \item{\code{alpha_piecewise}}{ (Piecewise constant change factors)},
-#' \item{\code{alpha_piecewise_num}}{ (Changepoint of piecewise constant change factors. 
-#' In an example with 10 repeated measurements, setting \code{alpha_piecewise_num} to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).},
-#' \item{\code{alpha_linear}}{ (Linear change factor)},
-#' \item{\code{beta}}{ (Proportional change factor)},
-#' \item{\code{phi}}{ (Autoregression of change scores)}.
-#' }
+#' - `alpha_constant`: Constant change factor
+#' - `alpha_piecewise`: Piecewise constant change factors
+#' - `alpha_piecewise_num`: Changepoint of piecewise constant change factors. In an example with 10 repeated measurements, setting `alpha_piecewise_num` to 5 would estimate two seperate constant change factors, a first one for changes up to timepoint 5, and a second one for changes from timepoint 5 onwards (in this example timepoint 10).
+#' - `alpha_linear`: Linear change factor
+#' - `beta`: Proportional change factor
+#' - `phi`: Autoregression of change scores
 #' @param coupling List of model specifications (logical) for coupling parameters.
-#' \itemize{
-#' \item{\code{coupling_piecewise}}{ (Piecewise coupling parameters)},
-#' \item{\code{coupling_piecewise_num}}{ (Changepoint of piecewise coupling parameters)},
-#' \item{\code{delta_xy}}{ (True score y predicting subsequent change score x)},
-#' \item{\code{delta_yx}}{ (True score x predicting subsequent change score y)},
-#' \item{\code{xi_xy}}{ (Change score y predicting subsequent change score x)},
-#' \item{\code{xi_yx}}{ (Change score x predicting subsequent change score y)}.
-#' }
+#' - `coupling_piecewise`: Piecewise coupling parameters
+#' - `coupling_piecewise_num`: Changepoint of piecewise coupling parameters
+#' - `delta_xy`: True score y predicting subsequent change score x
+#' - `delta_yx`: True score x predicting subsequent change score y
+#' - `xi_xy`: Change score y predicting subsequent change score x
+#' - `xi_yx`: Change score x predicting subsequent change score y
 #' @param add String, lavaan syntax to be added to the model
 #' @param return_lavaan_syntax Logical, if TRUE return the lavaan syntax used for simulating data. To make it look beautiful use the function \link[base]{cat}.
 #' @param mimic See `mimic` argument in \link[lavaan]{lavOptions}.

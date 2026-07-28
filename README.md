@@ -17,7 +17,7 @@ univariate and bivariate latent change score models (LCSM) using
 method see for example McArdle
 ([2009](https://pubmed.ncbi.nlm.nih.gov/18817479/)), Ghisletta
 ([2012](https://pubmed.ncbi.nlm.nih.gov/25505366/)), Grimm et
-al. ([2012](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3638891/)), and
+al. ([2012](https://pmc.ncbi.nlm.nih.gov/articles/PMC3638891/)), and
 Grimm, Ram & Estabrook
 ([2017](https://www.guilford.com/books/Growth-Modeling/Grimm-Ram-Estabrook/9781462526062)).
 
@@ -84,10 +84,9 @@ Here are a few examples how to use the `lcsm` package.
 ``` r
 # Load the package
 library(lcsm)
-#> 
-#> ── This is lcsm 0.3.1 ──────────────────────────────────────────────────────────
-#> ℹ Please report any issues or ideas at:
-#> ℹ https://github.com/milanwiedemann/lcsm/issues
+#> This is lcsm 0.3.3
+#> Please report any issues or ideas at:
+#> https://github.com/milanwiedemann/lcsm/issues
 #> 
 ```
 
@@ -120,13 +119,17 @@ plot_y <- plot_trajectories(data = data_bi_lcsm,
 # Arrange plots next to each other using patchwork
 library(patchwork)
 plot_x + plot_y + plot_annotation(tag_levels = 'A')
-#> Warning: Removed 18 rows containing missing values (`geom_line()`).
-#> Warning: Removed 85 rows containing missing values (`geom_point()`).
-#> Warning: Removed 37 rows containing missing values (`geom_line()`).
-#> Warning: Removed 172 rows containing missing values (`geom_point()`).
+#> Warning: Removed 18 rows containing missing values or values outside the scale range
+#> (`geom_line()`).
+#> Warning: Removed 85 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
+#> Warning: Removed 37 rows containing missing values or values outside the scale range
+#> (`geom_line()`).
+#> Warning: Removed 172 rows containing missing values or values outside the scale range
+#> (`geom_point()`).
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-3-1.png" alt="" width="100%" />
 
 ### Fit LCSMs
 
@@ -162,9 +165,12 @@ specify_uni_lcsm(timepoints = 5,
 ```
 
 <details>
+
 <summary>
+
 Click here to see the <code>lavaan</code> syntax specified above.
 </summary>
+
 <p>
 
     # Specify latent true scores 
@@ -236,6 +242,7 @@ Click here to see the <code>lavaan</code> syntax specified above.
     dx5 ~ phi_x * dx4 
 
 </p>
+
 </details>
 
 The function `fit_uni_lcsm()` can be used to fit a univariate LCSM using
@@ -251,7 +258,7 @@ fit_uni_lcsm(data = data_uni_lcsm,
              model = list(alpha_constant = TRUE, 
                           beta = FALSE, 
                           phi = TRUE))
-#> lavaan 0.6.13 ended normally after 67 iterations
+#> lavaan 0.7-2 ended normally after 67 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -293,9 +300,12 @@ cat(syntax)
 ```
 
 <details>
+
 <summary>
+
 Click here to see the lavaan syntax specified in <code>syntax</code>.
 </summary>
+
 <p>
 
     # Specify latent true scores 
@@ -412,6 +422,7 @@ Click here to see the lavaan syntax specified in <code>syntax</code>.
     dx10 ~ phi_x * dx9 
 
 </p>
+
 </details>
 
 #### Fit bivariate LCSMs
@@ -421,18 +432,18 @@ using the arguments `model_x` and `model_x`. These two constructs can
 then be connected using the `coupling` argument. More details can be
 found in the help files `help(fit_bi_lcsm)`.
 
-| Coupling specification | Description                                           |
-|:-----------------------|:------------------------------------------------------|
-| coupling_piecewise     | Piecewise coupling parameters                         |
-| coupling_piecewise_num | Changepoint of piecewise coupling parameters          |
-| delta_con_xy           | Change score x (t) determined by true score y (t)     |
-| delta_con_yx           | Change score y (t) determined by true score x (t)     |
-| delta_lag_xy           | Change score x (t) determined by true score y (t-1)   |
-| delta_lag_yx           | Change score y (t) determined by true score x (t-1)   |
-| xi_con_xy              | Change score x (t) determined by change score y (t)   |
-| xi_con_yx              | Change score y (t) determined by change score x (t)   |
-| xi_lag_xy              | Change score x (t) determined by change score y (t-1) |
-| xi_lag_yx              | Change score y (t) determined by change score x (t-1) |
+| Coupling specification | Description |
+|:---|:---|
+| coupling_piecewise | Piecewise coupling parameters |
+| coupling_piecewise_num | Changepoint of piecewise coupling parameters |
+| delta_con_xy | Change score x (t) determined by true score y (t) |
+| delta_con_yx | Change score y (t) determined by true score x (t) |
+| delta_lag_xy | Change score x (t) determined by true score y (t-1) |
+| delta_lag_yx | Change score y (t) determined by true score x (t-1) |
+| xi_con_xy | Change score x (t) determined by change score y (t) |
+| xi_con_yx | Change score y (t) determined by change score x (t) |
+| xi_lag_xy | Change score x (t) determined by change score y (t-1) |
+| xi_lag_yx | Change score y (t) determined by change score x (t-1) |
 
 ``` r
 fit_bi_lcsm(data = data_bi_lcsm, 
@@ -448,7 +459,7 @@ fit_bi_lcsm(data = data_bi_lcsm,
                            phi = TRUE),
             coupling = list(delta_lag_xy = TRUE, 
                             xi_lag_yx = TRUE))
-#> lavaan 0.6.13 ended normally after 114 iterations
+#> lavaan 0.7-2 ended normally after 116 iterations
 #> 
 #>   Estimator                                         ML
 #>   Optimization method                           NLMINB
@@ -557,7 +568,7 @@ Further arguments can be passed on to `semPlot::semPaths()`, for
 example:
 
 - `what`, **“path”** to show unweighted gray edges, **“par”** to show
-  parameter estimates as weighted (green/red) edges  
+  parameter estimates as weighted (green/red) edges\
 - `whatLabels`, **“label”** to show edege names as label or **“est”**
   for parameter estimates, **“hide”** to hide edge labels
 
@@ -571,8 +582,8 @@ uni_lavaan_results <- fit_uni_lcsm(data = data_uni_lcsm,
                                                 beta = TRUE, 
                                                 phi = TRUE)
                                   )
-#> Warning in lav_data_full(data = data, group = group, cluster = cluster, : lavaan WARNING: some cases are empty and will be ignored:
-#>   239
+#> Warning: lavaan->lav_data_full():  
+#>    some cases are empty and will be ignored: 239.
 
 # Save the lavaan syntax that is used to create the layout matrix for semPlot
 uni_lavaan_syntax <- fit_uni_lcsm(data = data_uni_lcsm, 
@@ -590,7 +601,7 @@ plot_lcsm(lavaan_object = uni_lavaan_results,
           lcsm = "univariate")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="" width="100%" />
 
 #### Bivariate LCSM
 
@@ -630,7 +641,7 @@ plot_lcsm(lavaan_object = bi_lavaan_results,
           lcsm = "bivariate")
 ```
 
-<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" alt="" width="100%" />
 
 ### Simulate data
 
@@ -660,17 +671,17 @@ sim_uni_lcsm(timepoints = 5,
 #> # A tibble: 1,000 × 6
 #>       id    x1    x2    x3    x4    x5
 #>    <int> <dbl> <dbl> <dbl> <dbl> <dbl>
-#>  1     1  21.8  20.4  18.0  15.3  NA  
-#>  2     2  22.5  22.7  NA    19.0  NA  
-#>  3     3  22.3  21.4  20.5  18.8  18.5
-#>  4     4  NA    NA    21.9  25.0  25.9
-#>  5     5  18.8  18.4  18.9  18.8  NA  
-#>  6     6  20.0  19.1  17.1  15.5  13.8
-#>  7     7  20.1  18.6  16.9  NA    NA  
-#>  8     8  22.3  23.2  22.6  23.6  25.3
-#>  9     9  18.7  NA    19.3  19.5  19.8
-#> 10    10  NA    22.3  NA    22.2  22.4
-#> # … with 990 more rows
+#>  1     1  20.0  NA    NA    18.0  16.4
+#>  2     2  20.0  19.9  18.1  17.4  NA  
+#>  3     3  19.6  17.5  NA    13.0  10.9
+#>  4     4  20.9  NA    NA    18.6  19.4
+#>  5     5  20.7  NA    22.5  23.5  24.0
+#>  6     6  21.2  20.6  21.2  20.7  20.5
+#>  7     7  20.3  NA    NA    NA    24.2
+#>  8     8  20.6  21.3  23.6  25.8  NA  
+#>  9     9  21.7  NA    20.1  19.9  NA  
+#> 10    10  NA    22.4  NA    23.8  24.2
+#> # ℹ 990 more rows
 ```
 
 It is also possible to return the lavaan syntax instead of simulating
@@ -710,9 +721,12 @@ simsyntax <- sim_bi_lcsm(timepoints = 5,
 ```
 
 <details>
+
 <summary>
+
 Click here to see the lavaan syntax specified in <code>simsyntax</code>.
 </summary>
+
 <p>
 
     # Specify parameters for construct x ----
@@ -874,4 +888,5 @@ Click here to see the lavaan syntax specified in <code>simsyntax</code>.
     dy5 ~ 0.4 * dx4 
 
 </p>
+
 </details>
